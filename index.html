@@ -12,15 +12,34 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      text-align: center;
+      color: white;
+      /* Animated gradient background */
       background: linear-gradient(270deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
       background-size: 800% 800%;
       animation: gradientShift 15s ease infinite;
+      position: relative;
+      overflow: hidden;
     }
 
     @keyframes gradientShift {
       0% {background-position: 0% 50%;}
       50% {background-position: 100% 50%;}
       100% {background-position: 0% 50%;}
+    }
+
+    /* Math symbols overlay */
+    .math-bg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      font-size: 60px;
+      color: rgba(255,255,255,0.15); /* faint symbols */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+      pointer-events: none; /* don’t block clicks */
     }
 
     .course-card {
@@ -33,6 +52,7 @@
       width: 90%;
       color: #222; /* Dark text */
       text-align: left;
+      z-index: 1; /* keep above background */
     }
 
     .course-box {
@@ -59,6 +79,11 @@
   </style>
 </head>
 <body>
+
+  <!-- Faint math symbols background -->
+  <div class="math-bg">
+    ∑ √ ∫ π ∞ ≈ Δ λ Ω
+  </div>
 
   <div class="course-card">
     <div class="course-box">
