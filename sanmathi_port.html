@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sanmathi Hegde – Industrial Portfolio</title>
+  <title>Sanmathi – Industry Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { margin:0; font-family:'Segoe UI',sans-serif; transition:background 0.3s,color 0.3s; }
     body.dark { background:#0a0a0a; color:#fff; }
     body.light { background:#f5f5f5; color:#000; }
+    body { margin:0; font-family:'Segoe UI',sans-serif; transition:background 0.3s,color 0.3s; }
 
     header { text-align:center; padding:40px 20px; }
-    header h1 { font-size:42px; font-weight:900; color:#ff79c6; }
+    header h1 { font-size:42px; font-weight:900; color:#ff4c60; }
     header h3 { font-size:22px; font-weight:600; color:#ffdd57; }
     header p { max-width:800px; margin:20px auto; font-size:16px; line-height:1.6; }
 
@@ -19,32 +19,33 @@
 
     .card-container { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; padding:20px; }
     .card { border-radius:15px; width:250px; padding:20px; text-align:center; cursor:pointer; color:#fff;
-      box-shadow:0 0 20px rgba(0,0,0,0.4); transition:transform 0.3s ease, box-shadow 0.3s ease; }
-    .card:hover { transform:translateY(-5px); box-shadow:0 0 30px rgba(255,255,255,0.3); }
+      box-shadow:0 0 20px rgba(0,0,0,0.4); transition:transform 0.3s ease; }
+    .card:hover { transform:translateY(-5px); }
 
-    /* Distinct colors for each button and module background */
-    .card:nth-child(1), #m1 { background:#ff4c60; }
-    .card:nth-child(2), #m2 { background:#4cd964; }
-    .card:nth-child(3), #m3 { background:#5ac8fa; }
-    .card:nth-child(4), #m4 { background:#a970ff; }
-    .card:nth-child(5), #m5 { background:#ff9500; }
-    .card:nth-child(6), #m6 { background:#ffd60a; color:#000; }
-    .card:nth-child(7), #m7 { background:#64d2ff; }
+    /* Button colors */
+    .card:nth-child(1){background:#ff4c60;} .card:nth-child(2){background:#4cd964;}
+    .card:nth-child(3){background:#5ac8fa;} .card:nth-child(4){background:#a970ff;}
+    .card:nth-child(5){background:#ff9500;} .card:nth-child(6){background:#ffd60a;color:#000;}
+    .card:nth-child(7){background:#64d2ff;}
 
-    .module-content { display:none; margin:20px auto; padding:20px; border-radius:12px; max-width:900px; color:#fff; }
-    .module-content h2 { font-size:24px; }
-    .module-content p { font-size:16px; line-height:1.6; }
-    pre { background:rgba(0,0,0,0.2); padding:15px; border-radius:10px; overflow-x:auto; font-size:14px; }
+    /* Module content tinted with same color */
+    .module-content { display:none; margin:20px auto; padding:20px; border-radius:12px; max-width:900px; }
+    #m1{background:rgba(255,76,96,0.2);} #m2{background:rgba(76,217,100,0.2);}
+    #m3{background:rgba(90,200,250,0.2);} #m4{background:rgba(169,112,255,0.2);}
+    #m5{background:rgba(255,149,0,0.2);} #m6{background:rgba(255,214,10,0.2);}
+    #m7{background:rgba(100,210,255,0.2);}
+
+    pre { background:rgba(0,0,0,0.2); padding:15px; border-radius:10px; overflow-x:auto; font-size:14px; text-align:left; }
+    body.light pre { background:rgba(0,0,0,0.05); }
   </style>
 </head>
 <body class="dark">
 
 <header>
-  <h1>Sanmathi Hegde</h1>
+  <h1>Sanmathi</h1>
   <h3>Industrial & Manufacturing Systems – Vishalnagari</h3>
   <p>
-    Vishalnagari’s industries blend tradition and innovation — from cotton textiles to electric mobility.  
-    Each sector faces challenges in scheduling, routing, resource allocation, and predictive maintenance.  
+    Vishalnagari’s industries face challenges in scheduling, routing, resource allocation, and predictive maintenance.  
     This portfolio explores how algorithms transform these business cases into scalable, efficient solutions.
   </p>
   <button class="theme-toggle" onclick="toggleTheme()">Switch Theme</button>
@@ -59,65 +60,45 @@
   <div class="card" onclick="toggleModule('m6')">Module 6: Workforce Scheduling</div>
   <div class="card" onclick="toggleModule('m7')">Module 7: Supply Chain Optimization</div>
 </div>
-<!-- Module 1 -->
 <div id="m1" class="module-content">
   <h2>EV Assembly Line Optimization</h2>
   <p><strong>Case Study:</strong><br>
-  How can we sequence EV assembly tasks so robots never wait idly and bottlenecks vanish?</p>
-
-  <p><strong>Algorithm:</strong> Topological Sort (Kahn’s Algorithm)<br>
-     <strong>Efficiency:</strong> O(V + E)</p>
-
+  How can tasks be sequenced so robots never wait idly and bottlenecks vanish?</p>
+  <p><strong>Algorithm:</strong> Topological Sort (Kahn’s Algorithm)<br><strong>Efficiency:</strong> O(V+E)</p>
   <pre>
 C++ Pseudocode:
 vector<int> topologicalSort(int V, vector<vector<int>>& adj) {
     vector<int> in_degree(V, 0);
-    for (int u = 0; u < V; u++) {
-        for (int v : adj[u]) {
-            in_degree[v]++;
-        }
-    }
+    for (int u = 0; u < V; u++)
+        for (int v : adj[u]) in_degree[v]++;
     queue<int> q;
-    for (int i = 0; i < V; i++) {
-        if (in_degree[i] == 0) q.push(i);
-    }
+    for (int i = 0; i < V; i++) if (in_degree[i] == 0) q.push(i);
     vector<int> result;
     while (!q.empty()) {
         int u = q.front(); q.pop();
         result.push_back(u);
         for (int v : adj[u]) {
-            in_degree[v]--;
-            if (in_degree[v] == 0) q.push(v);
+            if (--in_degree[v] == 0) q.push(v);
         }
     }
     return result;
 }
   </pre>
-
   <p><strong>Conclusion:</strong><br>
-  By ordering tasks with topological sort, the EV line runs smoothly, minimizing idle time and maximizing throughput.</p>
+  Topological sort ensures smooth EV assembly, minimizing idle time and maximizing throughput.</p>
 </div>
-       <!-- Module 2 -->
-<div id="m2" class="module-content">
+      <div id="m2" class="module-content">
   <h2>General Machine Job Scheduling</h2>
   <p><strong>Case Study:</strong><br>
-  How can factories assign overlapping jobs to machines so no energy is wasted and deadlines are met?</p>
-
-  <p><strong>Algorithm:</strong> Interval Scheduling (Greedy)<br>
-     <strong>Efficiency:</strong> O(n log n)</p>
-
+  How can factories assign overlapping jobs to machines so no energy is wasted?</p>
+  <p><strong>Algorithm:</strong> Interval Scheduling (Greedy)<br><strong>Efficiency:</strong> O(n log n)</p>
   <pre>
 C++ Pseudocode:
 struct Job { int start, finish; };
-
-bool compare(Job a, Job b) {
-    return a.finish < b.finish;
-}
-
+bool compare(Job a, Job b){ return a.finish < b.finish; }
 vector<Job> intervalScheduling(vector<Job>& jobs) {
     sort(jobs.begin(), jobs.end(), compare);
-    vector<Job> result;
-    int lastFinish = -1;
+    vector<Job> result; int lastFinish = -1;
     for (Job j : jobs) {
         if (j.start >= lastFinish) {
             result.push_back(j);
@@ -127,26 +108,20 @@ vector<Job> intervalScheduling(vector<Job>& jobs) {
     return result;
 }
   </pre>
-
   <p><strong>Conclusion:</strong><br>
-  Greedy scheduling ensures machines run continuously without conflict, boosting efficiency across diverse industries.</p>
+  Greedy scheduling ensures machines run continuously without conflict, boosting efficiency.</p>
 </div>
-       <!-- Module 3 -->
-<div id="m3" class="module-content">
+      <div id="m3" class="module-content">
   <h2>Logistics Routing Optimization</h2>
   <p><strong>Case Study:</strong><br>
-  How can trucks in Vishalnagari deliver cotton and goods across multiple mills without wasting fuel or time?</p>
-
-  <p><strong>Algorithm:</strong> Dijkstra’s Shortest Path<br>
-     <strong>Efficiency:</strong> O(E + V log V)</p>
-
+  How can trucks deliver goods across mills without wasting fuel or time?</p>
+  <p><strong>Algorithm:</strong> Dijkstra’s Shortest Path<br><strong>Efficiency:</strong> O(E+V log V)</p>
   <pre>
 C++ Pseudocode:
 vector<int> dijkstra(int V, vector<vector<pair<int,int>>>& adj, int src) {
     vector<int> dist(V, INT_MAX);
     priority_queue<pair<int,int>, vector<pair<int,int>>, greater<>> pq;
-    dist[src] = 0;
-    pq.push({0, src});
+    dist[src] = 0; pq.push({0, src});
     while (!pq.empty()) {
         int u = pq.top().second; pq.pop();
         for (auto [v, wt] : adj[u]) {
@@ -159,15 +134,15 @@ vector<int> dijkstra(int V, vector<vector<pair<int,int>>>& adj, int src) {
     return dist;
 }
   </pre>
-
   <p><strong>Conclusion:</strong><br>
-  Dijkstra’s algorithm ensures trucks take the shortest possible routes, cutting costs and speeding up deliveries.</p>
+  Dijkstra’s ensures trucks take shortest routes, cutting costs and speeding deliveries.</p>
 </div>
-               <!-- Module 4 -->
-<div id="m4" class="module-content">
-  <h2>EV Battery Allocation Across Zones</h2>
+              <div id="m4" class="module-content">
+  <h2>EV Battery Allocation</h2>
   <p><strong>Case Study:</strong><br>
-  How can limited battery packs be distributed fairly across multiple EV assembly zones without shortages?</p>
+  EV factories face shortages when battery packs are unevenly distributed.  
+  How can limited batteries be allocated fairly across zones?  
+  Can we maximize flow to balance demand?</p>
 
   <p><strong>Algorithm:</strong> Max Flow (Ford–Fulkerson)<br>
      <strong>Efficiency:</strong> O(E × max_flow)</p>
@@ -179,7 +154,6 @@ int fordFulkerson(vector<vector<int>>& capacity, int s, int t) {
     vector<vector<int>> residual = capacity;
     int max_flow = 0;
     while (true) {
-        // BFS to find augmenting path
         vector<int> parent(V, -1);
         queue<int> q; q.push(s); parent[s] = s;
         while (!q.empty() && parent[t] == -1) {
@@ -190,7 +164,7 @@ int fordFulkerson(vector<vector<int>>& capacity, int s, int t) {
                 }
             }
         }
-        if (parent[t] == -1) break; // no path
+        if (parent[t] == -1) break;
         int path_flow = INT_MAX;
         for (int v = t; v != s; v = parent[v]) {
             int u = parent[v];
@@ -208,13 +182,14 @@ int fordFulkerson(vector<vector<int>>& capacity, int s, int t) {
   </pre>
 
   <p><strong>Conclusion:</strong><br>
-  Max Flow guarantees batteries are allocated optimally, balancing demand across all zones.</p>
+  Max Flow ensures batteries are distributed optimally, balancing demand across all zones.</p>
 </div>
-               <!-- Module 5 -->
-<div id="m5" class="module-content">
-  <h2>Predictive Maintenance in Textile Machines</h2>
+              <div id="m5" class="module-content">
+  <h2>Predictive Maintenance</h2>
   <p><strong>Case Study:</strong><br>
-  Can we predict when looms or dyeing machines will fail, so downtime is avoided before it happens?</p>
+  Looms and dyeing machines often fail unexpectedly.  
+  Can we predict failures before they occur?  
+  How can data guide proactive maintenance?</p>
 
   <p><strong>Algorithm:</strong> Decision Tree Classification<br>
      <strong>Efficiency:</strong> O(n log n) training, O(log n) prediction</p>
@@ -241,13 +216,14 @@ string predict(Node* root, map<string,string>& input) {
   </pre>
 
   <p><strong>Conclusion:</strong><br>
-  Decision trees forecast failures early, allowing proactive maintenance and reducing costly breakdowns.</p>
+  Decision trees forecast failures early, enabling proactive maintenance and reducing costly downtime.</p>
 </div>
-<!-- Module 6 -->
 <div id="m6" class="module-content">
-  <h2>Workforce Shift Scheduling</h2>
+  <h2>Workforce Scheduling</h2>
   <p><strong>Case Study:</strong><br>
-  How can workers be assigned to shifts fairly, respecting availability and minimizing overtime?</p>
+  Workers need fair shifts without excessive overtime.  
+  How can we assign tasks respecting availability?  
+  Can we minimize cost while balancing workloads?</p>
 
   <p><strong>Algorithm:</strong> Hungarian Algorithm (Assignment Problem)<br>
      <strong>Efficiency:</strong> O(n³)</p>
@@ -281,25 +257,25 @@ int hungarian(const vector<vector<int>>& cost) {
             int j1 = way[j0]; p[j0] = p[j1]; j0 = j1;
         } while (j0);
     }
-    return -v[0]; // minimum cost
+    return -v[0];
 }
   </pre>
 
   <p><strong>Conclusion:</strong><br>
-  The Hungarian algorithm ensures fair and efficient workforce scheduling, balancing workloads across employees.</p>
-</div>
-                       <!-- Module 7 -->
-<div id="m7" class="module-content">
-  <h2>Supply Chain Cost Minimization</h2>
+  The Hungarian algorithm ensures fair and efficient workforce scheduling across employees.</p>
+</div><div id="m7" class="module-content">
+  <h2>Supply Chain Optimization</h2>
   <p><strong>Case Study:</strong><br>
-  How can raw materials flow across multiple factories at minimum cost while meeting demand?</p>
+  Raw materials must flow across multiple factories.  
+  How can we minimize cost while meeting demand?  
+  Can linear programming balance supply and demand?</p>
 
   <p><strong>Algorithm:</strong> Linear Programming (Simplex Method)<br>
      <strong>Efficiency:</strong> Polynomial average time</p>
 
   <pre>
-C++ Pseudocode (conceptual with LP solver):
-// Define variables: flow[i][j] = amount shipped from source i to destination j
+C++ Pseudocode (conceptual):
+// Variables: flow[i][j] = amount shipped from source i to destination j
 // Objective: minimize sum(cost[i][j] * flow[i][j])
 // Constraints:
 //   - Supply limits at each source
@@ -310,17 +286,33 @@ C++ Pseudocode (conceptual with LP solver):
   </pre>
 
   <p><strong>Conclusion:</strong><br>
-  Linear programming balances supply and demand, minimizing costs across the entire supply chain.</p>
+  Linear programming minimizes costs while ensuring supply meets demand across the chain.</p>
 </div>
-<footer style="text-align:center; padding:30px; font-size:16px;">
-  <p><strong>Final Conclusion:</strong><br>
-  Each module demonstrates how algorithmic thinking solves real industrial challenges in Vishalnagari.  
-  From assembly lines to supply chains, these solutions reduce waste, save time, and improve efficiency.</p>
-</footer>
+<section style="margin:40px auto; max-width:900px; padding:20px;
+                background:rgba(255,255,255,0.05); border-radius:15px;">
+  <h2>Conclusion</h2>
+  <p>
+    Each module demonstrates how algorithmic thinking solves real industrial challenges in Vishalnagari.  
+    From assembly lines to supply chains, these solutions reduce waste, save time, and improve efficiency.
+  </p>
+</section>
 
 <script>
 function toggleModule(id) {
   const modules = document.getElementsByClassName('module-content');
-  for (let m of modules) {
-    m.style.display = (m.id === id && m.style.display !== "block") ? "block" : "none";
+  for (let m of modules) m.style.display = "none";
+  const target = document.getElementById(id);
+  if (target) target.style.display = "block";
+}
+
+function toggleTheme() {
+  const body = document.body;
+  if (body.classList.contains("dark")) {
+    body.classList.remove("dark"); body.classList.add("light");
+  } else {
+    body.classList.remove("light"); body.classList.add("dark");
   }
+}
+</script>
+</body>
+</html>
