@@ -10,16 +10,12 @@
       font-family: 'Segoe UI', sans-serif;
       height: 100vh;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      text-align: center;
-      color: white;
-      /* Unique animated gradient background */
       background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb, #84fab0, #8fd3f4);
       background-size: 600% 600%;
       animation: gradientShift 18s ease infinite;
-      position: relative;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     @keyframes gradientShift {
@@ -29,15 +25,13 @@
     }
 
     .portfolio-heading {
-      position: absolute;
-      top: 40px;
-      width: 100%;
-      text-align: center;
+      margin-top: 40px;
       font-size: 42px;
       font-weight: 800;
       letter-spacing: 2px;
       color: #222;
       text-shadow: 2px 2px 6px rgba(255,255,255,0.6);
+      text-align: center;
     }
 
     .course-card {
@@ -48,9 +42,9 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
       max-width: 420px;
       width: 90%;
-      color: #222; /* Dark text */
+      color: #222;
       text-align: left;
-      z-index: 1;
+      margin-top: 30px;
     }
 
     .course-box {
@@ -74,6 +68,51 @@
       font-weight: 500;
       color: #444;
     }
+
+    .project-overview {
+      margin-top: 60px;
+      text-align: center;
+      color: #222;
+      max-width: 900px;
+    }
+
+    .project-overview h2 {
+      font-size: 30px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 4px rgba(255,255,255,0.6);
+    }
+
+    .project-overview h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin: 30px 0 15px;
+      color: #333;
+    }
+
+    .city-text {
+      font-size: 18px;
+      line-height: 1.6;
+      background: rgba(255,255,255,0.6);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin: 0 auto 30px;
+    }
+
+    .city-images {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .city-images img {
+      width: 250px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
   </style>
 </head>
 <body>
@@ -81,6 +120,7 @@
   <!-- Big Heading -->
   <div class="portfolio-heading">PORTFOLIO – DAA</div>
 
+  <!-- Course Card -->
   <div class="course-card">
     <div class="course-box">
       <h3>Course</h3>
@@ -99,6 +139,21 @@
       <p>Prof. Prakash Hegade</p>
     </div>
   </div>
+
+  <!-- Project Overview Section -->
+  <section class="project-overview">
+    <h2>Project Overview</h2>
+    <p class="city-text">
+      Vishalnagari is a smart city where only electric vehicles move, creating a clean and quiet environment. Charging stations line its boulevards, and intelligent traffic systems keep journeys smooth. Public transport runs on autonomous electric buses and trams, connecting every corner efficiently. The commercial sector buzzes with smart marketplaces, the industrial zone thrives on clean logistics, and the agricultural fields use modern irrigation for sustainable farming. Automated waste and water systems protect the environment, giving citizens fresh air and a healthier lifestyle. Vishalnagari shines as a living model of innovation, proving that technology and sustainability can grow together.
+    </p>
+
+    <h3>City Map</h3>
+    <div class="city-images">
+      <!-- Replace with your actual image file names -->
+      <img src="image1.png" alt="City Map 1">
+      <img src="image2.png" alt="City Map 2">
+    </div>
+  </section>
 
 </body>
 </html>
