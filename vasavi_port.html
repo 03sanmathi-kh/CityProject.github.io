@@ -105,11 +105,12 @@
     transparency, and efficiency across public systems — from local markets to city‑wide audits.
   </p>
 </header>
-
 <div class="bubble-container">
   <div class="bubble market" onclick="toggleModule('v1')">Module 1: Smart Market Matching</div>
   <div class="bubble allocation" onclick="toggleModule('v2')">Module 2: Resource Allocation</div>
   <div class="bubble governance" onclick="toggleModule('v3')">Module 3: Governance Scheduling</div>
+  <div class="bubble budget" onclick="toggleModule('v4')">Module 4: Civic Budgeting</div>
+  <div class="bubble audit" onclick="toggleModule('v5')">Module 5: Transparency Audits</div>
 </div>
 
 <!-- Module 1 -->
@@ -175,10 +176,6 @@ int scheduleMeetings(vector<pair<int,int>>& tasks) {
 }
   </pre>
 </div>
-<div class="bubble-container">
-  <div class="bubble budget" onclick="toggleModule('v4')">Module 4: Civic Budgeting</div>
-  <div class="bubble audit" onclick="toggleModule('v5')">Module 5: Transparency Audits</div>
-</div>
 
 <!-- Module 4 -->
 <div id="v4" class="module-content budget-box">
@@ -203,4 +200,52 @@ C++ (conceptual):
 
 <!-- Module 5 -->
 <div id="v5" class="module-content audit-box">
-  <
+  <h2>Transparency Audits</h2>
+  <p><strong>🔍 What exact problem are we solving?</strong><br>
+  How can governance transactions be audited efficiently to detect anomalies and ensure transparency?</p>
+  <p><strong>Algorithm:</strong> Hashing + Bloom Filters<br>
+     <strong>Efficiency:</strong> O(1) average lookup</p>
+  <pre>
+Pseudocode:
+1. Store each transaction hash in Bloom filter
+2. For each new transaction:
+   - Check membership in filter
+   - If anomaly detected → flag for review
+
+C++ (conceptual):
+#include <bitset>
+bool checkTransaction(string tx, BloomFilter& bf) {
+  return bf.contains(tx); // O(1) average
+}
+  </pre>
+</div>
+
+<!-- Conclusion -->
+<section style="margin:40px auto; max-width:900px; padding:20px; background:rgba(255,255,255,0.05); border-radius:15px;">
+  <h2>Conclusion</h2>
+  <p>
+    The Commerce & Governance domain integrates <strong>market matching, resource allocation, scheduling, budgeting, and auditing</strong>  
+    into a unified civic framework. By applying algorithmic strategies such as <strong>stable matching, greedy allocation, graph coloring,  
+    linear programming, and hashing</strong>, Vishalnagari ensures fairness, efficiency, and transparency across its commercial and  
+    governmental systems.
+  </p>
+</section>
+
+<!-- Toggle Script -->
+<script>
+function toggleModule(id) {
+  // Hide all modules first
+  const modules = document.getElementsByClassName('module-content');
+  for (let m of modules) {
+    m.style.display = "none";
+  }
+  // Show the one you clicked
+  const selected = document.getElementById(id);
+  if (selected) {
+    selected.style.display = "block";
+  }
+}
+</script>
+
+</body>
+</html>
