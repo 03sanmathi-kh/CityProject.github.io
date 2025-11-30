@@ -33,8 +33,8 @@
       color: #dddddd;
     }
 
-    /* Diamond container */
-    .diamond-container {
+    /* Container */
+    .shape-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -42,45 +42,74 @@
       padding: 30px;
     }
 
-    /* Diamond shape */
-    .diamond {
-      width: 120px;
-      height: 120px;
+    /* Circle */
+    .circle {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: #e74c3c;
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer; color:#fff; font-weight:600;
+    }
+
+    /* Square */
+    .square {
+      width: 120px; height: 120px;
       background: #3498db;
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer; color:#fff; font-weight:600;
+    }
+
+    /* Diamond */
+    .diamond {
+      width: 120px; height: 120px;
+      background: #f1c40f;
       transform: rotate(45deg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      color: #fff;
-      font-weight: 600;
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer; color:#fff; font-weight:600;
     }
-    .diamond span {
-      transform: rotate(-45deg);
-      text-align: center;
+    .diamond span { transform: rotate(-45deg); }
+
+    /* Pentagon */
+    .pentagon {
+      position: relative;
+      width: 0; border-style: solid;
+      border-width: 0 60px 104px 60px;
+      border-color: transparent transparent #2ecc71 transparent;
+      cursor:pointer;
     }
-    .diamond:hover { transform: rotate(45deg) scale(1.1); }
+    .pentagon:after {
+      content:"Module 4"; position:absolute; top:30px; left:-40px;
+      width:80px; color:#fff; font-weight:600; text-align:center;
+    }
+
+    /* Hexagon */
+    .hexagon {
+      width: 120px; height: 70px;
+      background: #9b59b6;
+      position: relative;
+      margin: 25px 0;
+      cursor:pointer; color:#fff; font-weight:600;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .hexagon:before, .hexagon:after {
+      content:""; position:absolute; width:0;
+      border-left:60px solid transparent; border-right:60px solid transparent;
+    }
+    .hexagon:before { bottom:100%; border-bottom:35px solid #9b59b6; }
+    .hexagon:after { top:100%; border-top:35px solid #9b59b6; }
 
     /* Popup content */
     .module-content {
-      display: none;
-      margin: 20px auto;
-      padding: 20px;
-      border-radius: 15px;
-      max-width: 900px;
-      color: #fff;
-      background: rgba(255,255,255,0.05);
+      display:none; margin:20px auto; padding:20px;
+      border-radius:15px; max-width:900px;
+      background:rgba(255,255,255,0.05); color:#fff;
     }
-    .module-content h2 { font-size: 24px; }
-    .module-content p { font-size: 16px; line-height: 1.6; }
+    .module-content h2 { font-size:24px; }
+    .module-content p { font-size:16px; line-height:1.6; }
     pre {
-      background: rgba(255,255,255,0.08);
-      padding: 15px;
-      border-radius: 10px;
-      overflow-x: auto;
-      font-size: 14px;
-      color: #f5f5f5;
+      background:rgba(255,255,255,0.08);
+      padding:15px; border-radius:10px;
+      overflow-x:auto; font-size:14px; color:#f5f5f5;
     }
   </style>
 </head>
@@ -94,12 +123,12 @@
     Algorithms such as <strong>regression, dynamic programming, TSP heuristics, decision trees, and linear programming</strong> are applied to ensure sustainable farming and efficient resource use.
   </p>
 </header>
-<div class="diamond-container">
-  <div class="diamond" onclick="toggleModule('i1')"><span>Module 1: Crop Yield</span></div>
-  <div class="diamond" onclick="toggleModule('i2')"><span>Module 2: Irrigation</span></div>
-  <div class="diamond" onclick="toggleModule('i3')"><span>Module 3: Waste Mgmt</span></div>
-  <div class="diamond" onclick="toggleModule('i4')"><span>Module 4: Soil Quality</span></div>
-  <div class="diamond" onclick="toggleModule('i5')"><span>Module 5: Energy</span></div>
+<div class="shape-container">
+  <div class="circle" onclick="toggleModule('i1')">Module 1</div>
+  <div class="square" onclick="toggleModule('i2')">Module 2</div>
+  <div class="diamond" onclick="toggleModule('i3')"><span>Module 3</span></div>
+  <div class="pentagon" onclick="toggleModule('i4')"></div>
+  <div class="hexagon" onclick="toggleModule('i5')">Module 5</div>
 </div>
 
 <!-- Module 1 -->
