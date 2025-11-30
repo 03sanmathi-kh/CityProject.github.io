@@ -190,15 +190,20 @@ function toggleModule(id){
   const sel=document.getElementById(id);
   if(sel) sel.style.display='block';
 }
+
 function goHome(){
-  document.querySelectorAll('.module-content').forEach(m=>m.style.display='none');
-  window.scrollTo(0,0);
+  document.querySelectorAll('.module-content').forEach(m=>{
+    m.style.display='none';
+  });
+  window.scrollTo({top:0, behavior:"smooth"});
 }
+
 function toggleTheme(){
   const body=document.body;
   body.classList.toggle('dark');
   body.classList.toggle('light');
-  document.getElementById('themeBtn').textContent=body.classList.contains('dark')?"🌙 Dark Mode":"☀️ Light Mode";
+  document.getElementById('themeBtn').textContent=
+    body.classList.contains('dark')?"🌙 Dark Mode":"☀️ Light Mode";
 }
 </script>
 
