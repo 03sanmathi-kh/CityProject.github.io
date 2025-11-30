@@ -1,51 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DAA Course Info – Vishalnagari</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4); /* Pink gradient */
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DAA Course Info – Vishalnagari</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      /* Animated gradient background */
+      background: linear-gradient(270deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
+      background-size: 800% 800%;
+      animation: gradientShift 15s ease infinite;
+    }
 
-        .course-card {
-            background: linear-gradient(135deg, #a18cd1, #fbc2eb); /* Purple gradient */
-            padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            max-width: 400px;
-        }
+    @keyframes gradientShift {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
 
-        .course-card h2 {
-            margin: 0 0 20px;
-            font-size: 28px;
-            font-weight: 700;
-        }
+    .course-card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      max-width: 400px;
+    }
 
-        .course-card p {
-            margin: 10px 0;
-            font-size: 18px;
-            font-weight: 500;
-        }
-    </style>
+    .course-card h2 {
+      margin: 0 0 20px;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .course-card p {
+      margin: 10px 0;
+      font-size: 18px;
+      font-weight: 500;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="course-card">
-        <h2>Design & Analysis of Algorithms</h2>
-        <p><strong>Course Code:</strong> 24ECS205</p>
-        <p><strong>University:</strong> KLE Tech</p>
-        <p><strong>Instructor:</strong> Prof. Prakash Hegade</p>
-    </div>
+  <div class="course-card">
+    <h2>Design & Analysis of Algorithms</h2>
+    <p><strong>Course Code:</strong> 24ECS205</p>
+    <p><strong>University:</strong> KLE Tech</p>
+    <p><strong>Instructor:</strong> Prof. Prakash Hegade</p>
+  </div>
 
 </body>
 </html>
