@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Sanmathi_port.html – Industrial & Manufacturing Systems</title>
+<title>Sanmathi – Industrial Portfolio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-body { margin:0; font-family:'Segoe UI',sans-serif; transition:background 0.3s,color 0.3s; position: relative; min-height: 100vh; overflow-x:hidden; }
+body { margin:0; font-family:'Segoe UI',sans-serif; transition:background 0.3s,color 0.3s; min-height:100vh; overflow-x:hidden; }
 body.dark { background:#0a0a0a; color:#fff; }
 body.light { background:#f5f5f5; color:#000; }
 
@@ -19,15 +19,14 @@ body.light .wave2 { fill:#7bd0b6; }
 body.light .wave3 { fill:#b3f0d9; }
 @keyframes waveMove {0%{transform:translateX(0) translateY(0) rotate(0deg);}50%{transform:translateX(10%) translateY(5%) rotate(2deg);}100%{transform:translateX(0) translateY(0) rotate(0deg);}}
 
-header{text-align:center; padding:50px 20px; position:relative;}
+header{text-align:center; padding:50px 20px;}
 header h1{font-size:48px; font-weight:900; color:#1abc9c; margin-bottom:10px;}
 header h3{font-size:24px; font-weight:600; color:#16a085; margin-bottom:20px;}
 header p{max-width:950px;margin:20px auto;font-size:18px;line-height:1.8;color:inherit;}
 
 .hex-container { display:flex; flex-wrap:wrap; justify-content:center; gap:25px; padding:30px; }
-.hex { position:relative; width:160px; height:90px; margin:30px 0; display:flex; align-items:center; justify-content:center; font-weight:600; text-align:center; cursor:pointer; transition:transform 0.3s ease; color:#fff; border-radius:20px; }
+.hex { position:relative; width:160px; height:90px; display:flex; align-items:center; justify-content:center; font-weight:600; text-align:center; cursor:pointer; transition:transform 0.3s ease; color:#fff; border-radius:20px; }
 .hex:hover{transform:scale(1.08);}
-
 .module-colors {background:#1abc9c;} 
 .module-colors2 {background:#16a085;} 
 .module-colors3 {background:#2ecc71;} 
@@ -39,12 +38,13 @@ header p{max-width:950px;margin:20px auto;font-size:18px;line-height:1.8;color:i
 .module-content { display:none; margin:20px auto; padding:20px; border-radius:15px; max-width:950px; background:rgba(255,255,255,0.05);}
 .module-content h2 { font-size:24px; margin-bottom:10px;}
 .module-content p { font-size:16px; line-height:1.6; margin-bottom:10px;}
-pre { background:rgba(255,255,255,0.08); padding:15px; border-radius:10px; overflow-x:auto; font-size:14px; color:inherit; text-align:left; }
+pre { background:rgba(255,255,255,0.08); padding:15px; border-radius:10px; overflow-x:auto; font-size:14px; color:inherit; }
 
-#themeBtn { position:fixed; top:20px; right:20px; padding:10px 20px; font-size:14px; cursor:pointer; border:none; border-radius:8px; background:#1abc9c; color:#fff; transition:background 0.3s; }
-#themeBtn:hover { background:#16a085; }
-#homeBtn { position:fixed; top:20px; left:20px; padding:10px 20px; font-size:14px; cursor:pointer; border:none; border-radius:8px; background:#2ecc71; color:#fff; transition:background 0.3s; }
-#homeBtn:hover { background:#27ae60; }
+#themeBtn, #homeBtn { position:fixed; top:20px; padding:10px 20px; font-size:14px; cursor:pointer; border:none; border-radius:8px; color:#fff; transition:background 0.3s;}
+#themeBtn{right:20px; background:#1abc9c;}
+#themeBtn:hover{background:#16a085;}
+#homeBtn{left:20px; background:#2ecc71;}
+#homeBtn:hover{background:#27ae60;}
 </style>
 </head>
 <body class="dark">
@@ -62,9 +62,8 @@ pre { background:rgba(255,255,255,0.08); padding:15px; border-radius:10px; overf
   <h1>Sanmathi Hegde</h1>
   <h3>Industrial & Manufacturing Systems – Vishalnagari</h3>
   <p>
-    Vishalnagari’s industrial ecosystem blends tradition and innovation — from cotton textiles to electric mobility.<br>
-    Each sector faces challenges in scheduling, routing, resource allocation, and predictive maintenance.<br>
-    This portfolio explores how algorithms improve efficiency and productivity across manufacturing systems.
+    Vishalnagari’s industrial ecosystem blends tradition and innovation.  
+    Each sector faces challenges in scheduling, routing, resource allocation, and predictive maintenance.
   </p>
 </header>
 
@@ -81,121 +80,99 @@ pre { background:rgba(255,255,255,0.08); padding:15px; border-radius:10px; overf
 <!-- MODULE 1: EV Assembly Line -->
 <div id="m1" class="module-content">
   <h2>EV Assembly Line</h2>
-  <p><strong>Problem:</strong> Scheduling tasks efficiently to reduce bottlenecks and defects.</p>
-  <p><strong>Algorithm:</strong> Priority-based scheduling, O(n log n).</p>
+  <p><strong>Problem:</strong> Task scheduling and resource conflicts slow production.</p>
+  <p><strong>Algorithm:</strong> Priority-based scheduling (min-heap). O(n log n)</p>
   <pre>
-// C++ (shortened ~7 lines)
+// C++ Short
 #include &lt;iostream&gt;
 #include &lt;queue&gt;
 using namespace std;
-int main(){
-  priority_queue&lt;int,vector&lt;int&gt;,greater&lt;&gt;&gt; pq;
-  pq.push(1); pq.push(3); pq.push(2);
-  while(!pq.empty()){cout&lt;&lt;pq.top()&lt;&lt;endl; pq.pop();}
-}
+int main(){priority_queue&lt;int,vector&lt;int&gt;,greater&lt;&gt;&gt; pq; pq.push(2); pq.push(1); while(!pq.empty()){cout&lt;&lt;pq.top()&lt;&lt;endl; pq.pop();}}
   </pre>
-  <p><strong>Conclusion:</strong> Improves throughput and reduces idle time.</p>
 </div>
 
-<!-- MODULE 2: Textile Dyeing -->
 <div id="m2" class="module-content">
   <h2>Textile Dyeing</h2>
-  <p><strong>Problem:</strong> Efficient worker allocation to machines.</p>
-  <p><strong>Algorithm:</strong> Greedy assignment, O(n log n).</p>
+  <p><strong>Problem:</strong> Labor allocation and resource waste.</p>
+  <p><strong>Algorithm:</strong> Greedy assignment. O(n log n)</p>
   <pre>
-// C++ (shortened)
 #include &lt;iostream&gt;
+#include &lt;vector&gt;
 using namespace std;
-int main(){
-  int w[]={9,7,5}, m[]={50,40,30};
-  for(int i=0;i&lt;3;i++) cout&lt;&lt;"Worker "<<w[i]&lt;&lt;" -> Machine "<<m[i]&lt;&lt;endl;
-}
+int main(){vector&lt;int&gt; workers={9,7,5}; for(int w:workers) cout&lt;&lt;w&lt;&lt;endl;}
   </pre>
-  <p><strong>Conclusion:</strong> Minimizes idle time and increases productivity.</p>
 </div>
 
-<!-- MODULE 3: Cotton Routing -->
 <div id="m3" class="module-content">
   <h2>Cotton Routing</h2>
-  <p><strong>Problem:</strong> Optimize raw cotton transport between mills.</p>
-  <p><strong>Algorithm:</strong> Dijkstra, O(E + V log V).</p>
+  <p><strong>Problem:</strong> Transport delays increase cost.</p>
+  <p><strong>Algorithm:</strong> Dijkstra. O(E + V log V)</p>
   <pre>
-// C++ (shortened)
 #include &lt;iostream&gt;
-int main(){int dist[]={0,10,3,INF,INF}; for(int i=0;i&lt;5;i++) std::cout&lt;&lt;"To mill "<<i<<" = "<<dist[i]&lt;&lt;endl;}
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+using namespace std;
+int main(){priority_queue&lt;pair&lt;int,int&gt;,vector&lt;pair&lt;int,int&gt;&gt;,greater&lt;&gt;&gt; pq; pq.push({0,0}); while(!pq.empty()){cout&lt;&lt;pq.top().second&lt;&lt;endl; pq.pop();}}
   </pre>
-  <p><strong>Conclusion:</strong> Reduces travel time and fuel costs.</p>
 </div>
 
-<!-- MODULE 4: Battery Allocation -->
 <div id="m4" class="module-content">
   <h2>Battery Allocation</h2>
-  <p><strong>Problem:</strong> Balance battery stock across lines.</p>
-  <p><strong>Algorithm:</strong> Dynamic allocation, O(n²).</p>
+  <p><strong>Problem:</strong> Uneven battery distribution.</p>
+  <p><strong>Algorithm:</strong> Dynamic allocation. O(n²)</p>
   <pre>
-// C++ (shortened)
 #include &lt;iostream&gt;
-int main(){
-  int lines[]={50,40,30}, bat[]={60,45,35};
-  for(int i=0;i&lt;3;i++) std::cout&lt;&lt;"Line "<<i+1&lt;&lt;" <- Battery "<<bat[i]&lt;&lt;endl;
-}
+using namespace std;
+int main(){int lines[]={50,40}; int bat[]={60,35}; for(int i=0;i&lt;2;i++) cout&lt;&lt;"Line "<<i<<" Battery "<<bat[i]&lt;&lt;endl;}
   </pre>
-  <p><strong>Conclusion:</strong> Prevents shortages and stabilizes production.</p>
 </div>
 
-<!-- MODULE 5: Predictive Maintenance -->
 <div id="m5" class="module-content">
   <h2>Predictive Maintenance</h2>
-  <p><strong>Problem:</strong> Detect machine anomalies early.</p>
-  <p><strong>Algorithm:</strong> Moving average anomaly detection, O(n).</p>
+  <p><strong>Problem:</strong> Unexpected machine failures.</p>
+  <p><strong>Algorithm:</strong> Anomaly detection. O(n)</p>
   <pre>
-// C++ (shortened)
 #include &lt;iostream&gt;
-int main(){int r[]={50,52,49,90}; for(int i=0;i&lt;4;i++) if(r[i]&gt;70) std::cout&lt;&lt;"Anomaly at "<<i&lt;&lt;endl;}
+#include &lt;vector&gt;
+using namespace std;
+int main(){vector&lt;int&gt; s={50,52,90}; for(int v:s) if(v&gt;70) cout&lt;&lt;"Alert "&lt;&lt;v&lt;&lt;endl;}
   </pre>
-  <p><strong>Conclusion:</strong> Reduces downtime and maintenance costs.</p>
 </div>
 
-<!-- MODULE 6: Workforce Scheduling -->
 <div id="m6" class="module-content">
   <h2>Workforce Scheduling</h2>
-  <p><strong>Problem:</strong> Assign shifts fairly and efficiently.</p>
-  <p><strong>Algorithm:</strong> Constraint scheduling, O(n²).</p>
+  <p><strong>Problem:</strong> Shifts not balanced.</p>
+  <p><strong>Algorithm:</strong> Greedy constraint. O(n²)</p>
   <pre>
-// C++ (shortened)
 #include &lt;iostream&gt;
-int main(){int w[]={8,6,5}, s[]={4,3,2,5}; for(int i=0;i&lt;3;i++) for(int j=0;j&lt;4;j++) std::cout&lt;&lt;"Worker"<<i<<"->Shift"<<j&lt;&lt;endl;}
+using namespace std;
+int main(){int w[]={8,6}; int s[]={4,3}; for(int i=0;i&lt;2;i++) cout&lt;&lt;"Worker "<<i&lt;&lt;" shift "<<s[i]&lt;&lt;endl;}
   </pre>
-  <p><strong>Conclusion:</strong> Balances workload and reduces fatigue.</p>
 </div>
 
-<!-- MODULE 7: Supply Chain Optimization -->
 <div id="m7" class="module-content">
   <h2>Supply Chain Optimization</h2>
-  <p><strong>Problem:</strong> Minimize transport costs and ensure timely deliveries.</p>
-  <p><strong>Algorithm:</strong> Min-cost flow, O(VE log V).</p>
+  <p><strong>Problem:</strong> Transport costs and delays.</p>
+  <p><strong>Algorithm:</strong> Min-cost flow. O(VE log V)</p>
   <pre>
-// C++ (shortened)
 #include &lt;iostream&gt;
-int main(){int cost[]={2,5,1,3,2}; for(int i=0;i&lt;5;i++) std::cout&lt;&lt;"Edge "<<i<<" cost="&lt;&lt;cost[i]&lt;&lt;endl;}
+using namespace std;
+int main(){int cost[]={2,5}; for(int i:cost) cout&lt;&lt;i&lt;&lt;endl;}
   </pre>
-  <p><strong>Conclusion:</strong> Reduces cost and improves reliability.</p>
 </div>
 
 <script>
-function toggleTheme(){
-  const body=document.body;
-  const btn=document.getElementById("themeBtn");
-  if(body.classList.contains("dark")){body.classList.replace("dark","light"); btn.textContent="☀️ Light Mode";}
-  else{body.classList.replace("light","dark"); btn.textContent="🌙 Dark Mode";}
-}
-function goHome(){document.querySelectorAll(".module-content").forEach(m=>m.style.display="none");}
 function toggleModule(id){
-  const module=document.getElementById(id);
-  if(!module) return;
-  document.querySelectorAll(".module-content").forEach(m=>{if(m.id!==id)m.style.display="none";});
-  module.style.display=(module.style.display==="block")?"none":"block";
+    document.querySelectorAll('.module-content').forEach(m=>m.style.display='none');
+    const sel=document.getElementById(id); if(sel) sel.style.display='block';
+}
+function goHome(){ document.querySelectorAll('.module-content').forEach(m=>m.style.display='none'); }
+function toggleTheme(){
+    const body=document.body;
+    body.classList.toggle('dark'); body.classList.toggle('light');
+    document.getElementById('themeBtn').textContent=body.classList.contains('dark')?"🌙 Dark Mode":"☀️ Light Mode";
 }
 </script>
+
 </body>
 </html>
