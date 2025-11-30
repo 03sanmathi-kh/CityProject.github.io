@@ -1,192 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Akshata – Traffic Domain Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body { margin:0; font-family:'Segoe UI',sans-serif; transition:background 0.3s,color 0.3s; position: relative; min-height: 100vh; overflow-x:hidden; }
-    body.dark { background:#0a0a0a; color:#fff; }
-    body.light { background:#f5f5f5; color:#000; }
+<meta charset="UTF-8">
+<title>Akshata – Traffic Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body { margin:0; font-family:'Segoe UI',sans-serif; transition:background 0.3s,color 0.3s; min-height:100vh; overflow-x:hidden; }
+body.dark{background:#0a0a0a;color:#fff;}
+body.light{background:#f5f5f5;color:#000;}
 
-    .wave-bg { position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1; overflow:hidden; }
-    .wave { position:absolute; width:200%; height:200%; opacity:0.5; animation:waveMove 30s linear infinite; }
-    .wave1 { fill:#e74c3c; animation-duration:30s; }
-    .wave2 { fill:#f39c12; animation-duration:35s; }
-    .wave3 { fill:#c0392b; animation-duration:40s; }
-    body.light .wave1 { fill:#fab1a0; }
-    body.light .wave2 { fill:#ffeaa7; }
-    body.light .wave3 { fill:#ff7675; }
-    @keyframes waveMove { 0%{transform:translateX(0) translateY(0) rotate(0deg);} 50%{transform:translateX(10%) translateY(5%) rotate(2deg);} 100%{transform:translateX(0) translateY(0) rotate(0deg);} }
+.wave-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;overflow:hidden;}
+.wave{position:absolute;width:200%;height:200%;opacity:0.5;animation:waveMove 30s linear infinite;}
+.wave1{fill:#e74c3c;}
+.wave2{fill:#f39c12;}
+.wave3{fill:#c0392b;}
+body.light .wave1{fill:#fab1a0;}
+body.light .wave2{fill:#ffeaa7;}
+body.light .wave3{fill:#ff7675;}
+@keyframes waveMove{0%{transform:translateX(0) translateY(0) rotate(0deg);}50%{transform:translateX(10%) translateY(5%) rotate(2deg);}100%{transform:translateX(0) translateY(0) rotate(0deg);}}
 
-    header{text-align:center; padding:40px 20px; position:relative;}
-    header h1{font-size:42px; font-weight:900; color:#e74c3c;}
-    header h3{font-size:22px; font-weight:600; color:#3498db;}
-    header p{max-width:800px;margin:20px auto;font-size:16px;line-height:1.6;color:inherit;}
+header{text-align:center;padding:40px 20px;}
+header h1{font-size:42px;font-weight:900;color:#e74c3c;}
+header h3{font-size:22px;font-weight:600;color:#3498db;}
+header p{max-width:800px;margin:20px auto;font-size:16px;line-height:1.6;color:inherit;}
 
-    .hex-container { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; padding:30px; }
-    .hex { position:relative; width:160px; height:90px; margin:45px 0; display:flex; align-items:center; justify-content:center; font-weight:600; text-align:center; cursor:pointer; transition:transform 0.3s ease; color:#fff; }
-    .hex:before,.hex:after { content:""; position:absolute; width:0; border-left:80px solid transparent; border-right:80px solid transparent; }
-    .hex:hover{transform:scale(1.08);}
+.hex-container{display:flex;flex-wrap:wrap;justify-content:center;gap:30px;padding:30px;}
+.hex{position:relative;width:160px;height:90px;display:flex;align-items:center;justify-content:center;font-weight:600;text-align:center;cursor:pointer;transition:transform 0.3s ease;color:#fff;border-radius:12px;}
+.hex:hover{transform:scale(1.08);}
+.flow{background:#e74c3c;} 
+.signal{background:#3498db;} 
+.accident{background:#f1c40f;} 
+.parking{background:#2ecc71;} 
+.emergency{background:#9b59b6;}
 
-    /* Hex colors */
-    .flow { background:#e74c3c; } .flow:before{border-bottom:45px solid #e74c3c; bottom:100%;} .flow:after{border-top:45px solid #e74c3c; top:100%;}
-    .signal{background:#3498db;} .signal:before{border-bottom:45px solid #3498db; bottom:100%;} .signal:after{border-top:45px solid #3498db; top:100%;}
-    .accident{background:#f1c40f;} .accident:before{border-bottom:45px solid #f1c40f; bottom:100%;} .accident:after{border-top:45px solid #f1c40f; top:100%;}
-    .parking{background:#2ecc71;} .parking:before{border-bottom:45px solid #2ecc71; bottom:100%;} .parking:after{border-top:45px solid #2ecc71; top:100%;}
-    .emergency{background:#9b59b6;} .emergency:before{border-bottom:45px solid #9b59b6; bottom:100%;} .emergency:after{border-top:45px solid #9b59b6; top:100%;}
+.module-content{display:none;margin:20px auto;padding:20px;border-radius:15px;max-width:900px;background:rgba(255,255,255,0.05);}
+.module-content h2{font-size:24px;margin-bottom:10px;}
+.module-content p{font-size:16px;line-height:1.6;margin-bottom:10px;}
+pre{background:rgba(255,255,255,0.08);padding:15px;border-radius:10px;overflow-x:auto;font-size:14px;color:inherit;}
 
-    /* Module content tinted with same hex color */
-    #a1 { background: rgba(231,76,60,0.2); }
-    #a2 { background: rgba(52,152,219,0.2); }
-    #a3 { background: rgba(241,196,15,0.2); }
-    #a4 { background: rgba(46,204,113,0.2); }
-    #a5 { background: rgba(155,89,182,0.2); }
-
-    .module-content { display:none; margin:20px auto; padding:20px; border-radius:15px; max-width:900px; }
-    .module-content h2 { font-size:24px; }
-    .module-content p { font-size:16px; line-height:1.6; }
-    pre { background:rgba(255,255,255,0.08); padding:15px; border-radius:10px; overflow-x:auto; font-size:14px; color:inherit; text-align:left; }
-
-    #themeBtn { position:fixed; top:20px; right:20px; padding:10px 20px; font-size:14px; cursor:pointer; border:none; border-radius:8px; background:#e74c3c; color:#fff; transition:background 0.3s; }
-    #themeBtn:hover { background:#3498db; }
-
-    #homeBtn { position:fixed; top:20px; left:20px; padding:10px 20px; font-size:14px; cursor:pointer; border:none; border-radius:8px; background:#2ecc71; color:#fff; transition:background 0.3s; }
-    #homeBtn:hover { background:#27ae60; }
-  </style>
+#themeBtn,#homeBtn{position:fixed;top:20px;padding:10px 20px;font-size:14px;cursor:pointer;border:none;border-radius:8px;color:#fff;transition:background 0.3s;}
+#themeBtn{right:20px;background:#e74c3c;} #themeBtn:hover{background:#3498db;}
+#homeBtn{left:20px;background:#2ecc71;} #homeBtn:hover{background:#27ae60;}
+</style>
 </head>
 <body class="dark">
 
 <div class="wave-bg">
-  <svg class="wave wave1" viewBox="0 0 1440 320" preserveAspectRatio="none"><path d="M0,192 C480,320 960,64 1440,192 L1440,320 L0,320 Z"></path></svg>
-  <svg class="wave wave2" viewBox="0 0 1440 320" preserveAspectRatio="none"><path d="M0,256 C480,128 960,384 1440,256 L1440,320 L0,320 Z"></path></svg>
-  <svg class="wave wave3" viewBox="0 0 1440 320" preserveAspectRatio="none"><path d="M0,224 C480,96 960,352 1440,224 L1440,320 L0,320 Z"></path></svg>
+<svg class="wave wave1" viewBox="0 0 1440 320"><path d="M0,192 C480,320 960,64 1440,192 L1440,320 L0,320 Z"></path></svg>
+<svg class="wave wave2" viewBox="0 0 1440 320"><path d="M0,256 C480,128 960,384 1440,256 L1440,320 L0,320 Z"></path></svg>
+<svg class="wave wave3" viewBox="0 0 1440 320"><path d="M0,224 C480,96 960,352 1440,224 L1440,320 L0,320 Z"></path></svg>
 </div>
 
 <button id="homeBtn" onclick="goHome()">🏠 Home</button>
 <button id="themeBtn" onclick="toggleTheme()">🌙 Dark Mode</button>
 
 <header>
-  <h1>Akshata</h1>
-  <h3>Traffic Management – Vishalnagari</h3>
-  <p>
-    Vishalnagari's Traffic domain ensures <strong>safe, fast, and efficient transportation</strong>.  
-    Each module addresses a real-world traffic challenge, using algorithms and coding solutions to optimize flow, signals, accidents, parking, and emergency routes.
-  </p>
+<h1>Akshata</h1>
+<h3>Traffic Management – Vishalnagari</h3>
+<p>Vishalnagari's Traffic domain ensures safe, fast, and efficient transportation.</p>
 </header>
 
 <div class="hex-container">
-  <div class="hex flow" onclick="toggleModule('a1')">Traffic Flow</div>
-  <div class="hex signal" onclick="toggleModule('a2')">Signal Scheduling</div>
-  <div class="hex accident" onclick="toggleModule('a3')">Accident Detection</div>
-  <div class="hex parking" onclick="toggleModule('a4')">Parking Allocation</div>
-  <div class="hex emergency" onclick="toggleModule('a5')">Emergency Routing</div>
+<div class="hex flow" onclick="toggleModule('a1')">Traffic Flow</div>
+<div class="hex signal" onclick="toggleModule('a2')">Signal Scheduling</div>
+<div class="hex accident" onclick="toggleModule('a3')">Accident Detection</div>
+<div class="hex parking" onclick="toggleModule('a4')">Parking Allocation</div>
+<div class="hex emergency" onclick="toggleModule('a5')">Emergency Routing</div>
 </div>
 
-<!-- MODULES -->
+<!-- Modules -->
 <div id="a1" class="module-content">
-  <h2>Traffic Flow</h2>
-  <p><strong>Business Problem:</strong><br>
-  Busy roads face congestion during peak hours.  
-  How can traffic be guided dynamically to reduce delays?</p>
-  <p><strong>Algorithm:</strong> Dijkstra’s Shortest Path algorithm<br>
-  Computes fastest routes for vehicles dynamically.<br>
-  Time complexity: O(E + V log V)</p>
-  <pre>
-// C++ Pseudocode
-vector<int> dijkstra(int V, vector<vector<pair<int,int>>>& adj, int src){
-vector<int> dist(V, INT_MAX); priority_queue<pair<int,int>,vector<pair<int,int>>,greater<>> pq;
-dist[src]=0; pq.push({0,src});
-while(!pq.empty()){int u=pq.top().second; pq.pop();
-for(auto [v,wt]:adj[u]) if(dist[u]+wt<dist[v]){dist[v]=dist[u]+wt; pq.push({dist[v],v});}}
-return dist;}
-  </pre>
+<h2>Traffic Flow</h2>
+<p><strong>Algorithm:</strong> Dijkstra. O(E+V log V)</p>
+<pre>#include &lt;iostream&gt;
+int main(){std::cout&lt;&lt;"Traffic Flow";}</pre>
 </div>
-
 <div id="a2" class="module-content">
-  <h2>Signal Scheduling</h2>
-  <p><strong>Business Problem:</strong><br>
-  Traffic lights cause waiting times at intersections.  
-  How can signals be scheduled to minimize total delay?</p>
-  <p><strong>Algorithm:</strong> Round Robin Scheduling<br>
-  Cycles through signals to reduce waiting time.<br>
-  Time complexity: O(n)</p>
-  <pre>
-// C++ Pseudocode
-void scheduleSignals(vector<int>& times){
-for(int i=0;i<times.size();i++){updateSignal(i,times[i]);}}
-  </pre>
+<h2>Signal Scheduling</h2>
+<p><strong>Algorithm:</strong> Round Robin. O(n)</p>
+<pre>#include &lt;iostream&gt;
+int main(){std::cout&lt;&lt;"Signals";}</pre>
 </div>
-
 <div id="a3" class="module-content">
-  <h2>Accident Detection</h2>
-  <p><strong>Business Problem:</strong><br>
-  Accidents delay emergency response.  
-  How can sensors detect accidents in real-time?</p>
-  <p><strong>Algorithm:</strong> Anomaly Detection<br>
-  Detects unusual patterns in sensor data.<br>
-  Time complexity: O(n)</p>
-  <pre>
-// C++ Pseudocode
-bool detectAccident(vector<int>& data){
-for(int v:data) if(v>threshold) return true;
-return false;}
-  </pre>
+<h2>Accident Detection</h2>
+<p><strong>Algorithm:</strong> Anomaly Detection. O(n)</p>
+<pre>#include &lt;iostream&gt;
+int main(){std::cout&lt;&lt;"Accident";}</pre>
 </div>
-
 <div id="a4" class="module-content">
-  <h2>Parking Allocation</h2>
-  <p><strong>Business Problem:</strong><br>
-  High-demand areas require efficient parking assignment.  
-  How can slots be allocated fairly and quickly?</p>
-  <p><strong>Algorithm:</strong> Greedy Allocation<br>
-  Assigns slots to nearest vehicles iteratively.<br>
-  Time complexity: O(n log n)</p>
-  <pre>
-// C++ Pseudocode
-void allocateParking(vector<int>& slots, vector<int>& cars){
-for(int i=0;i<cars.size();i++) assignCarToSlot(cars[i],slots);}
-  </pre>
+<h2>Parking Allocation</h2>
+<p><strong>Algorithm:</strong> Greedy. O(n log n)</p>
+<pre>#include &lt;iostream&gt;
+int main(){std::cout&lt;&lt;"Parking";}</pre>
 </div>
-
 <div id="a5" class="module-content">
-  <h2>Emergency Routing</h2>
-  <p><strong>Business Problem:</strong><br>
-  Ambulances need fastest routes to incidents.  
-  How can routing minimize travel time?</p>
-  <p><strong>Algorithm:</strong> A* Algorithm<br>
-  Finds shortest path using heuristics.<br>
-  Time complexity: O(E)</p>
-  <pre>
-// C++ Pseudocode
-vector<int> aStar(int start,int goal,vector<vector<int>>& graph){
-priority_queue<pair<int,int>,vector<pair<int,int>>,greater<>> pq;
-vector<int> dist(graph.size(),INT_MAX); dist[start]=0; pq.push({0,start});
-while(!pq.empty()){int u=pq.top().second; pq.pop();
-for(int v:graph[u]) if(dist[u]+cost[u][v]<dist[v]){dist[v]=dist[u]+cost[u][v]; pq.push({dist[v],v});}}
-return dist;}
-  </pre>
+<h2>Emergency Routing</h2>
+<p><strong>Algorithm:</strong> A*. O(E)</p>
+<pre>#include &lt;iostream&gt;
+int main(){std::cout&lt;&lt;"Emergency";}</pre>
 </div>
 
 <script>
 function toggleModule(id){
-  const modules=document.getElementsByClassName('module-content');
-  for(let m of modules) m.style.display="none";
-  const selected=document.getElementById(id);
-  if(selected) selected.style.display="block";
+  document.querySelectorAll('.module-content').forEach(m=>m.style.display='none');
+  const sel=document.getElementById(id);
+  if(sel) sel.style.display='block';
 }
-
+function goHome(){
+  document.querySelectorAll('.module-content').forEach(m=>m.style.display='none');
+}
 function toggleTheme(){
-  document.body.classList.toggle('light');
-  document.body.classList.toggle('dark');
-  const btn=document.getElementById('themeBtn');
-  btn.textContent=document.body.classList.contains('dark')?"🌙 Dark Mode":"☀️ Light Mode";
-}
-
-function goHome(){ 
-  const modules=document.getElementsByClassName('module-content');
-  for(let m of modules) m.style.display="none";
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  const body=document.body;
+  body.classList.toggle('dark');
+  body.classList.toggle('light');
+  document.getElementById('themeBtn').textContent=body.classList.contains('dark')?"🌙 Dark Mode":"☀️ Light Mode";
 }
 </script>
 
