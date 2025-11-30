@@ -37,10 +37,37 @@
 
     pre { background:rgba(0,0,0,0.2); padding:15px; border-radius:10px; overflow-x:auto; font-size:14px; text-align:left; }
     body.light pre { background:rgba(0,0,0,0.05); }
+
+    /* Back to Home button styles */
+    .back-home {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 10px 18px;
+      background: #ff4c60;
+      color: #fff;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .back-home:hover {
+      background: #ff1e3c;
+      transform: scale(1.05);
+    }
+    body.light .back-home {
+      background: #00aaff;
+      color: #fff;
+    }
+    body.light .back-home:hover {
+      background: #0077cc;
+    }
   </style>
 </head>
 <body class="dark">
 
+  <!-- Back to Home button -->
+  <a href="index.html" class="back-home">⬅ Back to Home</a>
 <header>
   <h1>Sanmathi</h1>
   <h3>Industrial & Manufacturing Systems – Vishalnagari</h3>
