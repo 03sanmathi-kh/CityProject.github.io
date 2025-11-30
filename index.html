@@ -13,15 +13,15 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: #0a0a0a;
-      color: #ffffff;
+      background: #0a0a0a; /* Dark background */
+      color: #ffffff;      /* Light text */
       transition: background 0.4s ease, color 0.4s ease;
       position: relative;
       overflow-x: hidden;
     }
     body.light {
-      background: #f5f5f5;
-      color: #222;
+      background: #f5f5f5; /* Light background */
+      color: #222;         /* Dark text */
     }
 
     /* Wavy Background */
@@ -36,16 +36,24 @@
       background-size: cover;
       z-index: -1;
     }
+    body.light .wave {
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%2300aaff" fill-opacity="1" d="M0,160L60,165.3C120,171,240,181,360,176C480,171,600,149,720,160C840,171,960,213,1080,213.3C1200,213,1320,171,1380,149.3L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
 
     /* Navigation Bar */
     .navbar {
       width: 100%;
-      background: #ff79c6;
+      background: #ff79c6; /* Dark mode highlight */
       padding: 12px;
       text-align: center;
       position: sticky;
       top: 0;
       z-index: 1000;
+    }
+    body.light .navbar {
+      background: #00aaff; /* Light mode highlight */
     }
     .navbar a {
       color: #fff;
@@ -54,6 +62,9 @@
       margin: 0 15px;
       font-size: 16px;
       transition: color 0.3s ease;
+    }
+    body.light .navbar a {
+      color: #fff;
     }
     .navbar a:hover {
       color: #222;
@@ -69,9 +80,14 @@
       font-weight: 600;
       background: #ff79c6;
       color: #fff;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, background 0.3s ease;
     }
     .theme-toggle:hover { background: #ff4c60; transform: scale(1.05); }
+    body.light .theme-toggle {
+      background: #00aaff;
+      color: #fff;
+    }
+    body.light .theme-toggle:hover { background: #0077cc; }
 
     /* Heading */
     .portfolio-heading {
@@ -81,6 +97,9 @@
       letter-spacing: 2px;
       text-align: center;
       text-shadow: 2px 2px 10px rgba(255,255,255,0.2);
+    }
+    body.light .portfolio-heading {
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
     }
 
     /* Course Card */
@@ -101,17 +120,24 @@
       margin-bottom: 15px;
       border-radius: 12px;
     }
-    body.light .course-box { background: #f9f9f9; }
+    body.light .course-box {
+      background: #f9f9f9;
+      border-left: 4px solid #00aaff;
+    }
 
     .course-box h3 { font-size: 20px; font-weight: 700; color: #ff79c6; margin: 0 0 8px; }
+    body.light .course-box h3 { color: #00aaff; }
     .course-box p { margin: 0; font-size: 16px; }
 
     .division-d { border-left: 4px solid #27ae60; }
+    body.light .division-d { border-left: 4px solid #0077cc; }
 
     /* Vision Section */
     .project-overview { margin-top: 60px; text-align: center; max-width: 900px; padding: 0 20px; }
-    .project-overview h2 { font-size: 36px; font-weight: 900; margin-bottom: 20px; }
+    .project-overview h2 { font-size: 36px; font-weight: 900; margin-bottom: 20px; color: #ff79c6; }
+    body.light .project-overview h2 { color: #00aaff; }
     .city-motto { font-size: 20px; font-weight: 700; color: #ffdd57; margin-bottom: 20px; }
+    body.light .city-motto { color: #ff6600; }
     .city-text {
       font-size: 18px; line-height: 1.6;
       background: rgba(255,255,255,0.05);
@@ -123,6 +149,7 @@
     /* Team Section */
     #meet-the-team { padding: 40px; text-align: center; }
     #meet-the-team h2 { font-size: 32px; font-weight: 900; margin-bottom: 20px; color: #ff79c6; }
+    body.light #meet-the-team h2 { color: #00aaff; }
 
     .team-container {
       display: grid;
@@ -143,7 +170,7 @@
     body.light .team-card { background: #fff; }
     .team-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.4); }
 
-    /* Gradient borders for domains */
+       /* Gradient borders for domains */
     .traffic { border-top: 6px solid; border-image: linear-gradient(to right, #e74c3c, #ff6f61) 1; }
     .industry { border-top: 6px solid; border-image: linear-gradient(to right, #f39c12, #ffdd57) 1; }
     .commerce { border-top: 6px solid; border-image: linear-gradient(to right, #27ae60, #2ecc71) 1; }
@@ -156,6 +183,7 @@
       color: gray;
       text-align: center;
     }
+    body.light footer { color: #555; }
   </style>
 </head>
 
