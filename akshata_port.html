@@ -5,32 +5,56 @@
   <title>Akshata – Traffic Domain Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    /* Theme variables */
+    :root {
+      --bg-color: #0a0a0a;
+      --text-color: #ffffff;
+      --header-color: #e74c3c;
+      --subheader-color: #3498db;
+      --p-color: #dddddd;
+      --box-bg-opacity: 0.05;
+    }
+
+    body.light {
+      --bg-color: #f5f5f5;
+      --text-color: #222222;
+      --header-color: #c0392b;
+      --subheader-color: #2980b9;
+      --p-color: #333333;
+      --box-bg-opacity: 0.1;
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #0a0a0a;
-      color: #ffffff;
+      background: var(--bg-color);
+      color: var(--text-color);
       text-align: center;
+      transition: background 0.3s, color 0.3s;
     }
+
     header {
       padding: 40px 20px;
     }
+
     header h1 {
       font-size: 42px;
       font-weight: 900;
-      color: #e74c3c;
+      color: var(--header-color);
     }
+
     header h3 {
       font-size: 22px;
       font-weight: 600;
-      color: #3498db;
+      color: var(--subheader-color);
     }
+
     header p {
       max-width: 800px;
       margin: 20px auto;
       font-size: 16px;
       line-height: 1.6;
-      color: #dddddd;
+      color: var(--p-color);
     }
 
     /* Hexagon container */
@@ -95,8 +119,9 @@
       padding: 20px;
       border-radius: 15px;
       max-width: 900px;
-      color: #fff;
-      background: rgba(255,255,255,0.05);
+      color: var(--text-color);
+      background: rgba(255,255,255,var(--box-bg-opacity));
+      transition: background 0.3s, color 0.3s;
     }
     .module-content h2 { font-size: 24px; }
     .module-content p { font-size: 16px; line-height: 1.6; }
@@ -106,8 +131,24 @@
       border-radius: 10px;
       overflow-x: auto;
       font-size: 14px;
-      color: #f5f5f5;
+      color: var(--text-color);
     }
+
+    /* Theme toggle button */
+    #themeBtn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background: var(--header-color);
+      color: #fff;
+      transition: background 0.3s;
+    }
+    #themeBtn:hover { background: var(--subheader-color); }
   </style>
 </head>
 <body>
@@ -121,6 +162,9 @@
     and more efficient transportation systems across Vishalnagari.
   </p>
 </header>
+
+<button id="themeBtn">Switch Theme</button>
+
 <div class="hex-container">
   <div class="hex flow" onclick="toggleModule('a1')">Module 1: Traffic Flow</div>
   <div class="hex signal" onclick="toggleModule('a2')">Module 2: Signal Scheduling</div>
@@ -129,159 +173,59 @@
   <div class="hex emergency" onclick="toggleModule('a5')">Module 5: Emergency Routing</div>
 </div>
 
-<!-- Module 1 -->
+<!-- Modules -->
 <div id="a1" class="module-content">
   <h2>Traffic Flow Optimization</h2>
-  <p><strong>🔍 Problem:</strong> How can vehicles be routed through a city network to minimize congestion and travel time?</p>
-  <p><strong>Algorithm:</strong> Dijkstra’s Shortest Path<br>
-     <strong>Efficiency:</strong> O(E log V)</p>
-  <pre>
-Pseudocode:
-1. Initialize all node distances to infinity except source = 0
-2. Use a priority queue to pick the node with smallest distance
-3. For each neighbor, update distance if shorter path found
-4. Repeat until all nodes processed
-
-C++:
-vector<int> shortestPath(Graph& g, int src) {
-  priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;
-  vector<int> dist(g.size(), INT_MAX);
-  dist[src] = 0;
-  pq.push({0, src});
-  while(!pq.empty()) {
-    int u = pq.top().second; pq.pop();
-    for(auto& edge : g[u]) {
-      int v = edge.first, w = edge.second;
-      if(dist[u] + w < dist[v]) {
-        dist[v] = dist[u] + w;
-        pq.push({dist[v], v});
-      }
-    }
-  }
-  return dist;
-}
-  </pre>
+  <p><strong>🔍 Problem:</strong> Minimize congestion and travel time.</p>
+  <p><strong>Algorithm:</strong> Dijkstra’s Shortest Path, Efficiency: O(E log V)</p>
+  <pre>// Pseudocode + C++ snippet</pre>
 </div>
-
-<!-- Module 2 -->
 <div id="a2" class="module-content">
   <h2>Signal Scheduling</h2>
-  <p><strong>🔍 Problem:</strong> How can traffic lights be scheduled to reduce waiting time and balance flow across lanes?</p>
-  <p><strong>Algorithm:</strong> Round Robin Scheduling<br>
-     <strong>Efficiency:</strong> O(n)</p>
-  <pre>
-Pseudocode:
-1. Maintain a queue of lanes
-2. Assign green signal to first lane for fixed time slice
-3. Rotate queue → next lane gets green
-4. Continue until all lanes served
-
-C++:
-void scheduleSignals(vector<int>& lanes, int timeSlice) {
-  queue<int> q;
-  for(int i=0;i<lanes.size();i++) q.push(lanes[i]);
-  while(true) {
-    int lane = q.front(); q.pop();
-    // give green signal to lane for timeSlice
-    q.push(lane);
-  }
-}
-  </pre>
+  <p><strong>🔍 Problem:</strong> Reduce waiting time and balance lane flow.</p>
+  <p><strong>Algorithm:</strong> Round Robin Scheduling, Efficiency: O(n)</p>
+  <pre>// Pseudocode + C++ snippet</pre>
 </div>
-
-<!-- Module 3 -->
 <div id="a3" class="module-content">
   <h2>Accident Detection</h2>
-  <p><strong>🔍 Problem:</strong> How can anomalies in traffic flow be detected quickly to identify accidents or blockages?</p>
-  <p><strong>Algorithm:</strong> Hash Map Anomaly Detection<br>
-     <strong>Efficiency:</strong> O(1) average lookup</p>
-  <pre>
-Pseudocode:
-1. Maintain map of lane → vehicle count
-2. Update counts periodically
-3. If count drops below threshold unexpectedly → flag accident
-
-C++:
-bool detectAccident(map<int,int>& flow, int threshold) {
-  for(auto& f:flow) {
-    if(f.second < threshold) return true;
-  }
-  return false;
-}
-  </pre>
+  <p><strong>🔍 Problem:</strong> Detect traffic anomalies to identify accidents.</p>
+  <p><strong>Algorithm:</strong> Hash Map Anomaly Detection, Efficiency: O(1)</p>
+  <pre>// Pseudocode + C++ snippet</pre>
 </div>
-      <!-- Module 4 -->
 <div id="a4" class="module-content">
   <h2>Parking Allocation</h2>
-  <p><strong>🔍 Problem:</strong> How can limited parking slots be allocated fairly and efficiently among incoming vehicles?</p>
-  <p><strong>Algorithm:</strong> Greedy Allocation<br>
-     <strong>Efficiency:</strong> O(n log n)</p>
-  <pre>
-Pseudocode:
-1. Sort parking slots by availability or distance from entry
-2. Assign slots to cars in order of arrival
-3. If slot is occupied, move to next available slot
-4. Continue until all cars are parked or slots are full
-
-C++:
-vector<int> allocateParking(vector<int>& slots, int cars) {
-  sort(slots.begin(), slots.end()); // sort slots
-  vector<int> assigned;
-  for(int i=0; i<cars && i<slots.size(); i++) {
-    assigned.push_back(slots[i]); // assign slot
-  }
-  return assigned;
-}
-  </pre>
+  <p><strong>🔍 Problem:</strong> Fair and efficient parking allocation.</p>
+  <p><strong>Algorithm:</strong> Greedy Allocation, Efficiency: O(n log n)</p>
+  <pre>// Pseudocode + C++ snippet</pre>
 </div>
-
-<!-- Module 5 -->
 <div id="a5" class="module-content">
   <h2>Emergency Vehicle Routing</h2>
-  <p><strong>🔍 Problem:</strong> How can ambulances and fire trucks reach destinations fastest while avoiding congested roads?</p>
-  <p><strong>Algorithm:</strong> A* Search Algorithm<br>
-     <strong>Efficiency:</strong> O(E log V)</p>
-  <pre>
-Pseudocode:
-1. Initialize open set with start node
-2. For each node, compute f(n) = g(n) + h(n)
-   - g(n) = cost from start
-   - h(n) = heuristic (estimated distance to goal)
-3. Expand node with lowest f(n)
-4. Repeat until goal is reached
-
-C++:
-vector<int> routeEmergency(Graph& g, int src, int dest) {
-  // A* search with heuristic
-  // Use priority queue with f(n) values
-}
-  </pre>
+  <p><strong>🔍 Problem:</strong> Fastest route for emergency vehicles.</p>
+  <p><strong>Algorithm:</strong> A* Search, Efficiency: O(E log V)</p>
+  <pre>// Pseudocode + C++ snippet</pre>
 </div>
 
 <!-- Conclusion -->
 <section style="margin:40px auto; max-width:900px; padding:20px; background:rgba(255,255,255,0.05); border-radius:15px;">
   <h2>Conclusion</h2>
   <p>
-    The Traffic domain integrates <strong>flow optimization, signal scheduling, accident detection, parking allocation, and emergency routing</strong>  
-    into a unified civic framework. By applying algorithmic strategies such as <strong>Dijkstra, Round Robin, anomaly detection, greedy allocation, and A*</strong>,  
-    Vishalnagari ensures smoother, safer, and more efficient transportation systems for its citizens.
+    Integrates <strong>flow optimization, signal scheduling, accident detection, parking allocation, and emergency routing</strong>.  
+    Algorithms ensure safer and efficient transportation across Vishalnagari.
   </p>
 </section>
 
-<!-- Toggle Script -->
 <script>
 function toggleModule(id) {
-  // Hide all modules first
   const modules = document.getElementsByClassName('module-content');
-  for (let m of modules) {
-    m.style.display = "none";
-  }
-  // Show the one you clicked
+  for (let m of modules) m.style.display = "none";
   const selected = document.getElementById(id);
-  if (selected) {
-    selected.style.display = "block";
-  }
+  if (selected) selected.style.display = "block";
 }
+
+// Theme toggle
+document.getElementById('themeBtn').onclick = () => {
+  document.body.classList.toggle('light');
+};
 </script>
 
 </body>
