@@ -70,8 +70,8 @@
   <h1>Akshata</h1>
   <h3>Traffic Management – Vishalnagari</h3>
   <p>
-    Traffic optimization in Vishalnagari focuses on <strong>flow management, signal scheduling, accident detection, parking optimization, and emergency routing</strong>.  
-    Algorithms like <strong>Dijkstra, Round Robin, Anomaly Detection, Greedy Allocation, and A*</strong> ensure safer and faster transport.
+    Vishalnagari's Traffic domain ensures <strong>safe, fast, and efficient transportation</strong>.  
+    Each module addresses a real-world traffic challenge, using algorithms and coding solutions to optimize flow, signals, accidents, parking, and emergency routes.
   </p>
 </header>
 
@@ -99,9 +99,10 @@ vector<int> dijkstra(int V, vector<vector<pair<int,int>>>& adj, int src){
 vector<int> dist(V, INT_MAX); priority_queue<pair<int,int>,vector<pair<int,int>>,greater<>> pq;
 dist[src]=0; pq.push({0,src});
 while(!pq.empty()){int u=pq.top().second; pq.pop();
-for(auto [v,wt]:adj[u]){if(dist[u]+wt<dist[v]){dist[v]=dist[u]; pq.push({dist[v],v});}}}
+for(auto [v,wt]:adj[u]){if(dist[u]+wt<dist[v]){dist[v]=dist[u]+wt; pq.push({dist[v],v});}}}
 return dist;}
   </pre>
+  <p><strong>Conclusion:</strong> Traffic management in Vishalnagari is enhanced using algorithms, ensuring safe and efficient transport.</p>
 </div>
 
 <div id="a2" class="module-content">
@@ -118,6 +119,7 @@ return dist;}
 void scheduleSignals(vector<int>& times){
 for(int i=0;i<times.size();i++){updateSignal(i,times[i]);}}
   </pre>
+  <p><strong>Conclusion:</strong> Traffic management in Vishalnagari is enhanced using algorithms, ensuring safe and efficient transport.</p>
 </div>
 
 <div id="a3" class="module-content">
@@ -134,6 +136,7 @@ for(int i=0;i<times.size();i++){updateSignal(i,times[i]);}}
 bool detectAccident(vector<int>& sensorData){
 for(int d:sensorData){if(d>threshold)return true;} return false;}
   </pre>
+  <p><strong>Conclusion:</strong> Traffic management in Vishalnagari is enhanced using algorithms, ensuring safe and efficient transport.</p>
 </div>
 
 <div id="a4" class="module-content">
@@ -150,6 +153,7 @@ for(int d:sensorData){if(d>threshold)return true;} return false;}
 void allocateParking(vector<int>& slots, vector<int>& cars){
 for(int i=0;i<cars.size();i++){assignCarToSlot(cars[i],slots);}}
   </pre>
+  <p><strong>Conclusion:</strong> Traffic management in Vishalnagari is enhanced using algorithms, ensuring safe and efficient transport.</p>
 </div>
 
 <div id="a5" class="module-content">
@@ -170,15 +174,7 @@ while(!pq.empty()){int u=pq.top().second; pq.pop();
 for(int v:graph[u]){if(dist[u]+cost[u][v]<dist[v]){dist[v]=dist[u]+cost[u][v]; pq.push({dist[v],v});}}}
 return dist;}
   </pre>
-</div>
-
-<!-- Conclusion -->
-<div class="module-content" id="conclusion">
-  <h2>Conclusion</h2>
-  <p>
-    Traffic management in Vishalnagari is greatly enhanced using algorithms.  
-    From flow optimization to emergency routing, each module demonstrates how computation ensures safer, faster, and efficient transportation.
-  </p>
+  <p><strong>Conclusion:</strong> Traffic management in Vishalnagari is enhanced using algorithms, ensuring safe and efficient transport.</p>
 </div>
 
 <script>
