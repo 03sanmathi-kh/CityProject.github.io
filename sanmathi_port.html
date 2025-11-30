@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Sanmathi – Commerce & Industry Portfolio</title>
+<title>Sanmathi – Industrial & Commerce Portfolio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body { margin:0; font-family:'Segoe UI',sans-serif; transition:background 0.3s,color 0.3s; position: relative; min-height: 100vh; overflow-x:hidden; }
@@ -60,12 +60,11 @@ pre { background:rgba(255,255,255,0.08); padding:15px; border-radius:10px; overf
 
 <header>
 <h1>Sanmathi</h1>
-<h3>Commerce & Government Bodies – Vishalnagari</h3>
+<h3>Industrial & Commerce Solutions – Vishalnagari</h3>
 <p>
-Sanmathi’s portfolio highlights the <strong>cornerstones of commerce and governance</strong> in Vishalnagari.  
-From cutting-edge industries like electric vehicles to traditional sectors like cotton textiles, from banking and finance to worker infrastructure, each module is designed to tackle a critical aspect of urban economic management.  
-This page demonstrates how modern algorithms and practical C++ solutions can drive efficiency, sustainability, and innovation across multiple domains, ensuring both industrial growth and societal welfare in Vishalnagari.  
-Users can explore each module to understand the business problem, algorithmic solution, and step-by-step computational implementation.
+This page examines critical industrial and commercial challenges in Vishalnagari, covering sectors from electric vehicle manufacturing to textile production, supply chains, banking, and worker infrastructure.  
+Each module presents a concrete business problem, proposes an algorithmic solution for optimization, and provides stepwise implementation through C++ pseudocode.  
+The content highlights practical computation for operational efficiency, cost reduction, and sustainable industrial growth, reflecting how algorithms can resolve real-world industrial issues.
 </p>
 </header>
 
@@ -82,13 +81,8 @@ Users can explore each module to understand the business problem, algorithmic so
 <!-- MODULES -->
 <div id="m1" class="module-content">
 <h2>Electric Vehicle Industry</h2>
-<p><strong>Business Problem:</strong><br>
-Scale EV production efficiently while minimizing costs.  
-Manage assembly line allocation and battery supply.  
-Reduce production defects for high-quality output.</p>
-<p><strong>Algorithm:</strong> Dynamic Scheduling & Resource Allocation<br>
-Optimize tasks across production units considering capacity and priority.<br>
-Time Complexity: O(n log n)</p>
+<p><strong>Business Problem:</strong> Efficiently schedule assembly lines, minimize defects, and maximize EV production output.</p>
+<p><strong>Algorithm:</strong> Dynamic Scheduling & Resource Allocation (O(n log n))</p>
 <pre>
 // C++ Pseudocode
 vector<int> scheduleEV(vector<int>& tasks){
@@ -98,39 +92,25 @@ vector<int> result;
 while(!pq.empty()){int val=pq.top(); pq.pop(); result.push_back(val);}
 return result;}
 </pre>
-<p><strong>Conclusion:</strong><br>
-Implementing these algorithms ensures Vishalnagari’s EV industry remains competitive, sustainable, and highly efficient, while demonstrating how technology can optimize large-scale production for economic growth and environmental responsibility.
-</p>
+<p><strong>Conclusion:</strong> Optimized production scheduling improves efficiency, reduces costs, and ensures high-quality output.</p>
 </div>
 
 <div id="m2" class="module-content">
 <h2>Cotton Textile Industry</h2>
-<p><strong>Business Problem:</strong><br>
-Manage production from raw cotton to finished fabric efficiently.  
-Minimize wastage and energy usage.  
-Allocate labor and machinery optimally across mills.</p>
-<p><strong>Algorithm:</strong> Greedy Resource Allocation<br>
-Assign tasks to machines and workers minimizing idle time.<br>
-Time Complexity: O(n log n)</p>
+<p><strong>Business Problem:</strong> Minimize waste, allocate labor effectively, and optimize the end-to-end textile production process.</p>
+<p><strong>Algorithm:</strong> Greedy Resource Allocation (O(n log n))</p>
 <pre>
 // C++ Pseudocode
 void allocateWorkers(vector<int>& machines, vector<int>& workers){
 for(int i=0;i<workers.size();i++){assignWorker(workers[i],machines[i]);}}
 </pre>
-<p><strong>Conclusion:</strong><br>
-Optimized allocation reduces operational costs, boosts productivity, and supports sustainable industrial growth, ensuring the textile industry contributes effectively to Vishalnagari’s economy.
-</p>
+<p><strong>Conclusion:</strong> Efficient labor and resource allocation enhances productivity and reduces operational losses.</p>
 </div>
 
 <div id="m3" class="module-content">
 <h2>Traffic & Transport</h2>
-<p><strong>Business Problem:</strong><br>
-Optimize employee and goods transport routes.  
-Reduce travel time and congestion in city logistics.  
-Enable dynamic re-routing for emergencies.</p>
-<p><strong>Algorithm:</strong> Dijkstra’s Shortest Path<br>
-Compute fastest routes for multiple transport units across a dynamic city network.<br>
-Time Complexity: O(E + V log V)</p>
+<p><strong>Business Problem:</strong> Minimize transport delays for employees and goods, and enable dynamic routing in congested areas.</p>
+<p><strong>Algorithm:</strong> Dijkstra’s Shortest Path (O(E + V log V))</p>
 <pre>
 // C++ Pseudocode
 vector<int> dijkstra(int V, vector<vector<pair<int,int>>>& adj, int src){
@@ -140,85 +120,55 @@ while(!pq.empty()){int u=pq.top().second; pq.pop();
 for(auto [v,w]:adj[u]){if(dist[u]+w<dist[v]){dist[v]=dist[u]+w; pq.push({dist[v],v});}}}
 return dist;}
 </pre>
-<p><strong>Conclusion:</strong><br>
-Efficient routing ensures smooth transport of resources, reduces delays, and improves overall productivity, contributing to the city’s operational excellence and citizens’ satisfaction.
-</p>
+<p><strong>Conclusion:</strong> Optimized routing reduces delays, improves logistics, and ensures timely deliveries.</p>
 </div>
 
 <div id="m4" class="module-content">
 <h2>Worker Infrastructure</h2>
-<p><strong>Business Problem:</strong><br>
-Provide housing, healthcare, and safety for industrial workers.  
-Ensure accessibility and proximity to workplaces.  
-Plan utilities and communal facilities effectively.</p>
-<p><strong>Algorithm:</strong> Facility Allocation Optimization<br>
-Assign infrastructure points to worker clusters minimizing travel and maximizing accessibility.<br>
-Time Complexity: O(n^2)</p>
+<p><strong>Business Problem:</strong> Provide safe, accessible housing, healthcare, and facilities for industrial workers.</p>
+<p><strong>Algorithm:</strong> Facility Allocation Optimization (O(n^2))</p>
 <pre>
 // C++ Pseudocode
 void allocateFacilities(vector<pair<int,int>>& houses, vector<pair<int,int>>& facilities){
 for(auto h:houses){int minDist=INT_MAX; for(auto f:facilities){minDist=min(minDist,dist(h,f));}}}
 </pre>
-<p><strong>Conclusion:</strong><br>
-Proper worker infrastructure enhances productivity, ensures safety and well-being, and strengthens the social framework of Vishalnagari’s industrial sectors.
-</p>
+<p><strong>Conclusion:</strong> Adequate infrastructure ensures worker well-being and supports consistent industrial productivity.</p>
 </div>
 
 <div id="m5" class="module-content">
 <h2>Supply Chain</h2>
-<p><strong>Business Problem:</strong><br>
-Efficiently transport goods from factories to markets.  
-Reduce costs, delays, and wastage.  
-Monitor inventory and adjust distribution in real-time.</p>
-<p><strong>Algorithm:</strong> Minimum Cost Flow<br>
-Optimize material movement from suppliers to consumers to minimize cost.<br>
-Time Complexity: O(VE log V)</p>
+<p><strong>Business Problem:</strong> Transport goods efficiently, minimize delays and costs, and maintain inventory transparency.</p>
+<p><strong>Algorithm:</strong> Minimum Cost Flow (O(VE log V))</p>
 <pre>
 // C++ Pseudocode
 void minCostFlow(int V, vector<vector<int>>& capacity, vector<vector<int>>& cost){
 vector<int> dist(V); for(int i=0;i<V;i++){dist[i]=INT_MAX;} dist[0]=0;}
 </pre>
-<p><strong>Conclusion:</strong><br>
-Optimized supply chain management reduces operational expenses, ensures timely delivery, and strengthens economic resilience.
-</p>
+<p><strong>Conclusion:</strong> Efficient supply chains reduce costs, improve reliability, and ensure timely distribution.</p>
 </div>
 
 <div id="m6" class="module-content">
 <h2>Banking & Finance</h2>
-<p><strong>Business Problem:</strong><br>
-Provide loans and financial support to industries.  
-Monitor risks and maintain liquidity.  
-Optimize capital allocation for maximum growth impact.</p>
-<p><strong>Algorithm:</strong> Loan Allocation & Risk Scoring<br>
-Assign capital based on risk evaluation and project potential.<br>
-Time Complexity: O(n log n)</p>
+<p><strong>Business Problem:</strong> Allocate loans, assess risk, and optimize capital deployment for industrial sectors.</p>
+<p><strong>Algorithm:</strong> Loan Allocation & Risk Scoring (O(n log n))</p>
 <pre>
 // C++ Pseudocode
 void allocateLoans(vector<int>& projects, vector<int>& scores){
 priority_queue<pair<int,int>> pq; for(int i=0;i<projects.size();i++) pq.push({scores[i],projects[i]});}
 </pre>
-<p><strong>Conclusion:</strong><br>
-Sound financial planning ensures sustainable growth, lowers risk, and supports industrial expansion across Vishalnagari.
-</p>
+<p><strong>Conclusion:</strong> Proper financial support accelerates industrial growth while minimizing operational risk.</p>
 </div>
 
 <div id="m7" class="module-content">
 <h2>Commercial Market Planning</h2>
-<p><strong>Business Problem:</strong><br>
-Decide locations for markets, shops, and malls.  
-Analyze customer demand and footfall.  
-Balance commercial growth with urban resource constraints.</p>
-<p><strong>Algorithm:</strong> Heuristic Demand Allocation<br>
-Assign market locations to maximize coverage and efficiency.<br>
-Time Complexity: O(n^2)</p>
+<p><strong>Business Problem:</strong> Decide strategic locations for markets and shops based on demand and resource availability.</p>
+<p><strong>Algorithm:</strong> Heuristic Demand Allocation (O(n^2))</p>
 <pre>
 // C++ Pseudocode
 void planMarkets(vector<pair<int,int>>& locations, vector<int>& demand){
 for(auto loc:locations){for(int d:demand){computeScore(loc,d);}}}
 </pre>
-<p><strong>Conclusion:</strong><br>
-Strategic commercial planning fosters economic vitality, meets consumer needs efficiently, and aligns market expansion with sustainable urban development.
-</p>
+<p><strong>Conclusion:</strong> Well-planned markets maximize accessibility, revenue, and consumer satisfaction.</p>
 </div>
 
 <script>
