@@ -136,7 +136,78 @@
     .course-box p { margin: 0; font-size: 16px; }
     .division-d { border-left: 4px solid #27ae60; }
 
-    /* Sections styling omitted for brevity, same as your previous code */
+    /* Course Overview Section */
+    .course-overview {
+      margin-top: 60px;
+      text-align: center;
+      max-width: 900px;
+      padding: 20px;
+    }
+    .course-overview h2 {
+      font-size: 36px;
+      font-weight: 900;
+      margin-bottom: 20px;
+      color: #ff79c6;
+    }
+    .course-overview p {
+      font-size: 18px;
+      line-height: 1.6;
+      background: rgba(255,255,255,0.05);
+      padding: 25px;
+      border-radius: 15px;
+      margin: 0 auto 30px;
+      transition: background 0.4s;
+    }
+    body.light .course-overview p { background: #f9f9f9; }
+
+    /* Vision Section */
+    .project-overview {
+      margin-top: 60px;
+      text-align: center;
+      max-width: 900px;
+      padding: 0 20px;
+    }
+    .project-overview h2 { font-size: 36px; font-weight: 900; margin-bottom: 20px; color: #ff79c6; }
+    .city-motto { font-size: 20px; font-weight: 700; color: #ffdd57; margin-bottom: 20px; }
+    .city-text {
+      font-size: 18px;
+      line-height: 1.6;
+      background: rgba(255,255,255,0.05);
+      padding: 25px;
+      border-radius: 15px;
+      margin: 0 auto 30px;
+      transition: background 0.4s;
+    }
+    body.light .city-text { background: #f9f9f9; }
+
+    /* Team Section */
+    #meet-the-team {
+      padding: 40px;
+      text-align: center;
+    }
+    #meet-the-team h2 { font-size: 32px; font-weight: 900; margin-bottom: 30px; color: #ff79c6; }
+
+    .team-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+
+    .team-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 20px;
+      width: 250px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+      text-align: left;
+      transition: transform 0.3s, background 0.4s;
+    }
+    .team-card:hover { transform: scale(1.03); }
+    body.light .team-card { background: #fff; }
+
+    .team-card a { color: #ff79c6; font-weight: bold; text-decoration: none; }
+    .team-card a:hover { text-decoration: underline; }
+
+    .traffic { border-top: 6px solid #e74c3c; }
+    .industry { border-top: 6px solid #f39c12; }
+    .commerce { border-top: 6px solid #27ae60; }
+    .sustainability { border-top: 6px solid #8e44ad; }
 
   </style>
 </head>
@@ -153,7 +224,85 @@
   VISHALNAGARI – THE INTELLIGENT & SUSTAINABLE CITY PORTFOLIO
 </div>
 
-<!-- Rest of content remains same as your previous HTML... -->
+<!-- Course Card -->
+<div class="course-card">
+  <div class="course-box"><h3>Course Name</h3><p>Design & Analysis of Algorithms</p></div>
+  <div class="course-box"><h3>Course Code</h3><p>24ECS205</p></div>
+  <div class="course-box"><h3>Institution</h3><p>KLE Technological University</p></div>
+  <div class="course-box"><h3>Guide</h3><p>Prof. Prakash Hegade</p></div>
+  <div class="course-box division-d">
+    <h3>Team Members</h3>
+    <p>Sanmathi Hegde</p>
+    <p>Vasavi Kabbur</p>
+    <p>Akshata Pawar</p>
+    <p>Isha Shet</p>
+  </div>
+</div>
+
+<!-- Course Overview Section -->
+<section class="course-overview">
+  <h2>Course Overview</h2>
+  <p>
+    Algorithms are the heart of computer science and play a crucial role in solving real-world problems efficiently. 
+    They provide a structured approach to processing data, optimizing workflows, and making decisions. 
+    From traffic routing and supply chain management to healthcare diagnostics and financial analysis, 
+    algorithms enable automation, reduce human error, and improve resource utilization. 
+    Studying algorithms equips students with critical thinking, problem-solving skills, and the ability 
+    to design scalable and efficient solutions for complex systems.
+  </p>
+</section>
+
+<!-- Vision Section -->
+<section class="project-overview">
+  <h2>Our Vision</h2>
+  <p class="city-motto"><strong>Designing Tomorrow, One Algorithm at a Time</strong></p>
+  <p class="city-text">
+    Vishalnagari is a one-of-a-kind city — a living, intelligent ecosystem where sustainability meets innovation.
+    Known as <strong>India’s capital of civic heritage</strong>, it honors centuries of tradition while embracing technology.
+    The city exclusively uses <strong>100% electric vehicles</strong> within its boundaries, ensuring zero-emission transport and a cleaner environment.
+    <strong>Smart infrastructure</strong> and <strong>algorithm-driven management</strong> harmonize daily life: traffic flows smoothly through optimized routes, civic resources are distributed equitably, and green spaces flourish through intelligent planning and irrigation.
+    By combining <strong>innovation, efficiency, and sustainability</strong>, Vishalnagari demonstrates how technology and thoughtful design can create a city that is <strong>resilient, adaptive, and inspiring for its citizens</strong>.
+  </p>
+</section>
+
+<!-- Meet the Team Section -->
+<section id="meet-the-team">
+  <h2>Meet the Team</h2>
+  <div class="team-container">
+    <div class="team-card industry">
+      <h3>Sanmathi Hegde</h3>
+      <p><strong>Roll No:</strong> 407</p>
+      <p><strong>USN:</strong> 01fe24bcs269</p>
+      <p><strong>Domain:</strong> Industrial and Manufacturing Systems</p>
+      <p>Optimization through Linear Programming and Flow Networks</p>
+      <a href="sanmathi_port.html" target="_blank">View Portfolio</a>
+    </div>
+    <div class="team-card commerce">
+      <h3>Vasavi Kabbur</h3>
+      <p><strong>Roll No:</strong> 415</p>
+      <p><strong>USN:</strong> 01fe24bcs278</p>
+      <p><strong>Domain:</strong> Commerce and Governance</p>
+      <p>Graph Matching & Greedy allocation for fair resource distribution</p>
+      <a href="vasavi_port.html" target="_blank">View Portfolio</a>
+    </div>
+    <div class="team-card traffic">
+      <h3>Akshata Pawar</h3>
+      <p><strong>Roll No:</strong> 434</p>
+      <p><strong>USN:</strong> 01fe24bcs297</p>
+      <p><strong>Domain:</strong> Traffic and Mobility</p>
+      <p>Shortest Path algorithms (Dijkstra’s, A*) for smooth routing</p>
+      <a href="akshata_port.html" target="_blank">View Portfolio</a>
+    </div>
+    <div class="team-card sustainability">
+      <h3>Isha Shet</h3>
+      <p><strong>Roll No:</strong> 418</p>
+      <p><strong>USN:</strong> 01fe24bcs281</p>
+      <p><strong>Domain:</strong> Agriculture and Sustainability</p>
+      <p>Dynamic Programming & Graph models for optimized irrigation</p>
+      <a href="isha_port.html" target="_blank">View Portfolio</a>
+    </div>
+  </div>
+</section>
 
 <script>
 function toggleTheme() {
