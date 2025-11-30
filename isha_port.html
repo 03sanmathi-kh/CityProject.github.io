@@ -1,1 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Isha – Agriculture & Sustainability Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0a0a0a;
+      color: #ffffff;
+      text-align: center;
+    }
+    header {
+      padding: 40px 20px;
+    }
+    header h1 {
+      font-size: 42px;
+      font-weight: 900;
+      color: #2ecc71;
+    }
+    header h3 {
+      font-size: 22px;
+      font-weight: 600;
+      color: #f1c40f;
+    }
+    header p {
+      max-width: 800px;
+      margin: 20px auto;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #dddddd;
+    }
 
+    /* Diamond container */
+    .diamond-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 30px;
+    }
+
+    /* Diamond shape */
+    .diamond {
+      width: 120px;
+      height: 120px;
+      background: #3498db;
+      transform: rotate(45deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      color: #fff;
+      font-weight: 600;
+    }
+    .diamond span {
+      transform: rotate(-45deg);
+      text-align: center;
+    }
+    .diamond:hover { transform: rotate(45deg) scale(1.1); }
+
+    /* Popup content */
+    .module-content {
+      display: none;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 15px;
+      max-width: 900px;
+      color: #fff;
+      background: rgba(255,255,255,0.05);
+    }
+    .module-content h2 { font-size: 24px; }
+    .module-content p { font-size: 16px; line-height: 1.6; }
+    pre {
+      background: rgba(255,255,255,0.08);
+      padding: 15px;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-size: 14px;
+      color: #f5f5f5;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Isha</h1>
+  <h3>Agriculture & Sustainability – Vishalnagari</h3>
+  <p>
+    The Agriculture & Sustainability domain focuses on <strong>crop yield prediction, irrigation scheduling, waste management, soil classification, and renewable energy allocation</strong>.  
+    Algorithms such as <strong>regression, dynamic programming, TSP heuristics, decision trees, and linear programming</strong> are applied to ensure sustainable farming and efficient resource use.
+  </p>
+</header>
+  <div class="diamond-container">
+  <div class="diamond" onclick="toggleModule('i1')"><span>Module 1: Crop Yield</span></div>
+  <div class="diamond" onclick="toggleModule('i2')"><span>Module 2: Irrigation</span></div>
+  <div class="diamond" onclick="toggleModule('i3')"><span>Module 3: Waste Mgmt</span></div>
+  <div class="diamond" onclick="toggleModule('i4')"><span>Module 4: Soil Quality</span></div>
+  <div class="diamond" onclick="toggleModule('i5')"><span>Module 5: Energy</span></div>
+</div>
+
+<!-- Module 1 -->
+<div id="i1" class="module-content">
+  <h2>Crop Yield Prediction</h2>
+  <p><strong>🔍 What exact problem are we solving?</strong><br>
+  How can farmers predict crop yields based on soil and weather data?</p>
+  <p><strong>Algorithm:</strong> Regression<br>
+     <strong>Efficiency:</strong> O(n)</p>
+  <pre>
+C++:
+double predictYield(vector<double>& rain, vector<double>& soil) {
+  // regression formula
+}
+  </pre>
+</div>
+
+<!-- Module 2 -->
+<div id="i2" class="module-content">
+  <h2>Irrigation Scheduling</h2>
+  <p><strong>🔍 What exact problem are we solving?</strong><br>
+  How can water be allocated efficiently to fields?</p>
+  <p><strong>Algorithm:</strong> Dynamic Programming (Knapsack)<br>
+     <strong>Efficiency:</strong> O(nW)</p>
+  <pre>
+C++:
+int irrigationPlan(vector<int>& waterReq, int total) {
+  // DP allocation
+}
+  </pre>
+</div>
+
+<!-- Module 3 -->
+<div id="i3" class="module-content">
+  <h2>Waste Management Routing</h2>
+  <p><strong>🔍 What exact problem are we solving?</strong><br>
+  How can waste collection trucks minimize travel distance?</p>
+  <p><strong>Algorithm:</strong> Travelling Salesman (Approximation)<br>
+     <strong>Efficiency:</strong> heuristic faster</p>
+  <pre>
+C++:
+int tsp(vector<vector<int>>& dist) {
+  // Held-Karp or heuristic
+}
+  </pre>
+</div>
+  <!-- Module 4 -->
+<div id="i4" class="module-content">
+  <h2>Soil Quality Classification</h2>
+  <p><strong>🔍 What exact problem are we solving?</strong><br>
+  How can soil samples be classified for crop suitability?</p>
+  <p><strong>Algorithm:</strong> Decision Tree<br>
+     <strong>Efficiency:</strong> O(n log n)</p>
+  <pre>
+C++:
+string classifySoil(vector<double>& features) {
+  // decision tree logic
+}
+  </pre>
+</div>
+
+<!-- Module 5 -->
+<div id="i5" class="module-content">
+  <h2>Renewable Energy Allocation</h2>
+  <p><strong>🔍 What exact problem are we solving?</strong><br>
+  How can solar/wind energy be distributed across farms?</p>
+  <p><strong>Algorithm:</strong> Linear Programming<br>
+     <strong>Efficiency:</strong> Polynomial average time</p>
+  <pre>
+C++:
+void allocateEnergy(vector<int>& demand, int total) {
+  // LP solver
+}
+  </pre>
+</div>
+
+<!-- Conclusion -->
+<section style="margin:40px auto; max-width:900px; padding:20px;
