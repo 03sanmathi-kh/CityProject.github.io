@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sanmathi Hegde – Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0a0a0a;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+    header {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    header h1 {
+      font-size: 42px;
+      font-weight: 900;
+      color: #ff79c6;
+      text-shadow: 2px 2px 10px rgba(255,255,255,0.2);
+    }
+    header h3 {
+      font-size: 22px;
+      font-weight: 600;
+      color: #ffdd57;
+    }
+    .module {
+      background: rgba(30,30,30,0.85);
+      backdrop-filter: blur(10px);
+      margin: 30px auto;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 900px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    }
+    .module h2 {
+      color: #8fd3f4;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    .algo-btn {
+      background: #ff4c60;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      cursor: default;
+    }
+    h4 {
+      color: #ff79c6;
+      margin-top: 20px;
+      margin-bottom: 8px;
+    }
+    pre {
+      background: rgba(255,255,255,0.05);
+      padding: 15px;
+      border-radius: 12px;
+      color: #f5f5f5;
+      font-size: 15px;
+      overflow-x: auto;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+    }
+    footer a {
+      color: #ff79c6;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Sanmathi Hegde</h1>
+    <h3>Industrial & Manufacturing Systems</h3>
+    <p>Optimizing urban industry through algorithms and smart modeling</p>
+  </header>
+
+  <!-- Module 1 -->
+  <section id="module1" class="module">
+    <h2>Module 1: Factory Layout Optimization</h2>
+    <button class="algo-btn">Algorithm: Linear Programming</button>
+    <h4>THE BUSINESS CASE</h4>
+    <p>Minimize travel time between machines and departments in city factories.</p>
+    <h4>GRAPH MODELING</h4>
+    <p>Nodes: Machines, Edges: Pathways, Weights: Distance</p>
+    <h4>ALGORITHM ANALYSIS</h4>
+    <p>LP minimizes total distance with constraints on adjacency and space.</p>
+    <h4>IMPLEMENTATION LOGIC</h4>
+    <pre>
+Step 1: Define objective function
+Step 2: Set adjacency & space constraints
+Step 3: Solve using simplex method
+    </pre>
+  </section>
+
+  <!-- Module 2 -->
+  <section id="module2" class="module">
+    <h2>Module 2: Supply Chain Routing</h2>
+    <button class="algo-btn">Algorithm: Dijkstra’s Algorithm</button>
+    <h4>THE BUSINESS CASE</h4>
+    <p>Optimize delivery routes from warehouses to urban retail points.</p>
+    <h4>GRAPH MODELING</h4>
+    <p>Nodes: Locations, Edges: Roads, Weights: Travel time</p>
+    <h4>ALGORITHM ANALYSIS</h4>
+    <p>Dijkstra finds shortest path with non-negative weights.</p>
+    <h4>IMPLEMENTATION LOGIC</h4>
+    <pre>
+Step 1: Initialize distances
+Step 2: Visit nearest unvisited node
+Step 3: Update neighbors and repeat
+    </pre>
+  </section>
+
+  <!-- Module 3 -->
+  <section id="module3" class="module">
+    <h2>Module 3: Energy-Efficient Scheduling</h2>
+    <button class="algo-btn">Algorithm: Greedy Scheduling</button>
+    <h4>THE BUSINESS CASE</h4>
+    <p>Schedule machine operations to reduce peak energy usage.</p>
+    <h4>GRAPH MODELING</h4>
+    <p>Nodes: Tasks, Edges: Time slots, Weights: Energy cost</p>
+    <h4>ALGORITHM ANALYSIS</h4>
+    <p>Greedy selects lowest-cost slot per task, ensuring feasibility.</p>
+    <h4>IMPLEMENTATION LOGIC</h4>
+    <pre>
+Step 1: Sort tasks by energy cost
+Step 2: Assign earliest feasible slot
+Step 3: Repeat for all tasks
+    </pre>
+  </section>
+
+  <!-- Module 4 -->
+  <section id="module4" class="module">
+    <h2>Module 4: Resource Allocation</h2>
+    <button class="algo-btn">Algorithm: Max Flow (Ford-Fulkerson)</button>
+    <h4>THE BUSINESS CASE</h4>
+    <p>Distribute water and power fairly across industrial zones.</p>
+    <h4>GRAPH MODELING</h4>
+    <p>Nodes: Zones, Edges: Pipelines, Weights: Capacity</p>
+    <h4>ALGORITHM ANALYSIS</h4>
+    <p>Ford-Fulkerson finds max flow from source to sink.</p>
+    <h4>IMPLEMENTATION LOGIC</h4>
+    <pre>
+Step 1: Initialize flow to zero
+Step 2: Find augmenting path
+Step 3: Update residual graph
+    </pre>
+  </section>
+
+  <!-- Module 5 -->
+  <section id="module5" class="module">
+    <h2>Module 5: Predictive Maintenance</h2>
+    <button class="algo-btn">Algorithm: Decision Trees</button>
+    <h4>THE BUSINESS CASE</h4>
+    <p>Predict machine failures and schedule proactive maintenance.</p>
+    <h4>GRAPH MODELING</h4>
+    <p>Nodes: Machines, Edges: Sensor data, Weights: Failure probability</p>
+    <h4>ALGORITHM ANALYSIS</h4>
+    <p>Decision Trees classify risk based on historical patterns.</p>
+    <h4>IMPLEMENTATION LOGIC</h4>
+    <pre>
+Step 1: Collect labeled data
+Step 2: Train decision tree
+Step 3: Predict and schedule
+    </pre>
+  </section>
+
+  <footer>
+    <a href="../index.html">← Back to Team Page</a>
+  </footer>
+
+</body>
+</html>
