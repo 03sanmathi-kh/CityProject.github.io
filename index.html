@@ -5,330 +5,175 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PORTFOLIO – DAA</title>
   <style>
-  /* ===== Body & General ===== */
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow-x: hidden;
-    position: relative;
-    background: #0a0a0a;
-    color: #ffffff;
-  }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #0a0a0a;
+      color: #ffffff;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+    body.light { background: #f5f5f5; color: #222; }
 
-  /* ===== Portfolio Heading ===== */
-  .portfolio-heading {
-    margin-top: 40px;
-    font-size: 48px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    text-align: center;
-    color: #ffffff;
-    text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.2);
-  }
+    .theme-toggle {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      background: #ff79c6;
+      color: #fff;
+    }
+    .theme-toggle:hover { background: #ff4c60; }
 
-  /* ===== Course Card ===== */
-  .course-card {
-    background: rgba(30, 30, 30, 0.85);
-    backdrop-filter: blur(10px);
-    padding: 40px 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-    max-width: 420px;
-    width: 90%;
-    color: #ffffff;
-    text-align: left;
-    margin-top: 30px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
+    .portfolio-heading {
+      margin-top: 40px;
+      font-size: 48px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-align: center;
+      text-shadow: 2px 2px 10px rgba(255,255,255,0.2);
+    }
 
-  .course-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
-  }
+    .course-card {
+      background: rgba(30,30,30,0.85);
+      padding: 40px 30px;
+      border-radius: 20px;
+      max-width: 420px;
+      width: 90%;
+      margin-top: 30px;
+    }
+    body.light .course-card { background: #fff; }
 
-  .course-box {
-    background: rgba(255, 255, 255, 0.05);
-    border-left: 4px solid #ff4c60;
-    padding: 15px 20px;
-    margin-bottom: 15px;
-    border-radius: 12px;
-    transition: background 0.3s ease;
-  }
+    .course-box {
+      background: rgba(255,255,255,0.05);
+      border-left: 4px solid #ff4c60;
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      border-radius: 12px;
+    }
+    body.light .course-box { background: #f9f9f9; }
 
-  .course-box:hover {
-    background: rgba(255, 255, 255, 0.15);
-  }
+    .course-box h3 { font-size: 20px; font-weight: 700; color: #ff79c6; margin: 0 0 8px; }
+    .course-box p { margin: 0; font-size: 16px; }
 
-  .course-box h3 {
-    margin: 0 0 8px;
-    font-size: 20px;
-    font-weight: 700;
-    color: #ff79c6;
-  }
+    .division-d { border-left: 4px solid #27ae60; }
 
-  .course-box p {
-    margin: 0;
-    font-size: 16px;
-    font-weight: 500;
-    color: #ffffff;
-  }
+    .project-overview { margin-top: 60px; text-align: center; max-width: 900px; padding: 0 20px; }
+    .project-overview h2 { font-size: 36px; font-weight: 900; margin-bottom: 20px; }
+    .city-motto { font-size: 20px; font-weight: 700; color: #ffdd57; margin-bottom: 20px; }
+    .city-text {
+      font-size: 18px; line-height: 1.6;
+      background: rgba(255,255,255,0.05);
+      padding: 25px; border-radius: 15px;
+      margin: 0 auto 30px;
+    }
+    body.light .city-text { background: #f9f9f9; }
 
-  /* ===== Project Overview ===== */
-  .project-overview {
-    margin-top: 60px;
-    text-align: center;
-    color: #ffffff;
-    max-width: 900px;
-    padding: 0 20px;
-  }
+    #meet-the-team { padding: 40px; text-align: center; }
+    #meet-the-team h2 { font-size: 32px; font-weight: 900; margin-bottom: 30px; color: #ff79c6; }
+    .team-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+    .team-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 20px;
+      width: 250px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+      text-align: left;
+    }
+    body.light .team-card { background: #fff; }
+    .team-card h3 { margin-top: 0; }
+    .team-card p { font-size: 0.9em; margin: 6px 0; }
+    .team-card a { color: #ff79c6; text-decoration: none; font-weight: bold; }
+    .team-card a:hover { text-decoration: underline; }
 
-  .project-overview h2 {
-    font-size: 36px;
-    font-weight: 900;
-    margin-bottom: 20px;
-    text-shadow: 1px 1px 8px rgba(255, 255, 255, 0.2);
-    color: #ffffff;
-  }
-
-  .city-motto {
-    font-size: 20px;
-    font-weight: 700;
-    color: #ffdd57; /* bright accent color */
-    text-align: center;
-    margin-bottom: 20px;
-    text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
-  }
-
-  .project-overview h3 {
-    font-size: 28px;
-    font-weight: 700;
-    margin: 30px 0 15px;
-    color: #ff79c6;
-  }
-
-  .city-text {
-    font-size: 18px;
-    line-height: 1.6;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-    margin: 0 auto 30px;
-    color: #f5f5f5;
-    transition: background 0.3s ease;
-  }
-
-  .city-text:hover {
-    background: rgba(255, 255, 255, 0.12);
-  }
-
-  /* ===== City Images ===== */
-  .city-images {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-bottom: 60px;
-  }
-
-  .city-images img {
-    width: 250px;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .city-images img:hover {
-    transform: scale(1.05) rotate(-1deg);
-    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
-  }
-
-  /* ===== Waves Background ===== */
-  .waves {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100vw;
-    height: 30vh;
-    z-index: -1;
-  }
-
-  .waves path {
-    animation: waveFloat 8s ease-in-out infinite;
-  }
-
-  @keyframes waveFloat {
-    0%   { transform: translateY(0); }
-    50%  { transform: translateY(-8px); }
-    100% { transform: translateY(0); }
-  }
-
-  /* ===== Meet the Team ===== */
-  #meet-the-team {
-    padding: 40px;
-    text-align: center;
-  }
-
-  #meet-the-team h2 {
-    font-size: 32px;
-    font-weight: 900;
-    margin-bottom: 30px;
-    color: #ff79c6;
-    text-shadow: 1px 1px 8px rgba(255,255,255,0.2);
-  }
-
-  .team-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
-
-  .team-card {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    padding: 20px;
-    width: 250px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.6);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: left;
-  }
-
-  .team-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(255,255,255,0.3);
-  }
-
-  .team-card h3 {
-    margin-top: 0;
-    color: #ffffff;
-  }
-
-  .team-card p {
-    font-size: 0.9em;
-    margin: 6px 0;
-    color: #f5f5f5;
-  }
-
-  .team-card a {
-    display: inline-block;
-    margin-top: 10px;
-    color: #ff79c6;
-    text-decoration: none;
-    font-weight: bold;
-  }
-
-  .team-card a:hover {
-    text-decoration: underline;
-  }
-
-  /* Color accents per domain */
-  .traffic { border-top: 6px solid #e74c3c; }
-  .industry { border-top: 6px solid #f39c12; }
-  .commerce { border-top: 6px solid #27ae60; }
-  .sustainability { border-top: 6px solid #8e44ad; }
-
-  /* Smooth scrolling */
-  html { scroll-behavior: smooth; }
-
+    .traffic { border-top: 6px solid #e74c3c; }
+    .industry { border-top: 6px solid #f39c12; }
+    .commerce { border-top: 6px solid #27ae60; }
+    .sustainability { border-top: 6px solid #8e44ad; }
   </style>
 </head>
 <body>
+<button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+<!-- Big Heading -->
+<div class="portfolio-heading">PORTFOLIO – DAA</div>
 
-  <!-- Big Heading -->
-  <div class="portfolio-heading">PORTFOLIO – DAA</div>
-
-  <!-- Course Card -->
-  <div class="course-card">
-    <div class="course-box">
-      <h3>Course name</h3>
-      <p>Design & Analysis of Algorithms</p>
+<!-- Course Card -->
+<div class="course-card">
+  <div class="course-box">
+    <h3>Course name</h3>
+    <p>Design & Analysis of Algorithms</p>
+  </div>
+  <div class="course-box">
+    <h3>Course Code</h3>
+    <p>24ECS205</p>
+  </div>
+  <div class="course-box">
+    <h3>Institution</h3>
+    <p>KLE Technological University</p>
+  </div>
+  <div class="course-box">
+    <h3>Guide</h3>
+    <p>Prof. Prakash Hegade</p>
+  </div>
+  <div class="course-box division-d">
+    <h3>Division - D</h3>
+    <p>Sanmathi Hegde</p>
+    <p>Vasavi Kabbur</p>
+    <p>Akshata Pawar</p>
+    <p>Isha Shet</p>
+  </div>
+</div>
+<!-- Vision Section -->
+<section class="project-overview">
+  <h2>Vision Statement</h2>
+  <p class="city-motto"><strong>BUILDING THE FUTURISTIC & SUSTAINABLE CITY WITH CODE</strong></p>
+  <p class="city-text">
+    Vishalnagari is imagined not just as a smart city, but as a living algorithm.  
+    Queues manage traffic lights, graphs connect supply chains, trees classify soil, and dynamic programs schedule irrigation.  
+    By weaving these concepts into civic design, we create a city that is <strong>sustainable, efficient, and resilient</strong>.  
+    This portfolio shows how code becomes concrete: transforming abstract logic into roads, energy grids, and thriving communities.
+  </p>
+</section>
+<!-- Meet the Team Section -->
+<section id="meet-the-team">
+  <h2>Meet the Team</h2>
+  <div class="team-container">
+    <div class="team-card industry">
+      <h3>Sanmathi Hegde</h3>
+      <p><strong>Roll No:</strong> 407</p>
+      <p><strong>USN:</strong> 01fe24bcs269</p>
+      <p><strong>Domain:</strong> Industrial and Manufacturing Systems</p>
+      <p>Optimization through Linear Programming and Flow Networks</p>
+      <a href="sanmathi_port.html" target="_blank">View Portfolio</a>
     </div>
-    <div class="course-box">
-      <h3>Course Code</h3>
-      <p>24ECS205</p>
+    <div class="team-card commerce">
+      <h3>Vasavi Kabbur</h3>
+      <p><strong>Roll No:</strong> 415</p>
+      <p><strong>USN:</strong> 01fe24bcs278</p>
+      <p><strong>Domain:</strong> Commerce and Governance</p>
+      <p>Graph Matching & Greedy allocation for fair resource distribution</p>
+      <a href="vasavi_port.html" target="_blank">View Portfolio</a>
     </div>
-    <div class="course-box">
-      <h3>Institution</h3>
-      <p>KLE Technological University</p>
+    <div class="team-card traffic">
+      <h3>Akshata Pawar</h3>
+      <p><strong>Roll No:</strong> 434</p>
+      <p><strong>USN:</strong> 01fe24bcs297</p>
+      <p><strong>Domain:</strong> Traffic and Mobility</p>
+      <p>Shortest Path algorithms (Dijkstra’s, A*) for smooth routing</p>
+      <a href="akshata_port.html" target="_blank">View Portfolio</a>
     </div>
-    <div class="course-box">
-      <h3>Guide</h3>
-      <p>Prof. Prakash Hegade</p>
+       <div class="team-card sustainability">
+      <h3>Isha Shet</h3>
+      <p><strong>Roll No:</strong> 418</p>
+      <p><strong>USN:</strong> 01fe24bcs281</p>
+      <p><strong>Domain:</strong> Agriculture and Sustainability</p>
+      <p>Dynamic Programming & Graph models for optimized irrigation and sustainable farming</p>
+      <a href="isha_port.html" target="_blank">View Portfolio</a>
     </div>
   </div>
-
-  <!-- Project Overview Section -->
-  <section class="project-overview">
-    <h2>Project Overview</h2>
-    <p class="city-motto"><strong>CITY MOTTO:</strong> Strong Roots, Smart Shoots</p>
-    <p class="city-text">
-      Vishalnagari is a smart city where only electric vehicles move, creating a clean and quiet environment. Charging stations line its boulevards, and intelligent traffic systems keep journeys smooth. Public transport runs on autonomous electric buses and trams, connecting every corner efficiently. The commercial sector buzzes with smart marketplaces, the industrial zone thrives on clean logistics, and the agricultural fields use modern irrigation for sustainable farming. Automated waste and water systems protect the environment, giving citizens fresh air and a healthier lifestyle. Vishalnagari shines as a living model of innovation, proving that technology and sustainability can grow together.
-    </p>
-
-    <h3>City Map</h3>
-    <div class="city-images">
-      <img src="Image1.jpg" alt="City Map 1">
-      <img src="Image2.jpg" alt="City Map 2">
-    </div>
-  </section>
-
-  <!-- Meet the Team Section -->
-  <section id="meet-the-team">
-    <h2>Meet the Team</h2>
-    <div class="team-container">
-
-     <div class="team-card industry">
-  <h3>Sanmathi Hegde</h3>
-  <p><strong>Roll No:</strong> 407</p>
-  <p><strong>USN:</strong> 01fe24bcs269</p>
-  <p><strong>Domain:</strong> Industrial and manufacturing systems</p>
-  <p>Optimization through Linear Programming and Flow Networks for smarter production pipelines</p>
-  <a href="sanmathi_port.html" target="_blank">View Portfolio</a>
-
-</div>
-
-      <div class="team-card commerce">
-        <h3>Vasavi Kabbur</h3>
-        <p><strong>Roll No:</strong> 415</p>
-        <p><strong>USN:</strong> 01fe24bcs278</p>
-        <p><strong>Domain:</strong> Commerce and governance</p>
-        <p>Graph Matching & Greedy allocation for fair resource distribution and smart marketplaces</p>
-        <a href="vasavi_port.html" target="_blank">View Portfolio</a>
-      </div>
-
-      <div class="team-card traffic">
-        <h3>Akshata Pawar</h3>
-        <p><strong>Roll No:</strong> 434</p>
-        <p><strong>USN:</strong> 01fe24bcs297</p>
-        <p><strong>Domain:</strong> Traffic and Mobility</p>
-        <p>Shortest Path algorithms (Dijkstra’s, A*) for smooth routing and congestion control.</p>
-        <a href="akshata_port.html" target="_blank">View Portfolio</a>
-      </div>
-
-      <div class="team-card sustainability">
-        <h3>Isha Shet</h3>
-        <p><strong>Roll No:</strong> 418</p>
-        <p><strong>USN:</strong> 01fe24bcs281</p>
-        <p><strong>Domain:</strong> Agriculture and Sustainability</p>
-        <p>Dynamic Programming & Graph models for optimized irrigation and sustainable farming.</p>
-       <a href="isha_port.html" target="_blank">View Portfolio</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- SVG Waves Background -->
-  <svg class="waves" viewBox="0 0 1440 320" preserveAspectRatio="none">
-    <path fill="#a18cd1" fill-opacity="0.35" d="M0,128L80,154.7C160,181,320,235,480,234.7C640,235,800,181,960,170.7C1120,160,1280,192,1360,208L1440,224L1440,320L0,320Z"></path>
-    <path fill="#fbc2eb" fill-opacity="0.35" d="M0,192L80,197.3C160,203,320,213,480,202.7C640,192,800,160,960,165.3C1120,171,1280,213,1360,234.7L1440,256L1440,320L0,320Z"></path>
-    <path fill="#8fd3f4" fill-opacity="0.35" d="M0,96L80,122.7C160,149,320,203,480,224C640,245,800,235,960,224C1120,213,1280,192,1360,181.3L1440,171L1440,320L0,320Z"></path>
-  </svg>
-
-</body>
-</html>
+</section>
