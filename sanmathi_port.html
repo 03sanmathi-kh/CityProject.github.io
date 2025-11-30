@@ -6,171 +6,195 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body { margin:0; font-family:'Segoe UI',sans-serif; transition:background 0.3s,color 0.3s; min-height:100vh; overflow-x:hidden; }
-body.dark { background:#0a0a0a; color:#fff; }
-body.light { background:#f5f5f5; color:#000; }
+body.dark{background:#0a0a0a;color:#fff;}
+body.light{background:#f5f5f5;color:#000;}
 
-.wave-bg { position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1; overflow:hidden; }
-.wave { position:absolute; width:200%; height:200%; opacity:0.5; animation:waveMove 30s linear infinite; }
-.wave1 { fill:#1abc9c; animation-duration:30s; }
-.wave2 { fill:#16a085; animation-duration:35s; }
-.wave3 { fill:#2ecc71; animation-duration:40s; }
-body.light .wave1 { fill:#a2d5c6; }
-body.light .wave2 { fill:#7bd0b6; }
-body.light .wave3 { fill:#b3f0d9; }
-@keyframes waveMove {0%{transform:translateX(0) translateY(0) rotate(0deg);}50%{transform:translateX(10%) translateY(5%) rotate(2deg);}100%{transform:translateX(0) translateY(0) rotate(0deg);}}
+.wave-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;overflow:hidden;}
+.wave{position:absolute;width:200%;height:200%;opacity:0.5;animation:waveMove 30s linear infinite;}
+.wave1{fill:#e67e22;}
+.wave2{fill:#16a085;}
+.wave3{fill:#2980b9;}
+body.light .wave1{fill:#f8c291;}
+body.light .wave2{fill:#a3e4d7;}
+body.light .wave3{fill:#85c1e9;}
+@keyframes waveMove{0%{transform:translateX(0) translateY(0) rotate(0deg);}50%{transform:translateX(10%) translateY(5%) rotate(2deg);}100%{transform:translateX(0) translateY(0) rotate(0deg);} }
 
-header{text-align:center; padding:50px 20px;}
-header h1{font-size:48px; font-weight:900; color:#1abc9c; margin-bottom:10px;}
-header h3{font-size:24px; font-weight:600; color:#16a085; margin-bottom:20px;}
-header p{max-width:950px;margin:20px auto;font-size:18px;line-height:1.8;color:inherit;}
+header{text-align:center;padding:40px 20px;}
+header h1{font-size:42px;font-weight:900;color:#e67e22;}
+header h3{font-size:22px;font-weight:600;color:#16a085;}
+header p{max-width:800px;margin:20px auto;font-size:16px;line-height:1.6;color:inherit;}
 
-.hex-container { display:flex; flex-wrap:wrap; justify-content:center; gap:25px; padding:30px; }
-.hex { position:relative; width:160px; height:90px; display:flex; align-items:center; justify-content:center; font-weight:600; text-align:center; cursor:pointer; transition:transform 0.3s ease; color:#fff; border-radius:20px; }
+.hex-container{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;padding:20px;}
+.hex{position:relative;width:160px;height:90px;display:flex;align-items:center;justify-content:center;font-weight:600;text-align:center;cursor:pointer;transition:transform 0.3s ease;color:#fff;border-radius:12px;}
 .hex:hover{transform:scale(1.08);}
-.module-colors {background:#1abc9c;} 
-.module-colors2 {background:#16a085;} 
-.module-colors3 {background:#2ecc71;} 
-.module-colors4 {background:#27ae60;} 
-.module-colors5 {background:#f39c12;} 
-.module-colors6 {background:#e67e22;} 
-.module-colors7 {background:#8e44ad;} 
+.machinery{background:#e67e22;} 
+.production{background:#16a085;} 
+.finance{background:#2980b9;} 
+.logistics{background:#8e44ad;} 
+.infrastructure{background:#27ae60;}
+.quality{background:#d35400;}
+.worker{background:#1abc9c;}
 
-.module-content { display:none; margin:20px auto; padding:20px; border-radius:15px; max-width:950px; background:rgba(255,255,255,0.05);}
-.module-content h2 { font-size:24px; margin-bottom:10px;}
-.module-content p { font-size:16px; line-height:1.6; margin-bottom:10px;}
-pre { background:rgba(255,255,255,0.08); padding:15px; border-radius:10px; overflow-x:auto; font-size:14px; color:inherit; }
+.module-content{display:none;margin:20px auto;padding:20px;border-radius:15px;max-width:900px;background:rgba(255,255,255,0.05);}
+.module-content h2{font-size:24px;margin-bottom:10px;}
+.module-content p{font-size:16px;line-height:1.6;margin-bottom:10px;}
+pre{background:rgba(255,255,255,0.08);padding:15px;border-radius:10px;overflow-x:auto;font-size:14px;color:inherit;}
 
-#themeBtn, #homeBtn { position:fixed; top:20px; padding:10px 20px; font-size:14px; cursor:pointer; border:none; border-radius:8px; color:#fff; transition:background 0.3s;}
-#themeBtn{right:20px; background:#1abc9c;}
-#themeBtn:hover{background:#16a085;}
-#homeBtn{left:20px; background:#2ecc71;}
-#homeBtn:hover{background:#27ae60;}
+#themeBtn,#homeBtn{position:fixed;top:20px;padding:10px 20px;font-size:14px;cursor:pointer;border:none;border-radius:8px;color:#fff;transition:background 0.3s;}
+#themeBtn{right:20px;background:#e67e22;} #themeBtn:hover{background:#2980b9;}
+#homeBtn{left:20px;background:#27ae60;} #homeBtn:hover{background:#1e8449;}
 </style>
 </head>
 <body class="dark">
 
 <div class="wave-bg">
-  <svg class="wave wave1" viewBox="0 0 1440 320" preserveAspectRatio="none"><path d="M0,192 C480,320 960,64 1440,192 L1440,320 L0,320 Z"></path></svg>
-  <svg class="wave wave2" viewBox="0 0 1440 320" preserveAspectRatio="none"><path d="M0,256 C480,128 960,384 1440,256 L1440,320 L0,320 Z"></path></svg>
-  <svg class="wave wave3" viewBox="0 0 1440 320" preserveAspectRatio="none"><path d="M0,224 C480,96 960,352 1440,224 L1440,320 L0,320 Z"></path></svg>
+<svg class="wave wave1" viewBox="0 0 1440 320"><path d="M0,192 C480,320 960,64 1440,192 L1440,320 L0,320 Z"></path></svg>
+<svg class="wave wave2" viewBox="0 0 1440 320"><path d="M0,256 C480,128 960,384 1440,256 L1440,320 L0,320 Z"></path></svg>
+<svg class="wave wave3" viewBox="0 0 1440 320"><path d="M0,224 C480,96 960,352 1440,224 L1440,320 L0,320 Z"></path></svg>
 </div>
 
 <button id="homeBtn" onclick="goHome()">🏠 Home</button>
 <button id="themeBtn" onclick="toggleTheme()">🌙 Dark Mode</button>
 
 <header>
-  <h1>Sanmathi Hegde</h1>
-  <h3>Industrial & Manufacturing Systems – Vishalnagari</h3>
-  <p>
-    Vishalnagari’s industrial ecosystem blends tradition and innovation.  
-    Each sector faces challenges in scheduling, routing, resource allocation, and predictive maintenance.
-  </p>
+<h1>Sanmathi</h1>
+<h3>Industrial Management – Vishalnagari</h3>
+<p>Vishalnagari's Industrial domain ensures optimized production, logistics, and infrastructure for sustainable growth.</p>
 </header>
 
 <div class="hex-container">
-  <div class="hex module-colors" onclick="toggleModule('m1')">EV Assembly Line</div>
-  <div class="hex module-colors2" onclick="toggleModule('m2')">Textile Dyeing</div>
-  <div class="hex module-colors3" onclick="toggleModule('m3')">Cotton Routing</div>
-  <div class="hex module-colors4" onclick="toggleModule('m4')">Battery Allocation</div>
-  <div class="hex module-colors5" onclick="toggleModule('m5')">Predictive Maintenance</div>
-  <div class="hex module-colors6" onclick="toggleModule('m6')">Workforce Scheduling</div>
-  <div class="hex module-colors7" onclick="toggleModule('m7')">Supply Chain Optimization</div>
+<div class="hex machinery" onclick="toggleModule('m1')">Machinery Management</div>
+<div class="hex production" onclick="toggleModule('m2')">Production Planning</div>
+<div class="hex finance" onclick="toggleModule('m3')">Finance & Budget</div>
+<div class="hex logistics" onclick="toggleModule('m4')">Logistics & Supply</div>
+<div class="hex infrastructure" onclick="toggleModule('m5')">Infrastructure</div>
+<div class="hex quality" onclick="toggleModule('m6')">Quality Control</div>
+<div class="hex worker" onclick="toggleModule('m7')">Worker Management</div>
 </div>
 
-<!-- MODULE 1: EV Assembly Line -->
+<!-- Modules -->
 <div id="m1" class="module-content">
-  <h2>EV Assembly Line</h2>
-  <p><strong>Problem:</strong> Task scheduling and resource conflicts slow production.</p>
-  <p><strong>Algorithm:</strong> Priority-based scheduling (min-heap). O(n log n)</p>
-  <pre>
-// C++ Short
-#include &lt;iostream&gt;
-#include &lt;queue&gt;
+<h2>Machinery Management</h2>
+<p><strong>Algorithm:</strong> Maintenance Scheduler. O(n log n)</p>
+<pre>#include &lt;iostream&gt;
+#include &lt;vector&gt;
 using namespace std;
-int main(){priority_queue&lt;int,vector&lt;int&gt;,greater&lt;&gt;&gt; pq; pq.push(2); pq.push(1); while(!pq.empty()){cout&lt;&lt;pq.top()&lt;&lt;endl; pq.pop();}}
-  </pre>
+int main(){
+    vector&lt;int&gt; machines={1,2,3};
+    for(int m:machines){
+        cout&lt;&lt;"Check machine "&lt;&lt;m&lt;&lt;endl;
+        cout&lt;&lt;"Perform maintenance if needed"&lt;&lt;endl;
+    }
+}</pre>
+<p><strong>Conclusion:</strong> Efficient maintenance reduces downtime. Machines operate at peak performance consistently.</p>
 </div>
 
 <div id="m2" class="module-content">
-  <h2>Textile Dyeing</h2>
-  <p><strong>Problem:</strong> Labor allocation and resource waste.</p>
-  <p><strong>Algorithm:</strong> Greedy assignment. O(n log n)</p>
-  <pre>
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
+<h2>Production Planning</h2>
+<p><strong>Algorithm:</strong> Linear Programming. O(n^2)</p>
+<pre>#include &lt;iostream&gt;
 using namespace std;
-int main(){vector&lt;int&gt; workers={9,7,5}; for(int w:workers) cout&lt;&lt;w&lt;&lt;endl;}
-  </pre>
+int main(){
+    int products=5;
+    for(int i=1;i&lt;=products;i++){
+        cout&lt;&lt;"Produce item "&lt;&lt;i&lt;&lt;endl;
+        cout&lt;&lt;"Check resource allocation"&lt;&lt;endl;
+    }
+}</pre>
+<p><strong>Conclusion:</strong> Proper planning ensures steady production. Reduces waste and maximizes output.</p>
 </div>
 
 <div id="m3" class="module-content">
-  <h2>Cotton Routing</h2>
-  <p><strong>Problem:</strong> Transport delays increase cost.</p>
-  <p><strong>Algorithm:</strong> Dijkstra. O(E + V log V)</p>
-  <pre>
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;queue&gt;
-using namespace std;
-int main(){priority_queue&lt;pair&lt;int,int&gt;,vector&lt;pair&lt;int,int&gt;&gt;,greater&lt;&gt;&gt; pq; pq.push({0,0}); while(!pq.empty()){cout&lt;&lt;pq.top().second&lt;&lt;endl; pq.pop();}}
-  </pre>
+<h2>Finance & Budget</h2>
+<p><strong>Algorithm:</strong> Budget Allocation. O(n)</p>
+<pre>#include &lt;iostream&gt;
+int main(){
+    double budget=100000;
+    double dept[3]={30000,40000,30000};
+    for(int i=0;i&lt;3;i++){
+        std::cout&lt;&lt;"Dept "&lt;&lt;i&lt;&lt;": "&lt;&lt;dept[i]&lt;&lt;endl;
+        std::cout&lt;&lt;"Allocate funds efficiently"<<endl;
+    }
+}</pre>
+<p><strong>Conclusion:</strong> Efficient budgeting optimizes fund usage. Ensures all departments are well-funded.</p>
 </div>
 
 <div id="m4" class="module-content">
-  <h2>Battery Allocation</h2>
-  <p><strong>Problem:</strong> Uneven battery distribution.</p>
-  <p><strong>Algorithm:</strong> Dynamic allocation. O(n²)</p>
-  <pre>
-#include &lt;iostream&gt;
+<h2>Logistics & Supply</h2>
+<p><strong>Algorithm:</strong> Shortest Path. O(E+V log V)</p>
+<pre>#include &lt;iostream&gt;
 using namespace std;
-int main(){int lines[]={50,40}; int bat[]={60,35}; for(int i=0;i&lt;2;i++) cout&lt;&lt;"Line "<<i<<" Battery "<<bat[i]&lt;&lt;endl;}
-  </pre>
+int main(){
+    int routes[3]={10,20,15};
+    for(int r:routes){
+        cout&lt;&lt;"Route time: "&lt;&lt;r&lt;&lt;" min"<<endl;
+        cout&lt;&lt;"Optimize delivery schedule"<<endl;
+    }
+}</pre>
+<p><strong>Conclusion:</strong> Optimized logistics reduces delays. Ensures timely deliveries across sites.</p>
 </div>
 
 <div id="m5" class="module-content">
-  <h2>Predictive Maintenance</h2>
-  <p><strong>Problem:</strong> Unexpected machine failures.</p>
-  <p><strong>Algorithm:</strong> Anomaly detection. O(n)</p>
-  <pre>
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
+<h2>Infrastructure</h2>
+<p><strong>Algorithm:</strong> Resource Allocation. O(n log n)</p>
+<pre>#include &lt;iostream&gt;
 using namespace std;
-int main(){vector&lt;int&gt; s={50,52,90}; for(int v:s) if(v&gt;70) cout&lt;&lt;"Alert "&lt;&lt;v&lt;&lt;endl;}
-  </pre>
+int main(){
+    int projects=3;
+    for(int i=1;i&lt;=projects;i++){
+        cout&lt;&lt;"Check project "&lt;&lt;i&lt;&lt;endl;
+        cout&lt;&lt;"Allocate materials and resources"<<endl;
+    }
+}</pre>
+<p><strong>Conclusion:</strong> Well-managed infrastructure supports growth. Projects run efficiently without bottlenecks.</p>
 </div>
 
 <div id="m6" class="module-content">
-  <h2>Workforce Scheduling</h2>
-  <p><strong>Problem:</strong> Shifts not balanced.</p>
-  <p><strong>Algorithm:</strong> Greedy constraint. O(n²)</p>
-  <pre>
-#include &lt;iostream&gt;
+<h2>Quality Control</h2>
+<p><strong>Algorithm:</strong> Statistical Sampling. O(n)</p>
+<pre>#include &lt;iostream&gt;
+#include &lt;vector&gt;
 using namespace std;
-int main(){int w[]={8,6}; int s[]={4,3}; for(int i=0;i&lt;2;i++) cout&lt;&lt;"Worker "<<i&lt;&lt;" shift "<<s[i]&lt;&lt;endl;}
-  </pre>
+int main(){
+    vector&lt;int&gt; batch={95,98,92,90,100};
+    for(int i=0;i&lt;batch.size();i++){
+        if(batch[i]&lt;95) cout&lt;&lt;"Item "&lt;&lt;i&lt;&lt;" fails quality check"<<endl;
+        else cout&lt;&lt;"Item "&lt;&lt;i&lt;&lt;" passes quality check"<<endl;
+    }
+}</pre>
+<p><strong>Conclusion:</strong> Ensures products meet quality standards. Minimizes defective items reaching customers.</p>
 </div>
 
 <div id="m7" class="module-content">
-  <h2>Supply Chain Optimization</h2>
-  <p><strong>Problem:</strong> Transport costs and delays.</p>
-  <p><strong>Algorithm:</strong> Min-cost flow. O(VE log V)</p>
-  <pre>
-#include &lt;iostream&gt;
+<h2>Worker Management</h2>
+<p><strong>Algorithm:</strong> Task Scheduling. O(n log n)</p>
+<pre>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
 using namespace std;
-int main(){int cost[]={2,5}; for(int i:cost) cout&lt;&lt;i&lt;&lt;endl;}
-  </pre>
+int main(){
+    vector&lt;int&gt; tasks={2,4,1,3};
+    sort(tasks.begin(),tasks.end());
+    for(int i=0;i&lt;tasks.size();i++){
+        cout&lt;&lt;"Assign task "&lt;&lt;i+1&lt;&lt;" taking "&lt;&lt;tasks[i]&lt;&lt;" hrs"<<endl;
+        cout&lt;&lt;"Ensure worker efficiency"<<endl;
+    }
+}</pre>
+<p><strong>Conclusion:</strong> Efficient scheduling improves productivity. Workers are utilized effectively without overload.</p>
 </div>
 
 <script>
 function toggleModule(id){
-    document.querySelectorAll('.module-content').forEach(m=>m.style.display='none');
-    const sel=document.getElementById(id); if(sel) sel.style.display='block';
+  document.querySelectorAll('.module-content').forEach(m=>m.style.display='none');
+  const sel=document.getElementById(id); 
+  if(sel) sel.style.display='block';
 }
 function goHome(){ document.querySelectorAll('.module-content').forEach(m=>m.style.display='none'); }
 function toggleTheme(){
-    const body=document.body;
-    body.classList.toggle('dark'); body.classList.toggle('light');
-    document.getElementById('themeBtn').textContent=body.classList.contains('dark')?"🌙 Dark Mode":"☀️ Light Mode";
+  const body=document.body;
+  body.classList.toggle('dark');
+  body.classList.toggle('light');
+  document.getElementById('themeBtn').textContent=body.classList.contains('dark')?"🌙 Dark Mode":"☀️ Light Mode";
 }
 </script>
 
