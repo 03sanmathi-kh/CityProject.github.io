@@ -20,41 +20,65 @@
       transition: color 0.8s ease;
     }
 
-    /* Dark and Light Themes */
-    body.dark {
-      color: #fff;
-    }
-    body.light {
-      color: #222;
-    }
+    body.light { color: #222; }
 
-    /* Wavy animated background */
-    body::before {
+    /* Multi-layered wavy background */
+    body::before, body::after {
       content: "";
       position: fixed;
-      top: -50%;
-      left: -50%;
+      left: 0;
       width: 200%;
       height: 200%;
-      background: linear-gradient(45deg, #0a0a0a, #1a1a2e, #2e1a4c, #3a0f4c);
-      animation: waveDark 30s linear infinite;
       z-index: -1;
       border-radius: 45%;
     }
-    body.light::before {
-      background: linear-gradient(45deg, #f5f5f5, #d0e8ff, #c8e6f5, #bbdefb);
-      animation: waveLight 30s linear infinite;
+
+    /* Dark theme waves */
+    body.dark::before {
+      background: rgba(42, 42, 80, 0.8);
+      animation: wave1 30s linear infinite;
+      top: -50%;
+    }
+    body.dark::after {
+      background: rgba(58, 15, 76, 0.6);
+      animation: wave2 40s linear infinite;
+      top: -60%;
     }
 
-    @keyframes waveDark {
-      0% { transform: rotate(0deg) translateX(0); }
-      50% { transform: rotate(10deg) translateX(20px); }
-      100% { transform: rotate(0deg) translateX(0); }
+    /* Light theme waves */
+    body.light::before {
+      background: rgba(200, 230, 255, 0.8);
+      animation: wave1Light 30s linear infinite;
+      top: -50%;
     }
-    @keyframes waveLight {
-      0% { transform: rotate(0deg) translateX(0); }
-      50% { transform: rotate(10deg) translateX(20px); }
-      100% { transform: rotate(0deg) translateX(0); }
+    body.light::after {
+      background: rgba(180, 220, 250, 0.6);
+      animation: wave2Light 40s linear infinite;
+      top: -60%;
+    }
+
+    /* Keyframes for dark theme waves */
+    @keyframes wave1 {
+      0% { transform: translateX(0) rotate(0deg); }
+      50% { transform: translateX(20%) rotate(3deg); }
+      100% { transform: translateX(0) rotate(0deg); }
+    }
+    @keyframes wave2 {
+      0% { transform: translateX(0) rotate(0deg); }
+      50% { transform: translateX(-15%) rotate(-3deg); }
+      100% { transform: translateX(0) rotate(0deg); }
+    }
+
+    /* Keyframes for light theme waves */
+    @keyframes wave1Light {
+      0% { transform: translateX(0) rotate(0deg); }
+      50% { transform: translateX(20%) rotate(3deg); }
+      100% { transform: translateX(0) rotate(0deg); }
+    }
+    @keyframes wave2Light {
+      0% { transform: translateX(0) rotate(0deg); }
+      50% { transform: translateX(-15%) rotate(-3deg); }
+      100% { transform: translateX(0) rotate(0deg); }
     }
 
     /* Theme toggle button */
@@ -92,7 +116,7 @@
       backdrop-filter: blur(8px);
       transition: background 0.4s;
     }
-    body.light .course-card { background: rgba(255,255,255,0.8); }
+    body.light .course-card { background: rgba(255,255,255,0.9); }
 
     .course-box {
       padding: 15px 20px;
@@ -103,55 +127,59 @@
       transition: background 0.3s, transform 0.3s;
     }
     .course-box:hover { transform: scale(1.03); }
-    body.light .course-box { background: #f9f9f9; }
+    body.light .course-box { background: #fff; }
 
     .course-box h3 { font-size: 20px; font-weight: 700; color: #ff79c6; margin: 0 0 8px; }
     .course-box p { margin: 0; font-size: 16px; }
     .division-d { border-left: 4px solid #27ae60; }
 
     /* Course Overview Section */
-    .course-overview {
+    .course-overview, .project-overview {
       margin-top: 60px;
       text-align: center;
       max-width: 900px;
-      padding: 20px;
+      padding: 30px;
+      border-radius: 20px;
+      background: #fff;
+      color: #222;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      transition: background 0.4s;
     }
-    .course-overview h2 {
+
+    .course-overview h2, .project-overview h2 {
       font-size: 36px;
       font-weight: 900;
       margin-bottom: 20px;
       color: #ff79c6;
     }
-    .course-overview p {
+
+    .course-overview p, .project-overview p {
       font-size: 18px;
       line-height: 1.6;
-      background: rgba(255,255,255,0.05);
-      padding: 25px;
-      border-radius: 15px;
-      margin: 0 auto 30px;
-      transition: background 0.4s;
+      margin-bottom: 0;
     }
-    body.light .course-overview p { background: #f9f9f9; }
 
-    /* Vision Section */
-    .project-overview {
+    .city-motto { font-size: 20px; font-weight: 700; color: #ffdd57; margin-bottom: 20px; }
+
+    /* Business Ideas Section */
+    .business-ideas {
       margin-top: 60px;
       text-align: center;
       max-width: 900px;
-      padding: 0 20px;
+      padding: 30px;
+      border-radius: 20px;
+      background: #fff;
+      color: #222;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
     }
-    .project-overview h2 { font-size: 36px; font-weight: 900; margin-bottom: 20px; color: #ff79c6; }
-    .city-motto { font-size: 20px; font-weight: 700; color: #ffdd57; margin-bottom: 20px; }
-    .city-text {
+    .business-ideas h2 { font-size: 36px; font-weight: 900; margin-bottom: 20px; color: #ff79c6; }
+    .business-ideas ul {
+      list-style-type: disc;
+      padding-left: 40px;
+      text-align: left;
       font-size: 18px;
       line-height: 1.6;
-      background: rgba(255,255,255,0.05);
-      padding: 25px;
-      border-radius: 15px;
-      margin: 0 auto 30px;
-      transition: background 0.4s;
     }
-    body.light .city-text { background: #f9f9f9; }
 
     /* Team Section */
     #meet-the-team {
@@ -182,30 +210,6 @@
     .commerce { border-top: 6px solid #27ae60; }
     .sustainability { border-top: 6px solid #8e44ad; }
 
-    /* Business Cases Section */
-    #business-cases {
-      padding: 40px;
-      text-align: center;
-    }
-    #business-cases h2 {
-      font-size: 32px;
-      font-weight: 900;
-      margin-bottom: 30px;
-      color: #ff79c6;
-    }
-    .cases-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-    .case-box {
-      background: rgba(255,255,255,0.05);
-      padding: 20px;
-      border-radius: 12px;
-      width: 220px;
-      transition: transform 0.3s;
-    }
-    .case-box:hover { transform: scale(1.05); background: rgba(255,255,255,0.15); }
-    body.light .case-box { background: rgba(0,0,0,0.05); }
-
-    .case-box h3 { margin-bottom: 10px; color: #ff79c6; }
-    .case-box p { margin: 4px 0; font-size: 14px; }
   </style>
 </head>
 
@@ -235,7 +239,7 @@
   </div>
 </div>
 
-<!-- Course Overview Section -->
+<!-- Course Overview -->
 <section class="course-overview">
   <h2>Course Overview</h2>
   <p>
@@ -252,7 +256,7 @@
 <section class="project-overview">
   <h2>Our Vision</h2>
   <p class="city-motto"><strong>Designing Tomorrow, One Algorithm at a Time</strong></p>
-  <p class="city-text">
+  <p>
     Vishalnagari is a one-of-a-kind city — a living, intelligent ecosystem where sustainability meets innovation.
     Known as <strong>India’s capital of civic heritage</strong>, it honors centuries of tradition while embracing technology.
     The city exclusively uses <strong>100% electric vehicles</strong> within its boundaries, ensuring zero-emission transport and a cleaner environment.
@@ -261,38 +265,19 @@
   </p>
 </section>
 
-<!-- Business Cases Section -->
-<section id="business-cases">
-  <h2>Business Cases</h2>
-  <div class="cases-container">
-    <div class="case-box">
-      <h3>Sanmathi Hegde</h3>
-      <p>Efficient Factory Layout Planning</p>
-      <p>Inventory Optimization Model</p>
-      <p>Production Flow Analysis</p>
-    </div>
-    <div class="case-box">
-      <h3>Vasavi Kabbur</h3>
-      <p>Fair Resource Allocation Model</p>
-      <p>Graph Matching Optimization</p>
-      <p>Financial Flow Analysis</p>
-    </div>
-    <div class="case-box">
-      <h3>Akshata Pawar</h3>
-      <p>Shortest Path Routing</p>
-      <p>Traffic Flow Optimization</p>
-      <p>Public Transport Scheduling</p>
-    </div>
-    <div class="case-box">
-      <h3>Isha Shet</h3>
-      <p>Optimized Irrigation System</p>
-      <p>Water Distribution Analysis</p>
-      <p>Sustainable Agriculture Planning</p>
-    </div>
-  </div>
+<!-- Business Ideas Section -->
+<section class="business-ideas">
+  <h2>Business Ideas</h2>
+  <ul>
+    <li>Smart Traffic Management using IoT sensors</li>
+    <li>AI-powered Agricultural Planning</li>
+    <li>Green Energy Distribution & Monitoring</li>
+    <li>Algorithm-based Waste Management</li>
+    <li>Urban Mobility Optimization Platform</li>
+  </ul>
 </section>
 
-<!-- Meet the Team Section -->
+<!-- Team Section -->
 <section id="meet-the-team">
   <h2>Meet the Team</h2>
   <div class="team-container">
