@@ -2,91 +2,65 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sanmathi Hegde – Industrial Portfolio</title>
+  <title>Sanmathi – Industry & Infrastructure Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    /* Basic page styling */
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #0a0a0a;
-      color: #ffffff;
-    }
-    header {
+      font-family: Arial, sans-serif;
+      background-color: #0a0a0a; /* dark background */
+      color: #ffffff;            /* white text */
       text-align: center;
+    }
+
+    /* Header section */
+    header {
       padding: 40px 20px;
     }
     header h1 {
-      font-size: 42px;
-      font-weight: 900;
-      color: #ff79c6;
+      font-size: 36px;
+      font-weight: bold;
+      color: #f39c12; /* orange accent */
     }
     header h3 {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 600;
-      color: #ffdd57;
+      color: #1abc9c; /* teal accent */
     }
     header p {
       max-width: 800px;
       margin: 20px auto;
       font-size: 16px;
-      line-height: 1.6;
+      line-height: 1.5;
       color: #dddddd;
     }
-    .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 20px;
-    }
-    .card {
-      border-radius: 15px;
-      width: 250px;
-      padding: 20px;
-      text-align: center;
-      cursor: pointer;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
-      transition: transform 0.3s ease;
-      font-weight: 600;
-    }
-    .card:hover { transform: translateY(-5px); }
 
-    /* Module-specific colors */
-    .ev { background: rgba(255, 99, 132, 0.85); }
-    .dye { background: rgba(54, 162, 235, 0.85); }
-    .cotton { background: rgba(255, 206, 86, 0.85); }
-    .battery { background: rgba(75, 192, 192, 0.85); }
-    .predict { background: rgba(153, 102, 255, 0.85); }
-    .workforce { background: rgba(255, 159, 64, 0.85); }
-    .supply { background: rgba(199, 199, 199, 0.85); }
-
+    /* Module content (hidden by default) */
     .module-content {
       display: none;
       margin: 20px auto;
       padding: 20px;
-      border-radius: 12px;
+      border-radius: 10px;
       max-width: 900px;
+      background: rgba(255,255,255,0.05);
       color: #fff;
     }
-
-    /* Transparent/glassy effect for each module popup */
-    .ev-box { background: rgba(255, 99, 132, 0.2); border: 1px solid rgba(255,99,132,0.4); }
-    .dye-box { background: rgba(54, 162, 235, 0.2); border: 1px solid rgba(54,162,235,0.4); }
-    .cotton-box { background: rgba(255, 206, 86, 0.2); border: 1px solid rgba(255,206,86,0.4); }
-    .battery-box { background: rgba(75, 192, 192, 0.2); border: 1px solid rgba(75,192,192,0.4); }
-    .predict-box { background: rgba(153, 102, 255, 0.2); border: 1px solid rgba(153,102,255,0.4); }
-    .workforce-box { background: rgba(255, 159, 64, 0.2); border: 1px solid rgba(255,159,64,0.4); }
-    .supply-box { background: rgba(199, 199, 199, 0.2); border: 1px solid rgba(199,199,199,0.4); }
-
-    .module-content h2 { font-size: 24px; }
-    .module-content p { font-size: 16px; line-height: 1.6; }
+    .module-content h2 {
+      font-size: 22px;
+    }
+    .module-content p {
+      font-size: 15px;
+      line-height: 1.5;
+    }
     pre {
-      background: rgba(255,255,255,0.08);
-      padding: 15px;
-      border-radius: 10px;
+      background: rgba(255,255,255,0.1);
+      padding: 10px;
+      border-radius: 8px;
       overflow-x: auto;
       font-size: 14px;
       color: #f5f5f5;
+      text-align: left;
     }
   </style>
 </head>
@@ -94,24 +68,15 @@
 
 <header>
   <h1>Sanmathi Hegde</h1>
-  <h3>Industrial & Manufacturing Systems – Vishalnagari</h3>
+  <h3>Industry & Infrastructure – Vishalnagari</h3>
   <p>
-    Vishalnagari’s industrial ecosystem blends tradition and innovation — from cotton textiles to electric mobility.  
-    Each sector faces unique challenges in scheduling, routing, resource allocation, and predictive maintenance.  
-    This portfolio explores how algorithmic thinking transforms these business cases into scalable, efficient solutions.  
-    From graph theory to machine learning, each module applies logic to unlock smarter industrial systems.
+    Vishalnagari is a major industrial hub. From textiles to electric mobility, each sector faces challenges in scheduling, routing, resource allocation, and maintenance.  
+    This portfolio presents algorithmic solutions that make these systems efficient, scalable, and reliable.  
+    Modules cover assembly lines, textile dyeing, routing, allocation, predictive maintenance, workforce scheduling, and supply chain optimization.  
+    Each solution applies proven algorithms from graph theory, optimization, and machine learning.  
+    Together, they demonstrate how computation strengthens Vishalnagari’s industrial backbone.
   </p>
 </header>
-
-<div class="card-container">
-  <div class="card ev" onclick="toggleModule('m1')">Module 1: EV Assembly Line</div>
-  <div class="card dye" onclick="toggleModule('m2')">Module 2: Textile Dyeing</div>
-  <div class="card cotton" onclick="toggleModule('m3')">Module 3: Cotton Routing</div>
-  <div class="card battery" onclick="toggleModule('m4')">Module 4: Battery Allocation</div>
-  <div class="card predict" onclick="toggleModule('m5')">Module 5: Predictive Maintenance</div>
-  <div class="card workforce" onclick="toggleModule('m6')">Module 6: Workforce Scheduling</div>
-  <div class="card supply" onclick="toggleModule('m7')">Module 7: Supply Chain Optimization</div>
-</div>
 <!-- Module 1 -->
 <div id="m1" class="module-content ev-box">
   <h2>EV Assembly Line Optimization</h2>
@@ -148,32 +113,51 @@ vector<int> topologicalSort(int V, vector<vector<int>>& adj) {
 </div>
 
 <!-- Module 2 -->
-<div id="m2" class="module-content dye-box">
-  <h2>Textile Dyeing Slot Scheduling</h2>
-  <p><strong>🔍 What exact problem are we solving?</strong><br>
-  How can we assign dyeing slots to textile batches to minimize overlap and reduce energy usage?</p>
-  <p><strong>Algorithm:</strong> Interval Scheduling (Greedy)<br>
-     <strong>Efficiency:</strong> O(n log n)</p>
+<div id="m2" class="module-content">
+  <h2>Module 2: Textile Dyeing Optimization</h2>
+  <p>
+    <strong>🔍 Problem:</strong> In Vishalnagari’s textile sector, dyeing machines must process batches of fabric with varying colors and chemical requirements.  
+    The challenge is to schedule dyeing jobs to minimize machine cleaning time and chemical waste.
+  </p>
+  <p>
+    <strong>Algorithm:</strong> Job Sequencing with Minimum Setup Cost (Graph-based Scheduling)<br>
+    <strong>Efficiency:</strong> O(n²) for pairwise cost matrix + greedy traversal
+  </p>
   <pre>
 Pseudocode:
-1. Sort jobs by finish time
-2. For each job:
-   If slot free, assign
+1. Represent each dyeing job as a node with color/chemical profile
+2. Build a cost matrix: setup cost between every pair of jobs
+3. Initialize empty schedule and mark all jobs unvisited
+4. Choose starting job with lowest average setup cost
+5. While unvisited jobs remain:
+   a. From current job, pick next with minimum setup cost
+   b. Add to schedule and mark as visited
+6. Output final job sequence with minimized total setup cost
+  </pre>
 
-C++:
-struct Job { int start, end; };
-bool compare(Job a, Job b) { return a.end < b.end; }
-vector<Job> schedule(vector<Job>& jobs) {
-  sort(jobs.begin(), jobs.end(), compare);
-  vector<Job> result;
-  int lastEnd = -1;
-  for (Job j : jobs) {
-    if (j.start >= lastEnd) {
-      result.push_back(j);
-      lastEnd = j.end;
+  <pre>
+C++ (conceptual):
+vector<int> optimizeDyeing(vector<vector<int>>& setupCost) {
+  int n = setupCost.size();
+  vector<bool> visited(n, false);
+  vector<int> sequence;
+  int current = 0;
+  visited[current] = true;
+  sequence.push_back(current);
+
+  for(int step = 1; step < n; step++) {
+    int next = -1, minCost = INT_MAX;
+    for(int j = 0; j < n; j++) {
+      if(!visited[j] && setupCost[current][j] < minCost) {
+        minCost = setupCost[current][j];
+        next = j;
+      }
     }
+    current = next;
+    visited[current] = true;
+    sequence.push_back(current);
   }
-  return result;
+  return sequence;
 }
   </pre>
 </div>
@@ -314,11 +298,29 @@ C++ (conceptual):
 // Run simplex → get solution
   </pre>
 </div>
+<!-- Conclusion -->
+<section style="margin:40px auto; max-width:900px; padding:20px; background:rgba(255,255,255,0.05); border-radius:10px;">
+  <h2>Conclusion</h2>
+  <p>
+    The Industry & Infrastructure portfolio demonstrates how Vishalnagari’s industrial hub can be strengthened through algorithmic solutions.  
+    Modules address assembly lines, textile dyeing, routing, allocation, predictive maintenance, workforce scheduling, and supply chain optimization.  
+    Each algorithm improves efficiency, reduces waste, and ensures scalable, reliable operations across diverse sectors.  
+    Together, these modules highlight how computation supports Vishalnagari’s growth as a modern, resilient industrial ecosystem.
+  </p>
+</section>
+
+<!-- Toggle Script -->
 <script>
 function toggleModule(id) {
+  // Hide all modules first
   const modules = document.getElementsByClassName('module-content');
   for (let m of modules) {
-    m.style.display = (m.id === id && m.style.display !== "block") ? "block" : "none";
+    m.style.display = "none";
+  }
+  // Show the one you clicked
+  const selected = document.getElementById(id);
+  if (selected) {
+    selected.style.display = "block";
   }
 }
 </script>
