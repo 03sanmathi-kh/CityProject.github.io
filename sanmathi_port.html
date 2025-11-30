@@ -5,101 +5,79 @@
   <title>Sanmathi – Industry Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    body { 
+      margin:0; 
+      font-family:'Segoe UI',sans-serif; 
+      transition: background 0.3s,color 0.3s; 
+      position: relative; 
+      min-height: 100vh; 
+      overflow-x: hidden; 
+    }
     body.dark { color:#fff; }
     body.light { color:#000; }
-    body {
-      margin:0;
-      font-family:'Segoe UI',sans-serif;
-      transition:color 0.3s;
-      position: relative;
-      overflow-x: hidden;
+
+    /* 3-layered wavy background using SVG paths */
+    .wave-bg { position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1; overflow:hidden; }
+    .wave { position:absolute; width:200%; height:200%; opacity:0.5; animation:waveMove 25s linear infinite; }
+    .wave1 { fill:#4b0082; animation-duration:30s; }
+    .wave2 { fill:#6a0dad; animation-duration:40s; }
+    .wave3 { fill:#9b30ff; animation-duration:35s; }
+
+    body.light .wave1 { fill:#87cefa; }
+    body.light .wave2 { fill:#add8e6; }
+    body.light .wave3 { fill:#b0e0e6; }
+
+    @keyframes waveMove {
+      0% { transform: translateX(0) translateY(0) rotate(0deg); }
+      50% { transform: translateX(10%) translateY(5%) rotate(2deg); }
+      100% { transform: translateX(0) translateY(0) rotate(0deg); }
     }
 
-    /* Waves SVG Container */
-    .waves {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      overflow: hidden;
-    }
-    .wave svg { width: 200%; height: 100%; }
-
-    /* Theme Toggle Button */
-    .theme-toggle {
-      margin-top:15px; padding:10px 20px; border:none; border-radius:8px;
-      cursor:pointer; font-weight:bold; background:#5ac8fa; color:#fff;
-    }
-
-    header { text-align:center; padding:40px 20px; position:relative; z-index:1; }
+    header { text-align:center; padding:40px 20px; }
     header h1 { font-size:42px; font-weight:900; color:#ff4c60; }
     header h3 { font-size:22px; font-weight:600; color:#ffdd57; }
-    header p { max-width:800px; margin:15px auto; font-size:16px; line-height:1.5; }
+    header p { max-width:800px; margin:20px auto; font-size:16px; line-height:1.6; }
 
-    .card-container { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; padding:20px; position:relative; z-index:1; }
-    .card {
-      border-radius:15px; width:250px; padding:20px; text-align:center; cursor:pointer; color:#fff;
-      box-shadow:0 0 20px rgba(0,0,0,0.4); transition:transform 0.3s ease; backdrop-filter: blur(4px);
-    }
+    .theme-toggle { margin-top:15px; padding:10px 20px; border:none; border-radius:8px; cursor:pointer; font-weight:bold; background:#5ac8fa; color:#fff; }
+    .theme-toggle:hover { background:#4090e0; }
+
+    .card-container { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; padding:20px; }
+    .card { border-radius:15px; width:250px; padding:20px; text-align:center; cursor:pointer; color:#fff; box-shadow:0 0 20px rgba(0,0,0,0.4); transition:transform 0.3s ease; backdrop-filter: blur(4px); }
     .card:hover { transform:translateY(-5px); }
-
-    /* Card Colors */
-    .card:nth-child(1){background:#ff4c60;} .card:nth-child(2){background:#4cd964;}
-    .card:nth-child(3){background:#5ac8fa;} .card:nth-child(4){background:#a970ff;}
-    .card:nth-child(5){background:#ff9500;} .card:nth-child(6){background:#ffd60a;color:#000;}
+    .card:nth-child(1){background:#ff4c60;} 
+    .card:nth-child(2){background:#4cd964;}
+    .card:nth-child(3){background:#5ac8fa;} 
+    .card:nth-child(4){background:#a970ff;} 
+    .card:nth-child(5){background:#ff9500;} 
+    .card:nth-child(6){background:#ffd60a;color:#000;} 
     .card:nth-child(7){background:#64d2ff;}
 
-    .module-content { display:none; margin:20px auto; padding:20px; border-radius:12px; max-width:900px; backdrop-filter: blur(6px); position:relative; z-index:1; color:#000; background:rgba(255,255,255,0.1); }
-    body.light .module-content { background: rgba(255,255,255,0.9); color:#000; }
+    .module-content { display:none; margin:20px auto; padding:20px; border-radius:12px; max-width:900px; backdrop-filter: blur(6px); background: rgba(255,255,255,0.08); color:#000; }
+    body.dark .module-content { background: rgba(0,0,0,0.5); color:#fff; }
+
     pre { background:rgba(0,0,0,0.2); padding:15px; border-radius:10px; overflow-x:auto; font-size:14px; text-align:left; }
     body.light pre { background:rgba(0,0,0,0.05); }
 
-    .back-home {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      padding: 10px 18px;
-      background: #ff4c60;
-      color: #fff;
-      border-radius: 8px;
-      font-weight: bold;
-      text-decoration: none;
-      z-index:1;
-      transition: background 0.3s ease, transform 0.2s ease;
-    }
-    .back-home:hover { background: #ff1e3c; transform: scale(1.05); }
+    .back-home { position:absolute; top:20px; left:20px; padding:10px 18px; background:#ff4c60; color:#fff; border-radius:8px; font-weight:bold; text-decoration:none; transition: background 0.3s ease, transform 0.2s ease; }
+    .back-home:hover { background:#ff1e3c; transform:scale(1.05); }
+
+    /* Conclusion styling */
+    .conclusion { text-align:center; margin:40px 20px; font-size:18px; font-weight:600; background: rgba(255,255,255,0.08); border-radius:15px; padding:20px; }
+    body.dark .conclusion { background: rgba(0,0,0,0.5); color:#fff; }
   </style>
 </head>
 <body class="dark">
 
-<!-- Waves Background -->
-<div class="waves">
-  <div class="wave">
-    <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
-      <path fill="#4b0082">
-        <animate attributeName="fill" values="#4b0082;#6a0dad;#9b30ff;#4b0082" dur="25s" repeatCount="indefinite" />
-        <animateTransform attributeName="transform" type="translate" values="0,0;30,0;0,0" dur="15s" repeatCount="indefinite" />
-      </path>
-    </svg>
-  </div>
-  <div class="wave">
-    <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
-      <path fill="#6a0dad">
-        <animate attributeName="fill" values="#6a0dad;#9b30ff;#4b0082;#6a0dad" dur="30s" repeatCount="indefinite" />
-        <animateTransform attributeName="transform" type="translate" values="0,0;-20,0;0,0" dur="20s" repeatCount="indefinite" />
-      </path>
-    </svg>
-  </div>
-  <div class="wave">
-    <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
-      <path fill="#9b30ff">
-        <animate attributeName="fill" values="#9b30ff;#4b0082;#6a0dad;#9b30ff" dur="35s" repeatCount="indefinite" />
-        <animateTransform attributeName="transform" type="translate" values="0,0;15,0;0,0" dur="18s" repeatCount="indefinite" />
-      </path>
-    </svg>
-  </div>
+<div class="wave-bg">
+  <svg class="wave wave1" viewBox="0 0 1440 320" preserveAspectRatio="none">
+    <path d="M0,192 C480,320 960,64 1440,192 L1440,320 L0,320 Z"></path>
+  </svg>
+  <svg class="wave wave2" viewBox="0 0 1440 320" preserveAspectRatio="none">
+    <path d="M0,256 C480,128 960,384 1440,256 L1440,320 L0,320 Z"></path>
+  </svg>
+  <svg class="wave wave3" viewBox="0 0 1440 320" preserveAspectRatio="none">
+    <path d="M0,224 C480,96 960,352 1440,224 L1440,320 L0,320 Z"></path>
+  </svg>
 </div>
 
 <a href="index.html" class="back-home">⬅ Back to Home</a>
@@ -108,15 +86,11 @@
   <h1>Sanmathi</h1>
   <h3>Industrial & Manufacturing Systems – Vishalnagari</h3>
   <p>
-    Vishalnagari’s industries are optimized using algorithmic approaches to improve efficiency and sustainability.
+    Vishalnagari’s industries face challenges in scheduling, routing, resource allocation, and predictive maintenance.  
+    This portfolio demonstrates how algorithmic solutions streamline industrial workflows, optimize efficiency, and drive sustainable city development.
   </p>
   <button class="theme-toggle" onclick="toggleTheme()">Switch Theme</button>
 </header>
-
-<!-- Short Intro -->
-<p style="text-align:center; max-width:800px; margin:0 auto 20px; position:relative; z-index:1;">
-  This portfolio presents 7 modules showing how algorithms solve industrial challenges in Vishalnagari.
-</p>
 
 <div class="card-container">
   <div class="card" onclick="toggleModule('m1')">Module 1: EV Assembly Line</div>
@@ -128,35 +102,139 @@
   <div class="card" onclick="toggleModule('m7')">Module 7: Supply Chain Optimization</div>
 </div>
 
-<!-- Module Content Placeholders -->
-<div id="m1" class="module-content"><p>EV Assembly line: Optimize throughput using scheduling algorithms. <br>C++ Pseudocode example:</p><pre>// Sample C++ code here</pre></div>
-<div id="m2" class="module-content"><p>Machine Job Scheduling: Minimize makespan using greedy/DP. <br>C++ Pseudocode example:</p><pre>// Sample C++ code here</pre></div>
-<div id="m3" class="module-content"><p>Logistics Routing: Shortest paths for delivery optimization. <br>C++ Pseudocode example:</p><pre>// Sample C++ code here</pre></div>
-<div id="m4" class="module-content"><p>Battery Allocation: Efficient EV battery distribution. <br>C++ Pseudocode example:</p><pre>// Sample C++ code here</pre></div>
-<div id="m5" class="module-content"><p>Predictive Maintenance: Detect failures using algorithmic models. <br>C++ Pseudocode example:</p><pre>// Sample C++ code here</pre></div>
-<div id="m6" class="module-content"><p>Workforce Scheduling: Optimize shifts using DP. <br>C++ Pseudocode example:</p><pre>// Sample C++ code here</pre></div>
-<div id="m7" class="module-content"><p>Supply Chain Optimization: Minimize cost and time. <br>C++ Pseudocode example:</p><pre>// Sample C++ code here</pre></div>
+<!-- Module Contents -->
+<div id="m1" class="module-content">
+  <strong>Business Case:</strong> Optimize EV assembly line to reduce idle time and maximize throughput.<br>
+  <strong>Algorithm:</strong> Job Shop Scheduling using Greedy + Priority Queues<br>
+  <strong>Efficiency:</strong> O(n log n)<br>
+  <pre>
+struct Task { int start, end; };
+vector<Task> tasks = {...};
+sort(tasks.begin(), tasks.end(), [](Task a, Task b){ return a.end < b.end; });
+int lastEnd = 0, count = 0;
+for(auto t: tasks) {
+    if(t.start >= lastEnd) { count++; lastEnd = t.end; cout<<"Assign task "<<t.start<<"-"<<t.end<<endl; }
+}
+cout << "Total tasks assigned: " << count << endl;
+  </pre>
+</div>
 
-<!-- Short Conclusion -->
-<p style="text-align:center; max-width:800px; margin:30px auto 60px; position:relative; z-index:1;">
-  Algorithmic solutions significantly enhance industrial efficiency, sustainability, and workflow in Vishalnagari.
-</p>
+<div id="m2" class="module-content">
+  <strong>Business Case:</strong> Assign jobs to machines minimizing total completion time.<br>
+  <strong>Algorithm:</strong> Greedy + Min-Heap based scheduling<br>
+  <strong>Efficiency:</strong> O(n log m), n=jobs, m=machines<br>
+  <pre>
+priority_queue<int,vector<int>,greater<int>> pq;
+vector<int> jobs = {...};
+for(int j: jobs){
+    int minEnd = pq.top(); pq.pop();
+    pq.push(minEnd + j);
+    cout<<"Assign job "<<j<<" to machine ending at "<<minEnd<<endl;
+}
+  </pre>
+</div>
+
+<div id="m3" class="module-content">
+  <strong>Business Case:</strong> Optimize delivery routes for logistics fleet in the city.<br>
+  <strong>Algorithm:</strong> Dijkstra’s shortest path on weighted graph<br>
+  <strong>Efficiency:</strong> O(E log V)<br>
+  <pre>
+vector<pair<int,int>> adj[N];
+vector<int> dist(N,1e9); dist[source]=0;
+priority_queue<pair<int,int>,vector<pair<int,int>>,greater<>> pq;
+pq.push({0,source});
+while(!pq.empty()){
+    auto [d,u]=pq.top(); pq.pop();
+    for(auto [v,w]:adj[u]){
+        if(d+w<dist[v]){ dist[v]=d+w; pq.push({dist[v],v}); }
+    }
+}
+  </pre>
+</div>
+
+<div id="m4" class="module-content">
+  <strong>Business Case:</strong> Allocate battery packs to EVs efficiently.<br>
+  <strong>Algorithm:</strong> Knapsack problem using Dynamic Programming<br>
+  <strong>Efficiency:</strong> O(n*W)<br>
+  <pre>
+int dp[N][W+1]={0};
+for(int i=1;i<=n;i++){
+    for(int w=0;w<=W;w++){
+        if(w>=wt[i]) dp[i][w]=max(dp[i-1][w],val[i]+dp[i-1][w-wt[i]]);
+        else dp[i][w]=dp[i-1][w];
+    }
+}
+cout<<"Max battery allocation value: "<<dp[n][W]<<endl;
+  </pre>
+</div>
+
+<div id="m5" class="module-content">
+  <strong>Business Case:</strong> Predict maintenance to reduce machine downtime.<br>
+  <strong>Algorithm:</strong> Predictive analytics + Regression<br>
+  <strong>Efficiency:</strong> O(n)<br>
+  <pre>
+vector<double> usage = {...}, failures = {...};
+double slope=0, intercept=0;
+int n=usage.size();
+double sumX=0,sumY=0,sumXY=0,sumX2=0;
+for(int i=0;i<n;i++){ sumX+=usage[i]; sumY+=failures[i]; sumXY+=usage[i]*failures[i]; sumX2+=usage[i]*usage[i]; }
+slope = (n*sumXY - sumX*sumY)/(n*sumX2 - sumX*sumX);
+intercept = (sumY - slope*sumX)/n;
+cout<<"Predicted failure = "<<(slope*newUsage + intercept)<<endl;
+  </pre>
+</div>
+
+<div id="m6" class="module-content">
+  <strong>Business Case:</strong> Schedule workforce shifts to cover peak hours.<br>
+  <strong>Algorithm:</strong> Interval scheduling using Greedy approach<br>
+  <strong>Efficiency:</strong> O(n log n)<br>
+  <pre>
+struct Shift{ int start,end; };
+vector<Shift> shifts = {...};
+sort(shifts.begin(),shifts.end(),[](Shift a,Shift b){return a.end<b.end;});
+int lastEnd=0;
+for(auto s:shifts){
+    if(s.start>=lastEnd){ lastEnd=s.end; cout<<"Assign shift "<<s.start<<"-"<<s.end<<endl; }
+}
+  </pre>
+</div>
+
+<div id="m7" class="module-content">
+  <strong>Business Case:</strong> Optimize supply chain for timely delivery and minimal cost.<br>
+  <strong>Algorithm:</strong> Linear Programming + Min-Cost Flow<br>
+  <strong>Efficiency:</strong> depends on solver<br>
+  <pre>
+vector<vector<int>> cost = {...};
+vector<vector<int>> flow = {...};
+int totalCost=0;
+for(int i=0;i<n;i++){
+  for(int j=0;j<m;j++){
+    flow[i][j]=min(demand[j],supply[i]);
+    totalCost += flow[i][j]*cost[i][j];
+    supply[i]-=flow[i][j]; demand[j]-=flow[i][j];
+  }
+}
+cout<<"Total supply cost: "<<totalCost<<endl;
+  </pre>
+</div>
+
+<!-- Conclusion -->
+<div class="conclusion">
+Applying algorithmic approaches across these modules enhances productivity, reduces resource wastage, and ensures sustainable industrial operations.  
+Vishalnagari’s city design integrates technology and planning to create an intelligent, efficient, and resilient urban ecosystem.
+</div>
 
 <script>
-function toggleModule(id) {
-  const modules = document.getElementsByClassName('module-content');
-  for (let m of modules) m.style.display = "none";
-  const target = document.getElementById(id);
-  if (target) target.style.display = "block";
+function toggleModule(id){
+  const modules=document.getElementsByClassName('module-content');
+  for(let m of modules) m.style.display="none";
+  const target=document.getElementById(id);
+  if(target) target.style.display="block";
 }
-
-function toggleTheme() {
-  const body = document.body;
-  if (body.classList.contains("dark")) {
-    body.classList.remove("dark"); body.classList.add("light");
-  } else {
-    body.classList.remove("light"); body.classList.add("dark");
-  }
+function toggleTheme(){
+  const body=document.body;
+  if(body.classList.contains("dark")){ body.classList.remove("dark"); body.classList.add("light"); }
+  else { body.classList.remove("light"); body.classList.add("dark"); }
 }
 </script>
 
