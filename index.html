@@ -78,7 +78,7 @@
     @keyframes wave2Light { 0% {transform: translateX(0) rotate(0deg);} 50% {transform: translateX(-15%) rotate(-3deg);} 100% {transform: translateX(0) rotate(0deg);} }
     @keyframes wave3Light { 0% {transform: translateX(0) rotate(0deg);} 50% {transform: translateX(10%) rotate(1deg);} 100% {transform: translateX(0) rotate(0deg);} }
 
-    /* Theme toggle button */
+    /* Theme Toggle Button */
     .theme-toggle {
       margin-top: 20px;
       padding: 10px 20px;
@@ -93,6 +93,28 @@
       position: relative;
     }
     .theme-toggle:hover { background: #ff4c60; }
+
+    /* Navigation Bar */
+    nav {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 15px;
+      z-index: 3;
+    }
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: background 0.3s;
+      background: rgba(0,0,0,0.3);
+    }
+    nav a:hover { background: rgba(0,0,0,0.6); }
+    body.light nav a { color: #222; background: rgba(255,255,255,0.6); }
+    body.light nav a:hover { background: rgba(255,255,255,0.9); }
 
     /* Headings */
     .portfolio-heading {
@@ -216,6 +238,15 @@
 
 <!-- Extra wave layer -->
 <div class="wave-layer3"></div>
+
+<!-- Top Navigation Bar -->
+<nav>
+  <a href="index.html">Home</a>
+  <a href="sanmathi_port.html">Sanmathi</a>
+  <a href="vasavi_port.html">Vasavi</a>
+  <a href="akshata_port.html">Akshata</a>
+  <a href="isha_port.html">Isha</a>
+</nav>
 
 <!-- Theme Toggle -->
 <button class="theme-toggle" id="toggleBtn" onclick="toggleTheme()">Switch to Light Mode</button>
