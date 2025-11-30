@@ -7,14 +7,11 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      text-align: center;
-      color: white;
-      /* Animated gradient background */
       background: linear-gradient(270deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
       background-size: 800% 800%;
       animation: gradientShift 15s ease infinite;
@@ -27,34 +24,59 @@
     }
 
     .course-card {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(10px);
       padding: 40px 30px;
       border-radius: 20px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
       max-width: 400px;
+      width: 90%;
+      color: #222; /* Dark text */
+      text-align: left;
     }
 
-    .course-card h2 {
-      margin: 0 0 20px;
-      font-size: 28px;
+    .course-box {
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 12px;
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .course-box h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
       font-weight: 700;
+      color: #333;
     }
 
-    .course-card p {
-      margin: 10px 0;
-      font-size: 18px;
+    .course-box p {
+      margin: 0;
+      font-size: 16px;
       font-weight: 500;
+      color: #444;
     }
   </style>
 </head>
 <body>
 
   <div class="course-card">
-    <h2>Design & Analysis of Algorithms</h2>
-    <p><strong>Course Code:</strong> 24ECS205</p>
-    <p><strong>University:</strong> KLE Tech</p>
-    <p><strong>Instructor:</strong> Prof. Prakash Hegade</p>
+    <div class="course-box">
+      <h3>Course</h3>
+      <p>Design & Analysis of Algorithms</p>
+    </div>
+    <div class="course-box">
+      <h3>Code</h3>
+      <p>24ECS205</p>
+    </div>
+    <div class="course-box">
+      <h3>University</h3>
+      <p>KLE Tech</p>
+    </div>
+    <div class="course-box">
+      <h3>Instructor</h3>
+      <p>Prof. Prakash Hegade</p>
+    </div>
   </div>
 
 </body>
