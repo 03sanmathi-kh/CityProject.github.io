@@ -73,31 +73,92 @@ pre{background:rgba(255,255,255,0.08);padding:15px;border-radius:10px;overflow-x
 <h2>Traffic Flow</h2>
 <p><strong>Algorithm:</strong> Dijkstra. O(E+V log V)</p>
 <pre>#include &lt;iostream&gt;
-int main(){std::cout&lt;&lt;"Traffic Flow";}</pre>
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+using namespace std;
+int main(){
+    vector&lt;vector&lt;pair&lt;int,int&gt;&gt;&gt; adj(3);
+    adj[0].push_back({1,5}); adj[1].push_back({2,3});
+    vector&lt;int&gt; dist(3,1000); dist[0]=0;
+    priority_queue&lt;pair&lt;int,int&gt;,vector&lt;pair&lt;int,int&gt;&gt;,greater&lt;&gt;&gt; pq;
+    pq.push({0,0});
+    while(!pq.empty()){
+        int u=pq.top().second; int d=pq.top().first; pq.pop();
+        for(auto [v,w]:adj[u]){
+            if(dist[u]+w&lt;dist[v]){dist[v]=dist[u]+w; pq.push({dist[v],v});}
+        }
+    }
+    for(int i=0;i&lt;3;i++) cout&lt;&lt;"Distance to "&lt;&lt;i&lt;&lt;": "&lt;&lt;dist[i]&lt;&lt;endl;
+}</pre>
+<p><strong>Conclusion:</strong> Dynamic routing optimizes traffic flow efficiently.</p>
 </div>
+
 <div id="a2" class="module-content">
 <h2>Signal Scheduling</h2>
 <p><strong>Algorithm:</strong> Round Robin. O(n)</p>
 <pre>#include &lt;iostream&gt;
-int main(){std::cout&lt;&lt;"Signals";}</pre>
+#include &lt;vector&gt;
+using namespace std;
+int main(){
+    vector&lt;int&gt; signals={30,45,25};
+    for(int i=0;i&lt;signals.size();i++){
+        cout&lt;&lt;"Signal "&lt;&lt;i&lt;&lt;" duration: "&lt;&lt;signals[i]&lt;&lt;" sec"<<endl;
+    }
+}</pre>
+<p><strong>Conclusion:</strong> Fair scheduling reduces intersection delays.</p>
 </div>
+
 <div id="a3" class="module-content">
 <h2>Accident Detection</h2>
 <p><strong>Algorithm:</strong> Anomaly Detection. O(n)</p>
 <pre>#include &lt;iostream&gt;
-int main(){std::cout&lt;&lt;"Accident";}</pre>
+#include &lt;vector&gt;
+using namespace std;
+int main(){
+    vector&lt;int&gt; sensor={0,0,1,0};
+    for(int i=0;i&lt;sensor.size();i++){
+        if(sensor[i]==1) cout&lt;&lt;"Accident detected at sensor "&lt;&lt;i&lt;&lt;endl;
+    }
+}</pre>
+<p><strong>Conclusion:</strong> Real-time detection speeds emergency response.</p>
 </div>
+
 <div id="a4" class="module-content">
 <h2>Parking Allocation</h2>
 <p><strong>Algorithm:</strong> Greedy. O(n log n)</p>
 <pre>#include &lt;iostream&gt;
-int main(){std::cout&lt;&lt;"Parking";}</pre>
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+int main(){
+    vector&lt;int&gt; slots={1,2,3}; vector&lt;int&gt; cars={2,1,3};
+    sort(slots.begin(),slots.end());
+    for(int i=0;i&lt;cars.size();i++) cout&lt;&lt;"Car "&lt;&lt;cars[i]&lt;&lt;" assigned to slot "&lt;&lt;slots[i]&lt;&lt;endl;
+}</pre>
+<p><strong>Conclusion:</strong> Greedy allocation improves parking efficiency.</p>
 </div>
+
 <div id="a5" class="module-content">
 <h2>Emergency Routing</h2>
 <p><strong>Algorithm:</strong> A*. O(E)</p>
 <pre>#include &lt;iostream&gt;
-int main(){std::cout&lt;&lt;"Emergency";}</pre>
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+using namespace std;
+int main(){
+    vector&lt;vector&lt;int&gt;&gt; graph={{0,1,2},{1,0,3},{2,3,0}};
+    vector&lt;int&gt; dist(3,1000); dist[0]=0;
+    priority_queue&lt;pair&lt;int,int&gt;,vector&lt;pair&lt;int,int&gt;&gt;,greater&lt;&gt;&gt; pq;
+    pq.push({0,0});
+    while(!pq.empty()){
+        int u=pq.top().second; pq.pop();
+        for(int v=0;v&lt;3;v++){
+            if(dist[u]+graph[u][v]&lt;dist[v]) dist[v]=dist[u]+graph[u][v];
+        }
+    }
+    for(int i=0;i&lt;3;i++) cout&lt;&lt;"Emergency route to node "&lt;&lt;i&lt;&lt;": "&lt;&lt;dist[i]&lt;&lt;endl;
+}</pre>
+<p><strong>Conclusion:</strong> Optimized emergency routing saves lives.</p>
 </div>
 
 <script>
