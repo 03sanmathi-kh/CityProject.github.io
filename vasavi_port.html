@@ -5,32 +5,58 @@
   <title>Vasavi Kabbur – Commerce & Governance Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    /* CSS Variables for themes */
+    :root {
+      --bg-color: #0a0a0a;
+      --text-color: #ffffff;
+      --header-color: #27ae60;
+      --subheader-color: #f39c12;
+      --p-color: #dddddd;
+      --box-bg-opacity: 0.2;
+      --box-border-opacity: 0.4;
+    }
+
+    body.light {
+      --bg-color: #f5f5f5;
+      --text-color: #222222;
+      --header-color: #27ae60;
+      --subheader-color: #e67e22;
+      --p-color: #333333;
+      --box-bg-opacity: 0.1;
+      --box-border-opacity: 0.2;
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #0a0a0a;
-      color: #ffffff;
+      background: var(--bg-color);
+      color: var(--text-color);
       text-align: center;
+      transition: background 0.3s, color 0.3s;
     }
+
     header {
       padding: 40px 20px;
     }
+
     header h1 {
       font-size: 42px;
       font-weight: 900;
-      color: #27ae60;
+      color: var(--header-color);
     }
+
     header h3 {
       font-size: 22px;
       font-weight: 600;
-      color: #f39c12;
+      color: var(--subheader-color);
     }
+
     header p {
       max-width: 800px;
       margin: 20px auto;
       font-size: 16px;
       line-height: 1.6;
-      color: #dddddd;
+      color: var(--p-color);
     }
 
     /* Bubble container */
@@ -66,20 +92,21 @@
     .budget { background: radial-gradient(circle, rgba(75,192,192,0.85), rgba(75,192,192,0.65)); }
     .audit { background: radial-gradient(circle, rgba(153,102,255,0.85), rgba(153,102,255,0.65)); }
 
-    /* Popup content */
+    /* Module content */
     .module-content {
       display: none;
       margin: 20px auto;
       padding: 20px;
       border-radius: 15px;
       max-width: 900px;
-      color: #fff;
+      color: var(--text-color);
+      transition: background 0.3s, border 0.3s;
     }
-    .market-box { background: rgba(255,99,132,0.2); border: 1px solid rgba(255,99,132,0.4); }
-    .allocation-box { background: rgba(54,162,235,0.2); border: 1px solid rgba(54,162,235,0.4); }
-    .governance-box { background: rgba(255,206,86,0.2); border: 1px solid rgba(255,206,86,0.4); }
-    .budget-box { background: rgba(75,192,192,0.2); border: 1px solid rgba(75,192,192,0.4); }
-    .audit-box { background: rgba(153,102,255,0.2); border: 1px solid rgba(153,102,255,0.4); }
+    .market-box { background: rgba(255,99,132,var(--box-bg-opacity)); border: 1px solid rgba(255,99,132,var(--box-border-opacity)); }
+    .allocation-box { background: rgba(54,162,235,var(--box-bg-opacity)); border: 1px solid rgba(54,162,235,var(--box-border-opacity)); }
+    .governance-box { background: rgba(255,206,86,var(--box-bg-opacity)); border: 1px solid rgba(255,206,86,var(--box-border-opacity)); }
+    .budget-box { background: rgba(75,192,192,var(--box-bg-opacity)); border: 1px solid rgba(75,192,192,var(--box-border-opacity)); }
+    .audit-box { background: rgba(153,102,255,var(--box-bg-opacity)); border: 1px solid rgba(153,102,255,var(--box-border-opacity)); }
 
     .module-content h2 { font-size: 24px; }
     .module-content p { font-size: 16px; line-height: 1.6; }
@@ -89,8 +116,24 @@
       border-radius: 10px;
       overflow-x: auto;
       font-size: 14px;
-      color: #f5f5f5;
+      color: var(--text-color);
     }
+
+    /* Theme toggle button */
+    #themeBtn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background: var(--header-color);
+      color: #fff;
+      transition: background 0.3s;
+    }
+    #themeBtn:hover { background: var(--subheader-color); }
   </style>
 </head>
 <body>
@@ -105,6 +148,9 @@
     transparency, and efficiency across public systems — from local markets to city‑wide audits.
   </p>
 </header>
+
+<button id="themeBtn">Switch Theme</button>
+
 <div class="bubble-container">
   <div class="bubble market" onclick="toggleModule('v1')">Module 1: Smart Market Matching</div>
   <div class="bubble allocation" onclick="toggleModule('v2')">Module 2: Resource Allocation</div>
@@ -116,10 +162,8 @@
 <!-- Module 1 -->
 <div id="v1" class="module-content market-box">
   <h2>Smart Market Matching</h2>
-  <p><strong>🔍 What exact problem are we solving?</strong><br>
-  How can buyers and sellers be matched fairly in a smart marketplace?</p>
-  <p><strong>Algorithm:</strong> Stable Matching (Gale–Shapley)<br>
-     <strong>Efficiency:</strong> O(n²)</p>
+  <p><strong>🔍 Problem:</strong> How can buyers and sellers be matched fairly in a smart marketplace?</p>
+  <p><strong>Algorithm:</strong> Stable Matching (Gale–Shapley), Efficiency: O(n²)</p>
   <pre>
 Pseudocode:
 1. While unmatched buyers exist:
@@ -136,10 +180,8 @@ vector<int> stableMatching(vector<vector<int>>& prefs) {
 <!-- Module 2 -->
 <div id="v2" class="module-content allocation-box">
   <h2>Resource Allocation</h2>
-  <p><strong>🔍 What exact problem are we solving?</strong><br>
-  How can limited civic resources be allocated fairly among competing demands?</p>
-  <p><strong>Algorithm:</strong> Greedy Allocation<br>
-     <strong>Efficiency:</strong> O(n log n)</p>
+  <p><strong>🔍 Problem:</strong> How can limited civic resources be allocated fairly among competing demands?</p>
+  <p><strong>Algorithm:</strong> Greedy Allocation, Efficiency: O(n log n)</p>
   <pre>
 Pseudocode:
 1. Sort requests by priority
@@ -161,10 +203,8 @@ vector<Request> allocate(vector<Request>& reqs, int total) {
 <!-- Module 3 -->
 <div id="v3" class="module-content governance-box">
   <h2>Governance Scheduling</h2>
-  <p><strong>🔍 What exact problem are we solving?</strong><br>
-  How can civic meetings and governance tasks be scheduled to minimize conflicts?</p>
-  <p><strong>Algorithm:</strong> Interval Graph Coloring<br>
-     <strong>Efficiency:</strong> O(n log n)</p>
+  <p><strong>🔍 Problem:</strong> How can civic meetings and governance tasks be scheduled to minimize conflicts?</p>
+  <p><strong>Algorithm:</strong> Interval Graph Coloring, Efficiency: O(n log n)</p>
   <pre>
 Pseudocode:
 1. Sort tasks by start time
@@ -180,10 +220,8 @@ int scheduleMeetings(vector<pair<int,int>>& tasks) {
 <!-- Module 4 -->
 <div id="v4" class="module-content budget-box">
   <h2>Civic Budget Optimization</h2>
-  <p><strong>🔍 What exact problem are we solving?</strong><br>
-  How can civic budgets be allocated across departments to maximize impact while respecting constraints?</p>
-  <p><strong>Algorithm:</strong> Linear Programming (Simplex Method)<br>
-     <strong>Efficiency:</strong> Polynomial average time</p>
+  <p><strong>🔍 Problem:</strong> How can civic budgets be allocated across departments to maximize impact?</p>
+  <p><strong>Algorithm:</strong> Linear Programming (Simplex), Efficiency: Polynomial average time</p>
   <pre>
 Pseudocode:
 1. Define objective: maximize utility subject to budget limits
@@ -201,10 +239,8 @@ C++ (conceptual):
 <!-- Module 5 -->
 <div id="v5" class="module-content audit-box">
   <h2>Transparency Audits</h2>
-  <p><strong>🔍 What exact problem are we solving?</strong><br>
-  How can governance transactions be audited efficiently to detect anomalies and ensure transparency?</p>
-  <p><strong>Algorithm:</strong> Hashing + Bloom Filters<br>
-     <strong>Efficiency:</strong> O(1) average lookup</p>
+  <p><strong>🔍 Problem:</strong> How can governance transactions be audited efficiently to detect anomalies?</p>
+  <p><strong>Algorithm:</strong> Hashing + Bloom Filters, Efficiency: O(1) average lookup</p>
   <pre>
 Pseudocode:
 1. Store each transaction hash in Bloom filter
@@ -231,20 +267,18 @@ bool checkTransaction(string tx, BloomFilter& bf) {
   </p>
 </section>
 
-<!-- Toggle Script -->
+<!-- Scripts -->
 <script>
 function toggleModule(id) {
-  // Hide all modules first
   const modules = document.getElementsByClassName('module-content');
-  for (let m of modules) {
-    m.style.display = "none";
-  }
-  // Show the one you clicked
+  for (let m of modules) { m.style.display = "none"; }
   const selected = document.getElementById(id);
-  if (selected) {
-    selected.style.display = "block";
-  }
+  if (selected) selected.style.display = "block";
 }
+
+// Theme toggle
+const btn = document.getElementById('themeBtn');
+btn.onclick = () => { document.body.classList.toggle('light'); };
 </script>
 
 </body>
