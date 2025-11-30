@@ -16,9 +16,46 @@
       background: #0a0a0a;
       color: #ffffff;
       transition: background 0.4s ease, color 0.4s ease;
+      position: relative;
+      overflow-x: hidden;
     }
     body.light {
       background: #f5f5f5;
+      color: #222;
+    }
+
+    /* Wavy Background */
+    .wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 150px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ff79c6" fill-opacity="1" d="M0,160L60,165.3C120,171,240,181,360,176C480,171,600,149,720,160C840,171,960,213,1080,213.3C1200,213,1320,171,1380,149.3L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>');
+      background-repeat: no-repeat;
+      background-size: cover;
+      z-index: -1;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      width: 100%;
+      background: #ff79c6;
+      padding: 12px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 15px;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+    .navbar a:hover {
       color: #222;
     }
 
@@ -106,31 +143,11 @@
     body.light .team-card { background: #fff; }
     .team-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.4); }
 
-    .team-card a { color: #ff79c6; font-weight: bold; text-decoration: none; }
-    .team-card a:hover { text-decoration: underline; }
-
     /* Gradient borders for domains */
     .traffic { border-top: 6px solid; border-image: linear-gradient(to right, #e74c3c, #ff6f61) 1; }
     .industry { border-top: 6px solid; border-image: linear-gradient(to right, #f39c12, #ffdd57) 1; }
     .commerce { border-top: 6px solid; border-image: linear-gradient(to right, #27ae60, #2ecc71) 1; }
     .sustainability { border-top: 6px solid; border-image: linear-gradient(to right, #8e44ad, #9b59b6) 1; }
-
-    /* Module Button for Click to Explore */
-    .module-btn {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 10px 18px;
-      background: #ff79c6;
-      color: #fff;
-      border-radius: 8px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: background 0.3s ease, transform 0.2s ease;
-    }
-    .module-btn:hover {
-      background: #ff4c60;
-      transform: scale(1.05);
-    }
 
     /* Footer */
     footer {
@@ -143,6 +160,15 @@
 </head>
 
 <body class="dark">
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+  <a href="index.html">Home</a>
+  <a href="sanmathi_port.html" target="_blank">Sanmathi</a>
+  <a href="vasavi_port.html" target="_blank">Vasavi</a>
+  <a href="akshata_port.html" target="_blank">Akshata</a>
+  <a href="isha_port.html" target="_blank">Isha</a>
+</nav>
 
 <!-- Theme Toggle Button -->
 <button class="theme-toggle" id="toggleBtn" onclick="toggleTheme()">Switch to Light Mode</button>
@@ -184,7 +210,7 @@
 <section id="meet-the-team">
   <h2>Meet the Team</h2>
   <p style="font-size:14px; color:gray; margin-bottom:20px;">
-    👉 Click on any team member’s portfolio link below, then use the module buttons inside to explore case studies, algorithms, and code.
+    👉 Use the navigation bar at the top to open each member’s portfolio.
   </p>
 
   <div class="team-container">
@@ -194,7 +220,6 @@
       <p><strong>USN:</strong> 01fe24bcs269</p>
       <p><strong>Domain:</strong> Industrial and Manufacturing Systems</p>
       <p>Optimization through Linear Programming and Flow Networks</p>
-      <a href="sanmathi_port.html" target="_blank" class="module-btn">Click to Explore</a>
     </div>
 
     <div class="team-card commerce">
@@ -203,7 +228,6 @@
       <p><strong>USN:</strong> 01fe24bcs278</p>
       <p><strong>Domain:</strong> Commerce and Governance</p>
       <p>Graph Matching & Greedy allocation for fair resource distribution</p>
-      <a href="vasavi_port.html" target="_blank" class="module-btn">Click to Explore</a>
     </div>
 
     <div class="team-card traffic">
@@ -212,7 +236,6 @@
       <p><strong>USN:</strong> 01fe24bcs297</p>
       <p><strong>Domain:</strong> Traffic and Mobility</p>
       <p>Shortest Path algorithms (Dijkstra’s, A*) for smooth routing</p>
-      <a href="akshata_port.html" target="_blank" class="module-btn">Click to Explore</a>
     </div>
 
     <div class="team-card sustainability">
@@ -221,7 +244,6 @@
       <p><strong>USN:</strong> 01fe24bcs281</p>
       <p><strong>Domain:</strong> Agriculture and Sustainability</p>
       <p>Dynamic Programming & Graph models for optimized irrigation</p>
-      <a href="isha_port.html" target="_blank" class="module-btn">Click to Explore</a>
     </div>
   </div>
 </section>
@@ -230,6 +252,9 @@
 <footer>
   © 2025 Vishalnagari Portfolio | Designed by Team Division‑D
 </footer>
+
+<!-- Wavy Background -->
+<div class="wave"></div>
 
 <!-- Script for Theme Toggle -->
 <script>
