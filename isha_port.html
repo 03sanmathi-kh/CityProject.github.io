@@ -94,7 +94,7 @@
     Algorithms such as <strong>regression, dynamic programming, TSP heuristics, decision trees, and linear programming</strong> are applied to ensure sustainable farming and efficient resource use.
   </p>
 </header>
-  <div class="diamond-container">
+<div class="diamond-container">
   <div class="diamond" onclick="toggleModule('i1')"><span>Module 1: Crop Yield</span></div>
   <div class="diamond" onclick="toggleModule('i2')"><span>Module 2: Irrigation</span></div>
   <div class="diamond" onclick="toggleModule('i3')"><span>Module 3: Waste Mgmt</span></div>
@@ -105,76 +105,116 @@
 <!-- Module 1 -->
 <div id="i1" class="module-content">
   <h2>Crop Yield Prediction</h2>
-  <p><strong>🔍 What exact problem are we solving?</strong><br>
-  How can farmers predict crop yields based on soil and weather data?</p>
-  <p><strong>Algorithm:</strong> Regression<br>
+  <p><strong>🔍 Problem:</strong> Farmers need to estimate crop yields based on soil nutrients, rainfall, and temperature to plan storage and sales.</p>
+  <p><strong>Algorithm:</strong> Multiple Linear Regression<br>
      <strong>Efficiency:</strong> O(n)</p>
   <pre>
-C++:
-double predictYield(vector<double>& rain, vector<double>& soil) {
-  // regression formula
-}
+Pseudocode:
+1. Collect dataset: rainfall, soil quality, temperature, yield
+2. Normalize features to standard scale
+3. Initialize regression coefficients (β0, β1, β2…)
+4. Apply least squares to minimize error between predicted and actual yield
+5. Update coefficients iteratively until convergence
+6. Predict yield for new input values using regression equation
   </pre>
 </div>
 
 <!-- Module 2 -->
 <div id="i2" class="module-content">
   <h2>Irrigation Scheduling</h2>
-  <p><strong>🔍 What exact problem are we solving?</strong><br>
-  How can water be allocated efficiently to fields?</p>
+  <p><strong>🔍 Problem:</strong> Water resources are limited; fields must be irrigated optimally to maximize crop health.</p>
   <p><strong>Algorithm:</strong> Dynamic Programming (Knapsack)<br>
      <strong>Efficiency:</strong> O(nW)</p>
   <pre>
-C++:
-int irrigationPlan(vector<int>& waterReq, int total) {
-  // DP allocation
-}
+Pseudocode:
+1. Define fields with water requirement and benefit score
+2. Initialize DP table with dimensions [fields][water capacity]
+3. For each field:
+   a. If water allocated ≥ requirement → compute benefit
+   b. Else → skip field
+4. Fill DP table with max benefit at each capacity
+5. Trace back to identify chosen fields
+6. Allocate water accordingly
+7. Output irrigation plan with max benefit
   </pre>
 </div>
 
 <!-- Module 3 -->
 <div id="i3" class="module-content">
   <h2>Waste Management Routing</h2>
-  <p><strong>🔍 What exact problem are we solving?</strong><br>
-  How can waste collection trucks minimize travel distance?</p>
-  <p><strong>Algorithm:</strong> Travelling Salesman (Approximation)<br>
-     <strong>Efficiency:</strong> heuristic faster</p>
+  <p><strong>🔍 Problem:</strong> Trucks must collect waste from multiple locations with minimum travel cost.</p>
+  <p><strong>Algorithm:</strong> Travelling Salesman Problem (TSP heuristic)<br>
+     <strong>Efficiency:</strong> O(n²) for heuristic</p>
   <pre>
-C++:
-int tsp(vector<vector<int>>& dist) {
-  // Held-Karp or heuristic
-}
+Pseudocode:
+1. Start from depot node
+2. Choose nearest unvisited location → move truck
+3. Repeat until all locations visited
+4. Return to depot
+5. Apply 2-opt swap to reduce route length
+6. Output optimized route for waste collection
   </pre>
 </div>
-  <!-- Module 4 -->
+<!-- Module 4 -->
 <div id="i4" class="module-content">
   <h2>Soil Quality Classification</h2>
-  <p><strong>🔍 What exact problem are we solving?</strong><br>
-  How can soil samples be classified for crop suitability?</p>
-  <p><strong>Algorithm:</strong> Decision Tree<br>
+  <p><strong>🔍 Problem:</strong> Soil samples must be classified (e.g., fertile, sandy, clay) to recommend suitable crops.</p>
+  <p><strong>Algorithm:</strong> Decision Tree Classification<br>
      <strong>Efficiency:</strong> O(n log n)</p>
   <pre>
-C++:
-string classifySoil(vector<double>& features) {
-  // decision tree logic
-}
+Pseudocode:
+1. Collect soil dataset with features (pH, moisture, nutrients)
+2. Choose best feature to split using information gain
+3. Partition dataset into subsets
+4. Recursively build decision tree until stopping criteria
+5. Store leaf nodes with soil class labels
+6. For new sample → traverse tree based on feature values
+7. Output predicted soil class
   </pre>
 </div>
 
 <!-- Module 5 -->
 <div id="i5" class="module-content">
   <h2>Renewable Energy Allocation</h2>
-  <p><strong>🔍 What exact problem are we solving?</strong><br>
-  How can solar/wind energy be distributed across farms?</p>
-  <p><strong>Algorithm:</strong> Linear Programming<br>
+  <p><strong>🔍 Problem:</strong> Farms need fair distribution of solar/wind energy to power irrigation and storage.</p>
+  <p><strong>Algorithm:</strong> Linear Programming (Simplex Method)<br>
      <strong>Efficiency:</strong> Polynomial average time</p>
   <pre>
-C++:
-void allocateEnergy(vector<int>& demand, int total) {
-  // LP solver
-}
+Pseudocode:
+1. Define objective function: maximize energy utilization
+2. Add constraints: total energy ≤ supply, farm minimums
+3. Initialize simplex tableau
+4. Perform pivot operations to improve solution
+5. Repeat until optimal solution reached
+6. Output allocation plan for each farm
   </pre>
 </div>
 
 <!-- Conclusion -->
-<section style="margin:40px auto; max-width:900px; padding:20px;
+<section style="margin:40px auto; max-width:900px; padding:20px; background:rgba(255,255,255,0.05); border-radius:15px;">
+  <h2>Conclusion</h2>
+  <p>
+    The Agriculture & Sustainability domain integrates <strong>crop yield prediction, irrigation scheduling, waste management, soil classification, and renewable energy allocation</strong>  
+    into a unified civic framework. By applying algorithmic strategies such as <strong>regression, dynamic programming, TSP heuristics, decision trees, and linear programming</strong>,  
+    Vishalnagari ensures sustainable farming, efficient resource use, and eco‑friendly waste management.
+  </p>
+</section>
+
+<!-- Toggle Script -->
+<script>
+function toggleModule(id) {
+  // Hide all modules first
+  const modules = document.getElementsByClassName('module-content');
+  for (let m of modules) {
+    m.style.display = "none";
+  }
+  // Show the one you clicked
+  const selected = document.getElementById(id);
+  if (selected) {
+    selected.style.display = "block";
+  }
+}
+</script>
+
+</body>
+</html>
