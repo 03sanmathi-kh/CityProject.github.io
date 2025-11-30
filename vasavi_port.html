@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sanmathi – Industry Portfolio</title>
+  <title>Vasavi – Commerce & Government Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body { 
@@ -13,19 +13,19 @@
       min-height: 100vh; 
       overflow-x: hidden; 
     }
-    body.dark { color:#fff; background:#0a0a0a;}
-    body.light { color:#000; background:#f0f0f0;}
+    body.dark { background:#0a0a0a; color:#fff;}
+    body.light { background:#f5f5f5; color:#222;} /* contrasting text */
 
     /* Wave background */
     .wave-bg { position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1; overflow:hidden; }
     .wave { position:absolute; width:200%; height:200%; opacity:0.5; animation:waveMove 25s linear infinite; }
-    .wave1 { fill:#4b0082; animation-duration:30s; }
-    .wave2 { fill:#6a0dad; animation-duration:40s; }
-    .wave3 { fill:#9b30ff; animation-duration:35s; }
+    .wave1 { fill:#f39c12; animation-duration:30s; }
+    .wave2 { fill:#e67e22; animation-duration:35s; }
+    .wave3 { fill:#f1c40f; animation-duration:40s; }
 
-    body.light .wave1 { fill:#87cefa; }
-    body.light .wave2 { fill:#add8e6; }
-    body.light .wave3 { fill:#b0e0e6; }
+    body.light .wave1 { fill:#fce5b6; }
+    body.light .wave2 { fill:#f9d776; }
+    body.light .wave3 { fill:#f7f1a5; }
 
     @keyframes waveMove {
       0% { transform: translateX(0) translateY(0) rotate(0deg); }
@@ -34,43 +34,57 @@
     }
 
     header { text-align:center; padding:40px 20px; position: relative; }
-    header h1 { font-size:42px; font-weight:900; color:#ff4c60; }
-    header h3 { font-size:22px; font-weight:600; color:#ffdd57; }
+    header h1 { font-size:42px; font-weight:900; color:#f39c12; }
+    header h3 { font-size:22px; font-weight:600; color:#e67e22; }
     header p { max-width:800px; margin:20px auto; font-size:16px; line-height:1.6; }
 
+    /* Buttons */
     .theme-toggle { 
-      position: absolute; top:20px; right:20px;
-      padding:10px 20px; border:none; border-radius:8px; cursor:pointer; font-weight:bold; background:#5ac8fa; color:#fff; 
+      position: fixed; top:20px; right:20px;
+      padding:10px 20px; border:none; border-radius:25px; cursor:pointer; font-size:14px; font-weight:600; background:#3498db; color:#fff; 
+      z-index: 10;
     }
-    .theme-toggle:hover { background:#4090e0; }
+    .theme-toggle:hover { background:#2980b9; }
 
-    .card-container { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; padding:20px; }
-    .card { border-radius:15px; width:250px; padding:20px; text-align:center; cursor:pointer; color:#fff; box-shadow:0 0 20px rgba(0,0,0,0.4); transition:transform 0.3s ease; backdrop-filter: blur(4px); }
-    .card:hover { transform:translateY(-5px); }
-    .card:nth-child(1){background:#ff4c60;} 
-    .card:nth-child(2){background:#4cd964;}
-    .card:nth-child(3){background:#5ac8fa;} 
-    .card:nth-child(4){background:#a970ff;} 
-    .card:nth-child(5){background:#ff9500;} 
-    .card:nth-child(6){background:#ffd60a;color:#000;} 
-    .card:nth-child(7){background:#64d2ff;}
-
-    .module-content { display:none; margin:20px auto; padding:20px; border-radius:12px; max-width:900px; backdrop-filter: blur(6px); background: rgba(255,255,255,0.08); color:#000; }
-    body.dark .module-content { background: rgba(0,0,0,0.5); color:#fff; }
-
-    pre { background:rgba(0,0,0,0.2); padding:15px; border-radius:10px; overflow-x:auto; font-size:14px; text-align:left; }
-    body.light pre { background:rgba(0,0,0,0.05); }
-
-    .back-home { 
-      position:absolute; top:20px; left:20px; padding:10px 18px; 
-      background:#ff4c60; color:#fff; border-radius:8px; font-weight:bold; text-decoration:none; 
-      transition: background 0.3s ease, transform 0.2s ease; 
+    .home-button { 
+      position: fixed; top:20px; left:20px;
+      padding:10px 20px; border:none; border-radius:25px; cursor:pointer; font-size:14px; font-weight:600; background:#27ae60; color:#fff; 
+      z-index: 10;
     }
-    .back-home:hover { background:#ff1e3c; transform:scale(1.05); }
+    .home-button:hover { background:#1e8449; }
 
-    .conclusion { text-align:center; margin:40px 20px; font-size:18px; font-weight:600; background: rgba(255,255,255,0.08); border-radius:15px; padding:20px; }
-    body.dark .conclusion { background: rgba(0,0,0,0.5); color:#fff; }
+    .bubble-container { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; padding:30px; }
+    .bubble { width:120px; height:120px; border-radius:50%; 
+      display:flex; align-items:center; justify-content:center; cursor:pointer;
+      color:#fff; font-weight:600; transition:transform 0.3s ease, background 0.3s ease; text-align:center; padding:10px; }
+    .bubble:hover { transform:scale(1.1); }
 
+    /* Bubble colors */
+    .budget { background:#e74c3c; }
+    .tax { background:#3498db; }
+    .loan { background:#f1c40f; color:#222; }
+    .resource { background:#2ecc71; }
+    .optimization { background:#9b59b6; }
+
+    /* Module content tinted with same bubble color */
+    #m1 { background: rgba(231,76,60,0.2); }
+    #m2 { background: rgba(52,152,219,0.2); }
+    #m3 { background: rgba(241,196,15,0.2); }
+    #m4 { background: rgba(46,204,113,0.2); }
+    #m5 { background: rgba(155,89,182,0.2); }
+
+    .module-content { display:none; margin:20px auto; padding:20px;
+      border-radius:15px; max-width:900px; transition: background 0.3s, color 0.3s; }
+    .module-content h2 { font-size:24px; }
+    .module-content p { font-size:16px; line-height:1.6; }
+    pre { background:rgba(0,0,0,0.1); padding:15px; border-radius:10px;
+      overflow-x:auto; font-size:14px; text-align:left; transition: background 0.3s,color 0.3s;}
+    body.dark pre { background:rgba(255,255,255,0.08); color:#fff; }
+    body.light pre { background: rgba(0,0,0,0.08); color:#222; }
+
+    section.conclusion { margin:40px auto; max-width:900px; padding:20px; background:rgba(0,0,0,0.06); border-radius:15px; transition: background 0.3s,color 0.3s;}
+    body.dark section.conclusion { background: rgba(0,0,0,0.3); color:#fff; }
+    body.light section.conclusion { background: rgba(255,255,255,0.8); color:#222; }
   </style>
 </head>
 <body class="dark">
@@ -87,169 +101,137 @@
   </svg>
 </div>
 
-<a href="index.html" class="back-home">⬅ Back to Home</a>
-<button class="theme-toggle" onclick="toggleTheme()">Switch Theme</button>
+<button class="home-button" onclick="goHome()">🏠 Home</button>
+<button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
 
 <header>
-  <h1>Sanmathi</h1>
-  <h3>Industrial & Manufacturing Systems – Vishalnagari</h3>
+  <h1>Vasavi</h1>
+  <h3>Commerce & Government – Vishalnagari</h3>
   <p>
-    Vishalnagari’s industries face challenges in scheduling, routing, resource allocation, and predictive maintenance.  
-    This portfolio explores how algorithms transform these business cases into scalable, efficient solutions.
+    This domain focuses on <strong>budget allocation, taxation, loans, resource distribution, and process optimization in banks & government bodies</strong>.  
+    Algorithms like <strong>greedy allocation, dynamic programming, graph algorithms, linear programming, and heuristics</strong> power efficient governance and commerce management.
   </p>
 </header>
 
-<div class="card-container">
-  <div class="card" onclick="toggleModule('m1')">Module 1: EV Assembly Line</div>
-  <div class="card" onclick="toggleModule('m2')">Module 2: Machine Job Scheduling</div>
-  <div class="card" onclick="toggleModule('m3')">Module 3: Logistics Routing</div>
-  <div class="card" onclick="toggleModule('m4')">Module 4: Battery Allocation</div>
-  <div class="card" onclick="toggleModule('m5')">Module 5: Predictive Maintenance</div>
-  <div class="card" onclick="toggleModule('m6')">Module 6: Workforce Scheduling</div>
-  <div class="card" onclick="toggleModule('m7')">Module 7: Supply Chain Optimization</div>
+<div class="bubble-container">
+  <div class="bubble budget" onclick="toggleModule('m1')">Budget Allocation</div>
+  <div class="bubble tax" onclick="toggleModule('m2')">Tax Planning</div>
+  <div class="bubble loan" onclick="toggleModule('m3')">Loan Distribution</div>
+  <div class="bubble resource" onclick="toggleModule('m4')">Resource Allocation</div>
+  <div class="bubble optimization" onclick="toggleModule('m5')">Process Optimization</div>
 </div>
 
-<!-- Module Contents (unchanged) -->
+<!-- Module content examples -->
 <div id="m1" class="module-content">
-  <strong>Business Case:</strong> Optimize EV assembly line to reduce idle time and maximize throughput.<br>
-  <strong>Algorithm:</strong> Job Shop Scheduling using Greedy + Priority Queues<br>
-  <strong>Efficiency:</strong> O(n log n)<br>
+  <h2>Budget Allocation</h2>
+  <p><strong>Case Study:</strong><br>
+    How can government budget be allocated to departments to maximize public welfare?</p>
+  <p><strong>Algorithm:</strong> Greedy Allocation<br><strong>Efficiency:</strong> O(n log n)</p>
   <pre>
-struct Task { int start, end; };
-vector<Task> tasks = {...};
-sort(tasks.begin(), tasks.end(), [](Task a, Task b){ return a.end < b.end; });
-int lastEnd = 0, count = 0;
-for(auto t: tasks) {
-    if(t.start >= lastEnd) { count++; lastEnd = t.end; cout<<"Assign task "<<t.start<<"-"<<t.end<<endl; }
+C++ Pseudocode:
+vector<int> allocateBudget(vector<int>& needs, int totalBudget) {
+    sort(needs.rbegin(), needs.rend());
+    vector<int> allocation(needs.size(),0);
+    for(int i=0;i<needs.size();i++){
+        if(totalBudget>=needs[i]){ allocation[i]=needs[i]; totalBudget-=needs[i]; }
+        else{ allocation[i]=totalBudget; totalBudget=0; }
+    }
+    return allocation;
 }
-cout << "Total tasks assigned: " << count << endl;
   </pre>
 </div>
 
 <div id="m2" class="module-content">
-  <strong>Business Case:</strong> Assign jobs to machines minimizing total completion time.<br>
-  <strong>Algorithm:</strong> Greedy + Min-Heap based scheduling<br>
-  <strong>Efficiency:</strong> O(n log m), n=jobs, m=machines<br>
+  <h2>Tax Planning</h2>
+  <p><strong>Case Study:</strong><br>
+    How to design tax rates to maximize revenue while keeping fairness?</p>
+  <p><strong>Algorithm:</strong> Linear Programming<br><strong>Efficiency:</strong> Polynomial average time</p>
   <pre>
-priority_queue<int,vector<int>,greater<int>> pq;
-vector<int> jobs = {...};
-for(int j: jobs){
-    int minEnd = pq.top(); pq.pop();
-    pq.push(minEnd + j);
-    cout<<"Assign job "<<j<<" to machine ending at "<<minEnd<<endl;
-}
+C++ Pseudocode (conceptual):
+// maximize revenue: maximize sum(tax[i]*income[i])
+// constraints: sum(income[i]*tax[i]) >= requiredRevenue
+// use LP solver
   </pre>
 </div>
 
 <div id="m3" class="module-content">
-  <strong>Business Case:</strong> Optimize delivery routes for logistics fleet in the city.<br>
-  <strong>Algorithm:</strong> Dijkstra’s shortest path on weighted graph<br>
-  <strong>Efficiency:</strong> O(E log V)<br>
+  <h2>Loan Distribution</h2>
+  <p><strong>Case Study:</strong><br>
+    How to distribute limited loans to applicants to maximize bank returns?</p>
+  <p><strong>Algorithm:</strong> Knapsack / Dynamic Programming<br><strong>Efficiency:</strong> O(nW)</p>
   <pre>
-vector<pair<int,int>> adj[N];
-vector<int> dist(N,1e9); dist[source]=0;
-priority_queue<pair<int,int>,vector<pair<int,int>>,greater<>> pq;
-pq.push({0,source});
-while(!pq.empty()){
-    auto [d,u]=pq.top(); pq.pop();
-    for(auto [v,w]:adj[u]){
-        if(d+w<dist[v]){ dist[v]=d+w; pq.push({dist[v],v}); }
+C++ Pseudocode:
+int maxLoanProfit(int W, vector<int>& loans, vector<int>& returns, int n){
+    vector<vector<int>> dp(n+1, vector<int>(W+1,0));
+    for(int i=1;i<=n;i++){
+        for(int w=0;w<=W;w++){
+            if(loans[i-1]<=w)
+                dp[i][w]=max(dp[i-1][w], dp[i-1][w-loans[i-1]]+returns[i-1]);
+            else dp[i][w]=dp[i-1][w];
+        }
     }
+    return dp[n][W];
 }
   </pre>
 </div>
 
 <div id="m4" class="module-content">
-  <strong>Business Case:</strong> Allocate battery packs to EVs efficiently.<br>
-  <strong>Algorithm:</strong> Knapsack problem using Dynamic Programming<br>
-  <strong>Efficiency:</strong> O(n*W)<br>
+  <h2>Resource Allocation</h2>
+  <p><strong>Case Study:</strong><br>
+    How to allocate manpower and resources to different government projects efficiently?</p>
+  <p><strong>Algorithm:</strong> Graph Matching / Greedy<br><strong>Efficiency:</strong> O(n²)</p>
   <pre>
-int dp[N][W+1]={0};
-for(int i=1;i<=n;i++){
-    for(int w=0;w<=W;w++){
-        if(w>=wt[i]) dp[i][w]=max(dp[i-1][w],val[i]+dp[i-1][w-wt[i]]);
-        else dp[i][w]=dp[i-1][w];
-    }
-}
-cout<<"Max battery allocation value: "<<dp[n][W]<<endl;
-  </pre>
+C++ Pseudocode:
+for each project in projects:
+    assign available staff with max skill matching
+    update remaining resources
+</pre>
 </div>
 
 <div id="m5" class="module-content">
-  <strong>Business Case:</strong> Predict maintenance to reduce machine downtime.<br>
-  <strong>Algorithm:</strong> Predictive analytics + Regression<br>
-  <strong>Efficiency:</strong> O(n)<br>
+  <h2>Process Optimization</h2>
+  <p><strong>Case Study:</strong><br>
+    How to optimize internal bank operations to reduce processing time and cost?</p>
+  <p><strong>Algorithm:</strong> Heuristic Scheduling / DP<br><strong>Efficiency:</strong> O(n log n)</p>
   <pre>
-vector<double> usage = {...}, failures = {...};
-double slope=0, intercept=0;
-int n=usage.size();
-double sumX=0,sumY=0,sumXY=0,sumX2=0;
-for(int i=0;i<n;i++){ sumX+=usage[i]; sumY+=failures[i]; sumXY+=usage[i]*failures[i]; sumX2+=usage[i]*usage[i]; }
-slope = (n*sumXY - sumX*sumY)/(n*sumX2 - sumX*sumX);
-intercept = (sumY - slope*sumX)/n;
-cout<<"Predicted failure = "<<(slope*newUsage + intercept)<<endl;
-  </pre>
+C++ Pseudocode:
+sort(tasks by priority);
+for each task:
+    assign to available counter minimizing wait time
+update schedules
+</pre>
 </div>
 
-<div id="m6" class="module-content">
-  <strong>Business Case:</strong> Schedule workforce shifts to cover peak hours.<br>
-  <strong>Algorithm:</strong> Interval scheduling using Greedy approach<br>
-  <strong>Efficiency:</strong> O(n log n)<br>
-  <pre>
-struct Shift{ int start,end; };
-vector<Shift> shifts = {...};
-sort(shifts.begin(),shifts.end(),[](Shift a,Shift b){return a.end<b.end;});
-int lastEnd=0;
-for(auto s:shifts){
-    if(s.start>=lastEnd){ lastEnd=s.end; cout<<"Assign shift "<<s.start<<"-"<<s.end<<endl; }
-}
-  </pre>
-</div>
-
-<div id="m7" class="module-content">
-  <strong>Business Case:</strong> Optimize supply chain for timely delivery and minimal cost.<br>
-  <strong>Algorithm:</strong> Linear Programming + Min-Cost Flow<br>
-  <strong>Efficiency:</strong> depends on solver<br>
-  <pre>
-vector<vector<int>> cost = {...};
-vector<vector<int>> flow = {...};
-int totalCost=0;
-for(int i=0;i<n;i++){
-  for(int j=0;j<m;j++){
-    flow[i][j]=min(demand[j],supply[i]);
-    totalCost += flow[i][j]*cost[i][j];
-    supply[i]-=flow[i][j]; demand[j]-=flow[i][j];
-  }
-}
-cout<<"Total supply cost: "<<totalCost<<endl;
-  </pre>
-</div>
-
-<!-- Conclusion -->
-<div class="conclusion">
-Applying algorithmic approaches across these modules enhances productivity, reduces resource wastage, and ensures sustainable industrial operations.  
-Vishalnagari’s city design integrates technology and planning to create an intelligent, efficient, and resilient urban ecosystem.
-</div>
+<section class="conclusion">
+  <h2>Conclusion</h2>
+  <p>
+    Commerce & Government operations in Vishalnagari benefit from algorithmic decision-making.  
+    Each module demonstrates how logic and computation drive fair, efficient, and optimized governance.
+  </p>
+</section>
 
 <script>
-function toggleModule(id){
-  const modules=document.getElementsByClassName('module-content');
-  for(let m of modules) m.style.display="none";
-  const target=document.getElementById(id);
-  if(target) target.style.display="block";
+function toggleModule(id) {
+  const sections = document.getElementsByClassName("module-content");
+  for (let s of sections) s.style.display = "none";
+  const target = document.getElementById(id);
+  if (target) target.style.display = "block";
 }
 
-function toggleTheme(){
-  const body=document.body;
-  if(body.classList.contains("dark")){
-    body.classList.remove("dark"); 
-    body.classList.add("light");
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+  document.body.classList.toggle("light");
+  const btn = document.querySelector(".theme-toggle");
+  if (document.body.classList.contains("light")) {
+    btn.textContent = "☀️ Light Mode";
   } else {
-    body.classList.remove("light"); 
-    body.classList.add("dark");
+    btn.textContent = "🌙 Dark Mode";
   }
 }
-</script>
 
+function goHome() {
+  window.location.href = "index.html";
+}
+</script>
 </body>
 </html>
