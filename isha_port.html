@@ -18,6 +18,11 @@
       border:none; border-radius:25px; cursor:pointer; font-size:14px; font-weight:600;
       background:#3498db; color:#fff; }
 
+    /* Back to Home button styled similarly */
+    .home-button { position:fixed; top:20px; right:120px; padding:10px 20px;
+      border:none; border-radius:25px; cursor:pointer; font-size:14px; font-weight:600;
+      background:#27ae60; color:#fff; }
+
     .droplet-container { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; padding:30px; }
     .droplet { width:100px; height:150px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
       display:flex; align-items:center; justify-content:center; cursor:pointer;
@@ -50,6 +55,7 @@
 <body class="dark">
 
 <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+<button class="home-button" onclick="goHome()">🏠 Home</button>
 
 <header>
   <h1>Isha</h1>
