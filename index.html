@@ -8,20 +8,32 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb, #84fab0, #8fd3f4);
-      background-size: 600% 600%;
-      animation: gradientShift 18s ease infinite;
       overflow-x: hidden;
+      position: relative;
     }
 
-    @keyframes gradientShift {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
+    /* Waves background */
+    .waves {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100vw;
+      height: 30vh;
+      z-index: -1;
+    }
+
+    .waves path {
+      animation: waveFloat 8s ease-in-out infinite;
+    }
+
+    @keyframes waveFloat {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-6px); }
+      100% { transform: translateY(0); }
     }
 
     .portfolio-heading {
@@ -112,6 +124,11 @@
       height: auto;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .city-images img:hover {
+      transform: scale(1.05);
     }
   </style>
 </head>
@@ -149,11 +166,17 @@
 
     <h3>City Map</h3>
     <div class="city-images">
-      <!-- Replace with your actual image file names -->
-      <img src="Image1jpg." alt="City Map ">
-      <img src="Image2.jpg" alt="City Description">
+      <img src="Image1.jpg" alt="City Map 1">
+      <img src="Image2.jpg" alt="City Map 2">
     </div>
   </section>
+
+  <!-- SVG Waves Background -->
+  <svg class="waves" viewBox="0 0 1440 320" preserveAspectRatio="none">
+    <path fill="#a18cd1" fill-opacity="0.35" d="M0,128L80,154.7C160,181,320,235,480,234.7C640,235,800,181,960,170.7C1120,160,1280,192,1360,208L1440,224L1440,320L0,320Z"></path>
+    <path fill="#fbc2eb" fill-opacity="0.35" d="M0,192L80,197.3C160,203,320,213,480,202.7C640,192,800,160,960,165.3C1120,171,1280,213,1360,234.7L1440,256L1440,320L0,320Z"></path>
+    <path fill="#8fd3f4" fill-opacity="0.35" d="M0,96L80,122.7C160,149,320,203,480,224C640,245,800,235,960,224C1120,213,1280,192,1360,181.3L1440,171L1440,320L0,320Z"></path>
+  </svg>
 
 </body>
 </html>
