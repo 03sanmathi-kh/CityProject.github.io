@@ -57,7 +57,7 @@ pre{background:rgba(255,255,255,0.08);padding:15px;border-radius:10px;overflow-x
 <header>
 <h1>Akshata</h1>
 <h3>Traffic Management – Vishalnagari</h3>
-<p>Vishalnagari's Traffic domain ensures safe, fast, and efficient transportation.</p>
+<p>Vishalnagari's Traffic domain ensures safe, fast, and intelligent mobility for every citizen.</p>
 </header>
 
 <div class="hex-container">
@@ -68,116 +68,138 @@ pre{background:rgba(255,255,255,0.08);padding:15px;border-radius:10px;overflow-x
 <div class="hex emergency" onclick="toggleModule('a5')">Emergency Routing</div>
 </div>
 
-<!-- Modules -->
+<!-- MODULES -->
+
 <div id="a1" class="module-content">
 <h2>Traffic Flow</h2>
-<p><strong>Algorithm:</strong> Dijkstra. O(E+V log V)</p>
+<p><strong>Algorithm:</strong> Dijkstra – shortest congestion-free path. O(E + V log V)</p>
 <pre>#include &lt;iostream&gt;
 #include &lt;vector&gt;
 #include &lt;queue&gt;
 using namespace std;
+
 int main(){
-    vector&lt;vector&lt;pair&lt;int,int&gt;&gt;&gt; adj(3);
-    adj[0].push_back({1,5}); adj[1].push_back({2,3});
-    vector&lt;int&gt; dist(3,1000); dist[0]=0;
-    priority_queue&lt;pair&lt;int,int&gt;,vector&lt;pair&lt;int,int&gt;&gt;,greater&lt;&gt;&gt; pq;
+    vector<vector<pair<int,int>>> adj(3);
+    adj[0]={{1,5},{2,9}};
+    adj[1]={{2,3}};
+    vector<int> dist(3,1e9); dist[0]=0;
+
+    priority_queue<pair<int,int>,vector<pair<int,int>>,greater<>> pq;
     pq.push({0,0});
+
     while(!pq.empty()){
-        int u=pq.top().second; int d=pq.top().first; pq.pop();
+        auto [d,u]=pq.top(); pq.pop();
         for(auto [v,w]:adj[u]){
-            if(dist[u]+w&lt;dist[v]){dist[v]=dist[u]+w; pq.push({dist[v],v});}
+            if(dist[u]+w < dist[v]){
+                dist[v]=dist[u]+w;
+                pq.push({dist[v],v});
+            }
         }
     }
-    for(int i=0;i&lt;3;i++) cout&lt;&lt;"Distance to "&lt;&lt;i&lt;&lt;": "&lt;&lt;dist[i]&lt;&lt;endl;
+    for(int i=0;i<3;i++) cout<<"Distance to "<<i<<": "<<dist[i]<<endl;
 }</pre>
-<p><strong>Conclusion:</strong> Dynamic routing optimizes traffic flow efficiently.</p>
+<p><strong>Conclusion:</strong> Shortest-path routing minimizes congestion and improves vehicle flow.</p>
 </div>
 
 <div id="a2" class="module-content">
 <h2>Signal Scheduling</h2>
-<p><strong>Algorithm:</strong> Round Robin. O(n)</p>
+<p><strong>Algorithm:</strong> Round Robin cycle optimization. O(n)</p>
 <pre>#include &lt;iostream&gt;
 #include &lt;vector&gt;
 using namespace std;
+
 int main(){
-    vector&lt;int&gt; signals={30,45,25};
-    for(int i=0;i&lt;signals.size();i++){
-        cout&lt;&lt;"Signal "&lt;&lt;i&lt;&lt;" duration: "&lt;&lt;signals[i]&lt;&lt;" sec"<<endl;
+    vector<int> signals={30,45,25};
+    for(int i=0;i<signals.size();i++){
+        cout<<"Signal "<<i<<" green for "<<signals[i]<<" sec"<<endl;
     }
+    cout<<"Cycle repeats for smooth traffic movement.";
 }</pre>
-<p><strong>Conclusion:</strong> Fair scheduling reduces intersection delays.</p>
+<p><strong>Conclusion:</strong> Balanced timing reduces waiting time at intersections.</p>
 </div>
 
 <div id="a3" class="module-content">
 <h2>Accident Detection</h2>
-<p><strong>Algorithm:</strong> Anomaly Detection. O(n)</p>
+<p><strong>Algorithm:</strong> Sensor anomaly detection. O(n)</p>
 <pre>#include &lt;iostream&gt;
 #include &lt;vector&gt;
 using namespace std;
+
 int main(){
-    vector&lt;int&gt; sensor={0,0,1,0};
-    for(int i=0;i&lt;sensor.size();i++){
-        if(sensor[i]==1) cout&lt;&lt;"Accident detected at sensor "&lt;&lt;i&lt;&lt;endl;
+    vector<int> sensor={0,0,1,0,1};
+    for(int i=0;i<sensor.size();i++){
+        if(sensor[i]==1)
+            cout<<"Accident detected at sensor "<<i<<endl;
     }
 }</pre>
-<p><strong>Conclusion:</strong> Real-time detection speeds emergency response.</p>
+<p><strong>Conclusion:</strong> Faster detection leads to quicker emergency response.</p>
 </div>
 
 <div id="a4" class="module-content">
 <h2>Parking Allocation</h2>
-<p><strong>Algorithm:</strong> Greedy. O(n log n)</p>
+<p><strong>Algorithm:</strong> Greedy slot assignment. O(n log n)</p>
 <pre>#include &lt;iostream&gt;
 #include &lt;vector&gt;
 #include &lt;algorithm&gt;
 using namespace std;
+
 int main(){
-    vector&lt;int&gt; slots={1,2,3}; vector&lt;int&gt; cars={2,1,3};
+    vector<int> slots={3,1,2};
+    vector<int> cars={2,1,3};
     sort(slots.begin(),slots.end());
-    for(int i=0;i&lt;cars.size();i++) cout&lt;&lt;"Car "&lt;&lt;cars[i]&lt;&lt;" assigned to slot "&lt;&lt;slots[i]&lt;&lt;endl;
+    for(int i=0;i<cars.size();i++){
+        cout<<"Car "<<cars[i]<<" -> Slot "<<slots[i]<<endl;
+    }
 }</pre>
-<p><strong>Conclusion:</strong> Greedy allocation improves parking efficiency.</p>
+<p><strong>Conclusion:</strong> Greedy matching uses parking spaces efficiently.</p>
 </div>
 
 <div id="a5" class="module-content">
 <h2>Emergency Routing</h2>
-<p><strong>Algorithm:</strong> A*. O(E)</p>
+<p><strong>Algorithm:</strong> A* (simplified). O(E)</p>
 <pre>#include &lt;iostream&gt;
 #include &lt;vector&gt;
 #include &lt;queue&gt;
 using namespace std;
+
 int main(){
-    vector&lt;vector&lt;int&gt;&gt; graph={{0,1,2},{1,0,3},{2,3,0}};
-    vector&lt;int&gt; dist(3,1000); dist[0]=0;
-    priority_queue&lt;pair&lt;int,int&gt;,vector&lt;pair&lt;int,int&gt;&gt;,greater&lt;&gt;&gt; pq;
+    vector<vector<int>> g={{0,2,4},{2,0,3},{4,3,0}};
+    vector<int> dist(3,1e9); dist[0]=0;
+
+    priority_queue<pair<int,int>,vector<pair<int,int>>,greater<>> pq;
     pq.push({0,0});
+
     while(!pq.empty()){
-        int u=pq.top().second; pq.pop();
-        for(int v=0;v&lt;3;v++){
-            if(dist[u]+graph[u][v]&lt;dist[v]) dist[v]=dist[u]+graph[u][v];
+        auto [d,u]=pq.top(); pq.pop();
+        for(int v=0;v<3;v++){
+            if(g[u][v] && dist[u]+g[u][v] < dist[v]){
+                dist[v]=dist[u]+g[u][v];
+                pq.push({dist[v],v});
+            }
         }
     }
-    for(int i=0;i&lt;3;i++) cout&lt;&lt;"Emergency route to node "&lt;&lt;i&lt;&lt;": "&lt;&lt;dist[i]&lt;&lt;endl;
+    for(int i=0;i<3;i++) cout<<"Emergency route to "<<i<<": "<<dist[i]<<endl;
 }</pre>
-<p><strong>Conclusion:</strong> Optimized emergency routing saves lives.</p>
+<p><strong>Conclusion:</strong> Optimized routing ensures emergencies reach destinations faster.</p>
 </div>
 
 <script>
 function toggleModule(id){
-  document.querySelectorAll('.module-content').forEach(m=>m.style.display='none');
-  const sel=document.getElementById(id);
-  if(sel) sel.style.display='block';
+  document.querySelectorAll('.module-content').forEach(m => m.style.display='none');
+  const x=document.getElementById(id);
+  if(x) x.style.display='block';
 }
 
+// ✅ 100% Working – opens index.html
 function goHome(){
-  document.querySelectorAll('.module-content').forEach(m=>m.style.display='none');
-  window.scrollTo(0,0);
+  window.location.href = "index.html";
 }
 
 function toggleTheme(){
   const body=document.body;
   body.classList.toggle('dark');
   body.classList.toggle('light');
-  document.getElementById('themeBtn').textContent=
+  document.getElementById('themeBtn').textContent =
     body.classList.contains('dark') ? "🌙 Dark Mode" : "☀️ Light Mode";
 }
 </script>
