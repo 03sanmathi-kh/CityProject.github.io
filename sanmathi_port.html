@@ -1,329 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Sanmathi – Industry & Infrastructure Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    /* Basic page styling */
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #0a0a0a; /* dark background */
-      color: #ffffff;            /* white text */
-      text-align: center;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Industry & Infrastructure – Portfolio</title>
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: #0a0a0a;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+  }
+
+  h1 {
+    margin-top: 30px;
+    color: #ff7f50;
+    font-size: 40px;
+  }
+
+  h2 {
+    color: #2fdabd;
+    font-size: 26px;
+    margin-top: 10px;
+  }
+
+  p {
+    max-width: 850px;
+    margin: 15px auto;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  /* Module buttons */
+  .module-buttons {
+    margin-top: 30px;
+  }
+
+  .module-buttons button {
+    background: #2fdabd;
+    color: #000;
+    border: none;
+    padding: 12px 22px;
+    margin: 10px;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .module-buttons button:hover {
+    background: #25bfa5;
+  }
+
+  /* Module Box */
+  .module-content {
+    display: none;
+    background: rgba(255,255,255,0.08);
+    width: 90%;
+    margin: 25px auto;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: left;
+    animation: fadeIn 0.4s;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  pre {
+    background: #1a1a1a;
+    padding: 15px;
+    border-radius: 10px;
+    color: #d4d4d4;
+    overflow-x: auto;
+    font-size: 15px;
+  }
+
+  .conclusion-box {
+    background: rgba(255,255,255,0.1);
+    width: 85%;
+    margin: 40px auto;
+    padding: 25px;
+    border-radius: 15px;
+  }
+</style>
+
+<script>
+  function toggleModule(id) {
+    let mods = document.getElementsByClassName("module-content");
+
+    // Hide all modules except the one clicked
+    for (let m of mods) {
+      if (m.id !== id) {
+        m.style.display = "none";
+      }
     }
 
-    /* Header section */
-    header {
-      padding: 40px 20px;
+    // Toggle clicked module
+    let selected = document.getElementById(id);
+    if (selected.style.display === "block") {
+      selected.style.display = "none"; // close if open
+    } else {
+      selected.style.display = "block"; // open if closed
     }
-    header h1 {
-      font-size: 36px;
-      font-weight: bold;
-      color: #f39c12; /* orange accent */
-    }
-    header h3 {
-      font-size: 20px;
-      font-weight: 600;
-      color: #1abc9c; /* teal accent */
-    }
-    header p {
-      max-width: 800px;
-      margin: 20px auto;
-      font-size: 16px;
-      line-height: 1.5;
-      color: #dddddd;
-    }
+  }
+</script>
 
-    /* Module content (hidden by default) */
-    .module-content {
-      display: none;
-      margin: 20px auto;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 900px;
-      background: rgba(255,255,255,0.05);
-      color: #fff;
-    }
-    .module-content h2 {
-      font-size: 22px;
-    }
-    .module-content p {
-      font-size: 15px;
-      line-height: 1.5;
-    }
-    pre {
-      background: rgba(255,255,255,0.1);
-      padding: 10px;
-      border-radius: 8px;
-      overflow-x: auto;
-      font-size: 14px;
-      color: #f5f5f5;
-      text-align: left;
-    }
-  </style>
 </head>
 <body>
 
-<header>
-  <h1>Sanmathi Hegde</h1>
-  <h3>Industry & Infrastructure – Vishalnagari</h3>
-  <p>
-    Vishalnagari is a major industrial hub. From textiles to electric mobility, each sector faces challenges in scheduling, routing, resource allocation, and maintenance.  
-    This portfolio presents algorithmic solutions that make these systems efficient, scalable, and reliable.  
-    Modules cover assembly lines, textile dyeing, routing, allocation, predictive maintenance, workforce scheduling, and supply chain optimization.  
-    Each solution applies proven algorithms from graph theory, optimization, and machine learning.  
-    Together, they demonstrate how computation strengthens Vishalnagari’s industrial backbone.
-  </p>
-</header>
-<!-- Module 1 -->
-<div id="m1" class="module-content ev-box">
-  <h2>EV Assembly Line Optimization</h2>
-  <p><strong>🔍 What exact problem are we solving?</strong><br>
-  How can we sequence electric vehicle assembly tasks to minimize idle time and eliminate bottlenecks?</p>
-  <p><strong>Algorithm:</strong> Topological Sort (Kahn’s Algorithm)<br>
-     <strong>Efficiency:</strong> O(V + E)</p>
-  <pre>
-Pseudocode:
-1. Compute in-degree of tasks
-2. Push tasks with in-degree 0 into queue
-3. While queue not empty:
-   Pop task, add to result
-   Reduce in-degree of neighbors
+<h1>Sanmathi Hegde</h1>
+<h2>Industry & Infrastructure – Vishalnagari</h2>
 
-C++:
-vector<int> topologicalSort(int V, vector<vector<int>>& adj) {
-  vector<int> in_degree(V, 0);
-  for (int u = 0; u < V; u++)
-    for (int v : adj[u]) in_degree[v]++;
-  queue<int> q;
-  for (int i = 0; i < V; i++)
-    if (in_degree[i] == 0) q.push(i);
-  vector<int> result;
-  while (!q.empty()) {
-    int u = q.front(); q.pop();
-    result.push_back(u);
-    for (int v : adj[u])
-      if (--in_degree[v] == 0) q.push(v);
-  }
-  return result;
+<p>
+The industrial sector of Vishalnagari powers manufacturing, logistics, exports, and automation.
+This portfolio explores how computational methods improve production, reduce delays, and optimize real-world processes.
+</p>
+
+<!-- MODULE BUTTONS -->
+<div class="module-buttons">
+  <button onclick="toggleModule('m1')">Module 1</button>
+  <button onclick="toggleModule('m2')">Module 2</button>
+  <button onclick="toggleModule('m3')">Module 3</button>
+</div>
+
+<!-- MODULE 1 -->
+<div id="m1" class="module-content">
+  <h2>Module 1 – EV Assembly Line Optimization</h2>
+  <p><b>Problem:</b> Arrange EV tasks to avoid bottlenecks and delays.</p>
+  <p><b>Algorithm:</b> Topological Sort</p>
+  <p><b>Efficiency:</b> O(V + E)</p>
+
+  <pre>
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+int main() {
+    int n = 6;
+    vector&lt;pair&lt;int,int&gt;&gt; tasks = {{3,2},{5,1},{2,0},{4,6}};
+    sort(tasks.begin(), tasks.end());
+    cout << "EV Assembly Line Optimized Sequence:\n";
+    for (auto x : tasks) {
+        cout << "Task " << x.second << " (Time = " << x.first << ")\n";
+    }
 }
   </pre>
 </div>
 
-<!-- Module 2 -->
+<!-- MODULE 2 -->
 <div id="m2" class="module-content">
-  <h2>Module 2: Textile Dyeing Optimization</h2>
-  <p>
-    <strong>🔍 Problem:</strong> In Vishalnagari’s textile sector, dyeing machines must process batches of fabric with varying colors and chemical requirements.  
-    The challenge is to schedule dyeing jobs to minimize machine cleaning time and chemical waste.
-  </p>
-  <p>
-    <strong>Algorithm:</strong> Job Sequencing with Minimum Setup Cost (Graph-based Scheduling)<br>
-    <strong>Efficiency:</strong> O(n²) for pairwise cost matrix + greedy traversal
-  </p>
-  <pre>
-Pseudocode:
-1. Represent each dyeing job as a node with color/chemical profile
-2. Build a cost matrix: setup cost between every pair of jobs
-3. Initialize empty schedule and mark all jobs unvisited
-4. Choose starting job with lowest average setup cost
-5. While unvisited jobs remain:
-   a. From current job, pick next with minimum setup cost
-   b. Add to schedule and mark as visited
-6. Output final job sequence with minimized total setup cost
-  </pre>
+  <h2>Module 2 – Textile Dyeing Optimization</h2>
+  <p><b>Problem:</b> Reduce dyeing delays while maximizing machine utilization.</p>
+  <p><b>Algorithm:</b> Job Sequencing</p>
+  <p><b>Efficiency:</b> O(n log n)</p>
 
   <pre>
-C++ (conceptual):
-vector<int> optimizeDyeing(vector<vector<int>>& setupCost) {
-  int n = setupCost.size();
-  vector<bool> visited(n, false);
-  vector<int> sequence;
-  int current = 0;
-  visited[current] = true;
-  sequence.push_back(current);
+jobs:
+  A - profit 20, deadline 2
+  B - profit 15, deadline 2
+  C - profit 10, deadline 1
 
-  for(int step = 1; step < n; step++) {
-    int next = -1, minCost = INT_MAX;
-    for(int j = 0; j < n; j++) {
-      if(!visited[j] && setupCost[current][j] < minCost) {
-        minCost = setupCost[current][j];
-        next = j;
-      }
-    }
-    current = next;
-    visited[current] = true;
-    sequence.push_back(current);
-  }
-  return sequence;
-}
+schedule:
+  C -> A
+maximum profit = 30
   </pre>
 </div>
 
-<!-- Module 3 -->
-<div id="m3" class="module-content cotton-box">
-  <h2>Smart Cotton Inventory Routing</h2>
-  <p><strong>🔍 What exact problem are we solving?</strong><br>
-  How can we route cotton from farms to mills with minimal transport cost and maximum throughput?</p>
-  <p><strong>Algorithm:</strong> Dijkstra’s Algorithm<br>
-     <strong>Efficiency:</strong> O(E + V log V)</p>
-  <pre>
-Pseudocode:
-1. Initialize distances to ∞
-2. Use priority queue to pick nearest node
-3. Update neighbors if shorter path found
+<!-- MODULE 3 -->
+<div id="m3" class="module-content">
+  <h2>Module 3 – Cotton Transport Route Planning</h2>
+  <p><b>Problem:</b> Find cheapest and fastest cotton transport route.</p>
+  <p><b>Algorithm:</b> Dijkstra</p>
+  <p><b>Efficiency:</b> O(E log V)</p>
 
-C++:
-vector<int> dijkstra(int V, vector<vector<pair<int,int>>>& adj, int src) {
-  vector<int> dist(V, INT_MAX);
-  priority_queue<pair<int,int>, vector<pair<int,int>>, greater<>> pq;
-  dist[src] = 0;
-  pq.push({0, src});
-  while (!pq.empty()) {
-    int u = pq.top().second; pq.pop();
-    for (auto [v, wt] : adj[u]) {
-      if (dist[u] + wt < dist[v]) {
-        dist[v] = dist[u] + wt;
-        pq.push({dist[v], v});
-      }
-    }
-  }
-  return dist;
-}
-  </pre>
-</div>
-        <!-- Module 4 -->
-<div id="m4" class="module-content battery-box">
-  <h2>EV Battery Allocation Across Zones</h2>
-  <p><strong>🔍 What exact problem are we solving?</strong><br>
-  How can we distribute battery packs to assembly zones based on demand and capacity?</p>
-  <p><strong>Algorithm:</strong> Max Flow (Ford-Fulkerson)<br>
-     <strong>Efficiency:</strong> O(E × max_flow)</p>
   <pre>
-Pseudocode:
-1. Initialize flow = 0
-2. While augmenting path exists:
-   Find path using BFS
-   Update residual graph
-
-C++:
-int fordFulkerson(int s, int t, vector<vector<int>>& capacity) {
-  int flow = 0;
-  vector<vector<int>> residual = capacity;
-  while (bfs(s, t, residual)) {
-    int path_flow = INT_MAX;
-    // trace path and find min capacity
-    // update residual capacities
-    flow += path_flow;
-  }
-  return flow;
-}
+Node  Source  via  Distance
+A       S      -      0
+B       S      A      4
+C       B      A      7
+D       C      B     10
   </pre>
 </div>
 
-<!-- Module 5 -->
-<div id="m5" class="module-content predict-box">
-  <h2>Predictive Maintenance in Textile Machines</h2>
-  <p><strong>🔍 What exact problem are we solving?</strong><br>
-  How can we predict failures in textile machines (like looms and dyeing units) before they occur, reducing downtime?</p>
-  <p><strong>Algorithm:</strong> Decision Tree Classification<br>
-     <strong>Efficiency:</strong> O(n log n) training, O(log n) prediction</p>
-  <pre>
-Pseudocode:
-1. Collect labeled sensor data
-2. Train decision tree on failure patterns
-3. For new input:
-   Traverse tree → predict risk
-4. Schedule maintenance if risk > threshold
-
-C++:
-struct Node {
-  string feature;
-  Node* left;
-  Node* right;
-  string label;
-};
-string predict(Node* root, map<string,string>& input) {
-  while (root->left && root->right) {
-    if (input[root->feature] == "yes")
-      root = root->left;
-    else
-      root = root->right;
-  }
-  return root->label;
-}
-  </pre>
-</div>
-
-<!-- Module 6 -->
-<div id="m6" class="module-content workforce-box">
-  <h2>Workforce Shift Scheduling</h2>
-  <p><strong>🔍 What exact problem are we solving?</strong><br>
-  How can we assign workers to shifts fairly, respecting availability and minimizing overtime?</p>
-  <p><strong>Algorithm:</strong> Hungarian Algorithm (Bipartite Matching)<br>
-     <strong>Efficiency:</strong> O(n³)</p>
-  <pre>
-Pseudocode:
-1. Build cost matrix (workers × shifts)
-2. Apply Hungarian algorithm to minimize total cost
-3. Return optimal assignment
-
-C++ (simplified):
-int hungarian(const vector<vector<int>>& cost) {
-  int n = cost.size();
-  // Implementation of Hungarian algorithm
-  // Returns minimum assignment cost
-}
-  </pre>
-</div>
-<!-- Module 7 -->
-<div id="m7" class="module-content supply-box">
-  <h2>Supply Chain Cost Minimization</h2>
-  <p><strong>🔍 What exact problem are we solving?</strong><br>
-  How can we optimize raw material flow across multiple factories to minimize overall supply chain cost?</p>
-  <p><strong>Algorithm:</strong> Linear Programming (Simplex Method)<br>
-     <strong>Efficiency:</strong> Polynomial average time</p>
-  <pre>
-Pseudocode:
-1. Define objective function: Minimize Σ (cost × flow)
-2. Add constraints: demand, capacity, balance
-3. Solve using simplex method
-4. Return optimal flows
-
-C++ (conceptual):
-// Use LP solver library
-// Define variables, constraints, objective
-// Run simplex → get solution
-  </pre>
-</div>
-<!-- Conclusion -->
-<section style="margin:40px auto; max-width:900px; padding:20px; background:rgba(255,255,255,0.05); border-radius:10px;">
+<!-- CONCLUSION -->
+<div class="conclusion-box">
   <h2>Conclusion</h2>
   <p>
-    The Industry & Infrastructure portfolio demonstrates how Vishalnagari’s industrial hub can be strengthened through algorithmic solutions.  
-    Modules address assembly lines, textile dyeing, routing, allocation, predictive maintenance, workforce scheduling, and supply chain optimization.  
-    Each algorithm improves efficiency, reduces waste, and ensures scalable, reliable operations across diverse sectors.  
-    Together, these modules highlight how computation supports Vishalnagari’s growth as a modern, resilient industrial ecosystem.
+  These modules show how computational thinking improves industry efficiency, lowers cost,
+  and helps Vishalnagari build a smarter industrial ecosystem.
   </p>
-</section>
-
-<!-- Toggle Script -->
-<script>
-function toggleModule(id) {
-  // Hide all modules first
-  const modules = document.getElementsByClassName('module-content');
-  for (let m of modules) {
-    m.style.display = "none";
-  }
-  // Show the one you clicked
-  const selected = document.getElementById(id);
-  if (selected) {
-    selected.style.display = "block";
-  }
-}
-</script>
+</div>
 
 </body>
 </html>
