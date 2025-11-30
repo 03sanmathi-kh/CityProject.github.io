@@ -9,39 +9,32 @@
     body.dark { background:#0a0a0a; color:#fff; }
     body.light { background:#f5f5f5; color:#000; }
 
-    /* Wave background */
     .wave-bg { position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1; overflow:hidden; }
     .wave { position:absolute; width:200%; height:200%; opacity:0.5; animation:waveMove 30s linear infinite; }
     .wave1 { fill:#e74c3c; animation-duration:30s; }
     .wave2 { fill:#f39c12; animation-duration:35s; }
     .wave3 { fill:#c0392b; animation-duration:40s; }
-
     body.light .wave1 { fill:#fab1a0; }
     body.light .wave2 { fill:#ffeaa7; }
     body.light .wave3 { fill:#ff7675; }
+    @keyframes waveMove { 0%{transform:translateX(0) translateY(0) rotate(0deg);} 50%{transform:translateX(10%) translateY(5%) rotate(2deg);} 100%{transform:translateX(0) translateY(0) rotate(0deg);} }
 
-    @keyframes waveMove {
-      0% { transform: translateX(0) translateY(0) rotate(0deg); }
-      50% { transform: translateX(10%) translateY(5%) rotate(2deg); }
-      100% { transform: translateX(0) translateY(0) rotate(0deg); }
-    }
-
-    header { text-align:center; padding:40px 20px; position: relative; }
-    header h1 { font-size:42px; font-weight:900; color:#e74c3c; }
-    header h3 { font-size:22px; font-weight:600; color:#3498db; }
-    header p { max-width:800px; margin:20px auto; font-size:16px; line-height:1.6; color:inherit; }
+    header{text-align:center; padding:40px 20px; position:relative;}
+    header h1{font-size:42px; font-weight:900; color:#e74c3c;}
+    header h3{font-size:22px; font-weight:600; color:#3498db;}
+    header p{max-width:800px;margin:20px auto;font-size:16px;line-height:1.6;color:inherit;}
 
     .hex-container { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; padding:30px; }
     .hex { position:relative; width:160px; height:90px; margin:45px 0; display:flex; align-items:center; justify-content:center; font-weight:600; text-align:center; cursor:pointer; transition:transform 0.3s ease; color:#fff; }
     .hex:before,.hex:after { content:""; position:absolute; width:0; border-left:80px solid transparent; border-right:80px solid transparent; }
-    .hex:hover { transform:scale(1.08); }
+    .hex:hover{transform:scale(1.08);}
 
     /* Hex colors */
-    .flow { background:#e74c3c; } .flow:before{border-bottom:45px solid #e74c3c;bottom:100%;} .flow:after{border-top:45px solid #e74c3c;top:100%;}
-    .signal{background:#3498db;} .signal:before{border-bottom:45px solid #3498db;bottom:100%;} .signal:after{border-top:45px solid #3498db;top:100%;}
-    .accident{background:#f1c40f;} .accident:before{border-bottom:45px solid #f1c40f;bottom:100%;} .accident:after{border-top:45px solid #f1c40f;top:100%;}
-    .parking{background:#2ecc71;} .parking:before{border-bottom:45px solid #2ecc71;bottom:100%;} .parking:after{border-top:45px solid #2ecc71;top:100%;}
-    .emergency{background:#9b59b6;} .emergency:before{border-bottom:45px solid #9b59b6;bottom:100%;} .emergency:after{border-top:45px solid #9b59b6;top:100%;}
+    .flow { background:#e74c3c; } .flow:before{border-bottom:45px solid #e74c3c; bottom:100%;} .flow:after{border-top:45px solid #e74c3c; top:100%;}
+    .signal{background:#3498db;} .signal:before{border-bottom:45px solid #3498db; bottom:100%;} .signal:after{border-top:45px solid #3498db; top:100%;}
+    .accident{background:#f1c40f;} .accident:before{border-bottom:45px solid #f1c40f; bottom:100%;} .accident:after{border-top:45px solid #f1c40f; top:100%;}
+    .parking{background:#2ecc71;} .parking:before{border-bottom:45px solid #2ecc71; bottom:100%;} .parking:after{border-top:45px solid #2ecc71; top:100%;}
+    .emergency{background:#9b59b6;} .emergency:before{border-bottom:45px solid #9b59b6; bottom:100%;} .emergency:after{border-top:45px solid #9b59b6; top:100%;}
 
     /* Module content tinted with same hex color */
     #a1 { background: rgba(231,76,60,0.2); }
@@ -55,7 +48,6 @@
     .module-content p { font-size:16px; line-height:1.6; }
     pre { background:rgba(255,255,255,0.08); padding:15px; border-radius:10px; overflow-x:auto; font-size:14px; color:inherit; text-align:left; }
 
-    /* Buttons */
     #themeBtn { position:fixed; top:20px; right:20px; padding:10px 20px; font-size:14px; cursor:pointer; border:none; border-radius:8px; background:#e74c3c; color:#fff; transition:background 0.3s; }
     #themeBtn:hover { background:#3498db; }
 
@@ -97,37 +89,52 @@
   <div class="hex emergency" onclick="toggleModule('a5')">Module 5: Emergency Routing</div>
 </div>
 
-<!-- All module content unchanged -->
+<!-- MODULES -->
 <div id="a1" class="module-content">
   <h2>Traffic Flow Optimization</h2>
-  <p><strong>Case Study:</strong><br>
-  Congestion clogs Vishalnagari’s busiest roads.  
-  How can vehicles be guided to minimize delays?  
-  Can shortest paths be computed dynamically?</p>
+  <p><strong>Case Study:</strong> How to reduce congestion in busy roads dynamically?</p>
   <p><strong>Algorithm:</strong> Dijkstra’s Shortest Path<br><strong>Efficiency:</strong> O(E + V log V)</p>
   <pre>
 C++ Pseudocode:
-vector<int> dijkstra(int V, vector<vector<pair<int,int>>>& adj, int src) {
-    vector<int> dist(V, INT_MAX);
-    priority_queue<pair<int,int>, vector<pair<int,int>>, greater<>> pq;
-    dist[src] = 0; pq.push({0, src});
-    while (!pq.empty()) {
-        int u = pq.top().second; pq.pop();
-        for (auto [v, wt] : adj[u]) {
-            if (dist[u] + wt < dist[v]) {
-                dist[v] = dist[u] + wt;
-                pq.push({dist[v], v});
-            }
-        }
-    }
-    return dist;
-}
+vector<int> dijkstra(int V, vector<vector<pair<int,int>>>& adj, int src) { ... }
   </pre>
-  <p><strong>Conclusion:</strong><br>
-  Dijkstra’s algorithm ensures smoother traffic by routing vehicles along the fastest available paths.</p>
 </div>
-
-<!-- Modules a2-a5 content unchanged, keep as in your original code -->
+<div id="a2" class="module-content">
+  <h2>Signal Scheduling</h2>
+  <p><strong>Case Study:</strong> Optimizing traffic lights to reduce waiting times.</p>
+  <p><strong>Algorithm:</strong> Round Robin Scheduling<br><strong>Efficiency:</strong> O(n)</p>
+  <pre>
+C++ Pseudocode:
+void scheduleSignals(...) { ... }
+  </pre>
+</div>
+<div id="a3" class="module-content">
+  <h2>Accident Detection</h2>
+  <p><strong>Case Study:</strong> Detect accidents in real-time to alert emergency services.</p>
+  <p><strong>Algorithm:</strong> Anomaly Detection<br><strong>Efficiency:</strong> O(n)</p>
+  <pre>
+C++ Pseudocode:
+bool detectAccident(sensorData) { ... }
+  </pre>
+</div>
+<div id="a4" class="module-content">
+  <h2>Parking Allocation</h2>
+  <p><strong>Case Study:</strong> Allocate parking slots efficiently in high-demand areas.</p>
+  <p><strong>Algorithm:</strong> Greedy Allocation<br><strong>Efficiency:</strong> O(n log n)</p>
+  <pre>
+C++ Pseudocode:
+void allocateParking(...) { ... }
+  </pre>
+</div>
+<div id="a5" class="module-content">
+  <h2>Emergency Routing</h2>
+  <p><strong>Case Study:</strong> Guide ambulances through fastest routes.</p>
+  <p><strong>Algorithm:</strong> A* Algorithm<br><strong>Efficiency:</strong> O(E)</p>
+  <pre>
+C++ Pseudocode:
+vector<int> aStar(...) { ... }
+  </pre>
+</div>
 
 <script>
 function toggleModule(id) {
@@ -144,9 +151,7 @@ function toggleTheme() {
   btn.textContent = document.body.classList.contains('dark') ? "🌙 Dark Mode" : "☀️ Light Mode";
 }
 
-function goHome() {
-  window.location.href = "index.html";
-}
+function goHome() { window.location.href = "index.html"; }
 </script>
 </body>
 </html>
