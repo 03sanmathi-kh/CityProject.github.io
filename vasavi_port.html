@@ -175,33 +175,105 @@ int maxLoanProfit(int W, vector<int>& loans, vector<int>& returns, int n){
   </pre>
 </div>
 
+<!-- MODULE 4: Retail Inventory Management -->
 <div id="m4" class="module-content">
-  <h2>Resource Allocation</h2>
-  <p><strong>Case Study:</strong><br>
-    How to allocate manpower and resources to different government projects efficiently?</p>
-  <p><strong>Algorithm:</strong> Graph Matching / Greedy<br><strong>Efficiency:</strong> O(n²)</p>
+  <h2>Retail Inventory Management</h2>
+
+  <p><strong>Business Problem:</strong><br>
+  Commercial retailers in Vishalnagari struggle with overstocking and stockouts.<br>
+  Overstock ties up capital, while shortages lead to lost sales and unhappy customers.<br>
+  Optimized inventory management is needed to balance supply with demand.</p>
+
+  <p><strong>Algorithm:</strong><br>
+  Economic Order Quantity (EOQ) combined with demand forecasting ensures optimal stock levels.<br>
+  Uses dynamic programming to minimize holding and shortage costs.<br>
+  Efficiency: O(n) for demand scanning and adjustment.</p>
+
   <pre>
-C++ Pseudocode:
-for each project in projects:
-    assign available staff with max skill matching
-    update remaining resources
-</pre>
+// C++ Implementation (15+ lines)
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+struct Product {
+    string name;
+    int demand;
+    double holdingCost;
+    double orderingCost;
+};
+
+double calculateEOQ(Product p) {
+    return sqrt((2 * p.demand * p.orderingCost) / p.holdingCost);
+}
+
+int main() {
+    vector&lt;Product&gt; products = {
+        {"Shirts", 1000, 2.0, 50.0},
+        {"Shoes", 500, 3.0, 40.0},
+        {"Bags", 300, 1.5, 30.0}
+    };
+
+    for (auto &p : products) {
+        double eoq = calculateEOQ(p);
+        cout &lt;&lt; "Product: " &lt;&lt; p.name 
+             &lt;&lt; " | EOQ = " &lt;&lt; eoq &lt;&lt; endl;
+    }
+    return 0;
+}
+  </pre>
+
+  <p><strong>Conclusion:</strong> EOQ-based inventory management reduces costs, avoids shortages, and improves customer satisfaction.</p>
 </div>
 
+<!-- MODULE 5: E-Commerce Order Fulfillment -->
 <div id="m5" class="module-content">
-  <h2>Process Optimization</h2>
-  <p><strong>Case Study:</strong><br>
-    How to optimize internal bank operations to reduce processing time and cost?</p>
-  <p><strong>Algorithm:</strong> Heuristic Scheduling / DP<br><strong>Efficiency:</strong> O(n log n)</p>
-  <pre>
-C++ Pseudocode:
-sort(tasks by priority);
-for each task:
-    assign to available counter minimizing wait time
-update schedules
-</pre>
-</div>
+  <h2>E-Commerce Order Fulfillment</h2>
 
+  <p><strong>Business Problem:</strong><br>
+  Online retailers face delays in processing and delivering orders.<br>
+  Inefficient warehouse picking and routing increase delivery times and costs.<br>
+  Optimized order fulfillment ensures faster delivery and happier customers.</p>
+
+  <p><strong>Algorithm:</strong><br>
+  Greedy picking combined with shortest path routing minimizes warehouse travel time.<br>
+  Orders are batched to reduce redundant trips.<br>
+  Efficiency: O(n log n) for sorting and routing.</p>
+
+  <pre>
+// C++ Implementation (15+ lines)
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+struct Order {
+    int id;
+    int location; // warehouse aisle number
+};
+
+void fulfillOrders(vector&lt;Order&gt;& orders) {
+    // Sort orders by location (greedy picking)
+    sort(orders.begin(), orders.end(), [](Order&a, Order&b){
+        return a.location &lt; b.location;
+    });
+
+    cout &lt;&lt; "Optimized order picking sequence:\\n";
+    for (auto &o : orders) {
+        cout &lt;&lt; "Pick Order " &lt;&lt; o.id 
+             &lt;&lt; " at aisle " &lt;&lt; o.location &lt;&lt; endl;
+    }
+}
+
+int main() {
+    vector&lt;Order&gt; orders = {{101,5},{102,2},{103,8},{104,1}};
+    fulfillOrders(orders);
+    return 0;
+}
+  </pre>
+
+  <p><strong>Conclusion:</strong> Optimized order fulfillment reduces delivery times, lowers costs, and improves customer experience in e-commerce.</p>
+</div>
 <section class="conclusion">
   <h2>Conclusion</h2>
   <p>
