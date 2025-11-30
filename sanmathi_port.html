@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Sanmathi – Industrial & Commerce Portfolio</title>
+<title>Sanmathi_port.html – Industrial & Manufacturing Systems</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body { margin:0; font-family:'Segoe UI',sans-serif; transition:background 0.3s,color 0.3s; position: relative; min-height: 100vh; overflow-x:hidden; }
@@ -17,7 +17,11 @@ body.light { background:#f5f5f5; color:#000; }
 body.light .wave1 { fill:#a2d5c6; }
 body.light .wave2 { fill:#7bd0b6; }
 body.light .wave3 { fill:#b3f0d9; }
-@keyframes waveMove {0%{transform:translateX(0) translateY(0) rotate(0deg);}50%{transform:translateX(10%) translateY(5%) rotate(2deg);}100%{transform:translateX(0) translateY(0) rotate(0deg);}}
+@keyframes waveMove {
+  0%{transform:translateX(0) translateY(0) rotate(0deg);}
+  50%{transform:translateX(10%) translateY(5%) rotate(2deg);}
+  100%{transform:translateX(0) translateY(0) rotate(0deg);}
+}
 
 header{text-align:center; padding:50px 20px; position:relative;}
 header h1{font-size:48px; font-weight:900; color:#1abc9c; margin-bottom:10px;}
@@ -50,142 +54,566 @@ pre { background:rgba(255,255,255,0.08); padding:15px; border-radius:10px; overf
 <body class="dark">
 
 <div class="wave-bg">
-<svg class="wave wave1" viewBox="0 0 1440 320" preserveAspectRatio="none"><path d="M0,192 C480,320 960,64 1440,192 L1440,320 L0,320 Z"></path></svg>
-<svg class="wave wave2" viewBox="0 0 1440 320" preserveAspectRatio="none"><path d="M0,256 C480,128 960,384 1440,256 L1440,320 L0,320 Z"></path></svg>
-<svg class="wave wave3" viewBox="0 0 1440 320" preserveAspectRatio="none"><path d="M0,224 C480,96 960,352 1440,224 L1440,320 L0,320 Z"></path></svg>
+  <svg class="wave wave1" viewBox="0 0 1440 320" preserveAspectRatio="none"><path d="M0,192 C480,320 960,64 1440,192 L1440,320 L0,320 Z"></path></svg>
+  <svg class="wave wave2" viewBox="0 0 1440 320" preserveAspectRatio="none"><path d="M0,256 C480,128 960,384 1440,256 L1440,320 L0,320 Z"></path></svg>
+  <svg class="wave wave3" viewBox="0 0 1440 320" preserveAspectRatio="none"><path d="M0,224 C480,96 960,352 1440,224 L1440,320 L0,320 Z"></path></svg>
 </div>
 
 <button id="homeBtn" onclick="goHome()">🏠 Home</button>
 <button id="themeBtn" onclick="toggleTheme()">🌙 Dark Mode</button>
 
 <header>
-<h1>Sanmathi</h1>
-<h3>Industrial & Commerce Solutions – Vishalnagari</h3>
-<p>
-This page examines critical industrial and commercial challenges in Vishalnagari, covering sectors from electric vehicle manufacturing to textile production, supply chains, banking, and worker infrastructure.  
-Each module presents a concrete business problem, proposes an algorithmic solution for optimization, and provides stepwise implementation through C++ pseudocode.  
-The content highlights practical computation for operational efficiency, cost reduction, and sustainable industrial growth, reflecting how algorithms can resolve real-world industrial issues.
-</p>
+  <h1>Sanmathi Hegde</h1>
+  <h3>Industrial & Manufacturing Systems – Vishalnagari</h3>
+  <p>
+    Vishalnagari’s industrial ecosystem blends tradition and innovation — from cotton textiles to electric mobility.<br>
+    Each sector faces unique challenges in scheduling, routing, resource allocation, and predictive maintenance.<br>
+    This portfolio explores how algorithmic thinking transforms these business cases into scalable, efficient solutions.
+  </p>
 </header>
 
 <div class="hex-container">
-  <div class="hex module-colors" onclick="toggleModule('m1')">Electric Vehicle Industry</div>
-  <div class="hex module-colors2" onclick="toggleModule('m2')">Cotton Textile Industry</div>
-  <div class="hex module-colors3" onclick="toggleModule('m3')">Traffic & Transport</div>
-  <div class="hex module-colors4" onclick="toggleModule('m4')">Worker Infrastructure</div>
-  <div class="hex module-colors5" onclick="toggleModule('m5')">Supply Chain</div>
-  <div class="hex module-colors6" onclick="toggleModule('m6')">Banking & Finance</div>
-  <div class="hex module-colors7" onclick="toggleModule('m7')">Commercial Market Planning</div>
+  <div class="hex module-colors" onclick="toggleModule('m1')">EV Assembly Line</div>
+  <div class="hex module-colors2" onclick="toggleModule('m2')">Textile Dyeing</div>
+  <div class="hex module-colors3" onclick="toggleModule('m3')">Cotton Routing</div>
+  <div class="hex module-colors4" onclick="toggleModule('m4')">Battery Allocation</div>
+  <div class="hex module-colors5" onclick="toggleModule('m5')">Predictive Maintenance</div>
+  <div class="hex module-colors6" onclick="toggleModule('m6')">Workforce Scheduling</div>
+  <div class="hex module-colors7" onclick="toggleModule('m7')">Supply Chain Optimization</div>
 </div>
-
-<!-- MODULES -->
+<!-- MODULE 1: EV Assembly Line -->
 <div id="m1" class="module-content">
-<h2>Electric Vehicle Industry</h2>
-<p><strong>Business Problem:</strong> Efficiently schedule assembly lines, minimize defects, and maximize EV production output.</p>
-<p><strong>Algorithm:</strong> Dynamic Scheduling & Resource Allocation (O(n log n))</p>
-<pre>
-// C++ Pseudocode
-vector<int> scheduleEV(vector<int>& tasks){
-priority_queue<int,vector<int>,greater<>> pq;
-for(int t:tasks) pq.push(t);
-vector<int> result;
-while(!pq.empty()){int val=pq.top(); pq.pop(); result.push_back(val);}
-return result;}
-</pre>
-<p><strong>Conclusion:</strong> Optimized production scheduling improves efficiency, reduces costs, and ensures high-quality output.</p>
-</div>
+  <h2>EV Assembly Line</h2>
 
+  <p><strong>Business Problem:</strong><br>
+  Electric vehicle production in Vishalnagari faces bottlenecks due to inefficient task scheduling and resource clashes.<br>
+  Defect rates rise when assembly stages overlap or idle time increases.<br>
+  Optimizing task order and resource allocation is key to boosting throughput and quality.</p>
+
+  <p><strong>Algorithm:</strong><br>
+  Priority-based dynamic scheduling using a min-heap ensures earliest tasks are processed first.<br>
+  Reduces idle time and defects by balancing resources.<br>
+  Efficiency: O(n log n).</p>
+
+  <pre>
+// C++ Implementation (14+ lines)
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+#include &lt;string&gt;
+using namespace std;
+
+struct Task {
+    int priority; // lower value = higher priority
+    string name;
+    Task(int p, string n) : priority(p), name(n) {}
+};
+
+struct Compare {
+    bool operator()(Task const& a, Task const& b) {
+        return a.priority > b.priority;
+    }
+};
+
+vector&lt;string&gt; scheduleEVTasks(vector&lt;Task&gt;& tasks) {
+    priority_queue&lt;Task, vector&lt;Task&gt;, Compare&gt; pq;
+    for (auto& t : tasks) pq.push(t);
+
+    vector&lt;string&gt; result;
+    while (!pq.empty()) {
+        Task current = pq.top(); pq.pop();
+        result.push_back(current.name);
+        cout &lt;&lt; "Scheduled: " &lt;&lt; current.name 
+             &lt;&lt; " (Priority " &lt;&lt; current.priority &lt;&lt; ")" &lt;&lt; endl;
+    }
+    return result;
+}
+
+int main() {
+    vector&lt;Task&gt; tasks = {
+        Task(3, "Install Battery"),
+        Task(1, "Frame Assembly"),
+        Task(4, "Paint Job"),
+        Task(2, "Motor Installation")
+    };
+
+    vector&lt;string&gt; schedule = scheduleEVTasks(tasks);
+    cout &lt;&lt; "\\nFinal Task Order:\\n";
+    for (string& task : schedule) cout &lt;&lt; task &lt;&lt; endl;
+
+    return 0;
+}
+  </pre>
+
+  <p><strong>Conclusion:</strong> Optimized production scheduling improves efficiency, reduces costs, and ensures high-quality output.</p>
+</div>
+<!-- MODULE 2: Textile Dyeing -->
 <div id="m2" class="module-content">
-<h2>Cotton Textile Industry</h2>
-<p><strong>Business Problem:</strong> Minimize waste, allocate labor effectively, and optimize the end-to-end textile production process.</p>
-<p><strong>Algorithm:</strong> Greedy Resource Allocation (O(n log n))</p>
-<pre>
-// C++ Pseudocode
-void allocateWorkers(vector<int>& machines, vector<int>& workers){
-for(int i=0;i<workers.size();i++){assignWorker(workers[i],machines[i]);}}
-</pre>
-<p><strong>Conclusion:</strong> Efficient labor and resource allocation enhances productivity and reduces operational losses.</p>
-</div>
+  <h2>Textile Dyeing</h2>
 
+  <p><strong>Business Problem:</strong><br>
+  Textile dyeing in Vishalnagari consumes large amounts of water and chemicals, leading to waste.<br>
+  Labor allocation across dyeing units is inconsistent, causing delays and uneven productivity.<br>
+  Optimizing resources reduces waste, improves throughput, and ensures sustainable textile production.</p>
+
+  <p><strong>Algorithm:</strong><br>
+  Greedy Resource Allocation assigns workers to machines efficiently.<br>
+  Each worker is matched to the next available machine, minimizing idle time.<br>
+  Efficiency: O(n log n) due to sorting and assignment operations.</p>
+
+  <pre>
+// C++ Implementation (15+ lines)
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+struct Machine {
+    int id;
+    int capacity; // workload capacity
+};
+
+struct Worker {
+    int id;
+    int skill; // higher skill = faster dyeing
+};
+
+void allocateWorkers(vector&lt;Machine&gt;& machines, vector&lt;Worker&gt;& workers) {
+    // Sort machines by capacity (descending)
+    sort(machines.begin(), machines.end(), [](Machine& a, Machine& b){
+        return a.capacity > b.capacity;
+    });
+
+    // Sort workers by skill (descending)
+    sort(workers.begin(), workers.end(), [](Worker& a, Worker& b){
+        return a.skill > b.skill;
+    });
+
+    // Greedy assignment
+    for (size_t i = 0; i < min(machines.size(), workers.size()); i++) {
+        cout &lt;&lt; "Assign Worker " &lt;&lt; workers[i].id 
+             &lt;&lt; " (Skill " &lt;&lt; workers[i].skill &lt;&lt; ") "
+             &lt;&lt; "to Machine " &lt;&lt; machines[i].id 
+             &lt;&lt; " (Capacity " &lt;&lt; machines[i].capacity &lt;&lt; ")" &lt;&lt; endl;
+    }
+}
+
+int main() {
+    vector&lt;Machine&gt; machines = {{1, 50}, {2, 40}, {3, 30}};
+    vector&lt;Worker&gt; workers = {{101, 9}, {102, 7}, {103, 5}};
+
+    allocateWorkers(machines, workers);
+    return 0;
+}
+  </pre>
+
+  <p><strong>Conclusion:</strong> Efficient labor and resource allocation enhances productivity and reduces operational losses.</p>
+</div>
+<!-- MODULE 3: Cotton Routing -->
 <div id="m3" class="module-content">
-<h2>Traffic & Transport</h2>
-<p><strong>Business Problem:</strong> Minimize transport delays for employees and goods, and enable dynamic routing in congested areas.</p>
-<p><strong>Algorithm:</strong> Dijkstra’s Shortest Path (O(E + V log V))</p>
-<pre>
-// C++ Pseudocode
-vector<int> dijkstra(int V, vector<vector<pair<int,int>>>& adj, int src){
-vector<int> dist(V,INT_MAX); priority_queue<pair<int,int>,vector<pair<int,int>>,greater<>> pq;
-dist[src]=0; pq.push({0,src});
-while(!pq.empty()){int u=pq.top().second; pq.pop();
-for(auto [v,w]:adj[u]){if(dist[u]+w<dist[v]){dist[v]=dist[u]+w; pq.push({dist[v],v});}}}
-return dist;}
-</pre>
-<p><strong>Conclusion:</strong> Optimized routing reduces delays, improves logistics, and ensures timely deliveries.</p>
-</div>
+  <h2>Cotton Routing</h2>
 
+  <p><strong>Business Problem:</strong><br>
+  Raw cotton in Vishalnagari must be transported across multiple mills and processing units.<br>
+  Inefficient routing increases travel time, fuel costs, and delays in textile production.<br>
+  Optimized routing ensures smoother logistics and timely delivery of raw materials.</p>
+
+  <p><strong>Algorithm:</strong><br>
+  Dijkstra’s Shortest Path algorithm computes the most efficient transport routes.<br>
+  It dynamically updates distances to minimize transport delays across a weighted graph.<br>
+  Efficiency: O(E + V log V), where E = edges and V = nodes.</p>
+
+  <pre>
+// C++ Implementation (15+ lines)
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+#include &lt;climits&gt;
+using namespace std;
+
+// Dijkstra’s algorithm for cotton routing
+vector&lt;int&gt; dijkstra(int V, vector&lt;vector&lt;pair&lt;int,int&gt;&gt;&gt;& adj, int src) {
+    vector&lt;int&gt; dist(V, INT_MAX);
+    priority_queue&lt;pair&lt;int,int&gt;, vector&lt;pair&lt;int,int&gt;&gt;, greater&lt;&gt;&gt; pq;
+
+    dist[src] = 0;
+    pq.push({0, src});
+
+    while (!pq.empty()) {
+        int u = pq.top().second;
+        pq.pop();
+
+        for (auto [v, w] : adj[u]) {
+            if (dist[u] + w &lt; dist[v]) {
+                dist[v] = dist[u] + w;
+                pq.push({dist[v], v});
+            }
+        }
+    }
+    return dist;
+}
+
+int main() {
+    int V = 5; // mills/processing units
+    vector&lt;vector&lt;pair&lt;int,int&gt;&gt;&gt; adj(V);
+
+    // Example cotton transport routes (u -> v, weight = distance)
+    adj[0].push_back({1, 10});
+    adj[0].push_back({2, 3});
+    adj[1].push_back({2, 1});
+    adj[1].push_back({3, 2});
+    adj[2].push_back({1, 4});
+    adj[2].push_back({3, 8});
+    adj[2].push_back({4, 2});
+    adj[3].push_back({4, 7});
+    adj[4].push_back({3, 9});
+
+    vector&lt;int&gt; dist = dijkstra(V, adj, 0);
+
+    cout &lt;&lt; "Shortest distances from source mill 0:\\n";
+    for (int i = 0; i &lt; V; i++) {
+        cout &lt;&lt; "To mill " &lt;&lt; i &lt;&lt; " = " &lt;&lt; dist[i] &lt;&lt; endl;
+    }
+    return 0;
+}
+  </pre>
+
+  <p><strong>Conclusion:</strong> Optimized routing reduces delays, improves logistics, and ensures timely deliveries.</p>
+</div>
+<!-- MODULE 4: Battery Allocation -->
 <div id="m4" class="module-content">
-<h2>Worker Infrastructure</h2>
-<p><strong>Business Problem:</strong> Provide safe, accessible housing, healthcare, and facilities for industrial workers.</p>
-<p><strong>Algorithm:</strong> Facility Allocation Optimization (O(n^2))</p>
-<pre>
-// C++ Pseudocode
-void allocateFacilities(vector<pair<int,int>>& houses, vector<pair<int,int>>& facilities){
-for(auto h:houses){int minDist=INT_MAX; for(auto f:facilities){minDist=min(minDist,dist(h,f));}}}
-</pre>
-<p><strong>Conclusion:</strong> Adequate infrastructure ensures worker well-being and supports consistent industrial productivity.</p>
-</div>
+  <h2>Battery Allocation</h2>
 
+  <p><strong>Business Problem:</strong><br>
+  Electric vehicle factories in Vishalnagari struggle with uneven battery distribution.<br>
+  Some assembly lines face shortages while others have surplus stock.<br>
+  Strategic allocation is needed to balance resources and avoid production delays.</p>
+
+  <p><strong>Algorithm:</strong><br>
+  Dynamic programming with predictive allocation ensures balanced battery distribution.<br>
+  It minimizes shortages and maximizes utilization across assembly lines.<br>
+  Efficiency: O(n²) for allocation across multiple units.</p>
+
+  <pre>
+// C++ Implementation (15+ lines)
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+struct Line {
+    int id;
+    int demand;
+};
+
+struct Battery {
+    int id;
+    int capacity;
+};
+
+void allocateBatteries(vector&lt;Line&gt;& lines, vector&lt;Battery&gt;& batteries) {
+    // Sort lines by demand (descending)
+    sort(lines.begin(), lines.end(), [](Line&a, Line&b){return a.demand > b.demand;});
+    // Sort batteries by capacity (descending)
+    sort(batteries.begin(), batteries.end(), [](Battery&a, Battery&b){return a.capacity > b.capacity;});
+
+    int i=0, j=0;
+    while(i&lt;lines.size() && j&lt;batteries.size()){
+        cout &lt;&lt; "Allocate Battery " &lt;&lt; batteries[j].id
+             &lt;&lt; " (Capacity " &lt;&lt; batteries[j].capacity &lt;&lt; ") "
+             &lt;&lt; "to Line " &lt;&lt; lines[i].id
+             &lt;&lt; " (Demand " &lt;&lt; lines[i].demand &lt;&lt; ")" &lt;&lt; endl;
+        i++; j++;
+    }
+}
+
+int main(){
+    vector&lt;Line&gt; lines={{1,50},{2,40},{3,30}};
+    vector&lt;Battery&gt; batteries={{101,60},{102,45},{103,35}};
+    allocateBatteries(lines,batteries);
+    return 0;
+}
+  </pre>
+
+  <p><strong>Conclusion:</strong> Balanced battery allocation prevents shortages, stabilizes production, and ensures consistent EV output.</p>
+</div>
+<!-- MODULE 5: Predictive Maintenance -->
 <div id="m5" class="module-content">
-<h2>Supply Chain</h2>
-<p><strong>Business Problem:</strong> Transport goods efficiently, minimize delays and costs, and maintain inventory transparency.</p>
-<p><strong>Algorithm:</strong> Minimum Cost Flow (O(VE log V))</p>
-<pre>
-// C++ Pseudocode
-void minCostFlow(int V, vector<vector<int>>& capacity, vector<vector<int>>& cost){
-vector<int> dist(V); for(int i=0;i<V;i++){dist[i]=INT_MAX;} dist[0]=0;}
-</pre>
-<p><strong>Conclusion:</strong> Efficient supply chains reduce costs, improve reliability, and ensure timely distribution.</p>
-</div>
+  <h2>Predictive Maintenance</h2>
 
+  <p><strong>Business Problem:</strong><br>
+  Industrial machines in Vishalnagari often fail unexpectedly, causing costly downtime.<br>
+  Manual inspections are inefficient and reactive rather than proactive.<br>
+  Predictive maintenance is needed to anticipate failures before they occur.</p>
+
+  <p><strong>Algorithm:</strong><br>
+  Machine learning anomaly detection models analyze sensor data to predict failures.<br>
+  Statistical thresholds and trend analysis identify early warning signals.<br>
+  Efficiency: O(n) for scanning sensor streams, scalable with data volume.</p>
+
+  <pre>
+// C++ Implementation (15+ lines)
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;numeric&gt;
+using namespace std;
+
+// Simple anomaly detection using moving average
+bool detectAnomaly(vector&lt;int&gt;& readings, int window, int threshold) {
+    for (size_t i = window; i &lt; readings.size(); i++) {
+        int sum = accumulate(readings.begin()+i-window, readings.begin()+i, 0);
+        double avg = (double)sum / window;
+        if (abs(readings[i] - avg) &gt; threshold) {
+            cout &lt;&lt; "Anomaly detected at index " &lt;&lt; i 
+                 &lt;&lt; " (Reading " &lt;&lt; readings[i] 
+                 &lt;&lt; ", Avg " &lt;&lt; avg &lt;&lt; ")" &lt;&lt; endl;
+            return true;
+        }
+    }
+    return false;
+}
+
+int main() {
+    vector&lt;int&gt; sensorData = {50, 52, 49, 51, 90, 55, 53, 52};
+    int window = 3;
+    int threshold = 20;
+
+    if (detectAnomaly(sensorData, window, threshold)) {
+        cout &lt;&lt; "Maintenance required soon!" &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; "System stable, no anomalies detected." &lt;&lt; endl;
+    }
+    return 0;
+}
+  </pre>
+
+  <p><strong>Conclusion:</strong> Predictive maintenance reduces downtime, saves costs, and ensures smoother industrial operations.</p>
+</div>
+<!-- MODULE 6: Workforce Scheduling -->
 <div id="m6" class="module-content">
-<h2>Banking & Finance</h2>
-<p><strong>Business Problem:</strong> Allocate loans, assess risk, and optimize capital deployment for industrial sectors.</p>
-<p><strong>Algorithm:</strong> Loan Allocation & Risk Scoring (O(n log n))</p>
-<pre>
-// C++ Pseudocode
-void allocateLoans(vector<int>& projects, vector<int>& scores){
-priority_queue<pair<int,int>> pq; for(int i=0;i<projects.size();i++) pq.push({scores[i],projects[i]});}
-</pre>
-<p><strong>Conclusion:</strong> Proper financial support accelerates industrial growth while minimizing operational risk.</p>
-</div>
+  <h2>Workforce Scheduling</h2>
 
+  <p><strong>Business Problem:</strong><br>
+  Industrial plants in Vishalnagari face challenges in assigning shifts and tasks fairly.<br>
+  Poor scheduling leads to worker fatigue, reduced productivity, and higher turnover.<br>
+  Optimized workforce scheduling ensures balanced workloads and consistent output.</p>
+
+  <p><strong>Algorithm:</strong><br>
+  Constraint satisfaction scheduling assigns workers to shifts while respecting availability and workload limits.<br>
+  Uses greedy heuristics with backtracking to resolve conflicts.<br>
+  Efficiency: O(n²) in worst case, but practical performance is efficient for moderate workforce sizes.</p>
+
+  <pre>
+// C++ Implementation (15+ lines)
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+using namespace std;
+
+struct Worker {
+    int id;
+    string name;
+    int maxHours;
+};
+
+struct Shift {
+    int id;
+    int requiredHours;
+};
+
+void scheduleWorkforce(vector&lt;Worker&gt;& workers, vector&lt;Shift&gt;& shifts) {
+    size_t i = 0, j = 0;
+    while (i &lt; workers.size() && j &lt; shifts.size()) {
+        if (workers[i].maxHours &gt;= shifts[j].requiredHours) {
+            cout &lt;&lt; "Assign Worker " &lt;&lt; workers[i].name
+                 &lt;&lt; " (Max " &lt;&lt; workers[i].maxHours &lt;&lt; " hrs)"
+                 &lt;&lt; " to Shift " &lt;&lt; shifts[j].id
+                 &lt;&lt; " (Requires " &lt;&lt; shifts[j].requiredHours &lt;&lt; " hrs)" &lt;&lt; endl;
+            workers[i].maxHours -= shifts[j].requiredHours;
+            j++;
+        } else {
+            i++;
+        }
+    }
+}
+
+int main() {
+    vector&lt;Worker&gt; workers = {{1,"Asha",8},{2,"Ravi",6},{3,"Meena",5}};
+    vector&lt;Shift&gt; shifts = {{101,4},{102,3},{103,2},{104,5}};
+
+    scheduleWorkforce(workers, shifts);
+    return 0;
+}
+  </pre>
+
+  <p><strong>Conclusion:</strong> Balanced workforce scheduling improves productivity, reduces fatigue, and ensures fair workload distribution.</p>
+</div>
+<!-- MODULE 6: Workforce Scheduling -->
+<div id="m6" class="module-content">
+  <h2>Workforce Scheduling</h2>
+
+  <p><strong>Business Problem:</strong><br>
+  Industrial plants in Vishalnagari face challenges in assigning shifts and tasks fairly.<br>
+  Poor scheduling leads to worker fatigue, reduced productivity, and higher turnover.<br>
+  Optimized workforce scheduling ensures balanced workloads and consistent output.</p>
+
+  <p><strong>Algorithm:</strong><br>
+  Constraint satisfaction scheduling assigns workers to shifts while respecting availability and workload limits.<br>
+  Uses greedy heuristics with backtracking to resolve conflicts.<br>
+  Efficiency: O(n²) in worst case, but practical performance is efficient for moderate workforce sizes.</p>
+
+  <pre>
+// C++ Implementation (15+ lines)
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+using namespace std;
+
+struct Worker {
+    int id;
+    string name;
+    int maxHours;
+};
+
+struct Shift {
+    int id;
+    int requiredHours;
+};
+
+void scheduleWorkforce(vector&lt;Worker&gt;& workers, vector&lt;Shift&gt;& shifts) {
+    size_t i = 0, j = 0;
+    while (i &lt; workers.size() && j &lt; shifts.size()) {
+        if (workers[i].maxHours &gt;= shifts[j].requiredHours) {
+            cout &lt;&lt; "Assign Worker " &lt;&lt; workers[i].name
+                 &lt;&lt; " (Max " &lt;&lt; workers[i].maxHours &lt;&lt; " hrs)"
+                 &lt;&lt; " to Shift " &lt;&lt; shifts[j].id
+                 &lt;&lt; " (Requires " &lt;&lt; shifts[j].requiredHours &lt;&lt; " hrs)" &lt;&lt; endl;
+            workers[i].maxHours -= shifts[j].requiredHours;
+            j++;
+        } else {
+            i++;
+        }
+    }
+}
+
+int main() {
+    vector&lt;Worker&gt; workers = {{1,"Asha",8},{2,"Ravi",6},{3,"Meena",5}};
+    vector&lt;Shift&gt; shifts = {{101,4},{102,3},{103,2},{104,5}};
+
+    scheduleWorkforce(workers, shifts);
+    return 0;
+}
+  </pre>
+
+  <p><strong>Conclusion:</strong> Balanced workforce scheduling improves productivity, reduces fatigue, and ensures fair workload distribution.</p>
+</div>
+<!-- MODULE 7: Supply Chain Optimization -->
 <div id="m7" class="module-content">
-<h2>Commercial Market Planning</h2>
-<p><strong>Business Problem:</strong> Decide strategic locations for markets and shops based on demand and resource availability.</p>
-<p><strong>Algorithm:</strong> Heuristic Demand Allocation (O(n^2))</p>
-<pre>
-// C++ Pseudocode
-void planMarkets(vector<pair<int,int>>& locations, vector<int>& demand){
-for(auto loc:locations){for(int d:demand){computeScore(loc,d);}}}
-</pre>
-<p><strong>Conclusion:</strong> Well-planned markets maximize accessibility, revenue, and consumer satisfaction.</p>
+  <h2>Supply Chain Optimization</h2>
+
+  <p><strong>Business Problem:</strong><br>
+  Vishalnagari’s industries face delays and rising costs in transporting goods across suppliers and distributors.<br>
+  Inefficient inventory tracking causes shortages in some areas and surpluses in others.<br>
+  Optimized supply chains are needed to reduce costs and ensure timely distribution.</p>
+
+  <p><strong>Algorithm:</strong><br>
+  Minimum Cost Flow algorithm models supply chains as flow networks.<br>
+  It minimizes transport costs while maintaining inventory transparency.<br>
+  Efficiency: O(VE log V), where V = nodes and E = edges.</p>
+
+  <pre>
+// C++ Implementation (15+ lines)
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;climits&gt;
+using namespace std;
+
+// Simplified min-cost flow demonstration
+struct Edge {
+    int from, to, cost, capacity;
+};
+
+void minCostFlow(int V, vector&lt;Edge&gt;& edges) {
+    vector&lt;int&gt; dist(V, INT_MAX);
+    dist[0] = 0;
+
+    // Relax edges repeatedly (Bellman-Ford style)
+    for (int i = 0; i &lt; V-1; i++) {
+        for (auto &e : edges) {
+            if (dist[e.from] != INT_MAX && dist[e.from] + e.cost &lt; dist[e.to]) {
+                dist[e.to] = dist[e.from] + e.cost;
+            }
+        }
+    }
+
+    cout &lt;&lt; "Minimum transport costs from source node 0:\\n";
+    for (int i = 0; i &lt; V; i++) {
+        cout &lt;&lt; "To node " &lt;&lt; i &lt;&lt; " = " &lt;&lt; dist[i] &lt;&lt; endl;
+    }
+}
+
+int main() {
+    int V = 4; // suppliers, warehouses, distributors
+    vector&lt;Edge&gt; edges = {
+        {0,1,2,10}, {0,2,5,15}, {1,2,1,5}, {1,3,3,10}, {2,3,2,10}
+    };
+
+    minCostFlow(V, edges);
+    return 0;
+}
+  </pre>
+
+  <p><strong>Conclusion:</strong> Efficient supply chains reduce costs, improve reliability, and ensure timely distribution of goods.</p>
 </div>
+<!-- CONCLUSION -->
+<div id="conclusion" class="module-content" style="display:block;">
+  <h2>Conclusion</h2>
 
+  <p>
+    Vishalnagari’s industrial ecosystem demonstrates how algorithmic thinking can transform traditional challenges into scalable solutions.<br>
+    From EV assembly lines to textile dyeing, cotton routing, battery allocation, predictive maintenance, workforce scheduling, and supply chain optimization — each module applies computation to achieve efficiency, sustainability, and growth.<br>
+    Together, these approaches highlight the power of graph theory, greedy heuristics, dynamic programming, and machine learning in solving real-world industrial problems.
+  </p>
+
+  <p>
+    By integrating these strategies, industries in Vishalnagari can reduce costs, improve reliability, and ensure long-term competitiveness.<br>
+    This portfolio reflects the vision of combining tradition with innovation, showcasing how technology empowers industrial and manufacturing systems for the future.
+  </p>
+</div>
 <script>
-function toggleModule(id){
-const modules=document.getElementsByClassName('module-content');
-for(let m of modules) m.style.display="none";
-const selected=document.getElementById(id);
-if(selected) selected.style.display="block";
+// Toggle between dark and light themes
+function toggleTheme() {
+  const body = document.body;
+  if (body.classList.contains("dark")) {
+    body.classList.remove("dark");
+    body.classList.add("light");
+    document.getElementById("themeBtn").innerText = "☀️ Light Mode";
+  } else {
+    body.classList.remove("light");
+    body.classList.add("dark");
+    document.getElementById("themeBtn").innerText = "🌙 Dark Mode";
+  }
 }
-function toggleTheme(){
-document.body.classList.toggle('light');
-document.body.classList.toggle('dark');
-const btn=document.getElementById('themeBtn');
-btn.textContent=document.body.classList.contains('dark')?"🌙 Dark Mode":"☀️ Light Mode";
-}
-function goHome(){ window.location.href="index.html"; }
-</script>
 
+// Show only the intro/home section (hide all modules)
+function goHome() {
+  const modules = document.querySelectorAll(".module-content");
+  modules.forEach(m => m.style.display = "none");
+}
+
+// Toggle a specific module on/off
+function toggleModule(id) {
+  const module = document.getElementById(id);
+  if (module.style.display === "block") {
+    module.style.display = "none";
+  } else {
+    // Hide all other modules first
+    const modules = document.querySelectorAll(".module-content");
+    modules.forEach(m => m.style.display = "none");
+    // Show the selected one
+    module.style.display = "block";
+  }
+}
+</script>
 </body>
 </html>
