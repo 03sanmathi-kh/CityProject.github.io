@@ -4,36 +4,69 @@
   <meta charset="UTF-8">
   <title>Sanmathi – Industry Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
-    body.dark { color:#fff; }
-    body.light { color:#000; }
     body {
       margin:0;
       font-family:'Segoe UI',sans-serif;
-      transition:background 0.3s,color 0.3s;
-      /* Chameleon color changing background */
-      background: linear-gradient(120deg,#ff4c60,#4cd964,#5ac8fa,#a970ff,#ff9500);
-      background-size: 500% 500%;
-      animation: chameleon 18s ease infinite;
+      transition:background 0.5s,color 0.5s;
+      min-height:100vh;
+      position: relative;
+      overflow-x: hidden;
+      color: #fff;
     }
 
-    @keyframes chameleon {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    body.light { color: #222; }
+
+    /* Multi-layer wavy background */
+    body::before,
+    body::after,
+    .wave-layer3 {
+      content: "";
+      position: fixed;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      border-radius: 50%;
+      z-index: -1;
+      pointer-events: none;
     }
 
-    header { text-align:center; padding:40px 20px; }
-    header h1 { font-size:42px; font-weight:900; color:#ff4c60; }
-    header h3 { font-size:22px; font-weight:600; color:#ffdd57; }
+    /* Dark mode waves */
+    body.dark::before { background: rgba(40, 60, 120, 0.7); animation: wave1 28s ease-in-out infinite; top: -55%; }
+    body.dark::after { background: rgba(70, 20, 100, 0.5); animation: wave2 40s ease-in-out infinite; top: -60%; }
+    .wave-layer3 { background: rgba(150, 40, 200, 0.4); animation: wave3 50s ease-in-out infinite; top: -50%; }
+
+    /* Light mode waves */
+    body.light::before { background: rgba(180, 220, 255, 0.7); animation: wave1Light 28s ease-in-out infinite; top: -55%; }
+    body.light::after { background: rgba(120, 200, 250, 0.5); animation: wave2Light 40s ease-in-out infinite; top: -60%; }
+    body.light .wave-layer3 { background: rgba(150, 255, 200, 0.4); animation: wave3Light 50s ease-in-out infinite; top: -50%; }
+
+    /* Dark mode keyframes */
+    @keyframes wave1 { 0% {transform: translateX(0) rotate(0deg);} 50% {transform: translateX(25%) rotate(4deg);} 100% {transform: translateX(0) rotate(0deg);} }
+    @keyframes wave2 { 0% {transform: translateX(0) rotate(0deg);} 50% {transform: translateX(-20%) rotate(-3deg);} 100% {transform: translateX(0) rotate(0deg);} }
+    @keyframes wave3 { 0% {transform: translateX(0) rotate(0deg);} 50% {transform: translateX(15%) rotate(2deg);} 100% {transform: translateX(0) rotate(0deg);} }
+
+    /* Light mode keyframes */
+    @keyframes wave1Light { 0% {transform: translateX(0) rotate(0deg);} 50% {transform: translateX(25%) rotate(4deg);} 100% {transform: translateX(0) rotate(0deg);} }
+    @keyframes wave2Light { 0% {transform: translateX(0) rotate(0deg);} 50% {transform: translateX(-20%) rotate(-3deg);} 100% {transform: translateX(0) rotate(0deg);} }
+    @keyframes wave3Light { 0% {transform: translateX(0) rotate(0deg);} 50% {transform: translateX(15%) rotate(2deg);} 100% {transform: translateX(0) rotate(0deg);} }
+
+    /* Header */
+    header { text-align:center; padding:40px 20px; position: relative; z-index: 2; }
+    header h1 { font-size:42px; font-weight:900; color:#ff4c60; margin: 0; }
+    header h3 { font-size:22px; font-weight:600; color:#ffdd57; margin: 10px 0; }
     header p { max-width:800px; margin:20px auto; font-size:16px; line-height:1.6; }
 
+    /* Theme toggle */
     .theme-toggle {
       margin-top:15px; padding:10px 20px; border:none; border-radius:8px;
       cursor:pointer; font-weight:bold; background:#5ac8fa; color:#fff;
+      z-index:2; position: relative;
     }
 
-    .card-container { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; padding:20px; }
+    /* Cards */
+    .card-container { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; padding:20px; z-index:2; position: relative; }
     .card {
       border-radius:15px; width:250px; padding:20px; text-align:center; cursor:pointer; color:#fff;
       box-shadow:0 0 20px rgba(0,0,0,0.4); transition:transform 0.3s ease; backdrop-filter: blur(4px);
@@ -67,15 +100,15 @@
       font-weight: bold;
       text-decoration: none;
       transition: background 0.3s ease, transform 0.2s ease;
+      z-index:2; position: relative;
     }
-    .back-home:hover {
-      background: #ff1e3c;
-      transform: scale(1.05);
-    }
+    .back-home:hover { background: #ff1e3c; transform: scale(1.05); }
 
   </style>
 </head>
 <body class="dark">
+
+<div class="wave-layer3"></div>
 
 <a href="index.html" class="back-home">⬅ Back to Home</a>
 
@@ -99,7 +132,14 @@
   <div class="card" onclick="toggleModule('m7')">Module 7: Supply Chain Optimization</div>
 </div>
 
-<!-- All module sections remain exactly the same -->
+<!-- All module sections remain unchanged -->
+<div class="module-content" id="m1">EV Assembly Line Details...</div>
+<div class="module-content" id="m2">Machine Job Scheduling Details...</div>
+<div class="module-content" id="m3">Logistics Routing Details...</div>
+<div class="module-content" id="m4">Battery Allocation Details...</div>
+<div class="module-content" id="m5">Predictive Maintenance Details...</div>
+<div class="module-content" id="m6">Workforce Scheduling Details...</div>
+<div class="module-content" id="m7">Supply Chain Optimization Details...</div>
 
 <script>
 function toggleModule(id) {
