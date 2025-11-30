@@ -42,12 +42,11 @@
       padding: 30px;
     }
 
-    /* Hexagon shape */
+    /* Hexagon base style */
     .hex {
       position: relative;
       width: 160px;
       height: 90px;
-      background: #2ecc71;
       margin: 45px 0;
       display: flex;
       align-items: center;
@@ -66,15 +65,28 @@
       border-left: 80px solid transparent;
       border-right: 80px solid transparent;
     }
-    .hex:before {
-      bottom: 100%;
-      border-bottom: 45px solid #2ecc71;
-    }
-    .hex:after {
-      top: 100%;
-      border-top: 45px solid #2ecc71;
-    }
     .hex:hover { transform: scale(1.08); }
+
+    /* Different hexagon colors */
+    .flow { background: #e74c3c; }
+    .flow:before { border-bottom: 45px solid #e74c3c; bottom: 100%; }
+    .flow:after { border-top: 45px solid #e74c3c; top: 100%; }
+
+    .signal { background: #3498db; }
+    .signal:before { border-bottom: 45px solid #3498db; bottom: 100%; }
+    .signal:after { border-top: 45px solid #3498db; top: 100%; }
+
+    .accident { background: #f1c40f; }
+    .accident:before { border-bottom: 45px solid #f1c40f; bottom: 100%; }
+    .accident:after { border-top: 45px solid #f1c40f; top: 100%; }
+
+    .parking { background: #2ecc71; }
+    .parking:before { border-bottom: 45px solid #2ecc71; bottom: 100%; }
+    .parking:after { border-top: 45px solid #2ecc71; top: 100%; }
+
+    .emergency { background: #9b59b6; }
+    .emergency:before { border-bottom: 45px solid #9b59b6; bottom: 100%; }
+    .emergency:after { border-top: 45px solid #9b59b6; top: 100%; }
 
     /* Popup content */
     .module-content {
@@ -109,31 +121,44 @@
     and more efficient transportation systems across Vishalnagari.
   </p>
 </header>
-  <div class="hex-container">
-  <div class="hex" onclick="toggleModule('a1')">Module 1: Traffic Flow Optimization</div>
-  <div class="hex" onclick="toggleModule('a2')">Module 2: Signal Scheduling</div>
-  <div class="hex" onclick="toggleModule('a3')">Module 3: Accident Detection</div>
-  <div class="hex" onclick="toggleModule('a4')">Module 4: Parking Allocation</div>
-  <div class="hex" onclick="toggleModule('a5')">Module 5: Emergency Routing</div>
+<div class="hex-container">
+  <div class="hex flow" onclick="toggleModule('a1')">Module 1: Traffic Flow</div>
+  <div class="hex signal" onclick="toggleModule('a2')">Module 2: Signal Scheduling</div>
+  <div class="hex accident" onclick="toggleModule('a3')">Module 3: Accident Detection</div>
+  <div class="hex parking" onclick="toggleModule('a4')">Module 4: Parking Allocation</div>
+  <div class="hex emergency" onclick="toggleModule('a5')">Module 5: Emergency Routing</div>
 </div>
 
 <!-- Module 1 -->
 <div id="a1" class="module-content">
   <h2>Traffic Flow Optimization</h2>
-  <p><strong>🔍 What exact problem are we solving?</strong><br>
-  How can vehicles be routed to minimize congestion at intersections?</p>
+  <p><strong>🔍 Problem:</strong> How can vehicles be routed through a city network to minimize congestion and travel time?</p>
   <p><strong>Algorithm:</strong> Dijkstra’s Shortest Path<br>
      <strong>Efficiency:</strong> O(E log V)</p>
   <pre>
 Pseudocode:
-1. Initialize distances to infinity
-2. Use priority queue to pick shortest path
-3. Update neighbors until all nodes processed
+1. Initialize all node distances to infinity except source = 0
+2. Use a priority queue to pick the node with smallest distance
+3. For each neighbor, update distance if shorter path found
+4. Repeat until all nodes processed
 
 C++:
 vector<int> shortestPath(Graph& g, int src) {
-  priority_queue<pair<int,int>> pq;
-  // Dijkstra’s logic
+  priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;
+  vector<int> dist(g.size(), INT_MAX);
+  dist[src] = 0;
+  pq.push({0, src});
+  while(!pq.empty()) {
+    int u = pq.top().second; pq.pop();
+    for(auto& edge : g[u]) {
+      int v = edge.first, w = edge.second;
+      if(dist[u] + w < dist[v]) {
+        dist[v] = dist[u] + w;
+        pq.push({dist[v], v});
+      }
+    }
+  }
+  return dist;
 }
   </pre>
 </div>
@@ -141,19 +166,24 @@ vector<int> shortestPath(Graph& g, int src) {
 <!-- Module 2 -->
 <div id="a2" class="module-content">
   <h2>Signal Scheduling</h2>
-  <p><strong>🔍 What exact problem are we solving?</strong><br>
-  How can traffic lights be scheduled to reduce waiting time?</p>
+  <p><strong>🔍 Problem:</strong> How can traffic lights be scheduled to reduce waiting time and balance flow across lanes?</p>
   <p><strong>Algorithm:</strong> Round Robin Scheduling<br>
      <strong>Efficiency:</strong> O(n)</p>
   <pre>
 Pseudocode:
-1. Rotate signals in fixed order
-2. Each lane gets equal time slice
+1. Maintain a queue of lanes
+2. Assign green signal to first lane for fixed time slice
+3. Rotate queue → next lane gets green
+4. Continue until all lanes served
 
 C++:
-void scheduleSignals(vector<int>& lanes) {
-  for(int i=0;i<lanes.size();i++) {
-    // rotate signals
+void scheduleSignals(vector<int>& lanes, int timeSlice) {
+  queue<int> q;
+  for(int i=0;i<lanes.size();i++) q.push(lanes[i]);
+  while(true) {
+    int lane = q.front(); q.pop();
+    // give green signal to lane for timeSlice
+    q.push(lane);
   }
 }
   </pre>
@@ -162,39 +192,45 @@ void scheduleSignals(vector<int>& lanes) {
 <!-- Module 3 -->
 <div id="a3" class="module-content">
   <h2>Accident Detection</h2>
-  <p><strong>🔍 What exact problem are we solving?</strong><br>
-  How can anomalies in traffic flow be detected quickly?</p>
-  <p><strong>Algorithm:</strong> Anomaly Detection using Hash Maps<br>
+  <p><strong>🔍 Problem:</strong> How can anomalies in traffic flow be detected quickly to identify accidents or blockages?</p>
+  <p><strong>Algorithm:</strong> Hash Map Anomaly Detection<br>
      <strong>Efficiency:</strong> O(1) average lookup</p>
   <pre>
 Pseudocode:
-1. Track vehicle counts per lane
-2. Compare against threshold
-3. Flag anomalies
+1. Maintain map of lane → vehicle count
+2. Update counts periodically
+3. If count drops below threshold unexpectedly → flag accident
 
 C++:
 bool detectAccident(map<int,int>& flow, int threshold) {
-  for(auto& f:flow) if(f.second<threshold) return true;
+  for(auto& f:flow) {
+    if(f.second < threshold) return true;
+  }
   return false;
 }
   </pre>
 </div>
-    <!-- Module 4 -->
+      <!-- Module 4 -->
 <div id="a4" class="module-content">
   <h2>Parking Allocation</h2>
-  <p><strong>🔍 What exact problem are we solving?</strong><br>
-  How can parking slots be allocated fairly and efficiently?</p>
+  <p><strong>🔍 Problem:</strong> How can limited parking slots be allocated fairly and efficiently among incoming vehicles?</p>
   <p><strong>Algorithm:</strong> Greedy Allocation<br>
      <strong>Efficiency:</strong> O(n log n)</p>
   <pre>
 Pseudocode:
-1. Sort slots by availability
-2. Assign slots to cars until full
+1. Sort parking slots by availability or distance from entry
+2. Assign slots to cars in order of arrival
+3. If slot is occupied, move to next available slot
+4. Continue until all cars are parked or slots are full
 
 C++:
 vector<int> allocateParking(vector<int>& slots, int cars) {
-  sort(slots.begin(), slots.end());
-  // assign slots greedily
+  sort(slots.begin(), slots.end()); // sort slots
+  vector<int> assigned;
+  for(int i=0; i<cars && i<slots.size(); i++) {
+    assigned.push_back(slots[i]); // assign slot
+  }
+  return assigned;
 }
   </pre>
 </div>
@@ -202,19 +238,22 @@ vector<int> allocateParking(vector<int>& slots, int cars) {
 <!-- Module 5 -->
 <div id="a5" class="module-content">
   <h2>Emergency Vehicle Routing</h2>
-  <p><strong>🔍 What exact problem are we solving?</strong><br>
-  How can ambulances and fire trucks reach destinations fastest?</p>
+  <p><strong>🔍 Problem:</strong> How can ambulances and fire trucks reach destinations fastest while avoiding congested roads?</p>
   <p><strong>Algorithm:</strong> A* Search Algorithm<br>
      <strong>Efficiency:</strong> O(E log V)</p>
   <pre>
 Pseudocode:
 1. Initialize open set with start node
-2. Use heuristic (distance to goal)
-3. Expand lowest cost node until goal reached
+2. For each node, compute f(n) = g(n) + h(n)
+   - g(n) = cost from start
+   - h(n) = heuristic (estimated distance to goal)
+3. Expand node with lowest f(n)
+4. Repeat until goal is reached
 
 C++:
 vector<int> routeEmergency(Graph& g, int src, int dest) {
   // A* search with heuristic
+  // Use priority queue with f(n) values
 }
   </pre>
 </div>
@@ -225,7 +264,7 @@ vector<int> routeEmergency(Graph& g, int src, int dest) {
   <p>
     The Traffic domain integrates <strong>flow optimization, signal scheduling, accident detection, parking allocation, and emergency routing</strong>  
     into a unified civic framework. By applying algorithmic strategies such as <strong>Dijkstra, Round Robin, anomaly detection, greedy allocation, and A*</strong>,  
-    Vishalnagari ensures smoother, safer, and more efficient transportation systems.
+    Vishalnagari ensures smoother, safer, and more efficient transportation systems for its citizens.
   </p>
 </section>
 
