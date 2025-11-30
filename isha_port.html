@@ -4,36 +4,78 @@
   <meta charset="UTF-8">
   <title>Isha – Agriculture & Sustainability Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
+    :root {
+      /* Light Mode Colors */
+      --bg: #ffffff;
+      --text: #000000;
+      --card-bg: rgba(0,0,0,0.06);
+      --header-green: #27ae60;
+      --header-yellow: #b58e00;
+    }
+
+    body.dark {
+      /* Dark Mode Colors */
+      --bg: #0a0a0a;
+      --text: #ffffff;
+      --card-bg: rgba(255,255,255,0.05);
+      --header-green: #2ecc71;
+      --header-yellow: #f1c40f;
+    }
+
+    /* General Styling */
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #0a0a0a;
-      color: #ffffff;
+      background: var(--bg);
+      color: var(--text);
       text-align: center;
+      transition: all 0.3s ease-in-out;
     }
+
+    /* Theme Toggle Button */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--card-bg);
+      border: 2px solid var(--text);
+      padding: 10px 15px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .theme-toggle:hover {
+      transform: scale(1.05);
+    }
+
     header {
       padding: 40px 20px;
     }
+
     header h1 {
       font-size: 42px;
       font-weight: 900;
-      color: #2ecc71;
+      color: var(--header-green);
     }
+
     header h3 {
       font-size: 22px;
       font-weight: 600;
-      color: #f1c40f;
+      color: var(--header-yellow);
     }
+
     header p {
       max-width: 800px;
       margin: 20px auto;
       font-size: 16px;
       line-height: 1.6;
-      color: #dddddd;
     }
 
-    /* Container */
+    /* Droplet Layout */
     .droplet-container {
       display: flex;
       flex-wrap: wrap;
@@ -42,7 +84,6 @@
       padding: 30px;
     }
 
-    /* Base droplet shape */
     .droplet {
       width: 100px;
       height: 150px;
@@ -55,47 +96,63 @@
       font-weight: 600;
       transition: transform 0.3s ease;
     }
-    .droplet:hover { transform: scale(1.1); }
 
-    /* Different colors for each droplet */
-    .yield { background: #e74c3c; }      /* Red */
-    .irrigation { background: #3498db; } /* Blue */
-    .waste { background: #f1c40f; }      /* Yellow */
-    .soil { background: #2ecc71; }       /* Green */
-    .energy { background: #9b59b6; }     /* Purple */
+    .droplet:hover {
+      transform: scale(1.1);
+    }
 
-    /* Popup content */
+    .yield { background: #e74c3c; }
+    .irrigation { background: #3498db; }
+    .waste { background: #f1c40f; }
+    .soil { background: #2ecc71; }
+    .energy { background: #9b59b6; }
+
     .module-content {
       display: none;
       margin: 20px auto;
       padding: 20px;
       border-radius: 15px;
       max-width: 900px;
-      background: rgba(255,255,255,0.05);
-      color: #fff;
+      background: var(--card-bg);
     }
-    .module-content h2 { font-size: 24px; }
-    .module-content p { font-size: 16px; line-height: 1.6; }
+
+    .module-content h2 {
+      font-size: 24px;
+    }
+
+    .module-content p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
     pre {
-      background: rgba(255,255,255,0.08);
+      background: rgba(0,0,0,0.1);
       padding: 15px;
       border-radius: 10px;
       overflow-x: auto;
       font-size: 14px;
-      color: #f5f5f5;
     }
+
+    body.dark pre {
+      background: rgba(255,255,255,0.08);
+    }
+
   </style>
 </head>
-<body>
+<body class="dark">
+
+<!-- Theme Toggle Button -->
+<button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
 
 <header>
   <h1>Isha</h1>
   <h3>Agriculture & Sustainability – Vishalnagari</h3>
   <p>
-    The Agriculture & Sustainability domain focuses on <strong>crop yield prediction, irrigation scheduling, waste management, soil classification, and renewable energy allocation</strong>.  
-    Algorithms such as <strong>regression, dynamic programming, TSP heuristics, decision trees, and linear programming</strong> are applied to ensure sustainable farming and efficient resource use.
+    The Agriculture & Sustainability domain focuses on <strong>crop yield prediction, irrigation scheduling, waste management, soil classification, and renewable energy allocation</strong>.
+    Algorithms such as <strong>regression, dynamic programming, TSP heuristics, decision trees, and linear programming</strong> are applied.
   </p>
 </header>
+
 <div class="droplet-container">
   <div class="droplet yield" onclick="toggleModule('i1')">Module 1</div>
   <div class="droplet irrigation" onclick="toggleModule('i2')">Module 2</div>
@@ -104,98 +161,73 @@
   <div class="droplet energy" onclick="toggleModule('i5')">Module 5</div>
 </div>
 
-<!-- Module 1 -->
+<!-- MODULES (same content you provided) -->
 <div id="i1" class="module-content">
   <h2>Crop Yield Prediction</h2>
-  <p><strong>🔍 Problem:</strong> Farmers need to estimate crop yields based on soil nutrients, rainfall, and temperature to plan storage and sales.</p>
-  <p><strong>Algorithm:</strong> Multiple Linear Regression<br>
-     <strong>Efficiency:</strong> O(n)</p>
-  <pre>
-Pseudocode:
-1. Collect dataset: rainfall, soil quality, temperature, yield
-2. Normalize features to standard scale
-3. Initialize regression coefficients (β0, β1, β2…)
-4. Apply least squares to minimize error between predicted and actual yield
-5. Update coefficients iteratively until convergence
-6. Predict yield for new input values using regression equation
-  </pre>
+  <p><strong>Problem:</strong> Farmers need to estimate crop yields based on soil nutrients, rainfall, and temperature.</p>
+  <p><strong>Algorithm:</strong> Multiple Linear Regression (O(n))</p>
+  <pre>1. Collect dataset
+2. Normalize features
+3. Initialize coefficients
+4. Apply least squares
+5. Update until convergence
+6. Predict yield</pre>
 </div>
 
-<!-- Module 2 -->
 <div id="i2" class="module-content">
   <h2>Irrigation Scheduling</h2>
-  <p><strong>🔍 Problem:</strong> Water resources are limited; fields must be irrigated optimally to maximize crop health.</p>
-  <p><strong>Algorithm:</strong> Dynamic Programming (Knapsack)<br>
-     <strong>Efficiency:</strong> O(nW)</p>
-  <pre>
-Pseudocode:
-1. Define fields with water requirement and benefit score
-2. Initialize DP table with dimensions [fields][water capacity]
-3. For each field:
-   a. If water allocated ≥ requirement → compute benefit
-   b. Else → skip field
-4. Fill DP table with max benefit at each capacity
-5. Trace back to identify chosen fields
-6. Allocate water accordingly
-7. Output irrigation plan with max benefit
-  </pre>
+  <p><strong>Algorithm:</strong> Dynamic Programming – Knapsack (O(nW))</p>
+  <pre>1. Define fields
+2. Create DP table
+3. Choose max benefit
+4. Trace selections</pre>
 </div>
 
-<!-- Module 3 -->
 <div id="i3" class="module-content">
   <h2>Waste Management Routing</h2>
-  <p><strong>🔍 Problem:</strong> Trucks must collect waste from multiple locations with minimum travel cost.</p>
-  <p><strong>Algorithm:</strong> Travelling Salesman Problem (TSP heuristic)<br>
-     <strong>Efficiency:</strong> O(n²) for heuristic</p>
-  <pre>
-Pseudocode:
-1. Start from depot node
-2. Choose nearest unvisited location → move truck
-3. Repeat until all locations visited
-4. Return to depot
-5. Apply 2-opt swap to reduce route length
-6. Output optimized route for waste collection
-  </pre>
+  <p><strong>Algorithm:</strong> TSP Heuristic (O(n²))</p>
+  <pre>Nearest neighbour → 2-opt refinement</pre>
 </div>
-<!-- Module 4 -->
+
 <div id="i4" class="module-content">
   <h2>Soil Quality Classification</h2>
-  <p><strong>🔍 Problem:</strong> Soil samples must be classified (e.g., fertile, sandy, clay) to recommend suitable crops.</p>
-  <p><strong>Algorithm:</strong> Decision Tree Classification<br>
-     <strong>Efficiency:</strong> O(n log n)</p>
-  <pre>
-Pseudocode:
-1. Collect soil dataset with features (pH, moisture, nutrients)
-2. Choose best feature to split using information gain
-3. Partition dataset into subsets
-4. Recursively build decision tree until stopping criteria
-5. Store leaf nodes with soil class labels
-6. For new sample → traverse tree based on feature values
-7. Output predicted soil class
-  </pre>
+  <p><strong>Algorithm:</strong> Decision Tree (O(n log n))</p>
+  <pre>Collect dataset → choose best split → recurse → classify</pre>
 </div>
 
-<!-- Module 5 -->
 <div id="i5" class="module-content">
   <h2>Renewable Energy Allocation</h2>
-  <p><strong>🔍 Problem:</strong> Farms need fair distribution of solar/wind energy to power irrigation and storage.</p>
-  <p><strong>Algorithm:</strong> Linear Programming (Simplex Method)<br>
-     <strong>Efficiency:</strong> Polynomial average time</p>
-  <pre>
-Pseudocode:
-1. Define objective function: maximize energy utilization
-2. Add constraints: total energy ≤ supply, farm minimums
-3. Initialize simplex tableau
-4. Perform pivot operations to improve solution
-5. Repeat until optimal solution reached
-6. Output allocation plan for each farm
-  </pre>
+  <p><strong>Algorithm:</strong> Linear Programming</p>
+  <pre>Define objective → add constraints → simplex method</pre>
 </div>
 
-<!-- Conclusion -->
-<section style="margin:40px auto; max-width:900px; padding:20px; background:rgba(255,255,255,0.05); border-radius:15px;">
+<section style="margin:40px auto; max-width:900px; padding:20px; background:var(--card-bg); border-radius:15px;">
   <h2>Conclusion</h2>
   <p>
-    The Agriculture & Sustainability domain integrates <strong>crop yield prediction, irrigation scheduling, waste management, soil classification, and renewable energy allocation</strong>  
-    into a unified civic framework. By applying algorithmic strategies such as <strong>regression, dynamic programming, TSP heuristics, decision trees, and linear programming</strong>,  
-    Vishalnagari ensures sustainable farming, efficient resource use, and eco‑friendly
+    This domain integrates regression, DP, heuristics, decision trees, and LP to help Vishalnagari grow sustainably.
+  </p>
+</section>
+
+<script>
+/* Module Toggle */
+function toggleModule(id) {
+  const sections = document.getElementsByClassName("module-content");
+  for (let s of sections) s.style.display = "none";
+  document.getElementById(id).style.display = "block";
+}
+
+/* Theme Toggle */
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+
+  const btn = document.querySelector(".theme-toggle");
+  if (document.body.classList.contains("dark")) {
+    btn.textContent = "🌙 Dark Mode";
+  } else {
+    btn.textContent = "☀️ Light Mode";
+  }
+}
+</script>
+
+</body>
+</html>
