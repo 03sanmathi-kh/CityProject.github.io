@@ -88,8 +88,7 @@
   <h2>Traffic Flow</h2>
   <p><strong>Business Problem:</strong><br>
   Busy roads face congestion during peak hours.  
-  How can traffic be guided dynamically to reduce delays?  
-  Can shortest paths be computed efficiently?</p>
+  How can traffic be guided dynamically to reduce delays?</p>
   <p><strong>Algorithm:</strong> Dijkstra’s Shortest Path algorithm<br>
   Computes fastest routes for vehicles dynamically.<br>
   Time complexity: O(E + V log V)</p>
@@ -99,69 +98,62 @@ vector<int> dijkstra(int V, vector<vector<pair<int,int>>>& adj, int src){
 vector<int> dist(V, INT_MAX); priority_queue<pair<int,int>,vector<pair<int,int>>,greater<>> pq;
 dist[src]=0; pq.push({0,src});
 while(!pq.empty()){int u=pq.top().second; pq.pop();
-for(auto [v,wt]:adj[u]){if(dist[u]+wt<dist[v]){dist[v]=dist[u]+wt; pq.push({dist[v],v});}}}
+for(auto [v,wt]:adj[u]) if(dist[u]+wt<dist[v]){dist[v]=dist[u]+wt; pq.push({dist[v],v});}}
 return dist;}
   </pre>
-  <p><strong>Conclusion:</strong> Traffic management in Vishalnagari is enhanced using algorithms, ensuring safe and efficient transport.</p>
 </div>
 
 <div id="a2" class="module-content">
   <h2>Signal Scheduling</h2>
   <p><strong>Business Problem:</strong><br>
   Traffic lights cause waiting times at intersections.  
-  How can signals be scheduled to minimize total delay?  
-  Can fairness among lanes be maintained?</p>
+  How can signals be scheduled to minimize total delay?</p>
   <p><strong>Algorithm:</strong> Round Robin Scheduling<br>
-  Cycles through signals in order to reduce waiting time.<br>
+  Cycles through signals to reduce waiting time.<br>
   Time complexity: O(n)</p>
   <pre>
 // C++ Pseudocode
 void scheduleSignals(vector<int>& times){
 for(int i=0;i<times.size();i++){updateSignal(i,times[i]);}}
   </pre>
-  <p><strong>Conclusion:</strong> Traffic management in Vishalnagari is enhanced using algorithms, ensuring safe and efficient transport.</p>
 </div>
 
 <div id="a3" class="module-content">
   <h2>Accident Detection</h2>
   <p><strong>Business Problem:</strong><br>
-  Accidents delay emergency response and traffic flow.  
-  How can sensors detect accidents in real-time?  
-  Can alerts be sent immediately?</p>
+  Accidents delay emergency response.  
+  How can sensors detect accidents in real-time?</p>
   <p><strong>Algorithm:</strong> Anomaly Detection<br>
   Detects unusual patterns in sensor data.<br>
   Time complexity: O(n)</p>
   <pre>
 // C++ Pseudocode
-bool detectAccident(vector<int>& sensorData){
-for(int d:sensorData){if(d>threshold)return true;} return false;}
+bool detectAccident(vector<int>& data){
+for(int v:data) if(v>threshold) return true;
+return false;}
   </pre>
-  <p><strong>Conclusion:</strong> Traffic management in Vishalnagari is enhanced using algorithms, ensuring safe and efficient transport.</p>
 </div>
 
 <div id="a4" class="module-content">
   <h2>Parking Allocation</h2>
   <p><strong>Business Problem:</strong><br>
   High-demand areas require efficient parking assignment.  
-  How can slots be allocated fairly and quickly?  
-  Can congestion near parking areas be reduced?</p>
+  How can slots be allocated fairly and quickly?</p>
   <p><strong>Algorithm:</strong> Greedy Allocation<br>
   Assigns slots to nearest vehicles iteratively.<br>
   Time complexity: O(n log n)</p>
   <pre>
 // C++ Pseudocode
 void allocateParking(vector<int>& slots, vector<int>& cars){
-for(int i=0;i<cars.size();i++){assignCarToSlot(cars[i],slots);}}
+for(int i=0;i<cars.size();i++) assignCarToSlot(cars[i],slots);}
   </pre>
-  <p><strong>Conclusion:</strong> Traffic management in Vishalnagari is enhanced using algorithms, ensuring safe and efficient transport.</p>
 </div>
 
 <div id="a5" class="module-content">
   <h2>Emergency Routing</h2>
   <p><strong>Business Problem:</strong><br>
   Ambulances need fastest routes to incidents.  
-  How can routing minimize travel time?  
-  Can real-time traffic data be used?</p>
+  How can routing minimize travel time?</p>
   <p><strong>Algorithm:</strong> A* Algorithm<br>
   Finds shortest path using heuristics.<br>
   Time complexity: O(E)</p>
@@ -171,10 +163,9 @@ vector<int> aStar(int start,int goal,vector<vector<int>>& graph){
 priority_queue<pair<int,int>,vector<pair<int,int>>,greater<>> pq;
 vector<int> dist(graph.size(),INT_MAX); dist[start]=0; pq.push({0,start});
 while(!pq.empty()){int u=pq.top().second; pq.pop();
-for(int v:graph[u]){if(dist[u]+cost[u][v]<dist[v]){dist[v]=dist[u]+cost[u][v]; pq.push({dist[v],v});}}}
+for(int v:graph[u]) if(dist[u]+cost[u][v]<dist[v]){dist[v]=dist[u]+cost[u][v]; pq.push({dist[v],v});}}
 return dist;}
   </pre>
-  <p><strong>Conclusion:</strong> Traffic management in Vishalnagari is enhanced using algorithms, ensuring safe and efficient transport.</p>
 </div>
 
 <script>
@@ -192,7 +183,11 @@ function toggleTheme(){
   btn.textContent=document.body.classList.contains('dark')?"🌙 Dark Mode":"☀️ Light Mode";
 }
 
-function goHome(){ window.location.href="index.html"; }
+function goHome(){ 
+  const modules=document.getElementsByClassName('module-content');
+  for(let m of modules) m.style.display="none";
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 </script>
 
 </body>
