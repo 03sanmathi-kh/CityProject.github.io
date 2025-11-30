@@ -1,193 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Sanmathi – Industrial & Manufacturing Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body { 
-      margin:0; font-family:'Segoe UI',sans-serif; transition:background 0.3s,color 0.3s; position: relative; min-height: 100vh; overflow-x:hidden; 
-    }
-    body.dark { background:#0a0a0a; color:#fff;}
-    body.light { background:#f5f5f5; color:#000;}
+<meta charset="UTF-8">
+<title>Sanmathi – Commerce & Industry Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body { margin:0; font-family:'Segoe UI',sans-serif; transition:background 0.3s,color 0.3s; position: relative; min-height: 100vh; overflow-x:hidden; }
+body.dark { background:#0a0a0a; color:#fff; }
+body.light { background:#f5f5f5; color:#000; }
 
-    header { text-align:center; padding:40px 20px; position: relative; }
-    header h1 { font-size:42px; font-weight:900; color:#e74c3c; }
-    header h3 { font-size:22px; font-weight:600; color:#3498db; }
-    header p { max-width:800px; margin:20px auto; font-size:16px; line-height:1.6; color:inherit; }
+.wave-bg { position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1; overflow:hidden; }
+.wave { position:absolute; width:200%; height:200%; opacity:0.5; animation:waveMove 30s linear infinite; }
+.wave1 { fill:#1abc9c; animation-duration:30s; }
+.wave2 { fill:#16a085; animation-duration:35s; }
+.wave3 { fill:#2ecc71; animation-duration:40s; }
+body.light .wave1 { fill:#a2d5c6; }
+body.light .wave2 { fill:#7bd0b6; }
+body.light .wave3 { fill:#b3f0d9; }
+@keyframes waveMove {0%{transform:translateX(0) translateY(0) rotate(0deg);}50%{transform:translateX(10%) translateY(5%) rotate(2deg);}100%{transform:translateX(0) translateY(0) rotate(0deg);}}
 
-    /* Module Buttons Box-like */
-    .module-container { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; padding:30px; }
-    .module-box { padding:20px 25px; background:#3498db; color:#fff; font-weight:600; border-radius:12px; cursor:pointer; width:200px; text-align:center; transition: transform 0.3s; }
-    .module-box:hover { transform:scale(1.05); }
-    body.light .module-box { background:#2980b9; color:#fff; }
+header{text-align:center; padding:50px 20px; position:relative;}
+header h1{font-size:48px; font-weight:900; color:#1abc9c; margin-bottom:10px;}
+header h3{font-size:24px; font-weight:600; color:#16a085; margin-bottom:20px;}
+header p{max-width:950px;margin:20px auto;font-size:18px;line-height:1.8;color:inherit;}
 
-    /* Module content */
-    .module-content { display:none; margin:20px auto; padding:20px; border-radius:15px; max-width:900px; background: rgba(255,255,255,0.08); }
-    body.light .module-content { background: rgba(0,0,0,0.05); color:#000; }
-    .module-content h2 { font-size:24px; }
-    .module-content p { font-size:16px; line-height:1.6; }
-    pre { background: rgba(0,0,0,0.1); padding:15px; border-radius:10px; overflow-x:auto; font-size:14px; text-align:left; color:inherit; }
+.hex-container { display:flex; flex-wrap:wrap; justify-content:center; gap:25px; padding:30px; }
+.hex { position:relative; width:160px; height:90px; margin:30px 0; display:flex; align-items:center; justify-content:center; font-weight:600; text-align:center; cursor:pointer; transition:transform 0.3s ease; color:#fff; border-radius:20px; }
+.hex:hover{transform:scale(1.08);}
 
-    /* Buttons */
-    #themeBtn { position:fixed; top:20px; right:20px; padding:10px 20px; font-size:14px; cursor:pointer; border:none; border-radius:8px; background:#e74c3c; color:#fff; transition:background 0.3s; }
-    #themeBtn:hover { background:#3498db; }
-    #homeBtn { position:fixed; top:20px; left:20px; padding:10px 20px; font-size:14px; cursor:pointer; border:none; border-radius:8px; background:#2ecc71; color:#fff; transition:background 0.3s; }
-    #homeBtn:hover { background:#27ae60; }
+.module-colors {background:#1abc9c;} 
+.module-colors2 {background:#16a085;} 
+.module-colors3 {background:#2ecc71;} 
+.module-colors4 {background:#27ae60;} 
+.module-colors5 {background:#f39c12;} 
+.module-colors6 {background:#e67e22;} 
+.module-colors7 {background:#8e44ad;} 
 
-  </style>
+.module-content { display:none; margin:20px auto; padding:20px; border-radius:15px; max-width:950px; background:rgba(255,255,255,0.05);}
+.module-content h2 { font-size:24px; margin-bottom:10px;}
+.module-content p { font-size:16px; line-height:1.6; margin-bottom:10px;}
+pre { background:rgba(255,255,255,0.08); padding:15px; border-radius:10px; overflow-x:auto; font-size:14px; color:inherit; text-align:left; }
+
+#themeBtn { position:fixed; top:20px; right:20px; padding:10px 20px; font-size:14px; cursor:pointer; border:none; border-radius:8px; background:#1abc9c; color:#fff; transition:background 0.3s; }
+#themeBtn:hover { background:#16a085; }
+#homeBtn { position:fixed; top:20px; left:20px; padding:10px 20px; font-size:14px; cursor:pointer; border:none; border-radius:8px; background:#2ecc71; color:#fff; transition:background 0.3s; }
+#homeBtn:hover { background:#27ae60; }
+</style>
 </head>
 <body class="dark">
+
+<div class="wave-bg">
+<svg class="wave wave1" viewBox="0 0 1440 320" preserveAspectRatio="none"><path d="M0,192 C480,320 960,64 1440,192 L1440,320 L0,320 Z"></path></svg>
+<svg class="wave wave2" viewBox="0 0 1440 320" preserveAspectRatio="none"><path d="M0,256 C480,128 960,384 1440,256 L1440,320 L0,320 Z"></path></svg>
+<svg class="wave wave3" viewBox="0 0 1440 320" preserveAspectRatio="none"><path d="M0,224 C480,96 960,352 1440,224 L1440,320 L0,320 Z"></path></svg>
+</div>
 
 <button id="homeBtn" onclick="goHome()">🏠 Home</button>
 <button id="themeBtn" onclick="toggleTheme()">🌙 Dark Mode</button>
 
 <header>
-  <h1>Sanmathi Hegde</h1>
-  <h3>Industrial & Manufacturing Systems – Vishalnagari</h3>
-  <p>
-    This domain focuses on <strong>optimization, resource allocation, supply chain efficiency, energy distribution, and smart infrastructure</strong>.  
-    Algorithms like <strong>Linear Programming, Dynamic Programming, Flow Networks, Greedy heuristics, and Shortest Path algorithms</strong> are applied for efficient industrial operations.
-  </p>
+<h1>Sanmathi</h1>
+<h3>Commerce & Government Bodies – Vishalnagari</h3>
+<p>
+Sanmathi’s portfolio highlights the <strong>cornerstones of commerce and governance</strong> in Vishalnagari.  
+From cutting-edge industries like electric vehicles to traditional sectors like cotton textiles, from banking and finance to worker infrastructure, each module is designed to tackle a critical aspect of urban economic management.  
+This page demonstrates how modern algorithms and practical C++ solutions can drive efficiency, sustainability, and innovation across multiple domains, ensuring both industrial growth and societal welfare in Vishalnagari.  
+Users can explore each module to understand the business problem, algorithmic solution, and step-by-step computational implementation.
+</p>
 </header>
 
-<div class="module-container">
-  <div class="module-box" onclick="toggleModule('m1')">Industrial Planning</div>
-  <div class="module-box" onclick="toggleModule('m2')">Energy Optimization</div>
-  <div class="module-box" onclick="toggleModule('m3')">Supply Chain Efficiency</div>
-  <div class="module-box" onclick="toggleModule('m4')">Resource Allocation</div>
-  <div class="module-box" onclick="toggleModule('m5')">Smart Infrastructure</div>
+<div class="hex-container">
+  <div class="hex module-colors" onclick="toggleModule('m1')">Electric Vehicle Industry</div>
+  <div class="hex module-colors2" onclick="toggleModule('m2')">Cotton Textile Industry</div>
+  <div class="hex module-colors3" onclick="toggleModule('m3')">Traffic & Transport</div>
+  <div class="hex module-colors4" onclick="toggleModule('m4')">Worker Infrastructure</div>
+  <div class="hex module-colors5" onclick="toggleModule('m5')">Supply Chain</div>
+  <div class="hex module-colors6" onclick="toggleModule('m6')">Banking & Finance</div>
+  <div class="hex module-colors7" onclick="toggleModule('m7')">Commercial Market Planning</div>
 </div>
 
-<!-- Modules -->
+<!-- MODULES -->
 <div id="m1" class="module-content">
-  <h2>Industrial Planning</h2>
-  <p><strong>Business Problem:</strong><br>
-    Vishalnagari aims to optimally assign production schedules to multiple factories.  
-    How can throughput be maximized while reducing idle time?  
-    Can resource constraints be efficiently handled?</p>
-  <p><strong>Algorithm:</strong> Linear Programming with Simplex method.<br>
-     Optimizes multiple variables under constraints, ensuring maximum production output.<br>
-     Time complexity: Polynomial average case.</p>
-  <pre>
+<h2>Electric Vehicle Industry</h2>
+<p><strong>Business Problem:</strong><br>
+Scale EV production efficiently while minimizing costs.  
+Manage assembly line allocation and battery supply.  
+Reduce production defects for high-quality output.</p>
+<p><strong>Algorithm:</strong> Dynamic Scheduling & Resource Allocation<br>
+Optimize tasks across production units considering capacity and priority.<br>
+Time Complexity: O(n log n)</p>
+<pre>
 // C++ Pseudocode
-// Variables: x[i] = units produced by factory i
-// Objective: maximize Σ profit[i]*x[i]
-// Constraints: Σ resources[i] ≤ available
-// Solve using simplex method
-for each factory i:
-    assign x[i] units
-calculate total profit
-return x[]
-  </pre>
+vector<int> scheduleEV(vector<int>& tasks){
+priority_queue<int,vector<int>,greater<>> pq;
+for(int t:tasks) pq.push(t);
+vector<int> result;
+while(!pq.empty()){int val=pq.top(); pq.pop(); result.push_back(val);}
+return result;}
+</pre>
+<p><strong>Conclusion:</strong><br>
+Implementing these algorithms ensures Vishalnagari’s EV industry remains competitive, sustainable, and highly efficient, while demonstrating how technology can optimize large-scale production for economic growth and environmental responsibility.
+</p>
 </div>
 
 <div id="m2" class="module-content">
-  <h2>Energy Optimization</h2>
-  <p><strong>Business Problem:</strong><br>
-    Factories in Vishalnagari require energy allocation across machines.  
-    How can electricity usage be minimized while meeting production needs?  
-    Can renewable sources be prioritized?</p>
-  <p><strong>Algorithm:</strong> Dynamic Programming for energy scheduling.<br>
-     Evaluates multiple combinations of energy distribution.<br>
-     Time complexity: O(n*capacity).</p>
-  <pre>
+<h2>Cotton Textile Industry</h2>
+<p><strong>Business Problem:</strong><br>
+Manage production from raw cotton to finished fabric efficiently.  
+Minimize wastage and energy usage.  
+Allocate labor and machinery optimally across mills.</p>
+<p><strong>Algorithm:</strong> Greedy Resource Allocation<br>
+Assign tasks to machines and workers minimizing idle time.<br>
+Time Complexity: O(n log n)</p>
+<pre>
 // C++ Pseudocode
-vector<int> energy(n); 
-for(int i=0;i<n;i++){
-    energy[i] = min(available[i], demand[i]);
-}
-for each machine:
-    assign energy
-calculate total cost
-return energy[]
-  </pre>
+void allocateWorkers(vector<int>& machines, vector<int>& workers){
+for(int i=0;i<workers.size();i++){assignWorker(workers[i],machines[i]);}}
+</pre>
+<p><strong>Conclusion:</strong><br>
+Optimized allocation reduces operational costs, boosts productivity, and supports sustainable industrial growth, ensuring the textile industry contributes effectively to Vishalnagari’s economy.
+</p>
 </div>
 
 <div id="m3" class="module-content">
-  <h2>Supply Chain Efficiency</h2>
-  <p><strong>Business Problem:</strong><br>
-    Delivering raw materials on time to factories is critical.  
-    How can routes be optimized to reduce delay and cost?  
-    Can transportation constraints be handled effectively?</p>
-  <p><strong>Algorithm:</strong> Shortest Path + Greedy allocation.<br>
-     Computes optimal transport routes while minimizing delay.<br>
-     Time complexity: O(E + V log V).</p>
-  <pre>
+<h2>Traffic & Transport</h2>
+<p><strong>Business Problem:</strong><br>
+Optimize employee and goods transport routes.  
+Reduce travel time and congestion in city logistics.  
+Enable dynamic re-routing for emergencies.</p>
+<p><strong>Algorithm:</strong> Dijkstra’s Shortest Path<br>
+Compute fastest routes for multiple transport units across a dynamic city network.<br>
+Time Complexity: O(E + V log V)</p>
+<pre>
 // C++ Pseudocode
-for each supplier:
-    find shortest path to factory
-assign shipments greedily based on capacity
-calculate delivery cost
-return routes[]
-  </pre>
+vector<int> dijkstra(int V, vector<vector<pair<int,int>>>& adj, int src){
+vector<int> dist(V,INT_MAX); priority_queue<pair<int,int>,vector<pair<int,int>>,greater<>> pq;
+dist[src]=0; pq.push({0,src});
+while(!pq.empty()){int u=pq.top().second; pq.pop();
+for(auto [v,w]:adj[u]){if(dist[u]+w<dist[v]){dist[v]=dist[u]+w; pq.push({dist[v],v});}}}
+return dist;}
+</pre>
+<p><strong>Conclusion:</strong><br>
+Efficient routing ensures smooth transport of resources, reduces delays, and improves overall productivity, contributing to the city’s operational excellence and citizens’ satisfaction.
+</p>
 </div>
 
 <div id="m4" class="module-content">
-  <h2>Resource Allocation</h2>
-  <p><strong>Business Problem:</strong><br>
-    Limited raw materials must be allocated among multiple units.  
-    How can fairness and efficiency be balanced?  
-    Can wastage be minimized while maximizing output?</p>
-  <p><strong>Algorithm:</strong> Flow Network optimization.<br>
-     Max-flow method ensures resources reach required nodes efficiently.<br>
-     Time complexity: O(V*E²).</p>
-  <pre>
+<h2>Worker Infrastructure</h2>
+<p><strong>Business Problem:</strong><br>
+Provide housing, healthcare, and safety for industrial workers.  
+Ensure accessibility and proximity to workplaces.  
+Plan utilities and communal facilities effectively.</p>
+<p><strong>Algorithm:</strong> Facility Allocation Optimization<br>
+Assign infrastructure points to worker clusters minimizing travel and maximizing accessibility.<br>
+Time Complexity: O(n^2)</p>
+<pre>
 // C++ Pseudocode
-initialize network graph
-for each resource:
-    assign to unit via max-flow
-update capacities
-return allocation[]
-  </pre>
+void allocateFacilities(vector<pair<int,int>>& houses, vector<pair<int,int>>& facilities){
+for(auto h:houses){int minDist=INT_MAX; for(auto f:facilities){minDist=min(minDist,dist(h,f));}}}
+</pre>
+<p><strong>Conclusion:</strong><br>
+Proper worker infrastructure enhances productivity, ensures safety and well-being, and strengthens the social framework of Vishalnagari’s industrial sectors.
+</p>
 </div>
 
 <div id="m5" class="module-content">
-  <h2>Smart Infrastructure</h2>
-  <p><strong>Business Problem:</strong><br>
-    Smart sensors manage machines and warehouse logistics.  
-    How can predictive maintenance be implemented?  
-    Can downtime be minimized using algorithmic scheduling?</p>
-  <p><strong>Algorithm:</strong> Dynamic Scheduling + Heuristics.<br>
-     Predicts maintenance needs and schedules efficiently.<br>
-     Time complexity: O(n log n).</p>
-  <pre>
+<h2>Supply Chain</h2>
+<p><strong>Business Problem:</strong><br>
+Efficiently transport goods from factories to markets.  
+Reduce costs, delays, and wastage.  
+Monitor inventory and adjust distribution in real-time.</p>
+<p><strong>Algorithm:</strong> Minimum Cost Flow<br>
+Optimize material movement from suppliers to consumers to minimize cost.<br>
+Time Complexity: O(VE log V)</p>
+<pre>
 // C++ Pseudocode
-for each machine:
-    predict failure_time
-schedule maintenance before failure
-update production plan
-calculate downtime
-return schedule[]
-  </pre>
+void minCostFlow(int V, vector<vector<int>>& capacity, vector<vector<int>>& cost){
+vector<int> dist(V); for(int i=0;i<V;i++){dist[i]=INT_MAX;} dist[0]=0;}
+</pre>
+<p><strong>Conclusion:</strong><br>
+Optimized supply chain management reduces operational expenses, ensures timely delivery, and strengthens economic resilience.
+</p>
 </div>
 
-<section class="module-content">
-  <h2>Conclusion</h2>
-  <p>
-    Industrial & Manufacturing Systems in Vishalnagari benefit greatly from algorithms.  
-    Optimized planning, energy management, supply chain efficiency, resource allocation, and smart infrastructure collectively ensure maximum productivity with minimal waste.
-  </p>
-</section>
+<div id="m6" class="module-content">
+<h2>Banking & Finance</h2>
+<p><strong>Business Problem:</strong><br>
+Provide loans and financial support to industries.  
+Monitor risks and maintain liquidity.  
+Optimize capital allocation for maximum growth impact.</p>
+<p><strong>Algorithm:</strong> Loan Allocation & Risk Scoring<br>
+Assign capital based on risk evaluation and project potential.<br>
+Time Complexity: O(n log n)</p>
+<pre>
+// C++ Pseudocode
+void allocateLoans(vector<int>& projects, vector<int>& scores){
+priority_queue<pair<int,int>> pq; for(int i=0;i<projects.size();i++) pq.push({scores[i],projects[i]});}
+</pre>
+<p><strong>Conclusion:</strong><br>
+Sound financial planning ensures sustainable growth, lowers risk, and supports industrial expansion across Vishalnagari.
+</p>
+</div>
+
+<div id="m7" class="module-content">
+<h2>Commercial Market Planning</h2>
+<p><strong>Business Problem:</strong><br>
+Decide locations for markets, shops, and malls.  
+Analyze customer demand and footfall.  
+Balance commercial growth with urban resource constraints.</p>
+<p><strong>Algorithm:</strong> Heuristic Demand Allocation<br>
+Assign market locations to maximize coverage and efficiency.<br>
+Time Complexity: O(n^2)</p>
+<pre>
+// C++ Pseudocode
+void planMarkets(vector<pair<int,int>>& locations, vector<int>& demand){
+for(auto loc:locations){for(int d:demand){computeScore(loc,d);}}}
+</pre>
+<p><strong>Conclusion:</strong><br>
+Strategic commercial planning fosters economic vitality, meets consumer needs efficiently, and aligns market expansion with sustainable urban development.
+</p>
+</div>
 
 <script>
-function toggleModule(id) {
-  const modules = document.getElementsByClassName('module-content');
-  for (let m of modules) m.style.display = "none";
-  const selected = document.getElementById(id);
-  if (selected) selected.style.display = "block";
+function toggleModule(id){
+const modules=document.getElementsByClassName('module-content');
+for(let m of modules) m.style.display="none";
+const selected=document.getElementById(id);
+if(selected) selected.style.display="block";
 }
-
-function toggleTheme() {
-  document.body.classList.toggle('light');
-  document.body.classList.toggle('dark');
-  const btn = document.getElementById('themeBtn');
-  btn.textContent = document.body.classList.contains('dark') ? "🌙 Dark Mode" : "☀️ Light Mode";
+function toggleTheme(){
+document.body.classList.toggle('light');
+document.body.classList.toggle('dark');
+const btn=document.getElementById('themeBtn');
+btn.textContent=document.body.classList.contains('dark')?"🌙 Dark Mode":"☀️ Light Mode";
 }
-
-function goHome() {
-  window.location.href = "index.html";
-}
+function goHome(){ window.location.href="index.html"; }
 </script>
 
 </body>
