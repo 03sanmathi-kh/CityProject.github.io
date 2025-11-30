@@ -4,91 +4,58 @@
   <meta charset="UTF-8">
   <title>Sanmathi – Industry Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <style>
+    body.dark { color:#fff; }
+    body.light { color:#000; }
     body {
       margin:0;
       font-family:'Segoe UI',sans-serif;
-      transition:background 0.5s,color 0.5s;
-      min-height:100vh;
+      transition:color 0.3s;
       position: relative;
       overflow-x: hidden;
-      color: #fff;
     }
 
-    body.light { color: #222; }
-
-    /* Multi-layer wavy background */
-    body::before,
-    body::after,
-    .wave-layer3 {
-      content: "";
+    /* Waves SVG Container */
+    .waves {
       position: fixed;
+      top: 0;
       left: 0;
-      width: 200%;
-      height: 200%;
-      border-radius: 50%;
+      width: 100%;
+      height: 100%;
       z-index: -1;
-      pointer-events: none;
+      overflow: hidden;
     }
+    .wave svg { width: 200%; height: 100%; }
 
-    /* Dark mode waves */
-    body.dark::before { background: rgba(40, 60, 120, 0.7); animation: wave1 28s ease-in-out infinite; top: -55%; }
-    body.dark::after { background: rgba(70, 20, 100, 0.5); animation: wave2 40s ease-in-out infinite; top: -60%; }
-    .wave-layer3 { background: rgba(150, 40, 200, 0.4); animation: wave3 50s ease-in-out infinite; top: -50%; }
-
-    /* Light mode waves */
-    body.light::before { background: rgba(180, 220, 255, 0.7); animation: wave1Light 28s ease-in-out infinite; top: -55%; }
-    body.light::after { background: rgba(120, 200, 250, 0.5); animation: wave2Light 40s ease-in-out infinite; top: -60%; }
-    body.light .wave-layer3 { background: rgba(150, 255, 200, 0.4); animation: wave3Light 50s ease-in-out infinite; top: -50%; }
-
-    /* Dark mode keyframes */
-    @keyframes wave1 { 0% {transform: translateX(0) rotate(0deg);} 50% {transform: translateX(25%) rotate(4deg);} 100% {transform: translateX(0) rotate(0deg);} }
-    @keyframes wave2 { 0% {transform: translateX(0) rotate(0deg);} 50% {transform: translateX(-20%) rotate(-3deg);} 100% {transform: translateX(0) rotate(0deg);} }
-    @keyframes wave3 { 0% {transform: translateX(0) rotate(0deg);} 50% {transform: translateX(15%) rotate(2deg);} 100% {transform: translateX(0) rotate(0deg);} }
-
-    /* Light mode keyframes */
-    @keyframes wave1Light { 0% {transform: translateX(0) rotate(0deg);} 50% {transform: translateX(25%) rotate(4deg);} 100% {transform: translateX(0) rotate(0deg);} }
-    @keyframes wave2Light { 0% {transform: translateX(0) rotate(0deg);} 50% {transform: translateX(-20%) rotate(-3deg);} 100% {transform: translateX(0) rotate(0deg);} }
-    @keyframes wave3Light { 0% {transform: translateX(0) rotate(0deg);} 50% {transform: translateX(15%) rotate(2deg);} 100% {transform: translateX(0) rotate(0deg);} }
-
-    /* Header */
-    header { text-align:center; padding:40px 20px; position: relative; z-index: 2; }
-    header h1 { font-size:42px; font-weight:900; color:#ff4c60; margin: 0; }
-    header h3 { font-size:22px; font-weight:600; color:#ffdd57; margin: 10px 0; }
-    header p { max-width:800px; margin:20px auto; font-size:16px; line-height:1.6; }
-
-    /* Theme toggle */
+    /* Theme Toggle Button */
     .theme-toggle {
       margin-top:15px; padding:10px 20px; border:none; border-radius:8px;
       cursor:pointer; font-weight:bold; background:#5ac8fa; color:#fff;
-      z-index:2; position: relative;
     }
 
-    /* Cards */
-    .card-container { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; padding:20px; z-index:2; position: relative; }
+    header { text-align:center; padding:40px 20px; position:relative; z-index:1; }
+    header h1 { font-size:42px; font-weight:900; color:#ff4c60; }
+    header h3 { font-size:22px; font-weight:600; color:#ffdd57; }
+    header p { max-width:800px; margin:15px auto; font-size:16px; line-height:1.5; }
+
+    .card-container { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; padding:20px; position:relative; z-index:1; }
     .card {
       border-radius:15px; width:250px; padding:20px; text-align:center; cursor:pointer; color:#fff;
       box-shadow:0 0 20px rgba(0,0,0,0.4); transition:transform 0.3s ease; backdrop-filter: blur(4px);
     }
     .card:hover { transform:translateY(-5px); }
 
-    /* Button colors */
+    /* Card Colors */
     .card:nth-child(1){background:#ff4c60;} .card:nth-child(2){background:#4cd964;}
     .card:nth-child(3){background:#5ac8fa;} .card:nth-child(4){background:#a970ff;}
     .card:nth-child(5){background:#ff9500;} .card:nth-child(6){background:#ffd60a;color:#000;}
     .card:nth-child(7){background:#64d2ff;}
 
-    .module-content { display:none; margin:20px auto; padding:20px; border-radius:12px; max-width:900px; backdrop-filter: blur(6px); }
-    #m1{background:rgba(255,76,96,0.2);} #m2{background:rgba(76,217,100,0.2);}
-    #m3{background:rgba(90,200,250,0.2);} #m4{background:rgba(169,112,255,0.2);}
-    #m5{background:rgba(255,149,0,0.2);} #m6{background:rgba(255,214,10,0.2);}
-    #m7{background:rgba(100,210,255,0.2);}
-
+    .module-content { display:none; margin:20px auto; padding:20px; border-radius:12px; max-width:900px; backdrop-filter: blur(6px); position:relative; z-index:1; color:#000; background:rgba(255,255,255,0.1); }
+    body.light .module-content { background: rgba(255,255,255,0.9); color:#000; }
     pre { background:rgba(0,0,0,0.2); padding:15px; border-radius:10px; overflow-x:auto; font-size:14px; text-align:left; }
     body.light pre { background:rgba(0,0,0,0.05); }
 
-    /* Back to Home button */
     .back-home {
       position: absolute;
       top: 20px;
@@ -99,16 +66,41 @@
       border-radius: 8px;
       font-weight: bold;
       text-decoration: none;
+      z-index:1;
       transition: background 0.3s ease, transform 0.2s ease;
-      z-index:2; position: relative;
     }
     .back-home:hover { background: #ff1e3c; transform: scale(1.05); }
-
   </style>
 </head>
 <body class="dark">
 
-<div class="wave-layer3"></div>
+<!-- Waves Background -->
+<div class="waves">
+  <div class="wave">
+    <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path fill="#4b0082">
+        <animate attributeName="fill" values="#4b0082;#6a0dad;#9b30ff;#4b0082" dur="25s" repeatCount="indefinite" />
+        <animateTransform attributeName="transform" type="translate" values="0,0;30,0;0,0" dur="15s" repeatCount="indefinite" />
+      </path>
+    </svg>
+  </div>
+  <div class="wave">
+    <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path fill="#6a0dad">
+        <animate attributeName="fill" values="#6a0dad;#9b30ff;#4b0082;#6a0dad" dur="30s" repeatCount="indefinite" />
+        <animateTransform attributeName="transform" type="translate" values="0,0;-20,0;0,0" dur="20s" repeatCount="indefinite" />
+      </path>
+    </svg>
+  </div>
+  <div class="wave">
+    <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path fill="#9b30ff">
+        <animate attributeName="fill" values="#9b30ff;#4b0082;#6a0dad;#9b30ff" dur="35s" repeatCount="indefinite" />
+        <animateTransform attributeName="transform" type="translate" values="0,0;15,0;0,0" dur="18s" repeatCount="indefinite" />
+      </path>
+    </svg>
+  </div>
+</div>
 
 <a href="index.html" class="back-home">⬅ Back to Home</a>
 
@@ -116,11 +108,15 @@
   <h1>Sanmathi</h1>
   <h3>Industrial & Manufacturing Systems – Vishalnagari</h3>
   <p>
-    Vishalnagari’s industries face challenges in scheduling, routing, resource allocation, and predictive maintenance.  
-    This portfolio explores how algorithms transform these business cases into scalable, efficient solutions.
+    Vishalnagari’s industries are optimized using algorithmic approaches to improve efficiency and sustainability.
   </p>
   <button class="theme-toggle" onclick="toggleTheme()">Switch Theme</button>
 </header>
+
+<!-- Short Intro -->
+<p style="text-align:center; max-width:800px; margin:0 auto 20px; position:relative; z-index:1;">
+  This portfolio presents 7 modules showing how algorithms solve industrial challenges in Vishalnagari.
+</p>
 
 <div class="card-container">
   <div class="card" onclick="toggleModule('m1')">Module 1: EV Assembly Line</div>
@@ -132,14 +128,19 @@
   <div class="card" onclick="toggleModule('m7')">Module 7: Supply Chain Optimization</div>
 </div>
 
-<!-- All module sections remain unchanged -->
-<div class="module-content" id="m1">EV Assembly Line Details...</div>
-<div class="module-content" id="m2">Machine Job Scheduling Details...</div>
-<div class="module-content" id="m3">Logistics Routing Details...</div>
-<div class="module-content" id="m4">Battery Allocation Details...</div>
-<div class="module-content" id="m5">Predictive Maintenance Details...</div>
-<div class="module-content" id="m6">Workforce Scheduling Details...</div>
-<div class="module-content" id="m7">Supply Chain Optimization Details...</div>
+<!-- Module Content Placeholders -->
+<div id="m1" class="module-content"><p>EV Assembly line: Optimize throughput using scheduling algorithms. <br>C++ Pseudocode example:</p><pre>// Sample C++ code here</pre></div>
+<div id="m2" class="module-content"><p>Machine Job Scheduling: Minimize makespan using greedy/DP. <br>C++ Pseudocode example:</p><pre>// Sample C++ code here</pre></div>
+<div id="m3" class="module-content"><p>Logistics Routing: Shortest paths for delivery optimization. <br>C++ Pseudocode example:</p><pre>// Sample C++ code here</pre></div>
+<div id="m4" class="module-content"><p>Battery Allocation: Efficient EV battery distribution. <br>C++ Pseudocode example:</p><pre>// Sample C++ code here</pre></div>
+<div id="m5" class="module-content"><p>Predictive Maintenance: Detect failures using algorithmic models. <br>C++ Pseudocode example:</p><pre>// Sample C++ code here</pre></div>
+<div id="m6" class="module-content"><p>Workforce Scheduling: Optimize shifts using DP. <br>C++ Pseudocode example:</p><pre>// Sample C++ code here</pre></div>
+<div id="m7" class="module-content"><p>Supply Chain Optimization: Minimize cost and time. <br>C++ Pseudocode example:</p><pre>// Sample C++ code here</pre></div>
+
+<!-- Short Conclusion -->
+<p style="text-align:center; max-width:800px; margin:30px auto 60px; position:relative; z-index:1;">
+  Algorithmic solutions significantly enhance industrial efficiency, sustainability, and workflow in Vishalnagari.
+</p>
 
 <script>
 function toggleModule(id) {
