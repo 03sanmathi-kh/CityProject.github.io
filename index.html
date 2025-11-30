@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PORTFOLIO – DAA</title>
   <style>
+  /* ===== Body & General ===== */
   body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
@@ -14,8 +15,8 @@
     align-items: center;
     overflow-x: hidden;
     position: relative;
-    background: #0a0a0a; /* Dark background */
-    color: #ffffff;       /* Bright text */
+    background: #0a0a0a;
+    color: #ffffff;
   }
 
   /* ===== Portfolio Heading ===== */
@@ -66,7 +67,7 @@
     margin: 0 0 8px;
     font-size: 20px;
     font-weight: 700;
-    color: #ff79c6; /* Accent bright color */
+    color: #ff79c6;
   }
 
   .course-box p {
@@ -93,6 +94,15 @@
     color: #ffffff;
   }
 
+  .city-motto {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffdd57; /* bright accent color */
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
+  }
+
   .project-overview h3 {
     font-size: 28px;
     font-weight: 700;
@@ -115,124 +125,6 @@
   .city-text:hover {
     background: rgba(255, 255, 255, 0.12);
   }
-    <!-- Meet the Team Section -->
-<section id="meet-the-team">
-  <h2>Meet the Team</h2>
-  <div class="team-container">
-
-    <!-- Member 1 -->
-    <div class="team-card industry">
-      <h3>Sanmathi Hegde</h3>
-      <p><strong>Roll No:</strong> 407</p>
-      <p><strong>USN:</strong> 01fe24bcs269</p>
-      <p><strong>Domain:</strong> Industrial and manufacturing systems</p>
-      <p>Optimization through Linear Programming and Flow Networks for smarter production pipelines</p>
-      <a href="#member1">View Portfolio</a>
-    </div>
-
-    <!-- Member 2 -->
-    <div class="team-card commerce">
-      <h3>Member 2 Vasavi Kabbur</h3>
-      <p><strong>Roll No:</strong> 415</p>
-      <p><strong>USN:</strong> 01fe24bcs278</p>
-      <p><strong>Domain:</strong> Commerce and governance </p>
-      <p>Graph Matching & Greedy allocation for fair resource distribution and smart marketplaces</p>
-      <a href="#member2">View Portfolio</a>
-    </div>
-
-    <!-- Member 3 -->
-    <div class="team-card traffic">
-      <h3>Member 3 Akshata Pawar</h3>
-      <p><strong>Roll No:</strong> 434</p>
-      <p><strong>USN:</strong> 01fe24bcs297</p>
-      <p><strong>Domain:</strong> Traffic and Mobility</p>
-      <p>Shortest Path algorithms (Dijkstra’s, A*) for smooth routing and congestion control.
-.</p>
-      <a href="#member3">View Portfolio</a>
-    </div>
-
-    <!-- Member 4 -->
-    <div class="team-card Sustainability">
-      <h3>Member 4 Isha Shet</h3>
-      <p><strong>Roll No:</strong> 418</p>
-      <p><strong>USN:</strong> 01fe24bcs281</p>
-      <p><strong>Domain:</strong> Agriculture and Sustainability</p>
-      <p> Dynamic Programming & Graph models for optimized irrigation and sustainable farming..</p>
-      <a href="#member4">View Portfolio</a>
-    </div>
-
-  </div>
-</section>
-
-<style>
-/* ===== Meet the Team ===== */
-#meet-the-team {
-  padding: 40px;
-  text-align: center;
-}
-
-#meet-the-team h2 {
-  font-size: 32px;
-  font-weight: 900;
-  margin-bottom: 30px;
-  color: #ff79c6;
-  text-shadow: 1px 1px 8px rgba(255,255,255,0.2);
-}
-
-.team-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.team-card {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  padding: 20px;
-  width: 250px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-align: left;
-}
-
-.team-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(255,255,255,0.3);
-}
-
-.team-card h3 {
-  margin-top: 0;
-  color: #ffffff;
-}
-
-.team-card p {
-  font-size: 0.9em;
-  margin: 6px 0;
-  color: #f5f5f5;
-}
-
-.team-card a {
-  display: inline-block;
-  margin-top: 10px;
-  color: #ff79c6;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.team-card a:hover {
-  text-decoration: underline;
-}
-
-/* Color accents per domain */
-.traffic { border-top: 6px solid #e74c3c; }
-.energy { border-top: 6px solid #f39c12; }
-.planning { border-top: 6px solid #27ae60; }
-.waste { border-top: 6px solid #8e44ad; }
-
-/* Smooth scrolling */
-html { scroll-behavior: smooth; }
-</style>
 
   /* ===== City Images ===== */
   .city-images {
@@ -275,7 +167,76 @@ html { scroll-behavior: smooth; }
     50%  { transform: translateY(-8px); }
     100% { transform: translateY(0); }
   }
-</style>
+
+  /* ===== Meet the Team ===== */
+  #meet-the-team {
+    padding: 40px;
+    text-align: center;
+  }
+
+  #meet-the-team h2 {
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 30px;
+    color: #ff79c6;
+    text-shadow: 1px 1px 8px rgba(255,255,255,0.2);
+  }
+
+  .team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .team-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+  }
+
+  .team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+  }
+
+  .team-card h3 {
+    margin-top: 0;
+    color: #ffffff;
+  }
+
+  .team-card p {
+    font-size: 0.9em;
+    margin: 6px 0;
+    color: #f5f5f5;
+  }
+
+  .team-card a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #ff79c6;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .team-card a:hover {
+    text-decoration: underline;
+  }
+
+  /* Color accents per domain */
+  .traffic { border-top: 6px solid #e74c3c; }
+  .industry { border-top: 6px solid #f39c12; }
+  .commerce { border-top: 6px solid #27ae60; }
+  .sustainability { border-top: 6px solid #8e44ad; }
+
+  /* Smooth scrolling */
+  html { scroll-behavior: smooth; }
+
+  </style>
 </head>
 <body>
 
@@ -305,6 +266,7 @@ html { scroll-behavior: smooth; }
   <!-- Project Overview Section -->
   <section class="project-overview">
     <h2>Project Overview</h2>
+    <p class="city-motto"><strong>CITY MOTTO:</strong> Strong Roots, Smart Shoots</p>
     <p class="city-text">
       Vishalnagari is a smart city where only electric vehicles move, creating a clean and quiet environment. Charging stations line its boulevards, and intelligent traffic systems keep journeys smooth. Public transport runs on autonomous electric buses and trams, connecting every corner efficiently. The commercial sector buzzes with smart marketplaces, the industrial zone thrives on clean logistics, and the agricultural fields use modern irrigation for sustainable farming. Automated waste and water systems protect the environment, giving citizens fresh air and a healthier lifestyle. Vishalnagari shines as a living model of innovation, proving that technology and sustainability can grow together.
     </p>
@@ -313,6 +275,50 @@ html { scroll-behavior: smooth; }
     <div class="city-images">
       <img src="Image1.jpg" alt="City Map 1">
       <img src="Image2.jpg" alt="City Map 2">
+    </div>
+  </section>
+
+  <!-- Meet the Team Section -->
+  <section id="meet-the-team">
+    <h2>Meet the Team</h2>
+    <div class="team-container">
+
+      <div class="team-card industry">
+        <h3>Sanmathi Hegde</h3>
+        <p><strong>Roll No:</strong> 407</p>
+        <p><strong>USN:</strong> 01fe24bcs269</p>
+        <p><strong>Domain:</strong> Industrial and manufacturing systems</p>
+        <p>Optimization through Linear Programming and Flow Networks for smarter production pipelines</p>
+        <a href="#member1">View Portfolio</a>
+      </div>
+
+      <div class="team-card commerce">
+        <h3>Vasavi Kabbur</h3>
+        <p><strong>Roll No:</strong> 415</p>
+        <p><strong>USN:</strong> 01fe24bcs278</p>
+        <p><strong>Domain:</strong> Commerce and governance</p>
+        <p>Graph Matching & Greedy allocation for fair resource distribution and smart marketplaces</p>
+        <a href="#member2">View Portfolio</a>
+      </div>
+
+      <div class="team-card traffic">
+        <h3>Akshata Pawar</h3>
+        <p><strong>Roll No:</strong> 434</p>
+        <p><strong>USN:</strong> 01fe24bcs297</p>
+        <p><strong>Domain:</strong> Traffic and Mobility</p>
+        <p>Shortest Path algorithms (Dijkstra’s, A*) for smooth routing and congestion control.</p>
+        <a href="#member3">View Portfolio</a>
+      </div>
+
+      <div class="team-card sustainability">
+        <h3>Isha Shet</h3>
+        <p><strong>Roll No:</strong> 418</p>
+        <p><strong>USN:</strong> 01fe24bcs281</p>
+        <p><strong>Domain:</strong> Agriculture and Sustainability</p>
+        <p>Dynamic Programming & Graph models for optimized irrigation and sustainable farming.</p>
+        <a href="#member4">View Portfolio</a>
+      </div>
+
     </div>
   </section>
 
