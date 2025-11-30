@@ -7,149 +7,53 @@
 
   <style>
     :root {
-      /* Light Mode Colors */
-      --bg: #ffffff;
-      --text: #000000;
-      --card-bg: rgba(0,0,0,0.06);
-      --header-green: #27ae60;
-      --header-yellow: #b58e00;
+      --bg: #ffffff; --text: #000000; --card-bg: rgba(0,0,0,0.06);
+      --header-green: #27ae60; --header-yellow: #b58e00;
     }
-
     body.dark {
-      /* Dark Mode Colors */
-      --bg: #0a0a0a;
-      --text: #ffffff;
-      --card-bg: rgba(255,255,255,0.05);
-      --header-green: #2ecc71;
-      --header-yellow: #f1c40f;
+      --bg: #0a0a0a; --text: #ffffff; --card-bg: rgba(255,255,255,0.05);
+      --header-green: #2ecc71; --header-yellow: #f1c40f;
     }
-
-    /* General Styling */
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      text-align: center;
-      transition: all 0.3s ease-in-out;
-    }
-
-    /* Theme Toggle Button */
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: var(--card-bg);
-      border: 2px solid var(--text);
-      padding: 10px 15px;
-      border-radius: 25px;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-    .theme-toggle:hover {
-      transform: scale(1.05);
-    }
-
-    header {
-      padding: 40px 20px;
-    }
-
-    header h1 {
-      font-size: 42px;
-      font-weight: 900;
-      color: var(--header-green);
-    }
-
-    header h3 {
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--header-yellow);
-    }
-
-    header p {
-      max-width: 800px;
-      margin: 20px auto;
-      font-size: 16px;
-      line-height: 1.6;
-    }
-
-    /* Droplet Layout */
-    .droplet-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-      padding: 30px;
-    }
-
-    .droplet {
-      width: 100px;
-      height: 150px;
-      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: #fff;
-      font-weight: 600;
-      transition: transform 0.3s ease;
-    }
-
-    .droplet:hover {
-      transform: scale(1.1);
-    }
-
-    .yield { background: #e74c3c; }
-    .irrigation { background: #3498db; }
-    .waste { background: #f1c40f; }
-    .soil { background: #2ecc71; }
-    .energy { background: #9b59b6; }
-
-    .module-content {
-      display: none;
-      margin: 20px auto;
-      padding: 20px;
-      border-radius: 15px;
-      max-width: 900px;
-      background: var(--card-bg);
-    }
-
-    .module-content h2 {
-      font-size: 24px;
-    }
-
-    .module-content p {
-      font-size: 16px;
-      line-height: 1.6;
-    }
-
-    pre {
-      background: rgba(0,0,0,0.1);
-      padding: 15px;
-      border-radius: 10px;
-      overflow-x: auto;
-      font-size: 14px;
-    }
-
-    body.dark pre {
-      background: rgba(255,255,255,0.08);
-    }
-
+    body { margin:0; font-family:'Segoe UI',sans-serif;
+      background:var(--bg); color:var(--text); text-align:center;
+      transition:all 0.3s ease-in-out; }
+    .theme-toggle { position:fixed; top:20px; right:20px;
+      background:var(--card-bg); border:2px solid var(--text);
+      padding:10px 15px; border-radius:25px; cursor:pointer;
+      font-size:14px; font-weight:600; transition:0.3s; }
+    .theme-toggle:hover { transform:scale(1.05); }
+    header { padding:40px 20px; }
+    header h1 { font-size:42px; font-weight:900; color:var(--header-green); }
+    header h3 { font-size:22px; font-weight:600; color:var(--header-yellow); }
+    header p { max-width:800px; margin:20px auto; font-size:16px; line-height:1.6; }
+    .droplet-container { display:flex; flex-wrap:wrap; justify-content:center;
+      gap:30px; padding:30px; }
+    .droplet { width:100px; height:150px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+      display:flex; align-items:center; justify-content:center; cursor:pointer;
+      color:#fff; font-weight:600; transition:transform 0.3s ease; }
+    .droplet:hover { transform:scale(1.1); }
+    .yield { background:#e74c3c; } .irrigation { background:#3498db; }
+    .waste { background:#f1c40f; } .soil { background:#2ecc71; }
+    .energy { background:#9b59b6; }
+    .module-content { display:none; margin:20px auto; padding:20px;
+      border-radius:15px; max-width:900px; background:var(--card-bg); }
+    .module-content h2 { font-size:24px; }
+    .module-content p { font-size:16px; line-height:1.6; }
+    pre { background:rgba(0,0,0,0.1); padding:15px; border-radius:10px;
+      overflow-x:auto; font-size:14px; text-align:left; }
+    body.dark pre { background:rgba(255,255,255,0.08); }
   </style>
 </head>
 <body class="dark">
 
-<!-- Theme Toggle Button -->
 <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
 
 <header>
   <h1>Isha</h1>
   <h3>Agriculture & Sustainability – Vishalnagari</h3>
   <p>
-    The Agriculture & Sustainability domain focuses on <strong>crop yield prediction, irrigation scheduling, waste management, soil classification, and renewable energy allocation</strong>.
-    Algorithms such as <strong>regression, dynamic programming, TSP heuristics, decision trees, and linear programming</strong> are applied.
+    This domain focuses on <strong>crop yield prediction, irrigation scheduling, waste routing, soil classification, and renewable energy allocation</strong>.  
+    Algorithms like <strong>regression, dynamic programming, heuristics, decision trees, and linear programming</strong> power sustainable growth.
   </p>
 </header>
 
@@ -160,66 +64,186 @@
   <div class="droplet soil" onclick="toggleModule('i4')">Module 4</div>
   <div class="droplet energy" onclick="toggleModule('i5')">Module 5</div>
 </div>
-
-<!-- MODULES (same content you provided) -->
 <div id="i1" class="module-content">
   <h2>Crop Yield Prediction</h2>
-  <p><strong>Problem:</strong> Farmers need to estimate crop yields based on soil nutrients, rainfall, and temperature.</p>
-  <p><strong>Algorithm:</strong> Multiple Linear Regression (O(n))</p>
-  <pre>1. Collect dataset
-2. Normalize features
-3. Initialize coefficients
-4. Apply least squares
-5. Update until convergence
-6. Predict yield</pre>
-</div>
+  <p><strong>Case Study:</strong><br>
+  Can farmers predict harvest yields using soil nutrients, rainfall, and temperature data?</p>
 
-<div id="i2" class="module-content">
+  <p><strong>Algorithm:</strong> Multiple Linear Regression<br>
+     <strong>Efficiency:</strong> O(n) per iteration</p>
+
+  <pre>
+C++ Pseudocode:
+double sigmoid(double x) { return 1.0 / (1.0 + exp(-x)); }
+
+double predictYield(vector<double>& features, vector<double>& weights) {
+    double result = 0;
+    for (int i = 0; i < features.size(); i++) {
+        result += features[i] * weights[i];
+    }
+    return result;
+}
+
+void trainRegression(vector<vector<double>>& X, vector<double>& y,
+                     vector<double>& weights, double lr, int epochs) {
+    for (int e = 0; e < epochs; e++) {
+        for (int i = 0; i < X.size(); i++) {
+            double pred = predictYield(X[i], weights);
+            double error = y[i] - pred;
+            for (int j = 0; j < weights.size(); j++) {
+                weights[j] += lr * error * X[i][j];
+            }
+        }
+    }
+}
+  </pre>
+
+  <p><strong>Conclusion:</strong><br>
+  Regression equips farmers with accurate forecasts, guiding planting and resource allocation decisions.</p>
+</div>
+      <div id="i2" class="module-content">
   <h2>Irrigation Scheduling</h2>
-  <p><strong>Algorithm:</strong> Dynamic Programming – Knapsack (O(nW))</p>
-  <pre>1. Define fields
-2. Create DP table
-3. Choose max benefit
-4. Trace selections</pre>
-</div>
+  <p><strong>Case Study:</strong><br>
+  How can limited water be distributed across fields to maximize crop health?</p>
 
-<div id="i3" class="module-content">
+  <p><strong>Algorithm:</strong> Dynamic Programming – Knapsack<br>
+     <strong>Efficiency:</strong> O(nW)</p>
+
+  <pre>
+C++ Pseudocode:
+int knapsack(int W, vector<int>& water, vector<int>& benefit, int n) {
+    vector<vector<int>> dp(n+1, vector<int>(W+1, 0));
+    for (int i = 1; i <= n; i++) {
+        for (int w = 0; w <= W; w++) {
+            if (water[i-1] <= w) {
+                dp[i][w] = max(dp[i-1][w],
+                               dp[i-1][w-water[i-1]] + benefit[i-1]);
+            } else {
+                dp[i][w] = dp[i-1][w];
+            }
+        }
+    }
+    return dp[n][W];
+}
+  </pre>
+
+  <p><strong>Conclusion:</strong><br>
+  Dynamic programming ensures water is allocated optimally, boosting crop yield under scarcity.</p>
+</div>
+  <div id="i3" class="module-content">
   <h2>Waste Management Routing</h2>
-  <p><strong>Algorithm:</strong> TSP Heuristic (O(n²))</p>
-  <pre>Nearest neighbour → 2-opt refinement</pre>
-</div>
+  <p><strong>Case Study:</strong><br>
+  How can garbage trucks in Vishalnagari cover all collection points efficiently, saving fuel and time?</p>
 
-<div id="i4" class="module-content">
+  <p><strong>Algorithm:</strong> Travelling Salesman Problem (TSP) – Nearest Neighbour + 2‑opt heuristic<br>
+     <strong>Efficiency:</strong> Approx O(n²)</p>
+
+  <pre>
+C++ Pseudocode:
+vector<int> tspNearestNeighbour(int n, vector<vector<int>>& dist) {
+    vector<bool> visited(n, false);
+    vector<int> path;
+    path.push_back(0); // start at depot
+    visited[0] = true;
+
+    for (int step = 1; step < n; step++) {
+        int last = path.back();
+        int next = -1, best = INT_MAX;
+        for (int j = 0; j < n; j++) {
+            if (!visited[j] && dist[last][j] < best) {
+                best = dist[last][j];
+                next = j;
+            }
+        }
+        path.push_back(next);
+        visited[next] = true;
+    }
+    // optional: apply 2-opt refinement to improve route
+    return path;
+}
+  </pre>
+
+  <p><strong>Conclusion:</strong><br>
+  Heuristic TSP routing ensures trucks minimize travel distance, cutting costs and improving waste collection efficiency.</p>
+</div>
+      <div id="i4" class="module-content">
   <h2>Soil Quality Classification</h2>
-  <p><strong>Algorithm:</strong> Decision Tree (O(n log n))</p>
-  <pre>Collect dataset → choose best split → recurse → classify</pre>
-</div>
+  <p><strong>Case Study:</strong><br>
+  Can soil samples be classified into fertile or infertile categories to guide crop selection?</p>
 
+  <p><strong>Algorithm:</strong> Decision Tree Classification<br>
+     <strong>Efficiency:</strong> O(n log n) training, O(log n) prediction</p>
+
+  <pre>
+C++ Pseudocode:
+struct Node {
+    string feature;
+    string label;
+    Node* left;
+    Node* right;
+};
+
+string classify(Node* root, map<string,string>& sample) {
+    while (root->left && root->right) {
+        if (sample[root->feature] == "yes") {
+            root = root->left;
+        } else {
+            root = root->right;
+        }
+    }
+    return root->label;
+}
+  </pre>
+
+  <p><strong>Conclusion:</strong><br>
+  Decision trees help farmers quickly classify soil, ensuring the right crops are planted for maximum yield.</p>
+</div>
 <div id="i5" class="module-content">
   <h2>Renewable Energy Allocation</h2>
-  <p><strong>Algorithm:</strong> Linear Programming</p>
-  <pre>Define objective → add constraints → simplex method</pre>
-</div>
+  <p><strong>Case Study:</strong><br>
+  How can solar and wind energy be distributed across farms to minimize cost and meet demand?</p>
 
+  <p><strong>Algorithm:</strong> Linear Programming (Simplex Method)<br>
+     <strong>Efficiency:</strong> Polynomial average time</p>
+
+  <pre>
+C++ Pseudocode (conceptual):
+// Variables: energy[i] = units allocated to farm i
+// Objective: minimize Σ (cost[i] * energy[i])
+// Constraints:
+//   - Σ energy[i] ≤ total available energy
+//   - energy[i] ≥ demand[i] for each farm
+// Use simplex method or LP solver library to solve
+// Return allocation plan and minimum cost
+  </pre>
+
+  <p><strong>Conclusion:</strong><br>
+  Linear programming ensures renewable energy is allocated efficiently, reducing costs and supporting sustainability.</p>
+</div>
 <section style="margin:40px auto; max-width:900px; padding:20px; background:var(--card-bg); border-radius:15px;">
   <h2>Conclusion</h2>
   <p>
-    This domain integrates regression, DP, heuristics, decision trees, and LP to help Vishalnagari grow sustainably.
+    Agriculture & Sustainability in Vishalnagari thrives when guided by algorithms.  
+    From predicting yields to optimizing energy, each module shows how logic and computation drive greener growth.
   </p>
 </section>
-
 <script>
 /* Module Toggle */
 function toggleModule(id) {
   const sections = document.getElementsByClassName("module-content");
-  for (let s of sections) s.style.display = "none";
-  document.getElementById(id).style.display = "block";
+  for (let s of sections) {
+    s.style.display = "none"; // hide all
+  }
+  const target = document.getElementById(id);
+  if (target) {
+    target.style.display = "block"; // show selected
+    target.scrollIntoView({behavior: "smooth"});
+  }
 }
 
 /* Theme Toggle */
 function toggleTheme() {
   document.body.classList.toggle("dark");
-
   const btn = document.querySelector(".theme-toggle");
   if (document.body.classList.contains("dark")) {
     btn.textContent = "🌙 Dark Mode";
@@ -228,6 +252,5 @@ function toggleTheme() {
   }
 }
 </script>
-
 </body>
 </html>
