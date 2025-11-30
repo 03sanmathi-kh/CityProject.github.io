@@ -1,181 +1,326 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Industry & Infrastructure – Portfolio</title>
+  <meta charset="UTF-8">
+  <title>Sanmathi Hegde – Industrial Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { margin:0; font-family:'Segoe UI',sans-serif; transition:background 0.3s,color 0.3s; }
+    body.dark { background:#0a0a0a; color:#fff; }
+    body.light { background:#f5f5f5; color:#000; }
 
-<style>
+    header { text-align:center; padding:40px 20px; }
+    header h1 { font-size:42px; font-weight:900; color:#ff79c6; }
+    header h3 { font-size:22px; font-weight:600; color:#ffdd57; }
+    header p { max-width:800px; margin:20px auto; font-size:16px; line-height:1.6; }
 
-/* ===============================
-   THEME COLOR VARIABLES
-================================*/
+    .theme-toggle { margin-top:15px; padding:10px 20px; border:none; border-radius:8px;
+      cursor:pointer; font-weight:bold; background:#5ac8fa; color:#fff; }
 
-:root {
-  --bg: #ffffff;
-  --text: #000000;
-  --accent1: #ff7f50;
-  --accent2: #2fdabd;
-  --module-bg: #f0f0f0;
-  --pre-bg: #e3e3e3;
-}
+    .card-container { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; padding:20px; }
+    .card { border-radius:15px; width:250px; padding:20px; text-align:center; cursor:pointer; color:#fff;
+      box-shadow:0 0 20px rgba(0,0,0,0.4); transition:transform 0.3s ease, box-shadow 0.3s ease; }
+    .card:hover { transform:translateY(-5px); box-shadow:0 0 30px rgba(255,255,255,0.3); }
 
-/* DARK MODE */
-body.dark {
-  --bg: #0a0a0a;
-  --text: #ffffff;
-  --accent1: #ff7f50;
-  --accent2: #2fdabd;
-  --module-bg: rgba(255,255,255,0.08);
-  --pre-bg: #1a1a1a;
-}
+    /* Distinct colors for each button and module background */
+    .card:nth-child(1), #m1 { background:#ff4c60; }
+    .card:nth-child(2), #m2 { background:#4cd964; }
+    .card:nth-child(3), #m3 { background:#5ac8fa; }
+    .card:nth-child(4), #m4 { background:#a970ff; }
+    .card:nth-child(5), #m5 { background:#ff9500; }
+    .card:nth-child(6), #m6 { background:#ffd60a; color:#000; }
+    .card:nth-child(7), #m7 { background:#64d2ff; }
 
-/* ===============================
-   PAGE BASE STYLE
-================================*/
-
-body {
-  margin: 0;
-  padding: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
-  transition: 0.3s ease;
-}
-
-h1 {
-  margin-top: 30px;
-  color: var(--accent1);
-  font-size: 40px;
-}
-
-h2 {
-  color: var(--accent2);
-  font-size: 26px;
-  margin-top: 10px;
-}
-
-p {
-  max-width: 850px;
-  margin: 15px auto;
-  font-size: 18px;
-  line-height: 1.6;
-}
-
-/* ===============================
-   MODULE BUTTONS
-================================*/
-
-.module-buttons {
-  margin-top: 30px;
-}
-
-.module-buttons button {
-  background: var(--accent2);
-  color: #000;
-  border: none;
-  padding: 12px 22px;
-  margin: 10px;
-  border-radius: 8px;
-  font-size: 18px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s ease;
-}
-
-.module-buttons button:hover {
-  background: #25bfa5;
-}
-
-/* ===============================
-   MODULE CONTENT BOX
-================================*/
-
-.module-content {
-  display: none;
-  background: var(--module-bg);
-  width: 90%;
-  margin: 25px auto;
-  padding: 25px;
-  border-radius: 12px;
-  text-align: left;
-  animation: fadeIn 0.4s;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-pre {
-  background: var(--pre-bg);
-  padding: 15px;
-  border-radius: 10px;
-  color: var(--text);
-  overflow-x: auto;
-  font-size: 15px;
-}
-
-/* ===============================
-   CONCLUSION BOX
-================================*/
-
-.conclusion-box {
-  background: var(--module-bg);
-  width: 85%;
-  margin: 40px auto;
-  padding: 25px;
-  border-radius: 15px;
-}
-
-/* ===============================
-   THEME TOGGLE BUTTON
-================================*/
-
-.theme-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  padding: 10px 18px;
-  background: var(--module-bg);
-  border: 2px solid var(--text);
-  color: var(--text);
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s ease;
-}
-
-</style>
-
+    .module-content { display:none; margin:20px auto; padding:20px; border-radius:12px; max-width:900px; color:#fff; }
+    .module-content h2 { font-size:24px; }
+    .module-content p { font-size:16px; line-height:1.6; }
+    pre { background:rgba(0,0,0,0.2); padding:15px; border-radius:10px; overflow-x:auto; font-size:14px; }
+  </style>
 </head>
-<body>
+<body class="dark">
 
-<!-- THEME BUTTON -->
-<button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+<header>
+  <h1>Sanmathi Hegde</h1>
+  <h3>Industrial & Manufacturing Systems – Vishalnagari</h3>
+  <p>
+    Vishalnagari’s industries blend tradition and innovation — from cotton textiles to electric mobility.  
+    Each sector faces challenges in scheduling, routing, resource allocation, and predictive maintenance.  
+    This portfolio explores how algorithms transform these business cases into scalable, efficient solutions.
+  </p>
+  <button class="theme-toggle" onclick="toggleTheme()">Switch Theme</button>
+</header>
 
-<h1>Sanmathi Hegde</h1>
-<h2>Industry & Infrastructure – Vishalnagari</h2>
-
-<p>
-The industrial sector of Vishalnagari powers manufacturing, logistics, exports, and automation.
-This portfolio explores how computational methods improve production, reduce delays, and optimize real-world processes.
-</p>
-
-<!-- MODULE BUTTONS -->
-<div class="module-buttons">
-  <button onclick="toggleModule('m1')">Module 1</button>
-  <button onclick="toggleModule('m2')">Module 2</button>
-  <button onclick="toggleModule('m3')">Module 3</button>
+<div class="card-container">
+  <div class="card" onclick="toggleModule('m1')">Module 1: EV Assembly Line</div>
+  <div class="card" onclick="toggleModule('m2')">Module 2: Machine Job Scheduling</div>
+  <div class="card" onclick="toggleModule('m3')">Module 3: Logistics Routing</div>
+  <div class="card" onclick="toggleModule('m4')">Module 4: Battery Allocation</div>
+  <div class="card" onclick="toggleModule('m5')">Module 5: Predictive Maintenance</div>
+  <div class="card" onclick="toggleModule('m6')">Module 6: Workforce Scheduling</div>
+  <div class="card" onclick="toggleModule('m7')">Module 7: Supply Chain Optimization</div>
 </div>
-
-<!-- MODULE 1 -->
+<!-- Module 1 -->
 <div id="m1" class="module-content">
-  <h2>Module 1 – EV Assembly Line Optimization</h2>
-  <p><b>Problem:</b> Arrange EV tasks to avoid bottlenecks and delays.</p>
-  <p><b>Algorithm:</b> Topological Sort</p>
-  <p><b>Efficiency:</b> O(V + E)</p>
+  <h2>EV Assembly Line Optimization</h2>
+  <p><strong>Case Study:</strong><br>
+  How can we sequence EV assembly tasks so robots never wait idly and bottlenecks vanish?</p>
+
+  <p><strong>Algorithm:</strong> Topological Sort (Kahn’s Algorithm)<br>
+     <strong>Efficiency:</strong> O(V + E)</p>
 
   <pre>
-#include &lt;bits/s
+C++ Pseudocode:
+vector<int> topologicalSort(int V, vector<vector<int>>& adj) {
+    vector<int> in_degree(V, 0);
+    for (int u = 0; u < V; u++) {
+        for (int v : adj[u]) {
+            in_degree[v]++;
+        }
+    }
+    queue<int> q;
+    for (int i = 0; i < V; i++) {
+        if (in_degree[i] == 0) q.push(i);
+    }
+    vector<int> result;
+    while (!q.empty()) {
+        int u = q.front(); q.pop();
+        result.push_back(u);
+        for (int v : adj[u]) {
+            in_degree[v]--;
+            if (in_degree[v] == 0) q.push(v);
+        }
+    }
+    return result;
+}
+  </pre>
+
+  <p><strong>Conclusion:</strong><br>
+  By ordering tasks with topological sort, the EV line runs smoothly, minimizing idle time and maximizing throughput.</p>
+</div>
+       <!-- Module 2 -->
+<div id="m2" class="module-content">
+  <h2>General Machine Job Scheduling</h2>
+  <p><strong>Case Study:</strong><br>
+  How can factories assign overlapping jobs to machines so no energy is wasted and deadlines are met?</p>
+
+  <p><strong>Algorithm:</strong> Interval Scheduling (Greedy)<br>
+     <strong>Efficiency:</strong> O(n log n)</p>
+
+  <pre>
+C++ Pseudocode:
+struct Job { int start, finish; };
+
+bool compare(Job a, Job b) {
+    return a.finish < b.finish;
+}
+
+vector<Job> intervalScheduling(vector<Job>& jobs) {
+    sort(jobs.begin(), jobs.end(), compare);
+    vector<Job> result;
+    int lastFinish = -1;
+    for (Job j : jobs) {
+        if (j.start >= lastFinish) {
+            result.push_back(j);
+            lastFinish = j.finish;
+        }
+    }
+    return result;
+}
+  </pre>
+
+  <p><strong>Conclusion:</strong><br>
+  Greedy scheduling ensures machines run continuously without conflict, boosting efficiency across diverse industries.</p>
+</div>
+       <!-- Module 3 -->
+<div id="m3" class="module-content">
+  <h2>Logistics Routing Optimization</h2>
+  <p><strong>Case Study:</strong><br>
+  How can trucks in Vishalnagari deliver cotton and goods across multiple mills without wasting fuel or time?</p>
+
+  <p><strong>Algorithm:</strong> Dijkstra’s Shortest Path<br>
+     <strong>Efficiency:</strong> O(E + V log V)</p>
+
+  <pre>
+C++ Pseudocode:
+vector<int> dijkstra(int V, vector<vector<pair<int,int>>>& adj, int src) {
+    vector<int> dist(V, INT_MAX);
+    priority_queue<pair<int,int>, vector<pair<int,int>>, greater<>> pq;
+    dist[src] = 0;
+    pq.push({0, src});
+    while (!pq.empty()) {
+        int u = pq.top().second; pq.pop();
+        for (auto [v, wt] : adj[u]) {
+            if (dist[u] + wt < dist[v]) {
+                dist[v] = dist[u] + wt;
+                pq.push({dist[v], v});
+            }
+        }
+    }
+    return dist;
+}
+  </pre>
+
+  <p><strong>Conclusion:</strong><br>
+  Dijkstra’s algorithm ensures trucks take the shortest possible routes, cutting costs and speeding up deliveries.</p>
+</div>
+               <!-- Module 4 -->
+<div id="m4" class="module-content">
+  <h2>EV Battery Allocation Across Zones</h2>
+  <p><strong>Case Study:</strong><br>
+  How can limited battery packs be distributed fairly across multiple EV assembly zones without shortages?</p>
+
+  <p><strong>Algorithm:</strong> Max Flow (Ford–Fulkerson)<br>
+     <strong>Efficiency:</strong> O(E × max_flow)</p>
+
+  <pre>
+C++ Pseudocode:
+int fordFulkerson(vector<vector<int>>& capacity, int s, int t) {
+    int V = capacity.size();
+    vector<vector<int>> residual = capacity;
+    int max_flow = 0;
+    while (true) {
+        // BFS to find augmenting path
+        vector<int> parent(V, -1);
+        queue<int> q; q.push(s); parent[s] = s;
+        while (!q.empty() && parent[t] == -1) {
+            int u = q.front(); q.pop();
+            for (int v = 0; v < V; v++) {
+                if (parent[v] == -1 && residual[u][v] > 0) {
+                    parent[v] = u; q.push(v);
+                }
+            }
+        }
+        if (parent[t] == -1) break; // no path
+        int path_flow = INT_MAX;
+        for (int v = t; v != s; v = parent[v]) {
+            int u = parent[v];
+            path_flow = min(path_flow, residual[u][v]);
+        }
+        for (int v = t; v != s; v = parent[v]) {
+            int u = parent[v];
+            residual[u][v] -= path_flow;
+            residual[v][u] += path_flow;
+        }
+        max_flow += path_flow;
+    }
+    return max_flow;
+}
+  </pre>
+
+  <p><strong>Conclusion:</strong><br>
+  Max Flow guarantees batteries are allocated optimally, balancing demand across all zones.</p>
+</div>
+               <!-- Module 5 -->
+<div id="m5" class="module-content">
+  <h2>Predictive Maintenance in Textile Machines</h2>
+  <p><strong>Case Study:</strong><br>
+  Can we predict when looms or dyeing machines will fail, so downtime is avoided before it happens?</p>
+
+  <p><strong>Algorithm:</strong> Decision Tree Classification<br>
+     <strong>Efficiency:</strong> O(n log n) training, O(log n) prediction</p>
+
+  <pre>
+C++ Pseudocode:
+struct Node {
+    string feature;
+    string label;
+    Node* left;
+    Node* right;
+};
+
+string predict(Node* root, map<string,string>& input) {
+    while (root->left && root->right) {
+        if (input[root->feature] == "yes") {
+            root = root->left;
+        } else {
+            root = root->right;
+        }
+    }
+    return root->label;
+}
+  </pre>
+
+  <p><strong>Conclusion:</strong><br>
+  Decision trees forecast failures early, allowing proactive maintenance and reducing costly breakdowns.</p>
+</div>
+<!-- Module 6 -->
+<div id="m6" class="module-content">
+  <h2>Workforce Shift Scheduling</h2>
+  <p><strong>Case Study:</strong><br>
+  How can workers be assigned to shifts fairly, respecting availability and minimizing overtime?</p>
+
+  <p><strong>Algorithm:</strong> Hungarian Algorithm (Assignment Problem)<br>
+     <strong>Efficiency:</strong> O(n³)</p>
+
+  <pre>
+C++ Pseudocode:
+int hungarian(const vector<vector<int>>& cost) {
+    int n = cost.size();
+    vector<int> u(n+1), v(n+1), p(n+1), way(n+1);
+    for (int i=1; i<=n; i++) {
+        p[0] = i; int j0 = 0;
+        vector<int> minv(n+1, INT_MAX);
+        vector<bool> used(n+1, false);
+        do {
+            used[j0] = true;
+            int i0 = p[j0], delta = INT_MAX, j1 = 0;
+            for (int j=1; j<=n; j++) {
+                if (!used[j]) {
+                    int cur = cost[i0-1][j-1]-u[i0]-v[j];
+                    if (cur < minv[j]) { minv[j] = cur; way[j] = j0; }
+                    if (minv[j] < delta) { delta = minv[j]; j1 = j; }
+                }
+            }
+            for (int j=0; j<=n; j++) {
+                if (used[j]) { u[p[j]] += delta; v[j] -= delta; }
+                else { minv[j] -= delta; }
+            }
+            j0 = j1;
+        } while (p[j0] != 0);
+        do {
+            int j1 = way[j0]; p[j0] = p[j1]; j0 = j1;
+        } while (j0);
+    }
+    return -v[0]; // minimum cost
+}
+  </pre>
+
+  <p><strong>Conclusion:</strong><br>
+  The Hungarian algorithm ensures fair and efficient workforce scheduling, balancing workloads across employees.</p>
+</div>
+                       <!-- Module 7 -->
+<div id="m7" class="module-content">
+  <h2>Supply Chain Cost Minimization</h2>
+  <p><strong>Case Study:</strong><br>
+  How can raw materials flow across multiple factories at minimum cost while meeting demand?</p>
+
+  <p><strong>Algorithm:</strong> Linear Programming (Simplex Method)<br>
+     <strong>Efficiency:</strong> Polynomial average time</p>
+
+  <pre>
+C++ Pseudocode (conceptual with LP solver):
+// Define variables: flow[i][j] = amount shipped from source i to destination j
+// Objective: minimize sum(cost[i][j] * flow[i][j])
+// Constraints:
+//   - Supply limits at each source
+//   - Demand requirements at each destination
+//   - Non-negativity of flows
+// Use simplex method or LP solver library to solve
+// Return optimal flows and minimum cost
+  </pre>
+
+  <p><strong>Conclusion:</strong><br>
+  Linear programming balances supply and demand, minimizing costs across the entire supply chain.</p>
+</div>
+<footer style="text-align:center; padding:30px; font-size:16px;">
+  <p><strong>Final Conclusion:</strong><br>
+  Each module demonstrates how algorithmic thinking solves real industrial challenges in Vishalnagari.  
+  From assembly lines to supply chains, these solutions reduce waste, save time, and improve efficiency.</p>
+</footer>
+
+<script>
+function toggleModule(id) {
+  const modules = document.getElementsByClassName('module-content');
+  for (let m of modules) {
+    m.style.display = (m.id === id && m.style.display !== "block") ? "block" : "none";
+  }
