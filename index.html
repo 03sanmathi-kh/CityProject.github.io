@@ -2,38 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>🌆 VISHALNAGARI – Intelligent & Sustainable City Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VISHALNAGARI – Intelligent & Sustainable City Portfolio</title>
+
   <style>
-    /* Base styles */
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      transition: color 0.5s;
-    }
-
-    h1, h2, h3 {
-      margin: 0 0 10px 0;
-    }
-
-    p {
-      margin: 0;
-      line-height: 1.5;
-    }
-
-    /* Animated gradient backgrounds */
-    body.dark {
-      background: linear-gradient(-45deg, #1a1a2e, #0f0f1f, #2e1a4c, #3a0f4c);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: background 0.8s ease, color 0.8s ease;
+      color: #fff;
+      background: linear-gradient(-45deg, #0a0a0a, #1a1a2e, #2e1a4c, #3a0f4c);
       background-size: 400% 400%;
       animation: gradientDark 30s ease infinite;
-      color: #fff;
     }
 
+    /* Light Mode */
     body.light {
-      background: linear-gradient(-45deg, #e3f2fd, #c8e6f5, #bbdefb, #d0e8ff);
+      color: #222;
+      background: linear-gradient(-45deg, #f5f5f5, #d0e8ff, #c8e6f5, #bbdefb);
       background-size: 400% 400%;
       animation: gradientLight 30s ease infinite;
-      color: #000;
     }
 
     @keyframes gradientDark {
@@ -48,194 +40,229 @@
       100% { background-position: 0% 50%; }
     }
 
-    header {
-      text-align: center;
-      padding: 50px 20px;
+    /* Toggle Button */
+    .theme-toggle {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      background: #ff79c6;
+      color: #fff;
+      transition: background 0.3s;
     }
+    .theme-toggle:hover { background: #ff4c60; }
 
-    header h1 {
+    /* Headings */
+    .portfolio-heading {
+      margin-top: 40px;
       font-size: 48px;
       font-weight: 900;
-      color: #27ae60;
+      letter-spacing: 2px;
+      text-align: center;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
     }
 
-    header h3 {
-      font-size: 24px;
-      font-weight: 600;
-      color: #f39c12;
+    /* Course Card */
+    .course-card {
+      padding: 40px 30px;
+      border-radius: 20px;
+      max-width: 420px;
+      width: 90%;
+      margin-top: 30px;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(8px);
+      transition: background 0.4s;
+    }
+    body.light .course-card { background: rgba(255,255,255,0.8); }
+
+    .course-box {
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.05);
+      border-left: 4px solid #ff4c60;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .course-box:hover { transform: scale(1.03); }
+    body.light .course-box { background: #f9f9f9; }
+
+    .course-box h3 { font-size: 20px; font-weight: 700; color: #ff79c6; margin: 0 0 8px; }
+    .course-box p { margin: 0; font-size: 16px; }
+
+    .division-d { border-left: 4px solid #27ae60; }
+
+    /* Vision Section */
+    .project-overview {
+      margin-top: 60px;
+      text-align: center;
+      max-width: 900px;
+      padding: 0 20px;
+    }
+    .project-overview h2 {
+      font-size: 36px;
+      font-weight: 900;
+      margin-bottom: 20px;
+      color: #ff79c6;
+    }
+    .city-motto {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffdd57;
       margin-bottom: 20px;
     }
+    .city-text {
+      font-size: 18px;
+      line-height: 1.6;
+      background: rgba(255,255,255,0.05);
+      padding: 25px;
+      border-radius: 15px;
+      margin: 0 auto 30px;
+      transition: background 0.4s;
+    }
+    body.light .city-text { background: #f9f9f9; }
 
-    /* Card container */
-    .card-container {
+    /* Team Section */
+    #meet-the-team {
+      padding: 40px;
+      text-align: center;
+    }
+    #meet-the-team h2 {
+      font-size: 32px;
+      font-weight: 900;
+      margin-bottom: 30px;
+      color: #ff79c6;
+    }
+
+    .team-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
-      padding: 30px;
     }
 
-    .card {
-      background: rgba(255,255,255,0.08);
-      padding: 25px 20px;
-      border-radius: 15px;
-      width: 220px;
-      text-align: center;
-      transition: transform 0.3s ease, background 0.3s;
-    }
-
-    .card:hover {
-      transform: scale(1.05);
-    }
-
-    body.light .card {
-      background: rgba(0,0,0,0.08);
-    }
-
-    .card h3 {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: #ff6f61;
-    }
-
-    /* Theme toggle button */
-    #themeBtn {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      padding: 10px 20px;
-      font-size: 14px;
-      cursor: pointer;
-      border: none;
-      border-radius: 8px;
-      background: #27ae60;
-      color: #fff;
-      transition: background 0.3s;
-    }
-    #themeBtn:hover { background: #f39c12; }
-
-    /* Back to Home button */
-    #homeBtn {
-      position: fixed;
-      top: 20px;
-      right: 120px;
-      padding: 10px 20px;
-      font-size: 14px;
-      cursor: pointer;
-      border: none;
-      border-radius: 8px;
-      background: #3498db;
-      color: #fff;
-      transition: background 0.3s;
-    }
-    #homeBtn:hover { background: #2980b9; }
-
-    /* Footer */
-    footer {
-      text-align: center;
+    .team-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
       padding: 20px;
-      font-size: 14px;
-      color: gray;
+      width: 250px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+      text-align: left;
+      transition: transform 0.3s, background 0.4s;
     }
+    .team-card:hover { transform: scale(1.03); }
+    body.light .team-card { background: #fff; }
 
-    /* Vision section */
-    .project-overview {
-      text-align: center;
-      padding: 40px 20px;
-    }
+    .team-card a { color: #ff79c6; font-weight: bold; text-decoration: none; }
+    .team-card a:hover { text-decoration: underline; }
 
-    .project-overview h2 {
-      font-size: 32px;
-      font-weight: 700;
-      color: #27ae60;
-      margin-bottom: 30px;
-    }
-
-    .project-overview .card {
-      max-width: 600px;
-      margin: 10px auto;
-    }
+    .traffic { border-top: 6px solid #e74c3c; }
+    .industry { border-top: 6px solid #f39c12; }
+    .commerce { border-top: 6px solid #27ae60; }
+    .sustainability { border-top: 6px solid #8e44ad; }
   </style>
 </head>
-<body class="dark">
 
-  <button id="themeBtn">Toggle Theme</button>
-  <button id="homeBtn">Home</button>
+<body>
 
-  <header>
-    <h1>🌆 VISHALNAGARI</h1>
-    <h3>Intelligent & Sustainable City Portfolio</h3>
-    <p>Designing a city where innovation meets tradition — powered by algorithms and smart planning.</p>
-  </header>
+<button class="theme-toggle" id="toggleBtn" onclick="toggleTheme()">
+  Switch to Light Mode
+</button>
 
-  <!-- Course / Project Info -->
-  <div class="card-container">
-    <div class="card">
-      <h3>Course Name</h3>
-      <p>Design & Analysis of Algorithms</p>
+<div class="portfolio-heading">
+  VISHALNAGARI – THE INTELLIGENT & SUSTAINABLE CITY PORTFOLIO
+</div>
+
+<!-- Course Card -->
+<div class="course-card">
+  <div class="course-box">
+    <h3>Course Name</h3>
+    <p>Design & Analysis of Algorithms</p>
+  </div>
+  <div class="course-box">
+    <h3>Course Code</h3>
+    <p>24ECS205</p>
+  </div>
+  <div class="course-box">
+    <h3>Institution</h3>
+    <p>KLE Technological University</p>
+  </div>
+  <div class="course-box">
+    <h3>Guide</h3>
+    <p>Prof. Prakash Hegade</p>
+  </div>
+  <div class="course-box division-d">
+    <h3>Team Members</h3>
+    <p>Sanmathi Hegde</p>
+    <p>Vasavi Kabbur</p>
+    <p>Akshata Pawar</p>
+    <p>Isha Shet</p>
+  </div>
+</div>
+
+<!-- Vision Section -->
+<section class="project-overview">
+  <h2>Our Vision</h2>
+  <p class="city-motto"><strong>Designing Tomorrow, One Algorithm at a Time</strong></p>
+  <p class="city-text">
+    Vishalnagari is a **one-of-a-kind city** — a living, intelligent ecosystem where sustainability meets innovation.  
+    Known as <strong>India’s capital of civic heritage</strong>, it honors centuries of tradition while embracing technology.  
+    The city exclusively uses **100% electric vehicles** within its boundaries, ensuring zero-emission transport and a cleaner environment.  
+    <strong>Smart infrastructure</strong> and <strong>algorithm-driven management</strong> harmonize daily life: traffic flows smoothly through optimized routes, civic resources are distributed equitably, and green spaces flourish through intelligent planning and irrigation.  
+    By combining <strong>innovation, efficiency, and sustainability</strong>, Vishalnagari demonstrates how technology and thoughtful design can create a city that is **resilient, adaptive, and inspiring for its citizens**.
+  </p>
+</section>
+
+<!-- Meet the Team Section -->
+<section id="meet-the-team">
+  <h2>Meet the Team</h2>
+  <div class="team-container">
+    <div class="team-card industry">
+      <h3>Sanmathi Hegde</h3>
+      <p><strong>Roll No:</strong> 407</p>
+      <p><strong>USN:</strong> 01fe24bcs269</p>
+      <p><strong>Domain:</strong> Industrial and Manufacturing Systems</p>
+      <p>Optimization through Linear Programming and Flow Networks</p>
+      <a href="sanmathi_port.html" target="_blank">View Portfolio</a>
     </div>
-    <div class="card">
-      <h3>Course Code</h3>
-      <p>24ECS205</p>
+
+    <div class="team-card commerce">
+      <h3>Vasavi Kabbur</h3>
+      <p><strong>Roll No:</strong> 415</p>
+      <p><strong>USN:</strong> 01fe24bcs278</p>
+      <p><strong>Domain:</strong> Commerce and Governance</p>
+      <p>Graph Matching & Greedy allocation for fair resource distribution</p>
+      <a href="vasavi_port.html" target="_blank">View Portfolio</a>
     </div>
-    <div class="card">
-      <h3>Institution</h3>
-      <p>KLE Technological University</p>
+
+    <div class="team-card traffic">
+      <h3>Akshata Pawar</h3>
+      <p><strong>Roll No:</strong> 434</p>
+      <p><strong>USN:</strong> 01fe24bcs297</p>
+      <p><strong>Domain:</strong> Traffic and Mobility</p>
+      <p>Shortest Path algorithms (Dijkstra’s, A*) for smooth routing</p>
+      <a href="akshata_port.html" target="_blank">View Portfolio</a>
     </div>
-    <div class="card">
-      <h3>Guide</h3>
-      <p>Prof. Prakash Hegade</p>
-    </div>
-    <div class="card">
-      <h3>Team Members</h3>
-      <p>Sanmathi Hegde</p>
-      <p>Vasavi Kabbur</p>
-      <p>Akshata Pawar</p>
-      <p>Isha Shet</p>
+
+    <div class="team-card sustainability">
+      <h3>Isha Shet</h3>
+      <p><strong>Roll No:</strong> 418</p>
+      <p><strong>USN:</strong> 01fe24bcs281</p>
+      <p><strong>Domain:</strong> Agriculture and Sustainability</p>
+      <p>Dynamic Programming & Graph models for optimized irrigation</p>
+      <a href="isha_port.html" target="_blank">View Portfolio</a>
     </div>
   </div>
+</section>
 
-  <!-- Vision Section -->
-  <section class="project-overview">
-    <h2>✨ Our Vision</h2>
-    <div class="card">
-      <h3>City Motto</h3>
-      <p>Designing Tomorrow, One Algorithm at a Time</p>
-    </div>
-    <div class="card">
-      <h3>Overview</h3>
-      <p>Vishalnagari is a one‑of‑a‑kind city — a living, intelligent ecosystem where sustainability meets innovation.</p>
-    </div>
-    <div class="card">
-      <h3>Civic Heritage</h3>
-      <p>Known as India’s capital of civic heritage, honoring centuries of tradition while embracing technology.</p>
-    </div>
-    <div class="card">
-      <h3>Transportation</h3>
-      <p>The city exclusively uses 100% electric vehicles, ensuring zero‑emission transport and a cleaner environment.</p>
-    </div>
-    <div class="card">
-      <h3>Smart Infrastructure</h3>
-      <p>Algorithm-driven management ensures smooth traffic, equitable resource distribution, and thriving green spaces.</p>
-    </div>
-    <div class="card">
-      <h3>Innovation & Sustainability</h3>
-      <p>By combining innovation, efficiency, and sustainability, Vishalnagari is resilient, adaptive, and inspiring for its citizens.</p>
-    </div>
-  </section>
-
-  <footer>
-    &copy; 2025 Vishalnagari Portfolio. All rights reserved.
-  </footer>
-
-  <script>
-    const themeBtn = document.getElementById('themeBtn');
-    themeBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      document.body.classList.toggle('light');
-    });
-  </script>
+<script>
+function toggleTheme() {
+  document.body.classList.toggle("light");
+  const btn = document.getElementById("toggleBtn");
+  btn.textContent = document.body.classList.contains("light") ? "Switch to Dark Mode" : "Switch to Light Mode";
+}
+</script>
 
 </body>
 </html>
