@@ -24,7 +24,7 @@ header h1{font-size:42px;font-weight:900;color:#e67e22;}
 header h3{font-size:22px;font-weight:600;color:#16a085;}
 header p{max-width:800px;margin:20px auto;font-size:16px;line-height:1.6;color:inherit;}
 
-.hex-container{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;padding:20px;}
+.hex-container{display:flex;flex-wrap:wrap;justify-content:center;gap:30px;padding:30px;}
 .hex{position:relative;width:160px;height:90px;display:flex;align-items:center;justify-content:center;font-weight:600;text-align:center;cursor:pointer;transition:transform 0.3s ease;color:#fff;border-radius:12px;}
 .hex:hover{transform:scale(1.08);}
 .machinery{background:#e67e22;} 
@@ -33,7 +33,7 @@ header p{max-width:800px;margin:20px auto;font-size:16px;line-height:1.6;color:i
 .logistics{background:#8e44ad;} 
 .infrastructure{background:#27ae60;}
 .quality{background:#d35400;}
-.worker{background:#1abc9c;}
+>research{background:#2c3e50;}
 
 .module-content{display:none;margin:20px auto;padding:20px;border-radius:15px;max-width:900px;background:rgba(255,255,255,0.05);}
 .module-content h2{font-size:24px;margin-bottom:10px;}
@@ -69,7 +69,7 @@ pre{background:rgba(255,255,255,0.08);padding:15px;border-radius:10px;overflow-x
 <div class="hex logistics" onclick="toggleModule('m4')">Logistics & Supply</div>
 <div class="hex infrastructure" onclick="toggleModule('m5')">Infrastructure</div>
 <div class="hex quality" onclick="toggleModule('m6')">Quality Control</div>
-<div class="hex worker" onclick="toggleModule('m7')">Worker Management</div>
+<div class="hex research" onclick="toggleModule('m7')">R&D</div>
 </div>
 
 <!-- Modules -->
@@ -80,13 +80,12 @@ pre{background:rgba(255,255,255,0.08);padding:15px;border-radius:10px;overflow-x
 #include &lt;vector&gt;
 using namespace std;
 int main(){
-    vector&lt;int&gt; machines={1,2,3};
-    for(int m:machines){
-        cout&lt;&lt;"Check machine "&lt;&lt;m&lt;&lt;endl;
-        cout&lt;&lt;"Perform maintenance if needed"&lt;&lt;endl;
-    }
+    vector&lt;int&gt; machines={1,2,3,4};
+    for(int m:machines) cout&lt;&lt;"Check machine "&lt;&lt;m&lt;&lt;endl;
+    cout&lt;&lt;"All machines scheduled successfully."&lt;&lt;endl;
 }</pre>
-<p><strong>Conclusion:</strong> Efficient maintenance reduces downtime. Machines operate at peak performance consistently.</p>
+<p><strong>Conclusion:</strong> Efficient maintenance scheduling reduces downtime.  
+Regular checks keep machinery reliable and productive.</p>
 </div>
 
 <div id="m2" class="module-content">
@@ -96,27 +95,26 @@ int main(){
 using namespace std;
 int main(){
     int products=5;
-    for(int i=1;i&lt;=products;i++){
-        cout&lt;&lt;"Produce item "&lt;&lt;i&lt;&lt;endl;
-        cout&lt;&lt;"Check resource allocation"&lt;&lt;endl;
-    }
+    for(int i=1;i&lt;=products;i++) cout&lt;&lt;"Produce item "&lt;&lt;i&lt;&lt;endl;
+    cout&lt;&lt;"Production plan completed for all items."&lt;&lt;endl;
 }</pre>
-<p><strong>Conclusion:</strong> Proper planning ensures steady production. Reduces waste and maximizes output.</p>
+<p><strong>Conclusion:</strong> Proper planning ensures steady production flow.  
+This prevents shortages and optimizes resources.</p>
 </div>
 
 <div id="m3" class="module-content">
 <h2>Finance & Budget</h2>
 <p><strong>Algorithm:</strong> Budget Allocation. O(n)</p>
 <pre>#include &lt;iostream&gt;
+using namespace std;
 int main(){
-    double budget=100000;
-    double dept[3]={30000,40000,30000};
-    for(int i=0;i&lt;3;i++){
-        std::cout&lt;&lt;"Dept "&lt;&lt;i&lt;&lt;": "&lt;&lt;dept[i]&lt;&lt;endl;
-        std::cout&lt;&lt;"Allocate funds efficiently"<<endl;
-    }
+    double budget=120000;
+    double dept[4]={30000,40000,25000,25000};
+    for(int i=0;i&lt;4;i++) cout&lt;&lt;"Dept "&lt;&lt;i&lt;&lt;": "&lt;&lt;dept[i]&lt;&lt;endl;
+    cout&lt;&lt;"Budget allocated successfully."&lt;&lt;endl;
 }</pre>
-<p><strong>Conclusion:</strong> Efficient budgeting optimizes fund usage. Ensures all departments are well-funded.</p>
+<p><strong>Conclusion:</strong> Efficient budgeting optimizes fund usage.  
+Ensures all departments get proper resources.</p>
 </div>
 
 <div id="m4" class="module-content">
@@ -125,13 +123,12 @@ int main(){
 <pre>#include &lt;iostream&gt;
 using namespace std;
 int main(){
-    int routes[3]={10,20,15};
-    for(int r:routes){
-        cout&lt;&lt;"Route time: "&lt;&lt;r&lt;&lt;" min"<<endl;
-        cout&lt;&lt;"Optimize delivery schedule"<<endl;
-    }
+    int routes[5]={10,20,15,25,30};
+    for(int r:routes) cout&lt;&lt;"Route time: "&lt;&lt;r&lt;&lt;" min"&lt;&lt;endl;
+    cout&lt;&lt;"All deliveries optimized."&lt;&lt;endl;
 }</pre>
-<p><strong>Conclusion:</strong> Optimized logistics reduces delays. Ensures timely deliveries across sites.</p>
+<p><strong>Conclusion:</strong> Optimized logistics reduces delivery delays.  
+Efficient routes save time and cost.</p>
 </div>
 
 <div id="m5" class="module-content">
@@ -140,61 +137,58 @@ int main(){
 <pre>#include &lt;iostream&gt;
 using namespace std;
 int main(){
-    int projects=3;
-    for(int i=1;i&lt;=projects;i++){
-        cout&lt;&lt;"Check project "&lt;&lt;i&lt;&lt;endl;
-        cout&lt;&lt;"Allocate materials and resources"<<endl;
-    }
+    int projects=4;
+    for(int i=1;i&lt;=projects;i++) cout&lt;&lt;"Check project "&lt;&lt;i&lt;&lt;endl;
+    cout&lt;&lt;"Infrastructure status updated."&lt;&lt;endl;
 }</pre>
-<p><strong>Conclusion:</strong> Well-managed infrastructure supports growth. Projects run efficiently without bottlenecks.</p>
+<p><strong>Conclusion:</strong> Well-managed infrastructure supports industrial growth.  
+Projects are completed on time efficiently.</p>
 </div>
 
 <div id="m6" class="module-content">
 <h2>Quality Control</h2>
 <p><strong>Algorithm:</strong> Statistical Sampling. O(n)</p>
 <pre>#include &lt;iostream&gt;
-#include &lt;vector&gt;
 using namespace std;
 int main(){
-    vector&lt;int&gt; batch={95,98,92,90,100};
-    for(int i=0;i&lt;batch.size();i++){
-        if(batch[i]&lt;95) cout&lt;&lt;"Item "&lt;&lt;i&lt;&lt;" fails quality check"<<endl;
-        else cout&lt;&lt;"Item "&lt;&lt;i&lt;&lt;" passes quality check"<<endl;
+    int products=10;
+    for(int i=1;i&lt;=products;i++){
+        if(i%3==0) cout&lt;&lt;"Product "&lt;&lt;i&lt;&lt;" inspected - Passed."&lt;&lt;endl;
     }
+    cout&lt;&lt;"Quality checks completed."&lt;&lt;endl;
 }</pre>
-<p><strong>Conclusion:</strong> Ensures products meet quality standards. Minimizes defective items reaching customers.</p>
+<p><strong>Conclusion:</strong> Quality control maintains standards.  
+Reduces defective products and improves reliability.</p>
 </div>
 
 <div id="m7" class="module-content">
-<h2>Worker Management</h2>
-<p><strong>Algorithm:</strong> Task Scheduling. O(n log n)</p>
+<h2>Research & Development</h2>
+<p><strong>Algorithm:</strong> Innovation Tracking. O(n^2)</p>
 <pre>#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;algorithm&gt;
 using namespace std;
 int main(){
-    vector&lt;int&gt; tasks={2,4,1,3};
-    sort(tasks.begin(),tasks.end());
-    for(int i=0;i&lt;tasks.size();i++){
-        cout&lt;&lt;"Assign task "&lt;&lt;i+1&lt;&lt;" taking "&lt;&lt;tasks[i]&lt;&lt;" hrs"<<endl;
-        cout&lt;&lt;"Ensure worker efficiency"<<endl;
-    }
+    string ideas[3]={"AI optimization","Automation","Sustainable materials"};
+    for(string i:ideas) cout&lt;&lt;"Developing: "&lt;&lt;i&lt;&lt;endl;
+    cout&lt;&lt;"R&D projects underway."&lt;&lt;endl;
 }</pre>
-<p><strong>Conclusion:</strong> Efficient scheduling improves productivity. Workers are utilized effectively without overload.</p>
+<p><strong>Conclusion:</strong> R&D drives industrial innovation.  
+New methods improve efficiency and competitiveness.</p>
 </div>
 
 <script>
 function toggleModule(id){
-  document.querySelectorAll('.module-content').forEach(m=>m.style.display='none');
-  const sel=document.getElementById(id); 
-  if(sel) sel.style.display='block';
+    document.querySelectorAll('.module-content').forEach(m=>m.style.display='none');
+    const sel=document.getElementById(id);
+    if(sel) sel.style.display='block';
 }
-function goHome(){ document.querySelectorAll('.module-content').forEach(m=>m.style.display='none'); }
+function goHome(){
+    window.location.href="index.html";
+}
 function toggleTheme(){
-  const body=document.body;
-  body.classList.toggle('dark');
-  body.classList.toggle('light');
-  document.getElementById('themeBtn').textContent=body.classList.contains('dark')?"🌙 Dark Mode":"☀️ Light Mode";
+    const body=document.body;
+    body.classList.toggle('dark');
+    body.classList.toggle('light');
+    document.getElementById('themeBtn').textContent=body.classList.contains('dark')?"🌙 Dark Mode":"☀️ Light Mode";
 }
 </script>
 
