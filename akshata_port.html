@@ -5,150 +5,51 @@
   <title>Akshata – Traffic Domain Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* Theme variables */
     :root {
-      --bg-color: #0a0a0a;
-      --text-color: #ffffff;
-      --header-color: #e74c3c;
-      --subheader-color: #3498db;
-      --p-color: #dddddd;
-      --box-bg-opacity: 0.05;
+      --bg-color: #0a0a0a; --text-color: #ffffff;
+      --header-color: #e74c3c; --subheader-color: #3498db;
+      --p-color: #dddddd; --box-bg-opacity: 0.05;
     }
-
     body.light {
-      --bg-color: #f5f5f5;
-      --text-color: #222222;
-      --header-color: #c0392b;
-      --subheader-color: #2980b9;
-      --p-color: #333333;
-      --box-bg-opacity: 0.1;
+      --bg-color: #f5f5f5; --text-color: #222222;
+      --header-color: #c0392b; --subheader-color: #2980b9;
+      --p-color: #333333; --box-bg-opacity: 0.1;
     }
-
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: var(--bg-color);
-      color: var(--text-color);
-      text-align: center;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    header {
-      padding: 40px 20px;
-    }
-
-    header h1 {
-      font-size: 42px;
-      font-weight: 900;
-      color: var(--header-color);
-    }
-
-    header h3 {
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--subheader-color);
-    }
-
-    header p {
-      max-width: 800px;
-      margin: 20px auto;
-      font-size: 16px;
-      line-height: 1.6;
-      color: var(--p-color);
-    }
-
-    /* Hexagon container */
-    .hex-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-      padding: 30px;
-    }
-
-    /* Hexagon base style */
-    .hex {
-      position: relative;
-      width: 160px;
-      height: 90px;
-      margin: 45px 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      text-align: center;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      color: #fff;
-    }
-    .hex:before,
-    .hex:after {
-      content: "";
-      position: absolute;
-      width: 0;
-      border-left: 80px solid transparent;
-      border-right: 80px solid transparent;
-    }
-    .hex:hover { transform: scale(1.08); }
-
-    /* Different hexagon colors */
-    .flow { background: #e74c3c; }
-    .flow:before { border-bottom: 45px solid #e74c3c; bottom: 100%; }
-    .flow:after { border-top: 45px solid #e74c3c; top: 100%; }
-
-    .signal { background: #3498db; }
-    .signal:before { border-bottom: 45px solid #3498db; bottom: 100%; }
-    .signal:after { border-top: 45px solid #3498db; top: 100%; }
-
-    .accident { background: #f1c40f; }
-    .accident:before { border-bottom: 45px solid #f1c40f; bottom: 100%; }
-    .accident:after { border-top: 45px solid #f1c40f; top: 100%; }
-
-    .parking { background: #2ecc71; }
-    .parking:before { border-bottom: 45px solid #2ecc71; bottom: 100%; }
-    .parking:after { border-top: 45px solid #2ecc71; top: 100%; }
-
-    .emergency { background: #9b59b6; }
-    .emergency:before { border-bottom: 45px solid #9b59b6; bottom: 100%; }
-    .emergency:after { border-top: 45px solid #9b59b6; top: 100%; }
-
-    /* Popup content */
-    .module-content {
-      display: none;
-      margin: 20px auto;
-      padding: 20px;
-      border-radius: 15px;
-      max-width: 900px;
-      color: var(--text-color);
-      background: rgba(255,255,255,var(--box-bg-opacity));
-      transition: background 0.3s, color 0.3s;
-    }
-    .module-content h2 { font-size: 24px; }
-    .module-content p { font-size: 16px; line-height: 1.6; }
-    pre {
-      background: rgba(255,255,255,0.08);
-      padding: 15px;
-      border-radius: 10px;
-      overflow-x: auto;
-      font-size: 14px;
-      color: var(--text-color);
-    }
-
-    /* Theme toggle button */
-    #themeBtn {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      padding: 10px 20px;
-      font-size: 14px;
-      cursor: pointer;
-      border: none;
-      border-radius: 8px;
-      background: var(--header-color);
-      color: #fff;
-      transition: background 0.3s;
-    }
-    #themeBtn:hover { background: var(--subheader-color); }
+    body { margin:0; font-family:'Segoe UI',sans-serif;
+      background:var(--bg-color); color:var(--text-color); text-align:center;
+      transition:background 0.3s,color 0.3s; }
+    header { padding:40px 20px; }
+    header h1 { font-size:42px; font-weight:900; color:var(--header-color); }
+    header h3 { font-size:22px; font-weight:600; color:var(--subheader-color); }
+    header p { max-width:800px; margin:20px auto; font-size:16px; line-height:1.6; color:var(--p-color); }
+    .hex-container { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; padding:30px; }
+    .hex { position:relative; width:160px; height:90px; margin:45px 0;
+      display:flex; align-items:center; justify-content:center;
+      font-weight:600; text-align:center; cursor:pointer; transition:transform 0.3s ease; color:#fff; }
+    .hex:before,.hex:after { content:""; position:absolute; width:0;
+      border-left:80px solid transparent; border-right:80px solid transparent; }
+    .hex:hover { transform:scale(1.08); }
+    .flow { background:#e74c3c; } .flow:before{border-bottom:45px solid #e74c3c;bottom:100%;}
+    .flow:after{border-top:45px solid #e74c3c;top:100%;}
+    .signal{background:#3498db;} .signal:before{border-bottom:45px solid #3498db;bottom:100%;}
+    .signal:after{border-top:45px solid #3498db;top:100%;}
+    .accident{background:#f1c40f;} .accident:before{border-bottom:45px solid #f1c40f;bottom:100%;}
+    .accident:after{border-top:45px solid #f1c40f;top:100%;}
+    .parking{background:#2ecc71;} .parking:before{border-bottom:45px solid #2ecc71;bottom:100%;}
+    .parking:after{border-top:45px solid #2ecc71;top:100%;}
+    .emergency{background:#9b59b6;} .emergency:before{border-bottom:45px solid #9b59b6;bottom:100%;}
+    .emergency:after{border-top:45px solid #9b59b6;top:100%;}
+    .module-content { display:none; margin:20px auto; padding:20px;
+      border-radius:15px; max-width:900px; color:var(--text-color);
+      background:rgba(255,255,255,var(--box-bg-opacity)); }
+    .module-content h2 { font-size:24px; }
+    .module-content p { font-size:16px; line-height:1.6; }
+    pre { background:rgba(255,255,255,0.08); padding:15px; border-radius:10px;
+      overflow-x:auto; font-size:14px; color:var(--text-color); text-align:left; }
+    #themeBtn { position:fixed; top:20px; right:20px; padding:10px 20px;
+      font-size:14px; cursor:pointer; border:none; border-radius:8px;
+      background:var(--header-color); color:#fff; transition:background 0.3s; }
+    #themeBtn:hover { background:var(--subheader-color); }
   </style>
 </head>
 <body>
@@ -158,8 +59,7 @@
   <h3>Traffic Management – Vishalnagari</h3>
   <p>
     The Traffic domain focuses on <strong>flow optimization, signal scheduling, accident detection, parking allocation, and emergency routing</strong>.  
-    Algorithms such as <strong>Dijkstra, Round Robin, anomaly detection, greedy allocation, and A*</strong> are applied to ensure smoother, safer,  
-    and more efficient transportation systems across Vishalnagari.
+    Algorithms such as <strong>Dijkstra, Round Robin, anomaly detection, greedy allocation, and A*</strong> ensure smoother, safer, and more efficient transportation.
   </p>
 </header>
 
@@ -172,48 +72,172 @@
   <div class="hex parking" onclick="toggleModule('a4')">Module 4: Parking Allocation</div>
   <div class="hex emergency" onclick="toggleModule('a5')">Module 5: Emergency Routing</div>
 </div>
-
-<!-- Modules -->
 <div id="a1" class="module-content">
   <h2>Traffic Flow Optimization</h2>
-  <p><strong>🔍 Problem:</strong> Minimize congestion and travel time.</p>
-  <p><strong>Algorithm:</strong> Dijkstra’s Shortest Path, Efficiency: O(E log V)</p>
-  <pre>// Pseudocode + C++ snippet</pre>
-</div>
-<div id="a2" class="module-content">
-  <h2>Signal Scheduling</h2>
-  <p><strong>🔍 Problem:</strong> Reduce waiting time and balance lane flow.</p>
-  <p><strong>Algorithm:</strong> Round Robin Scheduling, Efficiency: O(n)</p>
-  <pre>// Pseudocode + C++ snippet</pre>
-</div>
-<div id="a3" class="module-content">
-  <h2>Accident Detection</h2>
-  <p><strong>🔍 Problem:</strong> Detect traffic anomalies to identify accidents.</p>
-  <p><strong>Algorithm:</strong> Hash Map Anomaly Detection, Efficiency: O(1)</p>
-  <pre>// Pseudocode + C++ snippet</pre>
-</div>
-<div id="a4" class="module-content">
-  <h2>Parking Allocation</h2>
-  <p><strong>🔍 Problem:</strong> Fair and efficient parking allocation.</p>
-  <p><strong>Algorithm:</strong> Greedy Allocation, Efficiency: O(n log n)</p>
-  <pre>// Pseudocode + C++ snippet</pre>
-</div>
-<div id="a5" class="module-content">
-  <h2>Emergency Vehicle Routing</h2>
-  <p><strong>🔍 Problem:</strong> Fastest route for emergency vehicles.</p>
-  <p><strong>Algorithm:</strong> A* Search, Efficiency: O(E log V)</p>
-  <pre>// Pseudocode + C++ snippet</pre>
-</div>
+  <p><strong>Case Study:</strong><br>
+  Congestion clogs Vishalnagari’s busiest roads.  
+  How can vehicles be guided to minimize delays?  
+  Can shortest paths be computed dynamically?</p>
 
-<!-- Conclusion -->
-<section style="margin:40px auto; max-width:900px; padding:20px; background:rgba(255,255,255,0.05); border-radius:15px;">
+  <p><strong>Algorithm:</strong> Dijkstra’s Shortest Path<br>
+     <strong>Efficiency:</strong> O(E + V log V)</p>
+
+  <pre>
+C++ Pseudocode:
+vector<int> dijkstra(int V, vector<vector<pair<int,int>>>& adj, int src) {
+    vector<int> dist(V, INT_MAX);
+    priority_queue<pair<int,int>, vector<pair<int,int>>, greater<>> pq;
+    dist[src] = 0; pq.push({0, src});
+    while (!pq.empty()) {
+        int u = pq.top().second; pq.pop();
+        for (auto [v, wt] : adj[u]) {
+            if (dist[u] + wt < dist[v]) {
+                dist[v] = dist[u] + wt;
+                pq.push({dist[v], v});
+            }
+        }
+    }
+    return dist;
+}
+  </pre>
+
+  <p><strong>Conclusion:</strong><br>
+  Dijkstra’s algorithm ensures smoother traffic by routing vehicles along the fastest available paths.</p>
+</div>
+              <div id="a2" class="module-content">
+  <h2>Signal Scheduling</h2>
+  <p><strong>Case Study:</strong><br>
+  Long waits at intersections frustrate drivers.  
+  How can signals be scheduled fairly across lanes?  
+  Can we rotate green lights to balance flow?</p>
+
+  <p><strong>Algorithm:</strong> Round Robin Scheduling<br>
+     <strong>Efficiency:</strong> O(n)</p>
+
+  <pre>
+C++ Pseudocode:
+void roundRobinSignals(vector<string>& lanes, int timeSlice) {
+    int n = lanes.size();
+    int t = 0;
+    while (true) {
+        string lane = lanes[t % n];
+        cout << "Green for lane: " << lane
+             << " for " << timeSlice << " seconds\n";
+        t++;
+        // continue rotating signals
+    }
+}
+  </pre>
+
+  <p><strong>Conclusion:</strong><br>
+  Round Robin scheduling reduces waiting time, giving each lane fair access to green signals.</p>
+</div>
+               <div id="a3" class="module-content">
+  <h2>Accident Detection</h2>
+  <p><strong>Case Study:</strong><br>
+  Accidents block roads and delay emergency response.  
+  How can anomalies in traffic flow be detected instantly?  
+  Can we flag unusual speed drops or density spikes?</p>
+
+  <p><strong>Algorithm:</strong> Hash Map Anomaly Detection<br>
+     <strong>Efficiency:</strong> O(1) average lookup</p>
+
+  <pre>
+C++ Pseudocode:
+bool detectAccident(vector<int>& speeds) {
+    unordered_map<int,int> freq;
+    for (int s : speeds) {
+        freq[s]++;
+        if (s < 10 && freq[s] > 5) {
+            return true; // accident anomaly detected
+        }
+    }
+    return false;
+}
+  </pre>
+
+  <p><strong>Conclusion:</strong><br>
+  Hash maps quickly detect anomalies, enabling faster accident alerts and emergency response.</p>
+</div>
+          <div id="a4" class="module-content">
+  <h2>Parking Allocation</h2>
+  <p><strong>Case Study:</strong><br>
+  Parking shortages frustrate drivers in city centers.  
+  How can slots be allocated fairly and efficiently?  
+  Can we assign nearest available spots using greedy logic?</p>
+
+  <p><strong>Algorithm:</strong> Greedy Allocation<br>
+     <strong>Efficiency:</strong> O(n log n)</p>
+
+  <pre>
+C++ Pseudocode:
+struct Slot { int distance; bool free; };
+
+void allocateParking(vector<Slot>& slots) {
+    sort(slots.begin(), slots.end(),
+         [](Slot a, Slot b){ return a.distance < b.distance; });
+    for (Slot& s : slots) {
+        if (s.free) {
+            s.free = false;
+            cout << "Allocated slot at distance: " << s.distance << "\n";
+            break;
+        }
+    }
+}
+  </pre>
+
+  <p><strong>Conclusion:</strong><br>
+  Greedy allocation ensures drivers get the nearest available slot, reducing search time and congestion.</p>
+</div>
+              <div id="a5" class="module-content">
+  <h2>Emergency Vehicle Routing</h2>
+  <p><strong>Case Study:</strong><br>
+  Ambulances and fire trucks need fastest routes.  
+  How can we guide them through traffic in real time?  
+  Can we combine heuristics with shortest path search?</p>
+
+  <p><strong>Algorithm:</strong> A* Search<br>
+     <strong>Efficiency:</strong> O(E log V)</p>
+
+  <pre>
+C++ Pseudocode:
+struct Node { int id; int g, h; };
+
+vector<int> aStar(int start, int goal,
+                  vector<vector<pair<int,int>>>& adj,
+                  vector<int>& heuristic) {
+    priority_queue<pair<int,int>, vector<pair<int,int>>, greater<>> pq;
+    vector<int> dist(adj.size(), INT_MAX);
+    dist[start] = 0;
+    pq.push({heuristic[start], start});
+    while (!pq.empty()) {
+        int u = pq.top().second; pq.pop();
+        if (u == goal) break;
+        for (auto [v, wt] : adj[u]) {
+            int gScore = dist[u] + wt;
+            int fScore = gScore + heuristic[v];
+            if (gScore < dist[v]) {
+                dist[v] = gScore;
+                pq.push({fScore, v});
+            }
+        }
+    }
+    return dist;
+}
+  </pre>
+
+  <p><strong>Conclusion:</strong><br>
+  A* search guides emergency vehicles along optimal routes, saving critical response time.</p>
+</div>
+              <section style="margin:40px auto; max-width:900px; padding:20px;
+                background:rgba(255,255,255,0.05); border-radius:15px;">
   <h2>Conclusion</h2>
   <p>
-    Integrates <strong>flow optimization, signal scheduling, accident detection, parking allocation, and emergency routing</strong>.  
-    Algorithms ensure safer and efficient transportation across Vishalnagari.
+    Traffic management in Vishalnagari integrates <strong>flow optimization, signal scheduling, accident detection,
+    parking allocation, and emergency routing</strong>.  
+    Algorithms ensure safer, faster, and more efficient transportation across the city.
   </p>
 </section>
-
 <script>
 function toggleModule(id) {
   const modules = document.getElementsByClassName('module-content');
@@ -222,11 +246,9 @@ function toggleModule(id) {
   if (selected) selected.style.display = "block";
 }
 
-// Theme toggle
 document.getElementById('themeBtn').onclick = () => {
   document.body.classList.toggle('light');
 };
 </script>
-
 </body>
 </html>
