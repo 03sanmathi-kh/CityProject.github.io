@@ -6,113 +6,154 @@
 <title>Industry & Infrastructure – Portfolio</title>
 
 <style>
-  body {
-    margin: 0;
-    padding: 0;
-    background: #0a0a0a;
-    color: #ffffff;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-  }
 
-  h1 {
-    margin-top: 30px;
-    color: #ff7f50;
-    font-size: 40px;
-  }
+/* ===============================
+   THEME COLOR VARIABLES
+================================*/
 
-  h2 {
-    color: #2fdabd;
-    font-size: 26px;
-    margin-top: 10px;
-  }
+:root {
+  --bg: #ffffff;
+  --text: #000000;
+  --accent1: #ff7f50;
+  --accent2: #2fdabd;
+  --module-bg: #f0f0f0;
+  --pre-bg: #e3e3e3;
+}
 
-  p {
-    max-width: 850px;
-    margin: 15px auto;
-    font-size: 18px;
-    line-height: 1.6;
-  }
+/* DARK MODE */
+body.dark {
+  --bg: #0a0a0a;
+  --text: #ffffff;
+  --accent1: #ff7f50;
+  --accent2: #2fdabd;
+  --module-bg: rgba(255,255,255,0.08);
+  --pre-bg: #1a1a1a;
+}
 
-  /* Module buttons */
-  .module-buttons {
-    margin-top: 30px;
-  }
+/* ===============================
+   PAGE BASE STYLE
+================================*/
 
-  .module-buttons button {
-    background: #2fdabd;
-    color: #000;
-    border: none;
-    padding: 12px 22px;
-    margin: 10px;
-    border-radius: 8px;
-    font-size: 18px;
-    cursor: pointer;
-    font-weight: bold;
-  }
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  transition: 0.3s ease;
+}
 
-  .module-buttons button:hover {
-    background: #25bfa5;
-  }
+h1 {
+  margin-top: 30px;
+  color: var(--accent1);
+  font-size: 40px;
+}
 
-  /* Module Box */
-  .module-content {
-    display: none;
-    background: rgba(255,255,255,0.08);
-    width: 90%;
-    margin: 25px auto;
-    padding: 25px;
-    border-radius: 12px;
-    text-align: left;
-    animation: fadeIn 0.4s;
-  }
+h2 {
+  color: var(--accent2);
+  font-size: 26px;
+  margin-top: 10px;
+}
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+p {
+  max-width: 850px;
+  margin: 15px auto;
+  font-size: 18px;
+  line-height: 1.6;
+}
 
-  pre {
-    background: #1a1a1a;
-    padding: 15px;
-    border-radius: 10px;
-    color: #d4d4d4;
-    overflow-x: auto;
-    font-size: 15px;
-  }
+/* ===============================
+   MODULE BUTTONS
+================================*/
 
-  .conclusion-box {
-    background: rgba(255,255,255,0.1);
-    width: 85%;
-    margin: 40px auto;
-    padding: 25px;
-    border-radius: 15px;
-  }
+.module-buttons {
+  margin-top: 30px;
+}
+
+.module-buttons button {
+  background: var(--accent2);
+  color: #000;
+  border: none;
+  padding: 12px 22px;
+  margin: 10px;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.module-buttons button:hover {
+  background: #25bfa5;
+}
+
+/* ===============================
+   MODULE CONTENT BOX
+================================*/
+
+.module-content {
+  display: none;
+  background: var(--module-bg);
+  width: 90%;
+  margin: 25px auto;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: left;
+  animation: fadeIn 0.4s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+pre {
+  background: var(--pre-bg);
+  padding: 15px;
+  border-radius: 10px;
+  color: var(--text);
+  overflow-x: auto;
+  font-size: 15px;
+}
+
+/* ===============================
+   CONCLUSION BOX
+================================*/
+
+.conclusion-box {
+  background: var(--module-bg);
+  width: 85%;
+  margin: 40px auto;
+  padding: 25px;
+  border-radius: 15px;
+}
+
+/* ===============================
+   THEME TOGGLE BUTTON
+================================*/
+
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 18px;
+  background: var(--module-bg);
+  border: 2px solid var(--text);
+  color: var(--text);
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
 </style>
-
-<script>
-  function toggleModule(id) {
-    let mods = document.getElementsByClassName("module-content");
-
-    // Hide all modules except the one clicked
-    for (let m of mods) {
-      if (m.id !== id) {
-        m.style.display = "none";
-      }
-    }
-
-    // Toggle clicked module
-    let selected = document.getElementById(id);
-    if (selected.style.display === "block") {
-      selected.style.display = "none"; // close if open
-    } else {
-      selected.style.display = "block"; // open if closed
-    }
-  }
-</script>
 
 </head>
 <body>
+
+<!-- THEME BUTTON -->
+<button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
 
 <h1>Sanmathi Hegde</h1>
 <h2>Industry & Infrastructure – Vishalnagari</h2>
@@ -137,63 +178,4 @@ This portfolio explores how computational methods improve production, reduce del
   <p><b>Efficiency:</b> O(V + E)</p>
 
   <pre>
-#include &lt;bits/stdc++.h&gt;
-using namespace std;
-int main() {
-    int n = 6;
-    vector&lt;pair&lt;int,int&gt;&gt; tasks = {{3,2},{5,1},{2,0},{4,6}};
-    sort(tasks.begin(), tasks.end());
-    cout << "EV Assembly Line Optimized Sequence:\n";
-    for (auto x : tasks) {
-        cout << "Task " << x.second << " (Time = " << x.first << ")\n";
-    }
-}
-  </pre>
-</div>
-
-<!-- MODULE 2 -->
-<div id="m2" class="module-content">
-  <h2>Module 2 – Textile Dyeing Optimization</h2>
-  <p><b>Problem:</b> Reduce dyeing delays while maximizing machine utilization.</p>
-  <p><b>Algorithm:</b> Job Sequencing</p>
-  <p><b>Efficiency:</b> O(n log n)</p>
-
-  <pre>
-jobs:
-  A - profit 20, deadline 2
-  B - profit 15, deadline 2
-  C - profit 10, deadline 1
-
-schedule:
-  C -> A
-maximum profit = 30
-  </pre>
-</div>
-
-<!-- MODULE 3 -->
-<div id="m3" class="module-content">
-  <h2>Module 3 – Cotton Transport Route Planning</h2>
-  <p><b>Problem:</b> Find cheapest and fastest cotton transport route.</p>
-  <p><b>Algorithm:</b> Dijkstra</p>
-  <p><b>Efficiency:</b> O(E log V)</p>
-
-  <pre>
-Node  Source  via  Distance
-A       S      -      0
-B       S      A      4
-C       B      A      7
-D       C      B     10
-  </pre>
-</div>
-
-<!-- CONCLUSION -->
-<div class="conclusion-box">
-  <h2>Conclusion</h2>
-  <p>
-  These modules show how computational thinking improves industry efficiency, lowers cost,
-  and helps Vishalnagari build a smarter industrial ecosystem.
-  </p>
-</div>
-
-</body>
-</html>
+#include &lt;bits/s
