@@ -158,59 +158,23 @@
     .course-box p { margin: 0; font-size: 16px; }
     .division-d { border-left: 4px solid #27ae60; }
 
-    /* Course Overview Section */
-    .course-overview {
-      margin-top: 60px;
-      text-align: center;
+    /* Sections */
+    section { display: none; } /* hide all sections initially */
+    section.active { display: block; }
+
+    .course-overview, .project-overview, #meet-the-team {
       max-width: 900px;
       padding: 20px;
     }
-    .course-overview h2 {
-      font-size: 36px;
-      font-weight: 900;
-      margin-bottom: 20px;
-      color: #ff79c6;
-    }
-    .course-overview p {
-      font-size: 18px;
-      line-height: 1.6;
-      background: rgba(255,255,255,0.05);
-      padding: 25px;
-      border-radius: 15px;
-      margin: 0 auto 30px;
-      transition: background 0.4s;
-    }
-    body.light .course-overview p { background: #f9f9f9; }
 
-    /* Vision Section */
-    .project-overview {
-      margin-top: 60px;
-      text-align: center;
-      max-width: 900px;
-      padding: 0 20px;
-    }
-    .project-overview h2 { font-size: 36px; font-weight: 900; margin-bottom: 20px; color: #ff79c6; }
+    .course-overview h2, .project-overview h2 { font-size: 36px; font-weight: 900; margin-bottom: 20px; color: #ff79c6; }
+    .course-overview p, .project-overview p.city-text { font-size: 18px; line-height: 1.6; background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; margin: 0 auto 30px; transition: background 0.4s; }
+    body.light .course-overview p, body.light .project-overview p.city-text { background: #f9f9f9; }
+
     .city-motto { font-size: 20px; font-weight: 700; color: #ffdd57; margin-bottom: 20px; }
-    .city-text {
-      font-size: 18px;
-      line-height: 1.6;
-      background: rgba(255,255,255,0.05);
-      padding: 25px;
-      border-radius: 15px;
-      margin: 0 auto 30px;
-      transition: background 0.4s;
-    }
-    body.light .city-text { background: #f9f9f9; }
 
-    /* Team Section */
-    #meet-the-team {
-      padding: 40px;
-      text-align: center;
-    }
-    #meet-the-team h2 { font-size: 32px; font-weight: 900; margin-bottom: 30px; color: #ff79c6; }
-
+    /* Team Cards */
     .team-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-
     .team-card {
       background: rgba(255,255,255,0.05);
       border-radius: 12px;
@@ -222,7 +186,6 @@
     }
     .team-card:hover { transform: scale(1.03); }
     body.light .team-card { background: #fff; }
-
     .team-card a { color: #ff79c6; font-weight: bold; text-decoration: none; }
     .team-card a:hover { text-decoration: underline; }
 
@@ -236,12 +199,13 @@
 
 <body class="dark">
 
-<!-- Extra wave layer -->
 <div class="wave-layer3"></div>
 
-<!-- Top Navigation Bar -->
+<!-- Navigation -->
 <nav>
-  <a href="index.html">Home</a>
+  <a href="#" onclick="showSection('home')">Home</a>
+  <a href="#" onclick="showSection('about')">About</a>
+  <a href="#" onclick="showSection('project')">Project</a>
   <a href="sanmathi_port.html">Sanmathi</a>
   <a href="vasavi_port.html">Vasavi</a>
   <a href="akshata_port.html">Akshata</a>
@@ -251,62 +215,63 @@
 <!-- Theme Toggle -->
 <button class="theme-toggle" id="toggleBtn" onclick="toggleTheme()">Switch to Light Mode</button>
 
-<div class="portfolio-heading">
-  VISHALNAGARI – THE INTELLIGENT & SUSTAINABLE CITY PORTFOLIO
-</div>
-
-<!-- Course Card -->
-<div class="course-card">
-  <div class="course-box"><h3>Course Name</h3><p>Design & Analysis of Algorithms</p></div>
-  <div class="course-box"><h3>Course Code</h3><p>24ECS205</p></div>
-  <div class="course-box"><h3>Institution</h3><p>KLE Technological University</p></div>
-  <div class="course-box"><h3>Guide</h3><p>Prof. Prakash Hegade</p></div>
-  <div class="course-box division-d">
-    <h3>Team Members</h3>
-    <p>Sanmathi Hegde</p>
-    <p>Vasavi Kabbur</p>
-    <p>Akshata Pawar</p>
-    <p>Isha Shet</p>
+<!-- Home Section -->
+<section id="home" class="active">
+  <div class="portfolio-heading">
+    VISHALNAGARI – THE INTELLIGENT & SUSTAINABLE CITY PORTFOLIO
   </div>
-</div>
 
-<!-- Course Overview Section -->
-<section class="course-overview">
-  <h2>Course Overview</h2>
-  <p>
-    Algorithms are the heart of computer science and play a crucial role in solving real-world problems efficiently. 
-    They provide a structured approach to processing data, optimizing workflows, and making decisions. 
-    From traffic routing and supply chain management to healthcare diagnostics and financial analysis, 
-    algorithms enable automation, reduce human error, and improve resource utilization. 
-    Studying algorithms equips students with critical thinking, problem-solving skills, and the ability 
-    to design scalable and efficient solutions for complex systems.
-  </p>
+  <div class="course-card">
+    <div class="course-box"><h3>Course Name</h3><p>Design & Analysis of Algorithms</p></div>
+    <div class="course-box"><h3>Course Code</h3><p>24ECS205</p></div>
+    <div class="course-box"><h3>Institution</h3><p>KLE Technological University</p></div>
+    <div class="course-box"><h3>Guide</h3><p>Prof. Prakash Hegade</p></div>
+    <div class="course-box division-d">
+      <h3>Team Members</h3>
+      <p>Sanmathi Hegde</p>
+      <p>Vasavi Kabbur</p>
+      <p>Akshata Pawar</p>
+      <p>Isha Shet</p>
+    </div>
+  </div>
 </section>
 
-<!-- Vision Section -->
-<section class="project-overview">
-  <h2>Our Vision</h2>
-  <p class="city-motto"><strong>Designing Tomorrow, One Algorithm at a Time</strong></p>
-  <p class="city-text">
-    Vishalnagari is a one-of-a-kind city — a living, intelligent ecosystem where sustainability meets innovation.
-    Known as <strong>India’s capital of civic heritage</strong>, it honors centuries of tradition while embracing technology.
-    The city exclusively uses <strong>100% electric vehicles</strong> within its boundaries, ensuring zero-emission transport and a cleaner environment.
-    <strong>Smart infrastructure</strong> and <strong>algorithm-driven management</strong> harmonize daily life: traffic flows smoothly through optimized routes, civic resources are distributed equitably, and green spaces flourish through intelligent planning and irrigation.
-    By combining <strong>innovation, efficiency, and sustainability</strong>, Vishalnagari demonstrates how technology and thoughtful design can create a city that is <strong>resilient, adaptive, and inspiring for its citizens</strong>.
-  </p>
+<!-- About Section -->
+<section id="about">
+  <section class="course-overview">
+    <h2>Course Overview</h2>
+    <p>
+      Algorithms are the heart of computer science and play a crucial role in solving real-world problems efficiently. 
+      They provide a structured approach to processing data, optimizing workflows, and making decisions. 
+      From traffic routing and supply chain management to healthcare diagnostics and financial analysis, 
+      algorithms enable automation, reduce human error, and improve resource utilization. 
+      Studying algorithms equips students with critical thinking, problem-solving skills, and the ability 
+      to design scalable and efficient solutions for complex systems.
+    </p>
+  </section>
 </section>
 
-<!-- City Design Section -->
-<section class="project-overview">
-  <h2>Design of City</h2>
+<!-- Project Section -->
+<section id="project">
+  <section class="project-overview">
+    <h2>Our Vision</h2>
+    <p class="city-motto"><strong>Designing Tomorrow, One Algorithm at a Time</strong></p>
+    <p class="city-text">
+      Vishalnagari is a one-of-a-kind city — a living, intelligent ecosystem where sustainability meets innovation.
+      Known as <strong>India’s capital of civic heritage</strong>, it honors centuries of tradition while embracing technology.
+      The city exclusively uses <strong>100% electric vehicles</strong> within its boundaries, ensuring zero-emission transport and a cleaner environment.
+      <strong>Smart infrastructure</strong> and <strong>algorithm-driven management</strong> harmonize daily life: traffic flows smoothly through optimized routes, civic resources are distributed equitably, and green spaces flourish through intelligent planning and irrigation.
+      By combining <strong>innovation, efficiency, and sustainability</strong>, Vishalnagari demonstrates how technology and thoughtful design can create a city that is <strong>resilient, adaptive, and inspiring for its citizens</strong>.
+    </p>
 
-  <img src="Image1.jpg" alt="City Design" 
-       style="width: 90%; max-width: 900px; border-radius: 20px; margin-top: 20px; box-shadow: 0 6px 25px rgba(0,0,0,0.4);">
-
+    <h2>Design of City</h2>
+    <img src="Image1.jpg" alt="City Design" 
+         style="width: 90%; max-width: 900px; border-radius: 20px; margin-top: 20px; box-shadow: 0 6px 25px rgba(0,0,0,0.4);">
+  </section>
 </section>
 
 <!-- Meet the Team Section -->
-<section id="meet-the-team">
+<section id="meet-the-team" class="active">
   <h2>Meet the Team</h2>
   <div class="team-container">
     <div class="team-card industry">
@@ -349,6 +314,13 @@ function toggleTheme() {
   document.body.classList.toggle("light");
   const btn = document.getElementById("toggleBtn");
   btn.textContent = document.body.classList.contains("light") ? "Switch to Dark Mode" : "Switch to Light Mode";
+}
+
+// Function to switch sections
+function showSection(sectionId) {
+  const sections = document.querySelectorAll("section");
+  sections.forEach(sec => sec.classList.remove("active"));
+  document.getElementById(sectionId).classList.add("active");
 }
 </script>
 
