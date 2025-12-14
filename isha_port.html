@@ -2,275 +2,274 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Isha – Agriculture & Sustainability Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Industries, Urban Infrastructure & Tourism</title>
+  <link rel="stylesheet" href="style.css">
   <style>
-    body { 
-      margin:0; 
-      font-family:'Segoe UI',sans-serif; 
-      transition: background 0.3s,color 0.3s; 
-      position: relative; 
-      min-height: 100vh; 
-      overflow-x: hidden; 
-    }
-    body.dark { background:#0a0a0a; color:#fff;}
-    body.light { background:#f5f5f5; color:#222;} /* contrasting text */
-
-    /* Wave background */
-    .wave-bg { position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1; overflow:hidden; }
-    .wave { position:absolute; width:200%; height:200%; opacity:0.5; animation:waveMove 25s linear infinite; }
-    .wave1 { fill:#27ae60; animation-duration:30s; }
-    .wave2 { fill:#2ecc71; animation-duration:35s; }
-    .wave3 { fill:#16a085; animation-duration:40s; }
-
-    body.light .wave1 { fill:#a2d9ce; }
-    body.light .wave2 { fill:#7bed9f; }
-    body.light .wave3 { fill:#55efc4; }
-
-    @keyframes waveMove {
-      0% { transform: translateX(0) translateY(0) rotate(0deg); }
-      50% { transform: translateX(10%) translateY(5%) rotate(2deg); }
-      100% { transform: translateX(0) translateY(0) rotate(0deg); }
+    /* Title contrast colors */
+    body.dark .main-heading .title,
+    body.dark .main-heading .subtitle {
+      color: white;
     }
 
-    header { text-align:center; padding:40px 20px; position: relative; }
-    header h1 { font-size:42px; font-weight:900; color:#27ae60; }
-    header h3 { font-size:22px; font-weight:600; color:#b58e00; }
-    header p { max-width:800px; margin:20px auto; font-size:16px; line-height:1.6; }
+    body.light .main-heading .title,
+    body.light .main-heading .subtitle {
+      color: maroon;
+    }
 
-    /* Buttons */
-    .theme-toggle { 
-      position: fixed; top:20px; right:20px;
-      padding:10px 20px; border:none; border-radius:25px; cursor:pointer; font-size:14px; font-weight:600; background:#3498db; color:#fff; 
+    body.dark {
+      background-color: navy;
+      color: white;
+    }
+
+    body.light {
+      background-color: #f5f5f5;
+      color: black;
+    }
+
+    .main-heading:hover,
+    .project-overview img:hover,
+    .city-text:hover {
+      box-shadow: 0 0 15px silver, 0 0 30px silver, 0 0 45px silver;
+      text-shadow: 0 0 10px silver, 0 0 20px silver, 0 0 30px silver;
+      transform: scale(1.02);
+    }
+
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+      background: rgba(0,0,128,0.8);
+      padding: 10px;
+      position: relative;
       z-index: 10;
     }
-    .theme-toggle:hover { background:#2980b9; }
 
-    .home-button { 
-      position: fixed; top:20px; left:20px;
-      padding:10px 20px; border:none; border-radius:25px; cursor:pointer; font-size:14px; font-weight:600; background:#27ae60; color:#fff; 
-      z-index: 10;
+    nav a {
+      padding: 8px 12px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 4px;
     }
-    .home-button:hover { background:#1e8449; }
 
-    .droplet-container { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; padding:30px; }
-    .droplet { width:100px; height:150px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
-      display:flex; align-items:center; justify-content:center; cursor:pointer;
-      color:#fff; font-weight:600; transition:transform 0.3s ease; }
-    .droplet:hover { transform:scale(1.1); }
+    nav a:hover {
+      background: rgba(0,0,128,0.6);
+      color: silver;
+    }
 
-    /* Droplet colors */
-    .yield { background:#e74c3c; }
-    .irrigation { background:#3498db; }
-    .waste { background:#f1c40f; color:#222; }
-    .soil { background:#2ecc71; }
-    .energy { background:#9b59b6; }
+    nav a.active {
+      background: silver;
+      color: navy;
+    }
 
-    /* Module content tinted with same droplet color */
-    #i1 { background: rgba(231,76,60,0.2); }
-    #i2 { background: rgba(52,152,219,0.2); }
-    #i3 { background: rgba(241,196,15,0.2); }
-    #i4 { background: rgba(46,204,113,0.2); }
-    #i5 { background: rgba(155,89,182,0.2); }
+    .theme-toggle {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 10px 20px;
+      background: rgba(135, 206, 250, 0.8);
+      color: navy;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 8px;
+      box-shadow: 0 0 18px silver;
+      transition: 0.3s;
+    }
 
-    .module-content { display:none; margin:20px auto; padding:20px;
-      border-radius:15px; max-width:900px; transition: background 0.3s, color 0.3s; }
-    .module-content h2 { font-size:24px; }
-    .module-content p { font-size:16px; line-height:1.6; }
-    pre { background:rgba(0,0,0,0.1); padding:15px; border-radius:10px;
-      overflow-x:auto; font-size:14px; text-align:left; transition: background 0.3s,color 0.3s;}
-    body.dark pre { background:rgba(255,255,255,0.08); color:#fff; }
-    body.light pre { background: rgba(0,0,0,0.08); color:#222; }
+    .theme-toggle:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 35px silver, 0 0 25px rgba(135, 206, 250, 0.8);
+    }
 
-    section.conclusion { margin:40px auto; max-width:900px; padding:20px; background:rgba(0,0,0,0.06); border-radius:15px; transition: background 0.3s,color 0.3s;}
-    body.dark section.conclusion { background: rgba(0,0,0,0.3); color:#fff; }
-    body.light section.conclusion { background: rgba(255,255,255,0.8); color:#222; }
+    .card {
+      background: #ffe0e0;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 30px auto;
+      width: 70%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 2em;
+      color: maroon;
+      text-align: center;
+    }
+
+    .card .icon {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 60px;
+      height: 60px;
+    }
+
+    .card img.theme-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 400px;
+      margin-top: 15px;
+      border-radius: 0;
+      object-fit: cover;
+    }
+
+    .card img.full-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-top: 15px;
+      border-radius: 0;
+    }
+
+    .main-heading {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .main-heading .title {
+      font-size: 1.8em;
+      font-weight: bold;
+    }
+
+   /* ========================================= */
+   /* PENTAGON MODULE BUTTON + RECTANGLE BOX DESIGN */
+   /* ========================================= */
+
+   /* Thought Space card styling */
+section.card.thought-space {
+  background: rgba(255, 248, 220, 0.7); /* soft cream, gentle */
+  border-radius: 20px;
+  padding: 40px 30px;
+  margin: 30px auto;
+  width: 75%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease-in-out;
+}
+
+section.card.thought-space:hover {
+  box-shadow: 0 15px 50px rgba(0,0,0,0.3), 0 0 60px rgba(255, 200, 100, 0.5);
+}
+
+/* Modules container (grid layout) */
+.modules-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 25px;
+  justify-items: center;
+  margin-top: 25px;
+}
+
+/* Pentagon module buttons */
+.module-btn {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  font-size: 16px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #00cccc, #009999);
+  clip-path: polygon(
+    50% 0%,
+    100% 38%,
+    82% 100%,
+    18% 100%,
+    0% 38%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  color: white;
+  opacity: 0.95;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 20px rgba(0,204,204,0.8), 0 0 30px rgba(0,153,153,0.7);
+}
+
+/* Heavy glow on hover */
+.module-btn:hover {
+  transform: scale(1.25);
+  box-shadow: 
+    0 0 30px white,
+    0 0 80px #00ffff,
+    0 0 120px #00ffff,
+    0 0 200px #00ffff;
+  text-shadow: 0 0 15px white, 0 0 25px #00ffff;
+}
+
+/* Last pink card adjustments */
+section.card:last-of-type {
+  padding: 50px;
+  width: 75%;
+  min-height: 400px;
+  text-align: center;
+}
+
+section.card:last-of-type h2 {
+  color: #2c2c2c;
+  text-shadow: 0 0 5px silver, 0 0 15px silver;
+  font-size: 2.5em; /* bigger */
+  margin-bottom: 15px;
+}
+
+section.card:last-of-type .subheading {
+  color: #2c2c2c;
+  text-shadow: 0 0 5px silver, 0 0 15px silver;
+  font-size: 1.8em; /* bigger */
+}
+
   </style>
 </head>
-<body class="dark">
+<body class="light">
 
-<div class="wave-bg">
-  <svg class="wave wave1" viewBox="0 0 1440 320" preserveAspectRatio="none">
-    <path d="M0,192 C480,320 960,64 1440,192 L1440,320 L0,320 Z"></path>
-  </svg>
-  <svg class="wave wave2" viewBox="0 0 1440 320" preserveAspectRatio="none">
-    <path d="M0,256 C480,128 960,384 1440,256 L1440,320 L0,320 Z"></path>
-  </svg>
-  <svg class="wave wave3" viewBox="0 0 1440 320" preserveAspectRatio="none">
-    <path d="M0,224 C480,96 960,352 1440,224 L1440,320 L0,320 Z"></path>
-  </svg>
-</div>
+  <!-- Theme Toggle Button -->
+  <button class="theme-toggle" onclick="document.body.classList.toggle('light'); document.body.classList.toggle('dark');">Switch Theme</button>
 
-<button class="home-button" onclick="goHome()">🏠 Home</button>
-<button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+  <!-- Navigation -->
+  <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="project.html">Project</a>
+      <a href="sanmathi_port.html" class="active">Sanmathi</a>
+      <a href="vasavi_port.html">Vasavi</a>
+      <a href="akshata_port.html">Akshata</a>
+      <a href="isha_port.html">Isha</a>
+      <a href="collabs.html">Collabs</a>
+  </nav>
 
-<header>
-  <h1>Isha</h1>
-  <h3>Agriculture & Sustainability – Vishalnagari</h3>
-  <p>
-    This domain focuses on <strong>crop yield prediction, irrigation scheduling, waste routing, soil classification, and renewable energy allocation</strong>.  
-    Algorithms like <strong>regression, dynamic programming, heuristics, decision trees, and linear programming</strong> power sustainable growth.
-  </p>
-</header>
+  <h1 id="title" class="main-heading">
+      <span class="title">Agriculture</span>
+  </h1>
 
-<div class="droplet-container">
-  <div class="droplet yield" onclick="toggleModule('i1')">Module 1</div>
-  <div class="droplet irrigation" onclick="toggleModule('i2')">Module 2</div>
-  <div class="droplet waste" onclick="toggleModule('i3')">Module 3</div>
-  <div class="droplet soil" onclick="toggleModule('i4')">Module 4</div>
-  <div class="droplet energy" onclick="toggleModule('i5')">Module 5</div>
-</div>
+  <section class="card">
+      <img src=".jpg" alt="Industry Icon" class="icon">
+      <h2>Why did I choose these sectors? A glimpse..</h2>
+      <img src="DAA.jpg" alt="Industries Image" class="theme-image">
+      <img src="DAA(2).jpg" alt="Description Image" class="full-image">
+  </section>
 
-<!-- Modules unchanged -->
-<div id="i1" class="module-content">
-  <h2>Crop Yield Prediction</h2>
-  <p><strong>Case Study:</strong><br>
-  Can farmers predict harvest yields using soil nutrients, rainfall, and temperature data?</p>
-  <p><strong>Algorithm:</strong> Multiple Linear Regression<br><strong>Efficiency:</strong> O(n) per iteration</p>
-  <pre>
-C++ Pseudocode:
-double predictYield(vector<double>& features, vector<double>& weights) {
-    double result = 0;
-    for (int i = 0; i < features.size(); i++) {
-        result += features[i] * weights[i];
-    }
-    return result;
-}
-  </pre>
-  <p><strong>Conclusion:</strong><br>
-  Regression equips farmers with accurate forecasts, guiding planting and resource allocation decisions.</p>
-</div>
+  <!-- Updated Thought Space Card -->
+  <section class="card thought-space">
+    <h2>Welcome To My Thought Space!!</h2>
+    <p class="subheading">Explore my ideas and works below!</p>
 
-<div id="i2" class="module-content">
-  <h2>Irrigation Scheduling</h2>
-  <p><strong>Case Study:</strong><br>
-  How can limited water be distributed across fields to maximize crop health?</p>
-  <p><strong>Algorithm:</strong> Dynamic Programming – Knapsack<br><strong>Efficiency:</strong> O(nW)</p>
-  <pre>
-C++ Pseudocode:
-int knapsack(int W, vector<int>& water, vector<int>& benefit, int n) {
-    vector<vector<int>> dp(n+1, vector<int>(W+1, 0));
-    for (int i = 1; i <= n; i++) {
-        for (int w = 0; w <= W; w++) {
-            if (water[i-1] <= w) {
-                dp[i][w] = max(dp[i-1][w],
-                               dp[i-1][w-water[i-1]] + benefit[i-1]);
-            } else {
-                dp[i][w] = dp[i-1][w];
-            }
-        }
-    }
-    return dp[n][W];
-}
-  </pre>
-  <p><strong>Conclusion:</strong><br>
-  Dynamic programming ensures water is allocated optimally, boosting crop yield under scarcity.</p>
-</div>
+    <div class="modules-container">
+        <a href="im1.html" class="module-btn">Smart irrigation and water distribution network</a>
+        <a href="im2.html" class="module-btn">Crop recommendation and seasonal planning system</a>
+        <a href="im3.html" class="module-btn">Precision farming using iot and sensors</a>
+        <a href="im4.html" class="module-btn">Agri-logistics and cold storage optimisation</a>
+        <a href="im5.html" class="module-btn">Agri waste to Bio-Energy production</a>
+        <a href="im6.html" class="module-btn">Greenhouse and vertical farming optimisation </a>
+        <a href="im7.html" class="module-btn">Samrt crop disease detection system</a>
+        <a href="im8.html" class="module-btn">Agriculture supply chain management platfrom</a>
+       
+    </div>
+  </section>
 
-<div id="i3" class="module-content">
-  <h2>Waste Management Routing</h2>
-  <p><strong>Case Study:</strong><br>
-  How can garbage trucks in Vishalnagari cover all collection points efficiently, saving fuel and time?</p>
-  <p><strong>Algorithm:</strong> Travelling Salesman Problem Heuristic<br><strong>Efficiency:</strong> Approx O(n²)</p>
-  <pre>
-C++ Pseudocode:
-vector<int> tspNearestNeighbour(int n, vector<vector<int>>& dist) {
-    vector<bool> visited(n, false);
-    vector<int> path; path.push_back(0); visited[0]=true;
-    for (int step=1; step<n; step++) {
-        int last = path.back(), next=-1, best=INT_MAX;
-        for (int j=0;j<n;j++) {
-            if(!visited[j] && dist[last][j]<best) {
-                best=dist[last][j]; next=j;
-            }
-        }
-        path.push_back(next); visited[next]=true;
-    }
-    return path;
-}
-  </pre>
-  <p><strong>Conclusion:</strong><br>
-  Heuristic TSP routing ensures trucks minimize travel distance, cutting costs and improving waste collection efficiency.</p>
-</div>
-
-<div id="i4" class="module-content">
-  <h2>Soil Quality Classification</h2>
-  <p><strong>Case Study:</strong><br>
-  Can soil samples be classified into fertile or infertile categories to guide crop selection?</p>
-  <p><strong>Algorithm:</strong> Decision Tree Classification<br><strong>Efficiency:</strong> O(n log n) training, O(log n) prediction</p>
-  <pre>
-C++ Pseudocode:
-struct Node {
-    string feature;
-    string label;
-    Node* left;
-    Node* right;
-};
-
-string classify(Node* root, map<string,string>& sample) {
-    while (root->left && root->right) {
-        if (sample[root->feature] == "yes") {
-            root = root->left;
-        } else {
-            root = root->right;
-        }
-    }
-    return root->label;
-}
-  </pre>
-  <p><strong>Conclusion:</strong><br>
-  Decision trees help farmers quickly classify soil, ensuring the right crops are planted for maximum yield.</p>
-</div>
-
-<div id="i5" class="module-content">
-  <h2>Renewable Energy Allocation</h2>
-  <p><strong>Case Study:</strong><br>
-  How can solar and wind energy be distributed across farms to minimize cost and meet demand?</p>
-  <p><strong>Algorithm:</strong> Linear Programming (Simplex Method)<br><strong>Efficiency:</strong> Polynomial average time</p>
-  <pre>
-C++ Pseudocode (conceptual):
-// Variables: energy[i] = units allocated to farm i
-// Objective: minimize Σ (cost[i] * energy[i])
-// Constraints:
-//   - Σ energy[i] ≤ total available energy
-//   - energy[i] ≥ demand[i] for each farm
-// Use simplex method or LP solver library to solve
-// Return allocation plan and minimum cost
-  </pre>
-  <p><strong>Conclusion:</strong><br>
-  Linear programming ensures renewable energy is allocated efficiently, reducing costs and supporting sustainability.</p>
-</div>
-
-<section class="conclusion">
-  <h2>Conclusion</h2>
-  <p>
-    Agriculture & Sustainability in Vishalnagari thrives when guided by algorithms.  
-    From predicting yields to optimizing energy, each module shows how logic and computation drive greener growth.
-  </p>
-</section>
-
-<script>
-function toggleModule(id) {
-  const sections = document.getElementsByClassName("module-content");
-  for (let s of sections) s.style.display = "none";
-  const target = document.getElementById(id);
-  if (target) target.style.display = "block";
-}
-
-function toggleTheme() {
-  document.body.classList.toggle("dark");
-  document.body.classList.toggle("light");
-  const btn = document.querySelector(".theme-toggle");
-  if (document.body.classList.contains("light")) {
-    btn.textContent = "☀ Light Mode";
-  } else {
-    btn.textContent = "🌙 Dark Mode";
-  }
-}
-
-function goHome() {
-  window.location.href = "index.html";
-}
-</script>
 </body>
 </html>
